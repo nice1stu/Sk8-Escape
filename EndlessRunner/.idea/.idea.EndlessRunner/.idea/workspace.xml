@@ -3,12 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="e608337b-03d2-46cf-9f9a-547134113a92" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EndlessRunner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EndlessRunner/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Scripts/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Player/Scripts/PlayerModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Scripts/PlayerModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StaticMainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StaticMainScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Player/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -82,7 +87,7 @@
       <option name="presentableId" value="Default" />
       <updated>1682286450956</updated>
       <workItem from="1682286454865" duration="12000" />
-      <workItem from="1682327436568" duration="1184000" />
+      <workItem from="1682327436568" duration="4195000" />
     </task>
     <servers />
   </component>
