@@ -36,7 +36,9 @@ public class PlayerController : MonoBehaviour
     
     private void ConstantMove()
     {
-        _rb.velocity = new Vector2(_model.movementSpeed, _rb.velocity.y);
+        
+        _rb.velocity = new Vector2 (_model.movementSpeed * Time.deltaTime, _rb.velocity.y);;
+        
     }
 
     private void Ollie()
