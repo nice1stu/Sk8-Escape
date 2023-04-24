@@ -330,18 +330,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2916409661291331584, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: a0bb433ae3e7e5a448ee70eab6baa76a, type: 2}
-    - target: {fileID: 2916409661291331584, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2916409661291331584, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4674602963745211553, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
       propertyPath: m_RootOrder
       value: 3
