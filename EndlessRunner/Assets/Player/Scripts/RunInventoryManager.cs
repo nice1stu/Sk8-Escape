@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class RunInventoryManager : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.layer == LayerMask.NameToLayer("Coin"))
+        if (col.gameObject.layer == LayerMask.NameToLayer("Pickupable"))
         {
+            if (col.TryGetComponent(out IPickupable pickupable))
+            {
+                pickupable.OnPickup();
+            }
+            
             Debug.Log("Nice!!!");
         }
     }
