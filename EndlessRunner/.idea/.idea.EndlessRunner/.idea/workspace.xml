@@ -9,6 +9,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Player/Scripts/RunInventoryManager.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -80,7 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1682286450956</updated>
       <workItem from="1682286454865" duration="12000" />
-      <workItem from="1682326956075" duration="994000" />
+      <workItem from="1682326956075" duration="1992000" />
     </task>
     <servers />
   </component>
