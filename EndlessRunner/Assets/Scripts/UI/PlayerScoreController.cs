@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PlayerScoreController: MonoBehaviour
 {
     private float oldPlayerPosition;
     private GameObject player;
@@ -23,9 +23,10 @@ public class NewBehaviourScript : MonoBehaviour
     {
         //Get player position
         float newPlayerPosition = player.transform.position.x;
-        model.AddToScore(newPlayerPosition - oldPlayerPosition);
+        
+        //This *can* result is taking points away from the player if they travel backwards, but in practice that should never happen
+        model.AddToScore(newPlayerPosition - oldPlayerPosition); //This might make us a bit vulnerable to round errors, but do we really care *that* much?
 
         oldPlayerPosition = newPlayerPosition;
-
     }
 }
