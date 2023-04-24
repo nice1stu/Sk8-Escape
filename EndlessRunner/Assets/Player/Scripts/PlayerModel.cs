@@ -8,4 +8,5 @@ public class PlayerModel : MonoBehaviour
     public float ollieJumpForce = 5f;
     public float kickflipJumpForce = 3f;
     public float shuvitJumpForce = 2f;
+    public LayerMask groundLayers;
 }
