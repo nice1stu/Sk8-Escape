@@ -27,13 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool _grounded;
     private bool _canGrind;
 
-    public bool IsFalling
-    {
-        get { return _rb.velocity.y < 0.01f; }
-    }
 
-
-    // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -51,11 +45,10 @@ public class PlayerController : MonoBehaviour
         GetInputs(true);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(currentState);
-        GetInputs(true);
+        //Debug.Log(currentState);
+        // GetInputs(true);
         _grounded = GetGrounded();
         ConstantMove();
         DummyInputHandling();
@@ -79,6 +72,7 @@ public class PlayerController : MonoBehaviour
 
     private void DummyInputHandling()
     {
+        Debug.Log(_grounded);
         if (upSwipe)
         {
             if (CanOllie())
@@ -94,6 +88,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (rightSwipe)
+        {
+            if (CanShuvit())
+            {
+                Shuvit();
+            }
+        }
+
         if (CanCoast())
         {
             currentState = SkateboardTrickState.Coast;
@@ -105,44 +107,6 @@ public class PlayerController : MonoBehaviour
             currentState = SkateboardTrickState.Falling;
             return;
         }
-        
-        
-        return;
-        if (currentState != SkateboardTrickState.Falling && IsFalling) // Makes it so it only changes the state once.
-            currentState = SkateboardTrickState.Falling;
-        else if (currentState != SkateboardTrickState.Coast && _grounded)
-            currentState = SkateboardTrickState.Coast;
-
-        if (upSwipe)
-        {
-            if (currentState == SkateboardTrickState.Coast && currentState != SkateboardTrickState.Ollie)
-            {
-                Ollie();
-                return;
-            }
-            else if (currentState == SkateboardTrickState.Ollie && currentState != SkateboardTrickState.Kickflip)
-            {
-                Kickflip();
-                return;
-            }
-        }
-
-        if (rightSwipe)
-        {
-            if (currentState == SkateboardTrickState.Coast) Shuvit();
-        }
-
-        if (downSwipe)
-        {
-            if (currentState == SkateboardTrickState.Coast)
-                StartCoroutine(Coffin());
-        }
-
-        if (press)
-        {
-            if (_canGrind)
-                Grind();
-        }
     }
 
     private void ConstantMove()
@@ -152,9 +116,11 @@ public class PlayerController : MonoBehaviour
 
     private void AddToCurrentVelocity(Vector2 addedVelocity)
     {
-        Vector3 vel = _rb.velocity + addedVelocity;
-        _rb.velocity = new Vector2(vel.x, Mathf.Clamp(vel.y, addedVelocity.y, _model.maxJumpVelocity));
+        _rb.velocity = addedVelocity;
+        return;
     }
+
+    #region Trick stuff
 
     // Assuming it's checked after all the other tricks
     private bool CanCoast()
@@ -164,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
     private bool CanFall()
     {
-        return (!_grounded && _rb.velocity.y < 0);
+        return (!_grounded && _rb.velocity.y < _model.initialFallingVelocity);
     }
 
     private bool CanOllie()
@@ -200,11 +166,20 @@ public class PlayerController : MonoBehaviour
         AddToCurrentVelocity(Vector2.up * _model.kickflipJumpForce);
     }
 
+    private bool CanShuvit()
+    {
+        if (!_grounded) return false;
+
+        if (currentState == SkateboardTrickState.Coast) return true;
+
+        return false;
+    }
+
     private void Shuvit()
     {
         Debug.Log("Shuvit");
         currentState = SkateboardTrickState.Shuvit;
-        _rb.velocity = new Vector2(_rb.velocity.x, _model.shuvitJumpForce);
+        AddToCurrentVelocity(Vector2.up * _model.shuvitJumpForce);
     }
 
     private void Grind()
@@ -223,6 +198,8 @@ public class PlayerController : MonoBehaviour
         _col.size = new Vector2(_col.size.x, _col.size.y * 4);
     }
 
+    #endregion
+
     ContactPoint2D[] _collisionBuffer = new ContactPoint2D[100];
 
     private bool GetGrounded()
@@ -230,7 +207,8 @@ public class PlayerController : MonoBehaviour
         int count = _col.GetContacts(_collisionBuffer);
         for (int i = 0; i < count; i++)
         {
-            if (LayerMask.GetMask(LayerMask.LayerToName(_collisionBuffer[i].collider.gameObject.layer)) == _model.groundLayers) continue; 
+            if (((1 << _collisionBuffer[i].collider.gameObject.layer) & _model.groundLayers) == 0) continue;
+
             if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.up) < _model.maxGroundAngle)
             {
                 return true;

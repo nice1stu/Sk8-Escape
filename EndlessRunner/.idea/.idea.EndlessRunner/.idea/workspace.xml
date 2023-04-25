@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e608337b-03d2-46cf-9f9a-547134113a92" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EndlessRunner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EndlessRunner/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/Prefabs/Main Camera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Prefabs/Main Camera.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Player/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Scripts/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Player/Scripts/PlayerModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Scripts/PlayerModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/StaticMainScene Movement.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StaticMainScene Movement.unity" afterDir="false" />
@@ -86,10 +88,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="23036">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="23036" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -112,7 +114,7 @@
       <workItem from="1682389830238" duration="2837000" />
       <workItem from="1682414552785" duration="890000" />
       <workItem from="1682427034273" duration="1128000" />
-      <workItem from="1682428199182" duration="6046000" />
+      <workItem from="1682428199182" duration="10619000" />
     </task>
     <servers />
   </component>
@@ -134,6 +136,25 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Player/Scripts/PlayerController.cs</url>
+          <line>216</line>
+          <properties documentPath="E:\Github stuff\EndlessRunner\EndlessRunner\Assets\Player\Scripts\PlayerController.cs" initialLine="213" containingFunctionPresentation="Method 'GetGrounded'">
+            <startOffsets>
+              <option value="4886" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4904" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
