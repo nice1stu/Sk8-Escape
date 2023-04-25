@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerScoreModel : MonoBehaviour
 {
     private double score;
+
+    private int coins;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,5 +37,20 @@ public class PlayerScoreModel : MonoBehaviour
     public double GetScore()
     {
         return score;
+    }
+
+    public void SetCoins(int newCoins)
+    {
+        coins = newCoins;
+    }
+
+    public void AddCoins(int toAdd)
+    {
+        coins += toAdd;
+    }
+
+    public int GetCoins()
+    {
+        return coins;
     }
 }
