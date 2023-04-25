@@ -435,6 +435,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1464391276}
+    - target: {fileID: 8651820172625700137, guid: 7ef0b8830bc0323458341f5b95eff357, type: 3}
+      propertyPath: offset.x
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8651820172625700141, guid: 7ef0b8830bc0323458341f5b95eff357, type: 3}
       propertyPath: m_Name
       value: Main Camera
