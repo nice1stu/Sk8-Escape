@@ -25,8 +25,6 @@ namespace Inventory.Scripts
             {
                 if (LootBoxSlots[i] == null)
                 {
-                    BaseItem.coins++;
-                    Debug.Log($"Coins added, {BaseItem.coins}");
                     LootBoxSlots[i] = lootBox;
                     _inventorySlots[i].AddLootBoxIcon(lootBox);
                     return;
@@ -36,12 +34,7 @@ namespace Inventory.Scripts
 
         public static void RemoveLootBox(int index)
         {
-            if (LootBoxSlots[index] != null)
-            {
-                BaseItem.coins--;
-                Debug.Log($"Coins added, {BaseItem.coins}");
-                LootBoxSlots[index] = null;
-            }
+            LootBoxSlots[index] = null;
         }
     }
 }
