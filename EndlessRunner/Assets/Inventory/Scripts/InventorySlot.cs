@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,13 @@ namespace Inventory.Scripts
     public class InventorySlot : MonoBehaviour
     {
         [SerializeField] private int index;
+        private Countdown _countdown;
+
+        private void Start()
+        {
+            _countdown = gameObject.AddComponent<Countdown>();
+        }
+
         public void AddLootBoxIcon(BaseLootBox lootBox)
         {
             var childrenToLootBoxItem = gameObject.GetComponentsInChildren<Image>();
@@ -17,8 +25,8 @@ namespace Inventory.Scripts
                     slotIcon = child;
                 }
             }
-            
             slotIcon.sprite = lootBox.icon;
+            _countdown.StartCountdown(lootBox);
         }
 
         [ContextMenu("Remove Loot Box")]
