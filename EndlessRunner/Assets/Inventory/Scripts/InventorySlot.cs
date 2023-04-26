@@ -29,7 +29,16 @@ namespace Inventory.Scripts
         
         public void OnRemove()
         {
-            var slotIcon = GetComponentInChildren<Image>();
+            var childrenToLootBoxItem = gameObject.GetComponentsInChildren<Image>();
+            var slotIcon = FindObjectOfType<Image>(); 
+            foreach (var child in childrenToLootBoxItem)
+            {
+                if (child.gameObject.CompareTag("LootBoxIcon"))
+                {
+                    slotIcon = child;
+                }
+            }
+            
             slotIcon.sprite = null;
             LootBoxInventory.RemoveLootBox(index);
         }
