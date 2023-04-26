@@ -6,6 +6,8 @@ public class BackgroundView : MonoBehaviour
 {
     public float parallaxSpeed = 1f;  // Speed of the parallax effect
 
+    public Vector3 progressiveModifier;
+    
     private float offset = 0f;  // Offset of the background from the camera
     private float scale = 1f;   // Scale of the background
 
@@ -25,7 +27,7 @@ public class BackgroundView : MonoBehaviour
     private void LateUpdate()
     {
         // Calculate the target position and scale of the background
-        float targetX = Camera.main.transform.position.x * (1 - parallaxSpeed);
+        float targetX = Camera.main.transform.position.x * (1 - parallaxSpeed) + progressiveModifier.x;
         targetX += offset * parallaxSpeed;
         float targetScale = scale;
 

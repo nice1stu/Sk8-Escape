@@ -10,22 +10,33 @@ public class BackgroundManager : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.layer == 10)
+        if (other.gameObject.layer == 10&&first)
         {
-            Debug.Log("triggerExit");
+            gameObject.GetComponent<BackgroundView>().enabled=false;
+            
+            Debug.Log("camera triggerExit from "+gameObject);
             otherBackground.transform.parent = transform.parent;
             
-            // Set the first background as the first background again
-            Vector3 startPosition = (otherBackground.transform.position + Vector3.right * otherBackground.GetComponent<SpriteRenderer>().bounds.size.x);
+            
+            otherBackground.gameObject.GetComponent<BackgroundView>().progressiveModifier = otherBackground.transform.position-transform.position;
+            Vector3 startPosition = (otherBackground.transform.position - Vector3.left * (otherBackground.GetComponent<SpriteRenderer>().bounds.size.x));
             transform.position = startPosition;
             
-            transform.parent = otherBackground.transform;
             
+            transform.parent = otherBackground.transform;
             first = false;
-            gameObject.GetComponent<BackgroundView>().enabled=false;
             otherBackground.first = true;
-            otherBackground.gameObject.GetComponent<BackgroundView>().enabled=true;
+            otherBackground.gameObject.GetComponent<BackgroundView>().enabled = true;
+             //StartCoroutine(CO_LateFirstSwitch());
+
         }
+    }
+
+    private IEnumerator CO_LateFirstSwitch()
+    {
+        yield return 1;
+        first = false;
+        otherBackground.first = true;
     }
 
     void Update()
