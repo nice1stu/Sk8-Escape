@@ -7,44 +7,43 @@ using Random = UnityEngine.Random;
 public class BackgroundManager : MonoBehaviour
 {
     public bool first;
-    public BackgroundManager otherBackground;
+    public BackgroundView otherParallax;
+    private BackgroundView parallax;
+    private SpriteRenderer spriteRenderer;
     public Sprite[] possibleBackgroundSprites;
+    
+    private void Start()
+    {
+        parallax = GetComponent<BackgroundView>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.layer == 10&&first)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite =
-                possibleBackgroundSprites[Random.Range(0, possibleBackgroundSprites.Length)];
+            spriteRenderer.sprite = possibleBackgroundSprites[Random.Range(0, possibleBackgroundSprites.Length)];
             
-            gameObject.GetComponent<BackgroundView>().enabled=false;
+            parallax.enabled=false;
             
             Debug.Log("camera triggerExit from "+gameObject+" the object exiting is "+ other);
-            otherBackground.transform.parent = transform.parent;
-            
-            
-            otherBackground.gameObject.GetComponent<BackgroundView>().progressiveModifier += otherBackground.transform.position-transform.position;
-            Vector3 startPosition = (otherBackground.transform.position - Vector3.left * (otherBackground.GetComponent<SpriteRenderer>().bounds.size.x));
+            var otherParallaxTransform = otherParallax.transform;
+            var myTransform = transform;
+            otherParallaxTransform.parent = myTransform.parent;
+
+
+            var otherParallaxTransformPosition = otherParallaxTransform.position;
+            otherParallax.progressiveModifier += otherParallaxTransformPosition-myTransform.position;
+            Vector3 startPosition = (otherParallaxTransformPosition - Vector3.left * (otherParallax.GetComponent<SpriteRenderer>().bounds.size.x));
             transform.position = startPosition;
             
             
-            transform.parent = otherBackground.transform;
+            myTransform.parent = otherParallax.transform;
             first = false;
-            otherBackground.first = true;
-            otherBackground.gameObject.GetComponent<BackgroundView>().enabled = true;
+            otherParallax.GetComponent<BackgroundManager>().first = true;
+            otherParallax.enabled = true;
              //StartCoroutine(CO_LateFirstSwitch());
             
         }
-    }
-
-    private IEnumerator CO_LateFirstSwitch()
-    {
-        yield return 1;
-        first = false;
-        otherBackground.first = true;
-    }
-
-    void Update()
-    {
-        
     }
 }
