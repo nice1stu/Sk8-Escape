@@ -2,23 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BackgroundManager : MonoBehaviour
 {
     public bool first;
     public BackgroundManager otherBackground;
-
+    public Sprite[] possibleBackgroundSprites;
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.layer == 10&&first)
         {
+            gameObject.GetComponent<SpriteRenderer>().sprite =
+                possibleBackgroundSprites[Random.Range(0, possibleBackgroundSprites.Length)];
+            
             gameObject.GetComponent<BackgroundView>().enabled=false;
             
-            Debug.Log("camera triggerExit from "+gameObject);
+            Debug.Log("camera triggerExit from "+gameObject+" the object exiting is "+ other);
             otherBackground.transform.parent = transform.parent;
             
             
-            otherBackground.gameObject.GetComponent<BackgroundView>().progressiveModifier = otherBackground.transform.position-transform.position;
+            otherBackground.gameObject.GetComponent<BackgroundView>().progressiveModifier += otherBackground.transform.position-transform.position;
             Vector3 startPosition = (otherBackground.transform.position - Vector3.left * (otherBackground.GetComponent<SpriteRenderer>().bounds.size.x));
             transform.position = startPosition;
             
@@ -28,7 +32,7 @@ public class BackgroundManager : MonoBehaviour
             otherBackground.first = true;
             otherBackground.gameObject.GetComponent<BackgroundView>().enabled = true;
              //StartCoroutine(CO_LateFirstSwitch());
-
+            
         }
     }
 
