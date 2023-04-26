@@ -63,12 +63,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 100
-  ollieJumpForce: 5
-  kickflipJumpForce: 3
-  shuvitJumpForce: 2
+  ollieJumpForce: 16
+  kickflipJumpForce: 11
+  shuvitJumpForce: 12
+  coffinTime: 1
+  initialFallingVelocity: -5.85
+  maxGroundAngle: 45
   groundLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 129
 --- !u!114 &2916409661291331581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,11 +111,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 6200000, guid: a0bb433ae3e7e5a448ee70eab6baa76a, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &2916409661291331585
 BoxCollider2D:
