@@ -8,8 +8,16 @@ namespace Inventory.Scripts
         [SerializeField] private int index;
         public void AddLootBoxIcon(BaseLootBox lootBox)
         {
-            var slotImage = GameObject.FindGameObjectWithTag("LootBoxIcon");
-            var slotIcon = slotImage.GetComponent<Image>();
+            var childrenToLootBoxItem = gameObject.GetComponentsInChildren<Image>();
+            var slotIcon = FindObjectOfType<Image>(); 
+            foreach (var child in childrenToLootBoxItem)
+            {
+                if (child.gameObject.CompareTag("LootBoxIcon"))
+                {
+                    slotIcon = child;
+                }
+            }
+            
             slotIcon.sprite = lootBox.icon;
         }
 
