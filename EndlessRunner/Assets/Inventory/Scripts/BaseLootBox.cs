@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Inventory.Scripts
@@ -6,8 +7,7 @@ namespace Inventory.Scripts
     {
         public Sprite icon;
         public Time timeToOpen;
-        public int discardValue;
-        
+
         //being able to open the loot box
        public void OpenLootBox()
        {

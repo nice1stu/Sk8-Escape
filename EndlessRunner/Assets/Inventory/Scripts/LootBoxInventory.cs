@@ -1,24 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Inventory.Scripts
 {
     public class LootBoxInventory : MonoBehaviour
     {
-        [ContextMenu("Add Loot Box")]
+        private static BaseLootBox[] _lootBoxSlots = new BaseLootBox[4];
+        private List<InventorySlot> _inventorySlots = new List<InventorySlot>();
 
-        void AddLootBox()
+        private void Start()
         {
-            foreach (var slot in lootBoxSlots)
+            _inventorySlots.AddRange(GetComponentsInChildren<InventorySlot>());
+        }
+
+        [ContextMenu("Add Loot Box")]
+        void Add()
+        {
+            AddLootBox(FindObjectOfType<BaseLootBox>());
+        }
+
+        void AddLootBox(BaseLootBox lootBox)
+        {
+            for (var i = 0; i < _lootBoxSlots.Length; i++)
             {
-                if (slot == null)
+                if (_lootBoxSlots[i] == null)
                 {
                     BaseItem.coins++;
                     Debug.Log($"Coins added, {BaseItem.coins}");
+                    _lootBoxSlots[i] = lootBox;
+                    _inventorySlots[i].AddLootBoxIcon(lootBox);
                     return;
                 }
             }
         }
-        
-        public BaseLootBox[] lootBoxSlots = new BaseLootBox[4];
+
+        public static void RemoveLootBox(int index)
+        {
+            if (_lootBoxSlots[index] != null)
+            {
+                BaseItem.coins--;
+                Debug.Log($"Coins added, {BaseItem.coins}");
+                _lootBoxSlots[index] = null;
+            }
+        }
     }
 }
