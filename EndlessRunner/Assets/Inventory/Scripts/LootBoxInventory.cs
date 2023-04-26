@@ -5,8 +5,8 @@ namespace Inventory.Scripts
 {
     public class LootBoxInventory : MonoBehaviour
     {
-        private static BaseLootBox[] _lootBoxSlots = new BaseLootBox[4];
-        private List<InventorySlot> _inventorySlots = new List<InventorySlot>();
+        private static readonly BaseLootBox[] LootBoxSlots = new BaseLootBox[4];
+        private readonly List<InventorySlot> _inventorySlots = new List<InventorySlot>();
 
         private void Start()
         {
@@ -21,13 +21,13 @@ namespace Inventory.Scripts
 
         void AddLootBox(BaseLootBox lootBox)
         {
-            for (var i = 0; i < _lootBoxSlots.Length; i++)
+            for (var i = 0; i < LootBoxSlots.Length; i++)
             {
-                if (_lootBoxSlots[i] == null)
+                if (LootBoxSlots[i] == null)
                 {
                     BaseItem.coins++;
                     Debug.Log($"Coins added, {BaseItem.coins}");
-                    _lootBoxSlots[i] = lootBox;
+                    LootBoxSlots[i] = lootBox;
                     _inventorySlots[i].AddLootBoxIcon(lootBox);
                     return;
                 }
@@ -36,11 +36,11 @@ namespace Inventory.Scripts
 
         public static void RemoveLootBox(int index)
         {
-            if (_lootBoxSlots[index] != null)
+            if (LootBoxSlots[index] != null)
             {
                 BaseItem.coins--;
                 Debug.Log($"Coins added, {BaseItem.coins}");
-                _lootBoxSlots[index] = null;
+                LootBoxSlots[index] = null;
             }
         }
     }
