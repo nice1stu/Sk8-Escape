@@ -1,20 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BackgroundView : MonoBehaviour
 {
-    public Transform player;
-    public float parallaxSpeed = 0.5f;
+    public float parallaxSpeed = 1f;  // Speed of the parallax effect
 
-    private Vector3 previousPlayerPosition;
+    private float offset = 0f;  // Offset of the background from the camera
+    private float scale = 1f;   // Scale of the background
 
-    void Start () {
-        previousPlayerPosition = player.position;
+    // Set the offset of the background
+    public void SetOffset(float offset)
+    {
+        this.offset = offset;
     }
 
-    void Update () {
-        float parallax = (previousPlayerPosition.x - player.position.x) * parallaxSpeed;
-        transform.position = new Vector3(transform.position.x + parallax, transform.position.y, transform.position.z);
-        previousPlayerPosition = player.position;
+    // Set the scale of the background
+    public void SetScale(float scale)
+    {
+        this.scale = scale;
+    }
+
+    // Update the position and scale of the background
+    private void LateUpdate()
+    {
+        // Calculate the target position and scale of the background
+        float targetX = Camera.main.transform.position.x * (1 - parallaxSpeed);
+        targetX += offset * parallaxSpeed;
+        float targetScale = scale;
+
+        // Apply the target position and scale to the background transform
+        transform.position = new Vector3(targetX, transform.position.y, transform.position.z);
+        transform.localScale = new Vector3(targetScale, targetScale, transform.localScale.z);
     }
 }

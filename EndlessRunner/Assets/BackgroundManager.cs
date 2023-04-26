@@ -10,6 +10,7 @@ public class BackgroundManager : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        Debug.Log("triggerExit");
         if (other.gameObject.layer == 10)
         {
             // Move the first background to the end of the other background
