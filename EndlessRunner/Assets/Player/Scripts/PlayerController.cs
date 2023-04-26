@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
     private bool _canGrind;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -38,39 +37,75 @@ public class PlayerController : MonoBehaviour
         currentState = SkateboardTrickState.Coast;
     }
 
-    // Update is called once per frame
+    private bool upSwipe, downSwipe, leftSwipe, rightSwipe, press;
+
+
+    private void Update()
+    {
+        GetInputs(true);
+    }
+
     void FixedUpdate()
     {
+        //Debug.Log(currentState);
+        // GetInputs(true);
+        _grounded = GetGrounded();
         ConstantMove();
         DummyInputHandling();
+        GetInputs(false);
+    }
+
+    private void GetInputs(bool get)
+    {
+        // tihihi
+        if (upSwipe != get)
+            upSwipe = Input.GetKeyDown(KeyCode.UpArrow);
+        if (downSwipe != get)
+            downSwipe = Input.GetKeyDown(KeyCode.DownArrow);
+        if (leftSwipe != get)
+            leftSwipe = Input.GetKeyDown(KeyCode.LeftArrow);
+        if (rightSwipe != get)
+            rightSwipe = Input.GetKeyDown(KeyCode.RightArrow);
+        if (press != get)
+            press = Input.GetKeyDown(KeyCode.Space);
     }
 
     private void DummyInputHandling()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        Debug.Log(_grounded);
+        if (upSwipe)
         {
-            if (currentState == SkateboardTrickState.Coast)
+            if (CanOllie())
+            {
                 Ollie();
-            if (currentState == SkateboardTrickState.Ollie)
+                return;
+            }
+
+            if (CanKickflip())
+            {
                 Kickflip();
-        }
-        
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (currentState == SkateboardTrickState.Coast)
-                Shuvit();
+                return;
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (rightSwipe)
         {
-            if (currentState == SkateboardTrickState.Coast)
-                StartCoroutine(Coffin());
+            if (CanShuvit())
+            {
+                Shuvit();
+            }
         }
-        
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (CanCoast())
         {
-            if (_canGrind)
-                Grind();
+            currentState = SkateboardTrickState.Coast;
+            return;
+        }
+
+        if (CanFall())
+        {
+            currentState = SkateboardTrickState.Falling;
+            return;
         }
     }
 
@@ -79,44 +114,107 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = new Vector2(_model.movementSpeed * Time.deltaTime, _rb.velocity.y);
     }
 
+    private void AddToCurrentVelocity(Vector2 addedVelocity)
+    {
+        _rb.velocity = addedVelocity;
+        return;
+    }
+
+    #region Trick stuff
+
+    // Assuming it's checked after all the other tricks
+    private bool CanCoast()
+    {
+        return _grounded && _rb.velocity.y <= -Mathf.Epsilon; // epsilon is a "really tiny number" // leo
+    }
+
+    private bool CanFall()
+    {
+        return (!_grounded && _rb.velocity.y < _model.initialFallingVelocity);
+    }
+
+    private bool CanOllie()
+    {
+        if (!_grounded) return false;
+
+        if (currentState == SkateboardTrickState.Coast) return true;
+
+        return false;
+    }
+
     private void Ollie()
     {
+        Debug.Log("Ollie");
         currentState = SkateboardTrickState.Ollie;
-        _rb.velocity = new Vector2(_rb.velocity.x, _model.ollieJumpForce);
+        AddToCurrentVelocity(Vector2.up * _model.ollieJumpForce);
         _grounded = false;
     }
-    
+
+    private bool CanKickflip()
+    {
+        if (_grounded) return false;
+
+        if (currentState == SkateboardTrickState.Ollie) return true;
+
+        return false;
+    }
+
     private void Kickflip()
     {
+        Debug.Log("Kickflip");
         currentState = SkateboardTrickState.Kickflip;
-        _rb.velocity = new Vector2(_rb.velocity.x, _model.kickflipJumpForce);
-        _grounded = false;
+        AddToCurrentVelocity(Vector2.up * _model.kickflipJumpForce);
     }
-    
+
+    private bool CanShuvit()
+    {
+        if (!_grounded) return false;
+
+        if (currentState == SkateboardTrickState.Coast) return true;
+
+        return false;
+    }
+
     private void Shuvit()
     {
+        Debug.Log("Shuvit");
         currentState = SkateboardTrickState.Shuvit;
-        _rb.velocity = new Vector2(_rb.velocity.x, _model.shuvitJumpForce);
-        _grounded = false;
+        AddToCurrentVelocity(Vector2.up * _model.shuvitJumpForce);
     }
+
     private void Grind()
     {
+        Debug.Log("Grind");
         currentState = SkateboardTrickState.Grind;
         _rb.velocity = new Vector2(_rb.velocity.x, 0);
-        _grounded = false;
     }
 
     private IEnumerator Coffin()
     {
+        Debug.Log("Coffin");
         currentState = SkateboardTrickState.Coffin;
-        _col.size = new Vector2(_col.size.x, _col.size.y/4);
+        _col.size = new Vector2(_col.size.x, _col.size.y / 4);
         yield return new WaitForSecondsRealtime(_model.coffinTime);
-        _col.size = new Vector2(_col.size.x, _col.size.y*4);
+        _col.size = new Vector2(_col.size.x, _col.size.y * 4);
     }
 
-    
-    private void OnCollisionEnter2D(Collision2D col)
+    #endregion
+
+    ContactPoint2D[] _collisionBuffer = new ContactPoint2D[100];
+
+    private bool GetGrounded()
     {
-        _grounded = true;
+        int count = _col.GetContacts(_collisionBuffer);
+        for (int i = 0; i < count; i++)
+        {
+            if (((1 << _collisionBuffer[i].collider.gameObject.layer) & _model.groundLayers) == 0) continue;
+
+            if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.up) < _model.maxGroundAngle)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
