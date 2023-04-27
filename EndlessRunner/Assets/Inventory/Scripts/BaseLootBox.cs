@@ -3,21 +3,15 @@ using UnityEngine;
 
 namespace Inventory.Scripts
 {
-    public class BaseLootBox : MonoBehaviour
+    public abstract class BaseLootBox : MonoBehaviour
     {
-        public Sprite icon;
-        public TimeSpan timeToOpen;
+        // the image for the lootBox
+        public abstract Sprite Icon { get; set; }
+        
+        // the time it takes for this type of loot box to open
+        public abstract TimeSpan TimeToOpen { get; set; } 
 
-        private void Start()
-        {
-            timeToOpen = TimeSpan.FromSeconds(10);
-        }
-
-        //being able to open the loot box
-       public void OpenLootBox()
-       {
-           BaseItem.coins++;
-           Debug.Log($"Coins earned: {BaseItem.coins}");
-       }
+        // what happens when the loot box is opened (gacha rates and give item)
+        public abstract void OpenLootBox();
     }
 }
