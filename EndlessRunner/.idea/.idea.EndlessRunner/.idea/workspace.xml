@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e608337b-03d2-46cf-9f9a-547134113a92" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Environment/Prefabs/Coin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Environment/Prefabs/Coin.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Environment/Scripts/CoinScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Environment/Scripts/CoinScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EndlessRunner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EndlessRunner/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Environment/Scripts/CoinScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Environment/Scripts/CoinScript.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Player/Scripts/RunInventoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Scripts/RunInventoryManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StaticMainScene Coin.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StaticMainScene Coin.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +21,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Environment/Scripts/InRunChest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Environment/Scripts/InRunCoin.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player/Scripts/RunInventoryManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>

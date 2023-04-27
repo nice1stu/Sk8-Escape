@@ -15,7 +15,7 @@ public class RunInventoryManager : MonoBehaviour
             {
                 pickupable.OnPickup();
             }
-            Debug.Log(coinAmount);
+            
         }
     }
     
