@@ -21,7 +21,7 @@ namespace Inventory.Scripts
         public void StartCountdown(BaseLootBox lootBox)
         {
             _startTime = DateTime.UtcNow;
-            _lootBoxTime = lootBox.timeToOpen;
+            _lootBoxTime = lootBox.TimeToOpen;
             _lootBox = lootBox;
         }
         

@@ -27,7 +27,7 @@ namespace Inventory.Scripts
                     slotIcon = child;//If it's true, set slot icon to child
                 }
             }
-            slotIcon.sprite = lootBox.icon;//Sets the slot icon sprite to the loot box image
+            slotIcon.sprite = lootBox.Icon;//Sets the slot icon sprite to the loot box image
             _countdown.StartCountdown(lootBox);//Start countdown
         }
 
