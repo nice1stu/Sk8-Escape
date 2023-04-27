@@ -18,5 +18,14 @@ public class RunInventoryManager : MonoBehaviour
             
         }
     }
+    public int GetCoinAmount()
+    {
+        return coinAmount;
+    }
+
+    public int GetChestAmount()
+    {
+        return chestAmount;
+    }
     
 }
