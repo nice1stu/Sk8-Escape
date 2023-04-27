@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e608337b-03d2-46cf-9f9a-547134113a92" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EndlessRunner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EndlessRunner/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Environment/Scripts/InRunCoin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Environment/Scripts/InRunCoin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Environment/Scripts/InRunChest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Environment/Scripts/InRunChest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
