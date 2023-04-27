@@ -22,7 +22,10 @@ public class PlayerController : MonoBehaviour
     //Input stuff for the touch controls
     private InputAction dragActionUp;
     private InputAction dragActionDown;
+    private InputAction touch;
     private PlayerInput playerInput;
+
+    private bool SwipeLock = false;
     
     // References
     private Rigidbody2D _rb;
@@ -38,7 +41,19 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         dragActionUp = playerInput.actions.FindAction("SwipeUp");
+        touch = playerInput.actions.FindAction("Touch");
+
     }
+
+    private void OnEnable()
+    {
+        dragActionUp.performed += SwipeUpReceived;
+        //dragActionUp.canceled += TouchStopped;
+        // touch.performed += TouchStopped;
+        touch.canceled += TouchStopped;
+    }
+
+    
 
     void Start()
     {
@@ -54,7 +69,17 @@ public class PlayerController : MonoBehaviour
 
     private void SwipeUpReceived(InputAction.CallbackContext context)
     {
-        Debug.Log("Up!");
+        if (!SwipeLock)
+        {
+            SwipeLock = true;
+            Debug.Log("Up!");
+        }
+    }
+    
+    private void TouchStopped(InputAction.CallbackContext context)
+    {
+        Debug.Log("We stopped touching the screen");
+        SwipeLock = false;
     }
 
     private void Update()
@@ -91,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
     private void DummyInputHandling()
     {
-        Debug.Log(_grounded);
+        //Debug.Log(_grounded);
         if (upSwipe)
         {
             if (CanOllie())
