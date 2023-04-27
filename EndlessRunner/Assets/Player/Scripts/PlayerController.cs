@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class PlayerController : MonoBehaviour
 
     private SkateboardTrickState currentState;
 
+    //Input stuff for the touch controls
+    private InputAction dragActionUp;
+    private InputAction dragActionDown;
+    private PlayerInput playerInput;
+    
     // References
     private Rigidbody2D _rb;
     private PlayerModel _model;
@@ -27,6 +33,12 @@ public class PlayerController : MonoBehaviour
     private bool _grounded;
     private bool _canGrind;
 
+
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        dragActionUp = playerInput.actions.FindAction("SwipeUp");
+    }
 
     void Start()
     {
@@ -39,6 +51,11 @@ public class PlayerController : MonoBehaviour
 
     private bool upSwipe, downSwipe, leftSwipe, rightSwipe, press;
 
+
+    private void SwipeUpReceived(InputAction.CallbackContext context)
+    {
+        Debug.Log("Up!");
+    }
 
     private void Update()
     {
@@ -58,6 +75,8 @@ public class PlayerController : MonoBehaviour
     private void GetInputs(bool get)
     {
         // tihihi
+        
+        //So how does this work?
         if (upSwipe != get)
             upSwipe = Input.GetKeyDown(KeyCode.UpArrow);
         if (downSwipe != get)
