@@ -44,14 +44,12 @@ public class ItemShop : MonoBehaviour
     
     public void PurchaseItem(int btnNo)
     {
-        if (coins >= itemShopSO[btnNo].coinCost) ;
-        {
-            coins -= itemShopSO[btnNo].coinCost;
-            coinUI.text = "Coins: " + coins;
-            itemShopSO[btnNo].purchased = true;
-            CheckPurchaseable();
-            //Unlock Item
-        }
+        if (coins < itemShopSO[btnNo].coinCost) return;
+        coins -= itemShopSO[btnNo].coinCost;
+        coinUI.text = "Coins: " + coins;
+        itemShopSO[btnNo].purchased = true;
+        CheckPurchaseable();
+        //Unlock Item
     }
     
     public void LoadPanel()
