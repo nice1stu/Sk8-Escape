@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         dragActionUp = playerInput.actions.FindAction("SwipeUp");
+        dragActionDown = playerInput.actions.FindAction("SwipeDown");
         touch = playerInput.actions.FindAction("Touch");
         tap = playerInput.actions.FindAction("Tap");
 
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         dragActionUp.performed += SwipeUpReceived;
+        dragActionDown.performed += SwipeDownReceived;
         touch.canceled += TouchStopped;
         tap.performed += Tap;
     }
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         dragActionUp.performed -= SwipeUpReceived;
+        dragActionDown.performed -= SwipeDownReceived;
         touch.canceled -= TouchStopped;
         tap.performed -= Tap;
     }
@@ -80,6 +83,15 @@ public class PlayerController : MonoBehaviour
         {
             SwipeLock = true;
             Debug.Log("Up!");//TODO: Trigger jump here!
+        }
+    }
+
+    private void SwipeDownReceived(InputAction.CallbackContext context)
+    {
+        if (!SwipeLock)
+        {
+            SwipeLock = true;
+            Debug.Log("Down!");//TODO: Trigger crouch here!
         }
     }
 
@@ -109,7 +121,6 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         tappedOnce = false;
-        Debug.Log("Finished co routine");
     }
     
     private void TouchStopped(InputAction.CallbackContext context)
