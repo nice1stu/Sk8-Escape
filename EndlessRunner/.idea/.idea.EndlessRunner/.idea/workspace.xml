@@ -7,7 +7,6 @@
     <list default="true" id="e608337b-03d2-46cf-9f9a-547134113a92" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EndlessRunner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EndlessRunner/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Player/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StaticMainSceneTouchInput.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StaticMainSceneTouchInput.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/PlayerTouchInputs.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/PlayerTouchInputs.inputactions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

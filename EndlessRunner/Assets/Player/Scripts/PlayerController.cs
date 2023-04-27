@@ -23,9 +23,11 @@ public class PlayerController : MonoBehaviour
     private InputAction dragActionUp;
     private InputAction dragActionDown;
     private InputAction touch;
+    private InputAction tap;
     private PlayerInput playerInput;
 
     private bool SwipeLock = false;
+    private bool tappedOnce = false;
     
     // References
     private Rigidbody2D _rb;
@@ -42,18 +44,23 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         dragActionUp = playerInput.actions.FindAction("SwipeUp");
         touch = playerInput.actions.FindAction("Touch");
+        tap = playerInput.actions.FindAction("Tap");
 
     }
 
     private void OnEnable()
     {
         dragActionUp.performed += SwipeUpReceived;
-        //dragActionUp.canceled += TouchStopped;
-        // touch.performed += TouchStopped;
         touch.canceled += TouchStopped;
+        tap.performed += Tap;
     }
 
-    
+    private void OnDisable()
+    {
+        dragActionUp.performed -= SwipeUpReceived;
+        touch.canceled -= TouchStopped;
+        tap.performed -= Tap;
+    }
 
     void Start()
     {
@@ -72,13 +79,41 @@ public class PlayerController : MonoBehaviour
         if (!SwipeLock)
         {
             SwipeLock = true;
-            Debug.Log("Up!");
+            Debug.Log("Up!");//TODO: Trigger jump here!
         }
+    }
+
+    private void Tap(InputAction.CallbackContext context)
+    {
+        Debug.Log("Running tap event");
+        if (!tappedOnce)
+        {
+            Debug.Log("Tap!");
+            tappedOnce = true;
+            StartCoroutine(DoubleTapCooldown());
+        }
+        else
+        {
+            DoubleTap();
+            tappedOnce = false;
+            StopCoroutine(DoubleTapCooldown());
+        }
+    }
+
+    private void DoubleTap()
+    {
+        Debug.Log("Double tap!");
+    }
+
+    IEnumerator DoubleTapCooldown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        tappedOnce = false;
+        Debug.Log("Finished co routine");
     }
     
     private void TouchStopped(InputAction.CallbackContext context)
     {
-        Debug.Log("We stopped touching the screen");
         SwipeLock = false;
     }
 
