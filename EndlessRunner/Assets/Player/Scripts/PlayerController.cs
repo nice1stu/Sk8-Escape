@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
     private void AddToCurrentVelocity(Vector2 addedVelocity)
     {
-        _rb.velocity = addedVelocity;
+        _rb.velocity = new Vector2(_rb.velocity.x, addedVelocity.y);
         return;
     }
 
