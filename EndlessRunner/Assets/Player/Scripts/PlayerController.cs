@@ -83,6 +83,8 @@ public class PlayerController : MonoBehaviour
         {
             SwipeLock = true;
             Debug.Log("Up!");//TODO: Trigger jump here!
+            upSwipe = true;
+            InputHandling();
         }
     }
 
@@ -92,6 +94,8 @@ public class PlayerController : MonoBehaviour
         {
             SwipeLock = true;
             Debug.Log("Down!");//TODO: Trigger crouch here!
+            downSwipe = true;
+            InputHandling();
         }
     }
 
@@ -130,7 +134,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        GetInputs(true);
+        GetInputsKeyboard(true);
     }
 
     void FixedUpdate()
@@ -140,10 +144,10 @@ public class PlayerController : MonoBehaviour
         _grounded = GetGrounded();
         ConstantMove();
         DummyInputHandling();
-        GetInputs(false);
+        GetInputsKeyboard(false);
     }
 
-    private void GetInputs(bool get)
+    private void GetInputsKeyboard(bool get)
     {
         // tihihi
         
@@ -198,6 +202,51 @@ public class PlayerController : MonoBehaviour
             return;
         }
     }
+    
+    private void InputHandling()
+    {
+        //Debug.Log(_grounded);
+        if (upSwipe)
+        {
+            if (CanOllie())
+            {
+                Ollie();
+                return;
+            }
+
+            if (CanKickflip())
+            {
+                Kickflip();
+                return;
+            }
+
+            upSwipe = false;
+        }
+
+        if (rightSwipe)
+        {
+            if (CanShuvit())
+            {
+                Shuvit();
+            }
+
+            rightSwipe = false;
+        }
+
+        if (CanCoast())
+        {
+            currentState = SkateboardTrickState.Coast;
+            return;
+        }
+
+        if (CanFall())
+        {
+            currentState = SkateboardTrickState.Falling;
+            return;
+        }
+    }
+    
+    
 
     private void ConstantMove()
     {
