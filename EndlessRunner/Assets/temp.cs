@@ -12,4 +12,9 @@ public class temp : MonoBehaviour
     {
         SceneManager.LoadScene("DummyShopMenu");
     }
+    
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
 }

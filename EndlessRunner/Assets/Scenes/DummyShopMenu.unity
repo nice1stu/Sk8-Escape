@@ -123,6 +123,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &304802607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2653070851057572478, guid: db39b521dd6bf5849a0bbb09a593213d, type: 3}
+  m_PrefabInstance: {fileID: 1427462651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &304802609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304802607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc870909c61852841aff0cd01618cc02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +479,34 @@ PrefabInstance:
     - target: {fileID: 2653070850601131388, guid: db39b521dd6bf5849a0bbb09a593213d, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653070851057572476, guid: db39b521dd6bf5849a0bbb09a593213d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653070851057572476, guid: db39b521dd6bf5849a0bbb09a593213d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653070851057572476, guid: db39b521dd6bf5849a0bbb09a593213d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 304802609}
+    - target: {fileID: 2653070851057572476, guid: db39b521dd6bf5849a0bbb09a593213d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653070851057572476, guid: db39b521dd6bf5849a0bbb09a593213d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653070851057572476, guid: db39b521dd6bf5849a0bbb09a593213d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: temp, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653070851057572476, guid: db39b521dd6bf5849a0bbb09a593213d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2653070851057572479, guid: db39b521dd6bf5849a0bbb09a593213d, type: 3}
       propertyPath: m_Pivot.x
