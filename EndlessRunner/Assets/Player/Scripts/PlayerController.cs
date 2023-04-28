@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     //Input stuff for the touch controls
     private InputAction dragActionUp;
     private InputAction dragActionDown;
+    private InputAction dragActionRight;
+    private InputAction dragActionLeft;
     private InputAction touch;
     private InputAction tap;
     private PlayerInput playerInput;
@@ -44,6 +46,8 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         dragActionUp = playerInput.actions.FindAction("SwipeUp");
         dragActionDown = playerInput.actions.FindAction("SwipeDown");
+        dragActionLeft = playerInput.actions.FindAction("SwipeLeft");
+        dragActionRight = playerInput.actions.FindAction("SwipeRight");
         touch = playerInput.actions.FindAction("Touch");
         tap = playerInput.actions.FindAction("Tap");
 
@@ -53,6 +57,8 @@ public class PlayerController : MonoBehaviour
     {
         dragActionUp.performed += SwipeUpReceived;
         dragActionDown.performed += SwipeDownReceived;
+        dragActionRight.performed += SwipeRightReceived;
+        dragActionLeft.performed += SwipeLeftReceived;
         touch.canceled += TouchStopped;
         tap.performed += Tap;
     }
@@ -61,6 +67,8 @@ public class PlayerController : MonoBehaviour
     {
         dragActionUp.performed -= SwipeUpReceived;
         dragActionDown.performed -= SwipeDownReceived;
+        dragActionRight.performed -= SwipeRightReceived;
+        dragActionLeft.performed -= SwipeLeftReceived;
         touch.canceled -= TouchStopped;
         tap.performed -= Tap;
     }
@@ -82,8 +90,30 @@ public class PlayerController : MonoBehaviour
         if (!SwipeLock)
         {
             SwipeLock = true;
-            Debug.Log("Up!");//TODO: Trigger jump here!
+            Debug.Log("Up!");
             upSwipe = true;
+            InputHandling();
+        }
+    }
+    
+    private void SwipeRightReceived(InputAction.CallbackContext context)
+    {
+        if (!SwipeLock)
+        {
+            SwipeLock = true;
+            Debug.Log("Right!");
+            rightSwipe = true;
+            InputHandling();
+        }
+    }
+    
+    private void SwipeLeftReceived(InputAction.CallbackContext context)
+    {
+        if (!SwipeLock)
+        {
+            SwipeLock = true;
+            Debug.Log("Left!");
+            leftSwipe = true;
             InputHandling();
         }
     }
