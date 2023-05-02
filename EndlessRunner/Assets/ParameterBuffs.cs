@@ -20,6 +20,6 @@ public class ParameterBuffs : MonoBehaviour
     }
     void Buff()
     {
-        
+        FindObjectOfType<CameraController>().offset += new Vector3(Vision, 0, 0);
     }
 }
