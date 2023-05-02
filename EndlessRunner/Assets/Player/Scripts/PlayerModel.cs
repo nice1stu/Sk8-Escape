@@ -6,6 +6,7 @@ public class PlayerModel : MonoBehaviour
 {
     [Header("General Movement")]
     public float movementSpeed = 5f;
+    public bool isAlive;
     [Header("Tricks")]
     public float ollieJumpForce = 5f;
     public float kickflipJumpForce = 3f;
