@@ -13,7 +13,7 @@ public class collision : MonoBehaviour
     public PlayerModel life;
     public float survivalRate;
     public bool invincible;
-    public float defaultDukeTime = 3f;
+    public float defaultDukeTime = 1f;
     
     private void OnCollisionEnter2D(Collision2D col)
     {
