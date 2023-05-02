@@ -5,9 +5,9 @@ using UnityEngine;
 public class ParameterBuffs : MonoBehaviour
 {
     [Range(0,8)]
-    public float Vision;
+    public float vision;
     [Range(0,100)]
-    public float SurviveRate;
+    public float stability;
     void Start()
     {
         Get();
@@ -20,7 +20,7 @@ public class ParameterBuffs : MonoBehaviour
     }
     void Buff()
     {
-        FindObjectOfType<CameraController>().offset += new Vector3(Vision, 0, 0);
-        FindObjectOfType<collision>().survivalRate += SurviveRate;
+        FindObjectOfType<CameraController>().offset += new Vector3(vision, 0, 0);
+        FindObjectOfType<collision>().survivalRate += stability;
     }
 }
