@@ -6,7 +6,7 @@ public class ParameterBuffs : MonoBehaviour
 {
     [Range(0,8)]
     public float Vision;
-    [Range(0,50)]
+    [Range(0,100)]
     public float SurviveRate;
     void Start()
     {
@@ -21,5 +21,6 @@ public class ParameterBuffs : MonoBehaviour
     void Buff()
     {
         FindObjectOfType<CameraController>().offset += new Vector3(Vision, 0, 0);
+        FindObjectOfType<collision>().survivalRate += SurviveRate;
     }
 }
