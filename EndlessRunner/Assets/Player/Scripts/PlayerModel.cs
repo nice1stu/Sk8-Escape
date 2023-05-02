@@ -6,7 +6,6 @@ public class PlayerModel : MonoBehaviour
 {
     [Header("General Movement")]
     public float movementSpeed = 5f;
-    public bool isAlive;
     [Header("Tricks")]
     public float ollieJumpForce = 5f;
     public float kickflipJumpForce = 3f;
@@ -17,4 +16,6 @@ public class PlayerModel : MonoBehaviour
     [Header("Collisions")] 
     public float maxGroundAngle = 45f;
     public LayerMask groundLayers;
+    [Header("Other")]
+    public bool isAlive;
 }
