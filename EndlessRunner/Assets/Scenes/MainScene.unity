@@ -795,3 +795,17 @@ MonoBehaviour:
   spawnPoint: {fileID: 1146213434}
   cameraShake: {fileID: 1448551376}
   darkBackground: {fileID: 216839976}
+--- !u!114 &1599283817310161493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964091055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1688b53762e39448bd84d7c120a11c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vision: 0
+  SurviveRate: 0
