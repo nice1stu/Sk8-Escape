@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(currentState);
         // GetInputs(true);
         _grounded = GetGrounded();
+        UpdatePlayerHeight(_targetPlayerHeight, _model.smoothCrouch);
         ConstantMove();
         DummyInputHandling();
         GetInputsKeyboard(false);
@@ -199,6 +200,8 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(_grounded);
         if (upSwipe)
         {
+            
+            
             if (CanOllie())
             {
                 Ollie();
@@ -238,6 +241,12 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(_grounded);
         if (upSwipe)
         {
+            if (_currentCoffin != null)
+            {
+                CancelCoffin();
+                return;
+            }
+            
             if (CanOllie())
             {
                 Ollie();
@@ -261,6 +270,16 @@ public class PlayerController : MonoBehaviour
             }
 
             rightSwipe = false;
+        }
+
+        if (downSwipe)
+        {
+            if (CanCoffin())
+            {
+                _currentCoffin = StartCoroutine(Coffin());
+            }
+
+            downSwipe = false;
         }
 
         if (CanCoast())
@@ -358,16 +377,54 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = new Vector2(_rb.velocity.x, 0);
     }
 
+    private bool CanCoffin()
+    {
+        if (!_grounded) return false;
+        if (currentState == SkateboardTrickState.Coast) return true;
+        return false;
+    }
+
+    private Coroutine _currentCoffin;
     private IEnumerator Coffin()
     {
         Debug.Log("Coffin");
         currentState = SkateboardTrickState.Coffin;
-        _col.size = new Vector2(_col.size.x, _col.size.y / 4);
+        _targetPlayerHeight = _model.playerCrouchHeight;
         yield return new WaitForSecondsRealtime(_model.coffinTime);
-        _col.size = new Vector2(_col.size.x, _col.size.y * 4);
+        _targetPlayerHeight = _model.playerStandHeight;
+        currentState = SkateboardTrickState.Coast;
+    }
+
+    private void CancelCoffin()
+    {
+        StopCoroutine(_currentCoffin);
+        _targetPlayerHeight = _model.playerStandHeight;
+        _currentCoffin = null;
+        currentState = SkateboardTrickState.Coast;
     }
 
     #endregion
+    
+    private float _targetPlayerHeight;
+    private void UpdatePlayerHeight(float height, bool smooth = false)
+    {
+        if (smooth)
+        {
+            float heightFrom = _col.size.y;
+            _col.size = new Vector2(_col.size.x, Mathf.Lerp(_col.size.y, height, _model.crouchSharpness * Time.fixedDeltaTime));
+            _col.offset = (_col.size.y / 2) * Vector2.up;
+            if (!_grounded)
+            {
+                transform.position += (heightFrom - _col.size.y) * _model.crouchAirRatio * Vector3.up;
+            }
+        }
+        else
+        {
+            _col.size = new Vector2(_col.size.x, height);
+            _col.offset = (_col.size.y / 2) * Vector2.up;
+        }
+    }
+
 
     ContactPoint2D[] _collisionBuffer = new ContactPoint2D[100];
 

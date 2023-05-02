@@ -331,6 +331,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2916409661291331582, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
+      propertyPath: playerStandHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916409661291331582, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
+      propertyPath: playerCrouchHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916409661291331582, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
       propertyPath: initialFallingVelocity
       value: -5.85
       objectReference: {fileID: 0}
