@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
     private InputAction tap;
     private PlayerInput playerInput;
 
+    private float oldTimeScale;
+    
+    private PlayerScoreModel scoreModel;
+
     private bool SwipeLock = false;
     private bool tappedOnce = false;
     
@@ -61,6 +65,8 @@ public class PlayerController : MonoBehaviour
         dragActionLeft.performed += SwipeLeftReceived;
         touch.canceled += TouchStopped;
         tap.performed += Tap;
+
+        scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
     }
 
     private void OnDisable()
@@ -149,6 +155,11 @@ public class PlayerController : MonoBehaviour
     private void DoubleTap()
     {
         Debug.Log("Double tap!");
+        if (scoreModel.TryToUsePowerUp())
+        {
+            Time.timeScale = 0.5f;
+        }
+        
     }
 
     IEnumerator DoubleTapCooldown()
