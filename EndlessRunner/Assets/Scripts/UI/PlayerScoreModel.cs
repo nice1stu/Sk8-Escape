@@ -7,6 +7,8 @@ public class PlayerScoreModel : MonoBehaviour
     private double score;
 
     private int coins;
+
+    private int powerUps;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,5 +54,23 @@ public class PlayerScoreModel : MonoBehaviour
     public int GetCoins()
     {
         return coins;
+    }
+
+    public void AddPowerUp()
+    {
+        powerUps++;
+    }
+
+    public bool TryToUsePowerUp()
+    {
+        if (powerUps > 0)
+        {
+            powerUps--;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
