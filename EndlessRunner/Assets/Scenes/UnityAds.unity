@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 563552399}
   - component: {fileID: 563552398}
   m_Layer: 0
-  m_Name: AdDisplayObject
+  m_Name: AdInterstitialDisplayObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myGameIdAndroid: 5266579
-  adUnitInterstitialIdAndroid: Interstitial_Android
+  adUnitIdAndroid: Interstitial_Android
   myAdUnitId: 
   adStarted: 0
   testMode: 1
