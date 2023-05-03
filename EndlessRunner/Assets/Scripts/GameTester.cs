@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 // This script is just for testing the SaveManager script - XXX Delete in Main Game XXX
 public class GameTester : MonoBehaviour
@@ -41,10 +40,17 @@ public class GameTester : MonoBehaviour
         saveManager.SaveTotalGems = totalPlayerGems;
         saveManager.SaveTotalCoins = totalPlayerCoins;
 
+<<<<<<< Updated upstream
         saveManager.MusicVolume = adjustMusicVolume;
         saveManager.MusicMute = toggleMusicMute;
         saveManager.SfxVolume = adjustSfxVolume;
         saveManager.SfxMute = toggleSfxMute;
+=======
+        saveManager.SaveMusicVolume = adjustMusicVolume;
+        saveManager.SaveMusicMute = toggleMusicMute;
+        saveManager.SaveSfxVolume = adjustSfxVolume;
+        saveManager.SaveSfxMute = toggleSfxMute;
+>>>>>>> Stashed changes
         
         // Save the player data in the SaveManager
         saveManager.SaveGameData();
@@ -61,10 +67,17 @@ public class GameTester : MonoBehaviour
         totalPlayerCoins = saveManager.SaveTotalCoins;
         highScore = saveManager.SaveHighScore;
         
+<<<<<<< Updated upstream
         adjustMusicVolume = saveManager.MusicVolume;
         toggleMusicMute = saveManager.MusicMute;
         adjustSfxVolume = saveManager.SfxVolume;
         toggleSfxMute= saveManager.SfxMute;
+=======
+        adjustMusicVolume = saveManager.SaveMusicVolume;
+        toggleMusicMute = saveManager.SaveMusicMute;
+        adjustSfxVolume = saveManager.SaveSfxVolume;
+        toggleSfxMute= saveManager.SaveSfxMute;
+>>>>>>> Stashed changes
     }
 
     [ContextMenu("Add Points")]
