@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        _rb = GetComponent<Rigidbody2D>();
+        _model = GetComponent<PlayerModel>();
+        _col = GetComponent<BoxCollider2D>();
         dragActionUp = playerInput.actions.FindAction("SwipeUp");
         dragActionDown = playerInput.actions.FindAction("SwipeDown");
         dragActionLeft = playerInput.actions.FindAction("SwipeLeft");
@@ -51,6 +54,9 @@ public class PlayerController : MonoBehaviour
         touch = playerInput.actions.FindAction("Touch");
         tap = playerInput.actions.FindAction("Tap");
 
+        
+        _targetPlayerHeight = _model.playerStandHeight;
+        UpdatePlayerHeight(_targetPlayerHeight);
     }
 
     private void OnEnable()
@@ -75,16 +81,15 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _model = GetComponent<PlayerModel>();
-        _col = GetComponent<BoxCollider2D>();
+        
 
         currentState = SkateboardTrickState.Coast;
     }
 
     private bool upSwipe, downSwipe, leftSwipe, rightSwipe, press;
 
-
+    #region TouchInput stuff
+    
     private void SwipeUpReceived(InputAction.CallbackContext context)
     {
         if (!SwipeLock)
@@ -161,6 +166,8 @@ public class PlayerController : MonoBehaviour
     {
         SwipeLock = false;
     }
+    
+    #endregion
 
     private void Update()
     {
@@ -174,7 +181,7 @@ public class PlayerController : MonoBehaviour
         _grounded = GetGrounded();
         UpdatePlayerHeight(_targetPlayerHeight, _model.smoothCrouch);
         ConstantMove();
-        DummyInputHandling();
+        InputHandling();
         GetInputsKeyboard(false);
     }
 
@@ -200,7 +207,11 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(_grounded);
         if (upSwipe)
         {
-            
+            if (_currentCoffin != null)
+            {
+                CancelCoffin();
+                return;
+            }
             
             if (CanOllie())
             {
@@ -213,6 +224,8 @@ public class PlayerController : MonoBehaviour
                 Kickflip();
                 return;
             }
+
+            upSwipe = false;
         }
 
         if (rightSwipe)
@@ -221,6 +234,18 @@ public class PlayerController : MonoBehaviour
             {
                 Shuvit();
             }
+
+            rightSwipe = false;
+        }
+
+        if (downSwipe)
+        {
+            if (CanCoffin())
+            {
+                _currentCoffin = StartCoroutine(Coffin());
+            }
+
+            downSwipe = false;
         }
 
         if (CanCoast())
