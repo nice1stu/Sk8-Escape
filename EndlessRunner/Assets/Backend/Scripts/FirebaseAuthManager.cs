@@ -59,22 +59,14 @@ namespace Backend.Scripts
         // Track state changes of the auth object.
         void AuthStateChanged(object sender, System.EventArgs eventArgs)
         {
-            if (auth.CurrentUser != user)
-            {
-                bool signedIn = user != auth.CurrentUser && auth.CurrentUser != null;
+            if (auth.CurrentUser == user) return;
+            bool signedIn = user != auth.CurrentUser && auth.CurrentUser != null;
 
-                if (!signedIn && user != null)
-                {
-                    Debug.Log("Signed out " + user.UserId);
-                }
+            if (!signedIn && user != null) Debug.Log("Signed out " + user.UserId);
 
-                user = auth.CurrentUser;
+            user = auth.CurrentUser;
 
-                if (signedIn)
-                {
-                    Debug.Log("Signed in " + user.UserId);
-                }
-            }
+            if (signedIn) Debug.Log("Signed in " + user.UserId);
         }
 
         public void Login()
@@ -94,10 +86,10 @@ namespace Backend.Scripts
 
                 FirebaseException firebaseException = loginTask.Exception.GetBaseException() as FirebaseException;
                 AuthError authError = (AuthError)firebaseException.ErrorCode;
-
-
+                
                 string failedMessage = "Login Failed! Because ";
 
+                // For developers, todo: add a fail message for build and display it in game
                 switch (authError)
                 {
                     case AuthError.InvalidEmail:
@@ -123,9 +115,12 @@ namespace Backend.Scripts
             {
                 user = loginTask.Result;
 
+                //todo: Display this in game
                 Debug.LogFormat("{0} You Are Successfully Logged In", user.DisplayName);
 
                 UserName = user.DisplayName;
+                
+                //todo: Ask which scene to be loaded
                 // UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
             }
         }
@@ -137,6 +132,7 @@ namespace Backend.Scripts
 
         private IEnumerator RegisterAsync(string name, string email, string password, string confirmPassword)
         {
+            //todo: display it in game
             if (name == "")
             {
                 Debug.LogError("User Name is empty");
@@ -162,7 +158,8 @@ namespace Backend.Scripts
                     FirebaseException firebaseException = registerTask.Exception.GetBaseException() as FirebaseException;
                     AuthError authError = (AuthError)firebaseException.ErrorCode;
 
-                    string failedMessage = "Registration Failed! Becuase ";
+                    //todo: display in game
+                    string failedMessage = "Registration Failed! Because ";
                     switch (authError)
                     {
                         case AuthError.InvalidEmail:
@@ -230,6 +227,7 @@ namespace Backend.Scripts
                     }
                     else
                     {
+                        //todo: display this in game
                         Debug.Log("Registration Successful Welcome " + user.DisplayName);
                         LoginManager.Instance.OpenLoginPanel();
                     }
