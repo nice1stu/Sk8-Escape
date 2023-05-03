@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,11 +31,12 @@ public class PlayerController : MonoBehaviour
 
     private bool SwipeLock = false;
     private bool tappedOnce = false;
-    
+
     // References
     private Rigidbody2D _rb;
     private PlayerModel _model;
     private BoxCollider2D _col;
+    public PlayerView view;
 
     // Variables
     private bool _grounded;
@@ -54,7 +56,7 @@ public class PlayerController : MonoBehaviour
         touch = playerInput.actions.FindAction("Touch");
         tap = playerInput.actions.FindAction("Tap");
 
-        
+
         _targetPlayerHeight = _model.playerStandHeight;
         UpdatePlayerHeight(_targetPlayerHeight);
     }
@@ -81,15 +83,13 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        
-
         currentState = SkateboardTrickState.Coast;
     }
 
     private bool upSwipe, downSwipe, leftSwipe, rightSwipe, press;
 
     #region TouchInput stuff
-    
+
     private void SwipeUpReceived(InputAction.CallbackContext context)
     {
         if (!SwipeLock)
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
             InputHandling();
         }
     }
-    
+
     private void SwipeRightReceived(InputAction.CallbackContext context)
     {
         if (!SwipeLock)
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
             InputHandling();
         }
     }
-    
+
     private void SwipeLeftReceived(InputAction.CallbackContext context)
     {
         if (!SwipeLock)
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
         if (!SwipeLock)
         {
             SwipeLock = true;
-            Debug.Log("Down!");//TODO: Trigger crouch here!
+            Debug.Log("Down!"); //TODO: Trigger crouch here!
             downSwipe = true;
             InputHandling();
         }
@@ -161,12 +161,12 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         tappedOnce = false;
     }
-    
+
     private void TouchStopped(InputAction.CallbackContext context)
     {
         SwipeLock = false;
     }
-    
+
     #endregion
 
     private void Update()
@@ -180,6 +180,8 @@ public class PlayerController : MonoBehaviour
         // GetInputs(true);
         _grounded = GetGrounded();
         UpdatePlayerHeight(_targetPlayerHeight, _model.smoothCrouch);
+        if (_model.isAlive)
+            ConstantMove();
         ConstantMove();
         InputHandling();
         GetInputsKeyboard(false);
@@ -188,7 +190,7 @@ public class PlayerController : MonoBehaviour
     private void GetInputsKeyboard(bool get)
     {
         // tihihi
-        
+
         //So how does this work?
         if (upSwipe != get)
             upSwipe = Input.GetKeyDown(KeyCode.UpArrow);
@@ -212,7 +214,7 @@ public class PlayerController : MonoBehaviour
                 CancelCoffin();
                 return;
             }
-            
+
             if (CanOllie())
             {
                 Ollie();
@@ -260,7 +262,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
     }
-    
+
     private void InputHandling()
     {
         //Debug.Log(_grounded);
@@ -271,7 +273,7 @@ public class PlayerController : MonoBehaviour
                 CancelCoffin();
                 return;
             }
-            
+
             if (CanOllie())
             {
                 Ollie();
@@ -319,8 +321,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
     }
-    
-    
+
 
     private void ConstantMove()
     {
@@ -410,33 +411,38 @@ public class PlayerController : MonoBehaviour
     }
 
     private Coroutine _currentCoffin;
+
     private IEnumerator Coffin()
     {
         Debug.Log("Coffin");
         currentState = SkateboardTrickState.Coffin;
         _targetPlayerHeight = _model.playerCrouchHeight;
-        yield return new WaitForSecondsRealtime(_model.coffinTime);
+        yield return new WaitForSeconds(_model.coffinTime);
         _targetPlayerHeight = _model.playerStandHeight;
         currentState = SkateboardTrickState.Coast;
+        CancelCoffin();
     }
 
     private void CancelCoffin()
     {
-        StopCoroutine(_currentCoffin);
+        if (_currentCoffin != null) StopCoroutine(_currentCoffin);
         _targetPlayerHeight = _model.playerStandHeight;
         _currentCoffin = null;
         currentState = SkateboardTrickState.Coast;
     }
 
     #endregion
-    
+
     private float _targetPlayerHeight;
+
     private void UpdatePlayerHeight(float height, bool smooth = false)
     {
+        view.DummyCoffinScaler(_col.size, _col.offset);
         if (smooth)
         {
             float heightFrom = _col.size.y;
-            _col.size = new Vector2(_col.size.x, Mathf.Lerp(_col.size.y, height, _model.crouchSharpness * Time.fixedDeltaTime));
+            _col.size = new Vector2(_col.size.x,
+                Mathf.Lerp(_col.size.y, height, _model.crouchSharpness * Time.fixedDeltaTime));
             _col.offset = (_col.size.y / 2) * Vector2.up;
             if (!_grounded)
             {
@@ -448,6 +454,8 @@ public class PlayerController : MonoBehaviour
             _col.size = new Vector2(_col.size.x, height);
             _col.offset = (_col.size.y / 2) * Vector2.up;
         }
+
+        view.DummyCoffinScaler(_col.size, _col.offset);
     }
 
 

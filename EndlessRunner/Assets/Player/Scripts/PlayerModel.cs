@@ -23,5 +23,5 @@ public class PlayerModel : MonoBehaviour
     public float maxGroundAngle = 45f;
     public LayerMask groundLayers;
     [Header("Other")]
-    public bool isAlive;
+    public bool isAlive = true;
 }
