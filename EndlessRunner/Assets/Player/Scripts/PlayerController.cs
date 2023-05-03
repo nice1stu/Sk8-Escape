@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug; //Needed to stop the default C# diagnostics from taking over debug commands
 
 
 public class PlayerController : MonoBehaviour
@@ -35,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     public Coroutine slowmoCoolDown;
 
+    private Stopwatch slowmoCoolDownTimer;
+
     private bool SwipeLock = false;
     private bool tappedOnce = false;
     
@@ -57,6 +61,9 @@ public class PlayerController : MonoBehaviour
         dragActionRight = playerInput.actions.FindAction("SwipeRight");
         touch = playerInput.actions.FindAction("Touch");
         tap = playerInput.actions.FindAction("Tap");
+
+        slowmoCoolDownTimer = new Stopwatch();
+        
 
     }
 
@@ -162,20 +169,40 @@ public class PlayerController : MonoBehaviour
         {
             oldTimeScale = Time.timeScale;
             Time.timeScale = 0.5f;
-             slowmoCoolDown = StartCoroutine(SlowmoCoolDown());
+            slowmoCoolDown = StartCoroutine(SlowmoCoolDown());
+            slowmoCoolDownTimer.Reset();
+            slowmoCoolDownTimer.Start();
         }
         
     }
 
     public void PauseSlowmo()
     {
-        
+        if (slowmoCoolDownTimer.IsRunning)
+        {
+            slowmoCoolDownTimer.Stop();
+        }
+        else
+        {
+            slowmoCoolDownTimer.Restart();
+        }
     }
 
     IEnumerator SlowmoCoolDown()
     {
-        yield return new WaitForSecondsRealtime(3f);
-        Time.timeScale = oldTimeScale;
+        while (true)
+        {
+
+
+            Debug.Log("Elapsed time: " + slowmoCoolDownTimer.Elapsed.Seconds);
+            if (slowmoCoolDownTimer.Elapsed.Seconds > 3f)
+            {
+                Time.timeScale = oldTimeScale;
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     IEnumerator DoubleTapCooldown()
