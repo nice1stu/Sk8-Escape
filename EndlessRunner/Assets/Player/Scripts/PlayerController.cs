@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerController : MonoBehaviour
 {
     public enum SkateboardTrickState
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour
     private float oldTimeScale;
     
     private PlayerScoreModel scoreModel;
+
+    public Coroutine slowmoCoolDown;
 
     private bool SwipeLock = false;
     private bool tappedOnce = false;
@@ -157,9 +160,22 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Double tap!");
         if (scoreModel.TryToUsePowerUp())
         {
+            oldTimeScale = Time.timeScale;
             Time.timeScale = 0.5f;
+             slowmoCoolDown = StartCoroutine(SlowmoCoolDown());
         }
         
+    }
+
+    public void PauseSlowmo()
+    {
+        
+    }
+
+    IEnumerator SlowmoCoolDown()
+    {
+        yield return new WaitForSecondsRealtime(3f);
+        Time.timeScale = oldTimeScale;
     }
 
     IEnumerator DoubleTapCooldown()
