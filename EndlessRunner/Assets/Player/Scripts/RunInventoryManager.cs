@@ -1,20 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RunInventoryManager : MonoBehaviour
+namespace Player
 {
-    private void OnTriggerEnter2D(Collider2D col)
+    public class RunInventoryManager : MonoBehaviour
     {
-        if (col.gameObject.layer == LayerMask.NameToLayer("Pickupable"))
+        private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.TryGetComponent(out IPickupable pickupable))
+            if (col.gameObject.layer == LayerMask.NameToLayer("Pickupable"))
             {
-                pickupable.OnPickup();
-            }
+                if (col.TryGetComponent(out IPickupable pickupable))
+                {
+                    pickupable.OnPickup();
+                }
             
-            Debug.Log("Nice!!!");
+                Debug.Log("Nice!!!");
+            }
         }
     }
 }

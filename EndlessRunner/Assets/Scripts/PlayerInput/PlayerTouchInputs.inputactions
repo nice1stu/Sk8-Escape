@@ -83,6 +83,17 @@
                 },
                 {
                     "name": "",
+                    "id": "641d5356-5a8f-44f7-8aa7-f69a2dbd23cf",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwipeUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fcd8e39a-02a4-4b46-ab68-484e326fd6da",
                     "path": "<Touchscreen>/primaryTouch/press",
                     "interactions": "",
