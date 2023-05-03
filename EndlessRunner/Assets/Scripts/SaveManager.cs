@@ -1,19 +1,56 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class SaveManager : MonoBehaviour
 {
     private int savedPlayerScore;
     private int savedPlayerGems;
     private int savedPlayerCoins;
+
+    private float musicVolume = 1f;
+    private bool musicMute = false;
+    private float sfxVolume = 1f;
+    private bool sfxMute = false;
+
     public InventoryManager inventoryManager;
 
     public int SavedPlayerScore { get; set; }
     public int SavedPlayerGems { get; set; }
     public int SavedPlayerCoins { get; set; }
     public int SavedHighScore { get; set; }
+
+    public float MusicVolume
+    {
+        get { return musicVolume; }
+        set
+        {
+            musicVolume = Mathf.Clamp01(value);
+            AudioListener.volume = musicVolume;
+        }
+    }
+
+    public bool MusicMute
+    {
+        get { return AudioListener.pause; }
+        set { AudioListener.pause = value; }
+    }
+
+    public float SFXVolume
+    {
+        get { return sfxVolume; }
+        set
+        {
+            sfxVolume = Mathf.Clamp01(value);
+            AudioListener.volume = sfxVolume;
+        }
+    }
+
+    public bool SFXMute
+    {
+        get { return sfxMute; }
+        set { sfxMute = value; }
+    }
 
     private void Start() => LoadData();
 
@@ -28,6 +65,13 @@ public class SaveManager : MonoBehaviour
         SavedPlayerCoins = saveData.playerCoins;
         SavedHighScore = saveData.playerHighScore;
         inventoryManager.inventory = saveData.inventory;
+        musicVolume = saveData.musicVolume;         // Update music settings
+        AudioListener.volume = musicVolume;
+        musicMute = saveData.musicMute;
+        AudioListener.pause = musicMute;
+        sfxVolume = saveData.sfxVolume;         // Update SFX settings
+        AudioListener.volume = sfxVolume;
+        sfxMute = saveData.sfxMute;
     }
 
     private void SaveData()
@@ -39,6 +83,10 @@ public class SaveManager : MonoBehaviour
             playerCoins = SavedPlayerCoins,
             playerHighScore = SavedHighScore,
             inventory = inventoryManager.inventory,
+            musicVolume = musicVolume,             // Save music settings
+            musicMute = musicMute,
+            sfxVolume = sfxVolume,             // Save SFX settings
+            sfxMute = sfxMute,
         };
 
         string json = JsonUtility.ToJson(saveData);
@@ -59,4 +107,8 @@ public class SaveData
     public int playerCoins;
     public int playerHighScore;
     public List<InventoryItem> inventory;
+    public float musicVolume;
+    public bool musicMute;
+    public float sfxVolume;
+    public bool sfxMute;
 }
