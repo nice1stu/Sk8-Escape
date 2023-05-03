@@ -4,7 +4,7 @@ namespace Backend.Scripts
 {
     public class LoginManager : MonoBehaviour
     {
-        private static LoginManager _instance;
+        public static LoginManager Instance;
 
         [SerializeField]
         private GameObject loginPanel;
@@ -19,9 +19,9 @@ namespace Backend.Scripts
 
         private void CreateInstance()
         {
-            if(_instance == null)
+            if(Instance == null)
             {
-                _instance = this;
+                Instance = this;
             }
         }
 
