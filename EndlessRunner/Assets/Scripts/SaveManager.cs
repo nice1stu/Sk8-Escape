@@ -20,7 +20,12 @@ public class SaveManager : MonoBehaviour
     public void LoadData()
     {
         string path = Application.persistentDataPath + "/save.json";
-        if (!File.Exists(path)) return;
+        if (!File.Exists(path))
+        {
+            Debug.Log("No save file present!");
+            return;
+        }
+
         string json = File.ReadAllText(path);
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
         SavedPlayerScore = saveData.playerScore;
