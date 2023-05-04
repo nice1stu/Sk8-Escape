@@ -14,56 +14,60 @@ public class GameTester : MonoBehaviour
     public int currentRunScore;
     [SerializeField] private int highScore;
     
-    private SaveManager saveManager;
+    private SaveManager _saveManager;
+    private SaveSettings _saveSettings;
 
     private void Start()
     {
         // Get the SaveManager component
-        saveManager = GetComponent<SaveManager>();
+        _saveManager = GetComponent<SaveManager>();
+        _saveSettings = GetComponent<SaveSettings>();
 
         // Load player data
         LoadPlayerData();
+        _saveSettings.LoadSettingsData();
     }
 
     void UpdateHighScore()
     {
-        if (currentRunScore <= saveManager.SaveHighScore) return;
-        saveManager.SaveHighScore = currentRunScore;
+        if (currentRunScore <= _saveManager.SaveHighScore) return;
+        _saveManager.SaveHighScore = currentRunScore;
     }
 
     private void SavePlayerData()
     {
-        if (saveManager == null) return;
+        if (_saveManager == null) return;
 
         // Update the saved player points and coins in the SaveManager
-        saveManager.SaveTotalScore = totalPlayerScore;
-        saveManager.SaveTotalGems = totalPlayerGems;
-        saveManager.SaveTotalCoins = totalPlayerCoins;
+        _saveManager.SaveTotalScore = totalPlayerScore;
+        _saveManager.SaveTotalGems = totalPlayerGems;
+        _saveManager.SaveTotalCoins = totalPlayerCoins;
 
-        saveManager.SaveMusicVolume = adjustMusicVolume;
-        saveManager.SaveMusicMute = toggleMusicMute;
-        saveManager.SaveSfxVolume = adjustSfxVolume;
-        saveManager.SaveSfxMute = toggleSfxMute;
+        _saveSettings.SaveMusicVolume = adjustMusicVolume;
+        _saveSettings.SaveMusicMute = toggleMusicMute;
+        _saveSettings.SaveSfxVolume = adjustSfxVolume;
+        _saveSettings.SaveSfxMute = toggleSfxMute;
         
         // Save the player data in the SaveManager
-        saveManager.SaveGameData();
+        _saveManager.SaveGameData();
+        _saveSettings.SaveSettingsData();
     }
 
     private void LoadPlayerData()
     {
         // Load the player data from the SaveManager
-        saveManager.LoadData();
+        _saveManager.LoadData();
 
         // Update the player points and coins from the saved data
-        totalPlayerScore = saveManager.SaveTotalScore;
-        totalPlayerGems = saveManager.SaveTotalGems;
-        totalPlayerCoins = saveManager.SaveTotalCoins;
-        highScore = saveManager.SaveHighScore;
+        totalPlayerScore = _saveManager.SaveTotalScore;
+        totalPlayerGems = _saveManager.SaveTotalGems;
+        totalPlayerCoins = _saveManager.SaveTotalCoins;
+        highScore = _saveManager.SaveHighScore;
         
-        adjustMusicVolume = saveManager.SaveMusicVolume;
-        toggleMusicMute = saveManager.SaveMusicMute;
-        adjustSfxVolume = saveManager.SaveSfxVolume;
-        toggleSfxMute= saveManager.SaveSfxMute;
+        adjustMusicVolume = _saveSettings.SaveMusicVolume;
+        toggleMusicMute = _saveSettings.SaveMusicMute;
+        adjustSfxVolume = _saveSettings.SaveSfxVolume;
+        toggleSfxMute= _saveSettings.SaveSfxMute;
     }
 
     [ContextMenu("Add Points")]
@@ -97,7 +101,7 @@ public class GameTester : MonoBehaviour
     private void ResetPlayerData()
     {
         totalPlayerScore = totalPlayerGems = totalPlayerCoins = currentRunScore = highScore = 0;
-        saveManager.SaveHighScore = 0;
+        _saveManager.SaveHighScore = 0;
         adjustMusicVolume = 0.5f;
         toggleMusicMute = true;
         adjustSfxVolume = 0.5f;

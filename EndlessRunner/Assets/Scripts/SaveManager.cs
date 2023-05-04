@@ -10,11 +10,6 @@ public class SaveManager : MonoBehaviour
     public int SaveTotalCoins { get; set; }
     public int SaveHighScore { get; set; }
 
-    public float SaveMusicVolume { get; set; }
-    public bool SaveMusicMute { get; set; }
-    public float SaveSfxVolume { get; set; }
-    public bool SaveSfxMute { get; set; }
-    
     public Dictionary<int, float> SaveLootBoxCooldown
     {
         get => lootboxCooldowns;
@@ -41,7 +36,7 @@ public class SaveManager : MonoBehaviour
 
     public void LoadData()
     {
-        string path = Application.persistentDataPath + "/save.json";
+        string path = Application.persistentDataPath + "/stats.save.json";
         if (!File.Exists(path)) return;
 
         string json = File.ReadAllText(path);
@@ -51,13 +46,6 @@ public class SaveManager : MonoBehaviour
         SaveTotalGems = data.totalGems;
         SaveTotalCoins = data.totalCoins;
         SaveHighScore = data.playerHighScore;
-
-        SaveMusicVolume = data.musicVolume;
-        SaveMusicMute = data.musicMute;
-        SaveSfxVolume = data.sfxVolume;
-        SaveSfxMute = data.sfxMute;
-
-        UpdateAudioSettings();
     }
 
     public void SaveGameData()
@@ -68,20 +56,11 @@ public class SaveManager : MonoBehaviour
             totalGems = SaveTotalGems,
             totalCoins = SaveTotalCoins,
             playerHighScore = SaveHighScore,
-            musicVolume = SaveMusicVolume,
-            musicMute = SaveMusicMute,
-            sfxVolume = SaveSfxVolume,
-            sfxMute = SaveSfxMute,
+            
         };
 
         string json = JsonUtility.ToJson(data);
-        File.WriteAllText(Application.persistentDataPath + "/save.json", json);
-    }
-
-    private void UpdateAudioSettings()
-    {
-        AudioListener.volume = (SaveMusicMute) ? 0f : SaveMusicVolume;
-        AudioListener.pause = SaveMusicMute;
+        File.WriteAllText(Application.persistentDataPath + "/stats.save.json", json);
     }
 }
 
@@ -92,11 +71,7 @@ public class GameData
     public int totalGems;
     public int totalCoins;
     public int playerHighScore;
-    public float musicVolume;
-    public bool musicMute;
-    public float sfxVolume;
-    public bool sfxMute;
-
+    
     private Dictionary<int, float> lootBoxCooldowns = new Dictionary<int, float>();
 
     public float GetLootBoxCooldown(int lootBoxId)
