@@ -44,7 +44,6 @@ public class ItemShop : MonoBehaviour
     {
         if (coins < itemShopSO[btnNo].coinCost) return;
         coins -= itemShopSO[btnNo].coinCost;
-        coinUI.text = "Coins: " + coins;
         itemShopSO[btnNo].purchased = true;
         CheckPurchaseable();
         //Unlock Item
