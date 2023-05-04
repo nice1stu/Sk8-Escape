@@ -1,7 +1,9 @@
 using System.Collections;
 using Firebase;
 using Firebase.Auth;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Backend.Scripts
@@ -29,6 +31,8 @@ namespace Backend.Scripts
         public InputField passwordRegisterField;
         public InputField confirmPasswordRegisterField;
 
+        [FormerlySerializedAs("errorMessage")] [Space] [Header("Message")] public TextMeshProUGUI message;
+
         private void Awake()
         {
             // Check that all of the necessary dependencies for firebase are present on the system
@@ -42,7 +46,8 @@ namespace Backend.Scripts
                 }
                 else
                 {
-                    Debug.LogError("Could not resolve all firebase dependencies: " + dependencyStatus);
+                    message.text = "Could not resolve all firebase dependencies: " + dependencyStatus;
+                    //Debug.LogError("Could not resolve all firebase dependencies: " + dependencyStatus);
                 }
             });
         }
@@ -62,11 +67,12 @@ namespace Backend.Scripts
             if (auth.CurrentUser == user) return;
             bool signedIn = user != auth.CurrentUser && auth.CurrentUser != null;
 
-            if (!signedIn && user != null) Debug.Log("Signed out " + user.UserId);
+            if (!signedIn && user != null) message.text = "Signed out " + user.UserId;
+                //Debug.Log("Signed out " + user.UserId);
 
             user = auth.CurrentUser;
 
-            if (signedIn) Debug.Log("Signed in " + user.UserId);
+            if (signedIn) message.text = "Signed in " + user.DisplayName;
         }
 
         public void Login()
@@ -109,13 +115,12 @@ namespace Backend.Scripts
                         break;
                 }
 
-                Debug.Log(failedMessage);
+                message.text = failedMessage;
             }
             else
             {
                 user = loginTask.Result;
-
-                //todo: Display this in game
+                
                 Debug.LogFormat("{0} You Are Successfully Logged In", user.DisplayName);
 
                 UserName = user.DisplayName;
@@ -132,19 +137,10 @@ namespace Backend.Scripts
 
         private IEnumerator RegisterAsync(string name, string email, string password, string confirmPassword)
         {
-            //todo: display it in game
-            if (name == "")
-            {
-                Debug.LogError("User Name is empty");
-            }
-            else if (email == "")
-            {
-                Debug.LogError("email field is empty");
-            }
+            if (name == "") message.text = "User Name is empty";
+            else if (email == "") message.text = "email field is empty";
             else if (passwordRegisterField.text != confirmPasswordRegisterField.text)
-            {
-                Debug.LogError("Password does not match");
-            }
+                message.text = "Password does not match";
             else
             {
                 var registerTask = auth.CreateUserWithEmailAndPasswordAsync(email, password);
@@ -174,12 +170,15 @@ namespace Backend.Scripts
                         case AuthError.MissingPassword:
                             failedMessage += "Password is missing";
                             break;
+                        case AuthError.WeakPassword:
+                            failedMessage += "Password is too short";
+                            break;
                         default:
                             failedMessage = "Registration Failed";
                             break;
                     }
 
-                    Debug.Log(failedMessage);
+                    message.text = failedMessage;
                 }
                 else
                 {
@@ -223,11 +222,10 @@ namespace Backend.Scripts
                                 break;
                         }
 
-                        Debug.Log(failedMessage);
+                        message.text = failedMessage;
                     }
                     else
                     {
-                        //todo: display this in game
                         Debug.Log("Registration Successful Welcome " + user.DisplayName);
                         LoginManager.Instance.OpenLoginPanel();
                     }

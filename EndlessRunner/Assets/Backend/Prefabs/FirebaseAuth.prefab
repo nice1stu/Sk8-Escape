@@ -51,3 +51,4 @@ MonoBehaviour:
   emailRegisterField: {fileID: 0}
   passwordRegisterField: {fileID: 0}
   confirmPasswordRegisterField: {fileID: 0}
+  errorMessage: {fileID: 0}
