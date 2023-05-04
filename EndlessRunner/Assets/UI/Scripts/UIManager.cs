@@ -9,21 +9,21 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
-        coinView.text = saveManager.SavedPlayerCoins.ToString();
-        gemsView.text = saveManager.SavedPlayerGems.ToString();
+        coinView.text = saveManager.SaveTotalCoins.ToString();
+        gemsView.text = saveManager.SaveTotalGems.ToString();
     }
 
     public void SpendCoins(int cost)
     {
-        saveManager.SavedPlayerCoins -= cost;
+        saveManager.SaveTotalCoins -= cost;
         saveManager.SaveGameData();
-        coinView.text = saveManager.SavedPlayerCoins.ToString();
+        coinView.text = saveManager.SaveTotalCoins.ToString();
     }
 
     public void SpendGems(int cost)
     {
-        saveManager.SavedPlayerGems -= cost;
+        saveManager.SaveTotalGems -= cost;
         saveManager.SaveGameData();
-        gemsView.text = saveManager.SavedPlayerGems.ToString();
+        gemsView.text = saveManager.SaveTotalGems.ToString();
     }
 }
