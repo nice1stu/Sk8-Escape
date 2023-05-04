@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="490fac89-fdad-424b-bede-d09784f655a5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EndlessRunner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EndlessRunner/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameTester.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameTester.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683183728530</updated>
       <workItem from="1683183732771" duration="434000" />
-      <workItem from="1683184230661" duration="4633000" />
+      <workItem from="1683184230661" duration="5617000" />
     </task>
     <servers />
   </component>
@@ -94,36 +92,4 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/SaveManager.cs</url>
-          <line>37</line>
-          <properties documentPath="D:\Game Programming\EndlessRunner\EndlessRunner\Assets\Scripts\SaveManager.cs" initialLine="37" containingFunctionPresentation="method 'LoadData'">
-            <startOffsets>
-              <option value="1063" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1064" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/SaveManager.cs</url>
-          <line>51</line>
-          <properties documentPath="D:\Game Programming\EndlessRunner\EndlessRunner\Assets\Scripts\SaveManager.cs" initialLine="51" containingFunctionPresentation="method 'SaveGameData'">
-            <startOffsets>
-              <option value="1502" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1503" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
 </project>
