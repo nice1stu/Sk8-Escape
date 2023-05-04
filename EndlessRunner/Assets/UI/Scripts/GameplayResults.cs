@@ -37,7 +37,15 @@ public class GameplayResults : MonoBehaviour
         _saveManager.SaveGameData(); //hope this was enough to save after each
     }
 
-    public void PlayAgain() => SceneManager.LoadScene("MainScene");
+    // public void PlayAgain() => SceneManager.LoadScene("MainScene");
+    public void PlayAgain()
+    {
+        // Reset the score to zero
+        _scoreManager.SetScore(0); 
+
+        SceneManager.LoadScene("MainScene");
+    }
+
 
     public void GoToMainMenu() => SceneManager.LoadScene("StartMenu");
 
