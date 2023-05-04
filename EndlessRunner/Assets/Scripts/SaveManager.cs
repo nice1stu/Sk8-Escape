@@ -15,12 +15,17 @@ public class SaveManager : MonoBehaviour
     public int SavedPlayerCoins { get; set; }
     public int SavedHighScore { get; set; }
 
-    private void Start() => LoadData();
+    private void Awake() => LoadData();
 
     public void LoadData()
     {
         string path = Application.persistentDataPath + "/save.json";
-        if (!File.Exists(path)) return;
+        if (!File.Exists(path))
+        {
+            Debug.Log("No save file present!");
+            return;
+        }
+
         string json = File.ReadAllText(path);
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
         SavedPlayerScore = saveData.playerScore;
@@ -30,6 +35,7 @@ public class SaveManager : MonoBehaviour
         inventoryManager.inventory = saveData.inventory;
     }
 
+    [ContextMenu("Save Data")]
     private void SaveData()
     {
         SaveData saveData = new SaveData
