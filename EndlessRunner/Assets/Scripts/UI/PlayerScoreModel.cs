@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerScoreModel : MonoBehaviour
 {
-    private double score;
+    private static double score;
 
-    private int coins;
+    private static int coins;
 
     private int powerUps;
     // Start is called before the first frame update
