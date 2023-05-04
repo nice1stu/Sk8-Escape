@@ -1,68 +1,74 @@
-using System.Collections.Generic;
 using System.IO;
+using Inventory.Scripts;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 public class SaveManager : MonoBehaviour
 {
-    private int savedPlayerScore;
-    private int savedPlayerGems;
-    private int savedPlayerCoins;
-    public InventoryManager inventoryManager;
+    public int SaveTotalScore { get; set; }
+    public int SaveTotalGems { get; set; }
+    public int SaveTotalCoins { get; set; }
+    public int SaveHighScore { get; set; }
+    
+    //public Countdown[] currentBoxes = new Countdown[4]; for testing
+    private Countdown[] LootBoxes => LoadLootBoxData();
 
-    public int SavedPlayerScore { get; set; }
-    public int SavedPlayerGems { get; set; }
-    public int SavedPlayerCoins { get; set; }
-    public int SavedHighScore { get; set; }
+    private void SaveLootBoxData(Countdown[] lootBoxes)
+    {
+        Countdown[] data = lootBoxes;
+        string json = JsonUtility.ToJson(data);
+        File.WriteAllText(Application.persistentDataPath + "/lootBoxes.save.json", json);
+    }
 
-    private void Awake() => LoadData();
+    private Countdown[] LoadLootBoxData()
+    {
+        string path = Application.persistentDataPath + "/lootBoxes.save.json";
+        if (!File.Exists(path)) return null;
+
+        string json = File.ReadAllText(path);
+        Countdown[] data = JsonUtility.FromJson<Countdown[]>(json);
+        return data;
+    }
+    private void Awake()
+    {
+        LoadData();
+    }
 
     public void LoadData()
     {
-        string path = Application.persistentDataPath + "/save.json";
-        if (!File.Exists(path))
-        {
-            Debug.Log("No save file present!");
-            return;
-        }
+        string path = Application.persistentDataPath + "/stats.save.json";
+        if (!File.Exists(path)) return;
 
         string json = File.ReadAllText(path);
-        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
-        SavedPlayerScore = saveData.playerScore;
-        SavedPlayerGems = saveData.playerGems;
-        SavedPlayerCoins = saveData.playerCoins;
-        SavedHighScore = saveData.playerHighScore;
-        inventoryManager.inventory = saveData.inventory;
-    }
+        GameData data = JsonUtility.FromJson<GameData>(json);
 
-    [ContextMenu("Save Data")]
-    private void SaveData()
-    {
-        SaveData saveData = new SaveData
-        {
-            playerScore = SavedPlayerScore,
-            playerGems = SavedPlayerGems,
-            playerCoins = SavedPlayerCoins,
-            playerHighScore = SavedHighScore,
-            inventory = inventoryManager.inventory,
-        };
-
-        string json = JsonUtility.ToJson(saveData);
-        File.WriteAllText(Application.persistentDataPath + "/save.json", json);
+        SaveTotalScore = data.totalScore;
+        SaveTotalGems = data.totalGems;
+        SaveTotalCoins = data.totalCoins;
+        SaveHighScore = data.playerHighScore;
     }
 
     public void SaveGameData()
     {
-        SaveData();
+        GameData data = new GameData
+        {
+            totalScore = SaveTotalScore,
+            totalGems = SaveTotalGems,
+            totalCoins = SaveTotalCoins,
+            playerHighScore = SaveHighScore,
+            
+        };
+
+        string json = JsonUtility.ToJson(data);
+        File.WriteAllText(Application.persistentDataPath + "/stats.save.json", json);
     }
 }
 
 [System.Serializable]
-public class SaveData
+public class GameData
 {
-    public int playerScore;
-    public int playerGems;
-    public int playerCoins;
+    public int totalScore;
+    public int totalGems;
+    public int totalCoins;
     public int playerHighScore;
-    public List<InventoryItem> inventory;
 }
