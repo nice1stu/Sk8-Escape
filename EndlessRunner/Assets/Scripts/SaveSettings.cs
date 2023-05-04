@@ -7,6 +7,7 @@ public class SaveSettings : MonoBehaviour
     public bool SaveMusicMute { get; set; }
     public float SaveSfxVolume { get; set; }
     public bool SaveSfxMute { get; set; }
+    public string SaveLanguageSetting { get; set; }
     
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class SaveSettings : MonoBehaviour
         SaveMusicMute = settingsData.musicMute;
         SaveSfxVolume = settingsData.sfxVolume;
         SaveSfxMute = settingsData.sfxMute;
+        SaveLanguageSetting = settingsData.languageSetting;
 
         UpdateAudioSettings();
     }
@@ -37,6 +39,7 @@ public class SaveSettings : MonoBehaviour
             musicMute = SaveMusicMute,
             sfxVolume = SaveSfxVolume,
             sfxMute = SaveSfxMute,
+            languageSetting = SaveLanguageSetting,
         };
 
         string json = JsonUtility.ToJson(settingsData);
@@ -53,8 +56,9 @@ public class SaveSettings : MonoBehaviour
 [System.Serializable]
 public class PlayerSettingsData
 {
-    public float musicVolume;
+    public float musicVolume = 1.0f;
     public bool musicMute;
-    public float sfxVolume;
+    public float sfxVolume = 1.0f;
     public bool sfxMute;
+    public string languageSetting = "en";
 }

@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 // This script is just for testing the SaveManager script - XXX Delete in Main Game XXX
@@ -7,6 +8,7 @@ public class GameTester : MonoBehaviour
     public bool toggleMusicMute = true;
     public float adjustSfxVolume;
     public bool toggleSfxMute = true;
+    public string languageSetting;
     
     public int totalPlayerScore;
     public int totalPlayerGems;
@@ -19,11 +21,11 @@ public class GameTester : MonoBehaviour
 
     private void Start()
     {
-        // Get the SaveManager component
+        // Get the Save components
         _saveManager = GetComponent<SaveManager>();
         _saveSettings = GetComponent<SaveSettings>();
 
-        // Load player data
+        // Load user saves
         LoadPlayerData();
         _saveSettings.LoadSettingsData();
     }
@@ -47,6 +49,7 @@ public class GameTester : MonoBehaviour
         _saveSettings.SaveMusicMute = toggleMusicMute;
         _saveSettings.SaveSfxVolume = adjustSfxVolume;
         _saveSettings.SaveSfxMute = toggleSfxMute;
+        _saveSettings.SaveLanguageSetting = languageSetting;
         
         // Save the player data in the SaveManager
         _saveManager.SaveGameData();
@@ -57,6 +60,7 @@ public class GameTester : MonoBehaviour
     {
         // Load the player data from the SaveManager
         _saveManager.LoadData();
+        _saveSettings.LoadSettingsData();
 
         // Update the player points and coins from the saved data
         totalPlayerScore = _saveManager.SaveTotalScore;
@@ -68,6 +72,7 @@ public class GameTester : MonoBehaviour
         toggleMusicMute = _saveSettings.SaveMusicMute;
         adjustSfxVolume = _saveSettings.SaveSfxVolume;
         toggleSfxMute= _saveSettings.SaveSfxMute;
+        languageSetting = _saveSettings.SaveLanguageSetting;
     }
 
     [ContextMenu("Add Points")]
@@ -102,9 +107,9 @@ public class GameTester : MonoBehaviour
     {
         totalPlayerScore = totalPlayerGems = totalPlayerCoins = currentRunScore = highScore = 0;
         _saveManager.SaveHighScore = 0;
-        adjustMusicVolume = 0.5f;
+        adjustMusicVolume = 1.0f;
         toggleMusicMute = true;
-        adjustSfxVolume = 0.5f;
+        adjustSfxVolume = 1.0f;
         toggleSfxMute= true;
         SavePlayerData();
     }
@@ -132,5 +137,15 @@ public class GameTester : MonoBehaviour
     private void SetSfxMute()
     {
         toggleSfxMute = false;
+    }
+    
+    [ContextMenu("Set Language")]
+    private void SetLanguage()
+    {
+        // Show a context menu with two options and assign the selected option to languageSetting
+        GenericMenu menu = new GenericMenu();
+        menu.AddItem(new GUIContent("English"), false, () => { languageSetting = "en"; });
+        menu.AddItem(new GUIContent("Swedish"), false, () => { languageSetting = "sv"; });
+        menu.ShowAsContext();
     }
 }
