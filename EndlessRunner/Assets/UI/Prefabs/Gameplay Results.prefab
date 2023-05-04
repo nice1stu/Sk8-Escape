@@ -305,8 +305,9 @@ GameObject:
   - component: {fileID: 6209122175100364235}
   - component: {fileID: 6209122175100364237}
   - component: {fileID: 2797083086886405066}
-  - component: {fileID: 609808551192286178}
-  - component: {fileID: 1221322642545465352}
+  - component: {fileID: 7255695583564001975}
+  - component: {fileID: 1680754613}
+  - component: {fileID: 1680754619}
   m_Layer: 5
   m_Name: Gameplay Results
   m_TagString: Untagged
@@ -389,8 +390,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScoreText: {fileID: 6209122176088714936}
   highScoreText: {fileID: 6209122175508310209}
-  coinsCollectedText: {fileID: 0}
+  coinsCollectedText: {fileID: 6209122176057642909}
+  _scoreManager: {fileID: 1680754613}
   _saveManager: {fileID: 2797083086886405066}
+  ads: {fileID: 7255695583564001975}
+  cointest: {fileID: 1680754619}
+  adButton: {fileID: 6209122174949245172}
 --- !u!114 &2797083086886405066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,8 +408,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf296d7c0cdcc541bb5cb79750a9448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 1221322642545465352}
---- !u!114 &609808551192286178
+--- !u!114 &7255695583564001975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209122175100364233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac58ce89ddffb0d41a1c499466e3fe6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myGameIdAndroid: 5266579
+  adUnitIdAndroid: Interstitial_Android
+  myAdUnitId: 
+  adStarted: 0
+  testMode: 1
+--- !u!114 &1680754613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -416,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513914068e2c5834c88470dec0080a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1221322642545465352
+--- !u!114 &1680754619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -425,10 +446,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6209122175100364233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2218c1d73f5eb2a48a69214e2870e2f1, type: 3}
+  m_Script: {fileID: 11500000, guid: daadda28d07081f48b316dd3fbc74a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: []
 --- !u!1 &6209122175146556940
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,8 +484,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -14.01001}
-  m_SizeDelta: {x: 200, y: 28.02}
+  m_AnchoredPosition: {x: 0, y: -17.10701}
+  m_SizeDelta: {x: 200, y: 34.214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6209122175146556943
 CanvasRenderer:
@@ -599,8 +619,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.0019302, y: 29.971}
-  m_SizeDelta: {x: 545.16, y: 55.942}
+  m_AnchoredPosition: {x: 0.0019302, y: 23.292}
+  m_SizeDelta: {x: 269.2864, y: 44.983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6209122175508310210
 CanvasRenderer:
@@ -1026,8 +1046,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -52.061035}
-  m_SizeDelta: {x: 0, y: -104.1251}
+  m_AnchoredPosition: {x: 0, y: -52.061}
+  m_SizeDelta: {x: 0, y: -104.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6209122175854483145
 CanvasRenderer:
