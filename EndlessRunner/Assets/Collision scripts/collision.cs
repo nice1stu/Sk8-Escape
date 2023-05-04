@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -48,7 +49,7 @@ public class collision : MonoBehaviour
     
     void AfterDeath()
     {
-        
+        SceneManager.LoadScene("GameplayResults");
 
 
     }

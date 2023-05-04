@@ -16,18 +16,17 @@ namespace Ads.Scripts
         public bool adStarted;
         //If you want to be in test mode or not
         public bool testMode = true;
-
+        
         private void Awake()
         {
             InitializeAds();
         }
-
         private void Update()
         {
             //Run the ad
-            if (Advertisement.isInitialized && !adStarted)
+            if (Advertisement.isInitialized && !adStarted && GameplayResults.hasPlayedAd)
             {
-                LoadAd();
+                LoadAd(); 
             }
         }
 
@@ -96,7 +95,7 @@ namespace Ads.Scripts
 
         public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
