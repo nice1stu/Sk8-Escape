@@ -1,4 +1,5 @@
 using System.IO;
+using Inventory.Scripts;
 using UnityEngine;
 
 
@@ -9,22 +10,22 @@ public class SaveManager : MonoBehaviour
     public int SaveTotalCoins { get; set; }
     public int SaveHighScore { get; set; }
 
-    private MonoBehaviour[] LootBoxes => LoadLootBoxData();
+    private Countdown[] LootBoxes => LoadLootBoxData();
 
-    private void SaveLootBoxData(MonoBehaviour[] lootBoxes)
+    private void SaveLootBoxData(Countdown[] lootBoxes)
     {
-        MonoBehaviour[] data = lootBoxes;
+        Countdown[] data = lootBoxes;
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/lootBoxes.save.json", json);
     }
 
-    private MonoBehaviour[] LoadLootBoxData()
+    private Countdown[] LoadLootBoxData()
     {
         string path = Application.persistentDataPath + "/lootBoxes.save.json";
         if (!File.Exists(path)) return null;
 
         string json = File.ReadAllText(path);
-        MonoBehaviour[] data = JsonUtility.FromJson<MonoBehaviour[]>(json);
+        Countdown[] data = JsonUtility.FromJson<Countdown[]>(json);
         return data;
     }
     private void Awake()
