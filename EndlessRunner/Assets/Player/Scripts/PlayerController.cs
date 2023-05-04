@@ -51,19 +51,41 @@ namespace Player
             tap = playerInput.actions.FindAction("Tap");
 
 
-            currentState = new CoastState();
+            // Transitions
+            var coast = new CoastState();
             var ollie = new OllieState();
+            var kickflip = new KickflipState();
+            var shuvit = new ShuvitState();
+            var coffin = new CoffinState();
             var falling = new FallingState();
-            new OllieTransition(currentState, ollie, dragActionUp);
-            new OllieTransition(falling, ollie, dragActionUp);
-            new FallingTransition(currentState, falling);
-            new FallingTransition(ollie, falling);
+            currentState = coast;
             
+            // Up swipe
+            new OllieTransition(coast, ollie, dragActionUp);
+            new KickflipTransition(ollie, kickflip, dragActionUp);
+            new InputTransition(coffin, coast, dragActionUp);
+            
+            // Right swipe
+            new ShuvitTransition(coast, shuvit, dragActionRight);
+            
+            // Down swipe
+            new CoffinTransition(coast, coffin, dragActionDown);
+
+            // Transitions to falling
+            new FallingTransition(coast, falling);
+            new FallingTransition(ollie, falling);
+            new FallingTransition(kickflip, falling);
+            new FallingTransition(shuvit, falling);
+            new FallingTransition(coffin, falling);
+            
+            // Other transitions
+            new TimedTransition(coffin, coast, model.coffinTime);
+            new GroundedTransition(falling, coast);
             
             currentState.Enter(this);
 
-            _targetPlayerHeight = model.playerStandHeight;
-            UpdatePlayerHeight(_targetPlayerHeight);
+            targetPlayerHeight = model.playerStandHeight;
+            UpdatePlayerHeight(targetPlayerHeight);
         }
 
         private void OnEnable()
@@ -181,7 +203,7 @@ namespace Player
             //Debug.Log(currentState);
             // GetInputs(true);
             grounded = GetGrounded();
-            UpdatePlayerHeight(_targetPlayerHeight, model.smoothCrouch);
+            UpdatePlayerHeight(targetPlayerHeight, model.smoothCrouch);
             if (model.isAlive)
                 ConstantMove();
             ConstantMove();
@@ -380,8 +402,8 @@ namespace Player
                 if(interactBuffer[i].TryGetComponent(out IInteractable interactable)) interactable.Interact(this);
         }
     
-        private float _targetPlayerHeight;
-
+        [HideInInspector]
+        public float targetPlayerHeight;
         private void UpdatePlayerHeight(float height, bool smooth = false)
         {
             view.DummyCoffinScaler(_col.size, _col.offset);
