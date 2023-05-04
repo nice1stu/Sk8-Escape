@@ -10,27 +10,27 @@ public class SaveManager : MonoBehaviour
     public int SaveTotalCoins { get; set; }
     public int SaveHighScore { get; set; }
 
-    public Dictionary<int, float> SaveLootBoxCooldown
+
+    private MonoBehaviour[] LootBoxes => LoadLootBoxData();
+
+    private void SaveLootBoxData(MonoBehaviour[] lootBoxes)
     {
-        get => lootboxCooldowns;
-        set => lootboxCooldowns = value;
+        MonoBehaviour[] data = lootBoxes;
+        string json = JsonUtility.ToJson(data);
+        File.WriteAllText(Application.persistentDataPath + "/lootBoxes.save.json", json);
     }
+    
+    public MonoBehaviour[] LoadLootBoxData()
+    {
+        string path = Application.persistentDataPath + "/lootBoxes.save.json";
+        if (!File.Exists(path)) return null;
 
-    private Dictionary<int, float> lootboxCooldowns = new Dictionary<int, float>();
-
+        string json = File.ReadAllText(path);
+        MonoBehaviour[] data = JsonUtility.FromJson<MonoBehaviour[]>(json);
+        return data;
+    }
     private void Awake()
     {
-        // Load saved lootbox cooldowns
-        if (PlayerPrefs.HasKey("lootboxCooldowns"))
-        {
-            string[] cooldownData = PlayerPrefs.GetString("lootboxCooldowns").Split(',');
-            for (int i = 0; i < cooldownData.Length; i += 2)
-            {
-                int index = int.Parse(cooldownData[i]);
-                float time = float.Parse(cooldownData[i + 1]);
-                lootboxCooldowns[index] = time;
-            }
-        }
         LoadData();
     }
 
