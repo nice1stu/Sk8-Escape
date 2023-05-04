@@ -1,67 +1,86 @@
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-//This script is just for testing the SaveManager script
+// This script is just for testing the SaveManager script - XXX Delete in Main Game XXX
 public class GameTester : MonoBehaviour
 {
+    public float adjustMusicVolume;
+    public bool toggleMusicMute = true;
+    public float adjustSfxVolume;
+    public bool toggleSfxMute = true;
+    public string languageSetting;
+    
     public int totalPlayerScore;
     public int totalPlayerGems;
     public int totalPlayerCoins;
     public int currentRunScore;
     [SerializeField] private int highScore;
-    public InventoryManager inventoryManager;
-    private SaveManager saveManager;
-
-    private void Start()
-    {
-        // Get the SaveManager component
-        saveManager = GetComponent<SaveManager>();
-
-        // Load player data
-        LoadPlayerData();
-    }
     
+    private SaveManager _saveManager;
+    private SaveSettings _saveSettings;
+
+    private void Awake()
+    {
+        // Get the Save components
+        _saveManager = GetComponent<SaveManager>();
+        _saveSettings = GetComponent<SaveSettings>();
+
+        // Load user saves
+        LoadPlayerData();
+        _saveSettings.LoadSettingsData();
+    }
+
     void UpdateHighScore()
     {
-        if (currentRunScore <= saveManager.SavedHighScore) return;
-        saveManager.SavedHighScore = currentRunScore;
+        if (currentRunScore <= _saveManager.SaveHighScore) return;
+        _saveManager.SaveHighScore = currentRunScore;
     }
 
     private void SavePlayerData()
     {
-        if (saveManager == null) return;
+        if (_saveManager == null) return;
 
         // Update the saved player points and coins in the SaveManager
-        saveManager.SavedPlayerScore = totalPlayerScore;
-        saveManager.SavedPlayerGems = totalPlayerGems;
-        saveManager.SavedPlayerCoins = totalPlayerCoins;
+        _saveManager.SaveTotalScore = totalPlayerScore;
+        _saveManager.SaveTotalGems = totalPlayerGems;
+        _saveManager.SaveTotalCoins = totalPlayerCoins;
+
+        _saveSettings.SaveMusicVolume = adjustMusicVolume;
+        _saveSettings.SaveMusicMute = toggleMusicMute;
+        _saveSettings.SaveSfxVolume = adjustSfxVolume;
+        _saveSettings.SaveSfxMute = toggleSfxMute;
+        _saveSettings.SaveLanguageSetting = languageSetting;
         
         // Save the player data in the SaveManager
-        saveManager.SaveGameData();
+        _saveManager.SaveGameData();
+        _saveSettings.SaveSettingsData();
     }
 
     private void LoadPlayerData()
     {
         // Load the player data from the SaveManager
-        saveManager.LoadData();
+        _saveManager.LoadData();
+        _saveSettings.LoadSettingsData();
 
         // Update the player points and coins from the saved data
-        totalPlayerScore = saveManager.SavedPlayerScore;
-        totalPlayerGems = saveManager.SavedPlayerGems;
-        totalPlayerCoins = saveManager.SavedPlayerCoins;
-        highScore = saveManager.SavedHighScore;
-
-        // Update the inventory from the saved data
-        if (inventoryManager == null || saveManager.inventoryManager == null) return;
-        inventoryManager.inventory = saveManager.inventoryManager.inventory;
+        totalPlayerScore = _saveManager.SaveTotalScore;
+        totalPlayerGems = _saveManager.SaveTotalGems;
+        totalPlayerCoins = _saveManager.SaveTotalCoins;
+        highScore = _saveManager.SaveHighScore;
+        
+        adjustMusicVolume = _saveSettings.SaveMusicVolume;
+        toggleMusicMute = _saveSettings.SaveMusicMute;
+        adjustSfxVolume = _saveSettings.SaveSfxVolume;
+        toggleSfxMute= _saveSettings.SaveSfxMute;
+        languageSetting = _saveSettings.SaveLanguageSetting;
     }
-    
+
     [ContextMenu("Add Points")]
     private void AddGPoints()
     {
         totalPlayerScore += 10;
     }
-    
+
     [ContextMenu("Add Gems")]
     private void AddGems()
     {
@@ -74,13 +93,6 @@ public class GameTester : MonoBehaviour
         totalPlayerCoins += 5;
     }
 
-    [ContextMenu("Add Items")]
-    private void AddItems()
-    {
-        inventoryManager.AddItem(new InventoryItem("Board", 1));
-        inventoryManager.AddItem(new InventoryItem("Wheel", 4));
-    }
-    
     [ContextMenu("End Run")]
     private void EndRun()
     {
@@ -94,8 +106,46 @@ public class GameTester : MonoBehaviour
     private void ResetPlayerData()
     {
         totalPlayerScore = totalPlayerGems = totalPlayerCoins = currentRunScore = highScore = 0;
-        inventoryManager.ClearInventory();
-        saveManager.SavedHighScore = 0;
+        _saveManager.SaveHighScore = 0;
+        adjustMusicVolume = 1.0f;
+        toggleMusicMute = true;
+        adjustSfxVolume = 1.0f;
+        toggleSfxMute= true;
         SavePlayerData();
+    }
+
+    // Context menus for adjusting music and sound effect settings
+    [ContextMenu("Set Music Volume 50%")]
+    private void SetMusicVolume50()
+    {
+        adjustMusicVolume += 0.3f;
+    }
+
+    [ContextMenu("Set Music Volume 0% (Mute)")]
+    private void SetMusicMute()
+    {
+        toggleMusicMute = false;
+    }
+
+    [ContextMenu("Set Music Volume 100%")]
+    private void SetMusicVolume100()
+    {
+        adjustSfxVolume += 0.03f;
+    }
+
+    [ContextMenu("Set Music Volume 0% (Mute)")]
+    private void SetSfxMute()
+    {
+        toggleSfxMute = false;
+    }
+    
+    [ContextMenu("Set Language")]
+    private void SetLanguage()
+    {
+        // Show a context menu with two options and assign the selected option to languageSetting
+        GenericMenu menu = new GenericMenu();
+        menu.AddItem(new GUIContent("English"), false, () => { languageSetting = "en"; });
+        menu.AddItem(new GUIContent("Swedish"), false, () => { languageSetting = "sv"; });
+        menu.ShowAsContext();
     }
 }
