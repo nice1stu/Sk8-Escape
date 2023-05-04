@@ -217,8 +217,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1288642674}
   - component: {fileID: 1288642673}
-  - component: {fileID: 1288642672}
   - component: {fileID: 1288642671}
+  - component: {fileID: 1288642675}
   m_Layer: 0
   m_Name: SaveTestRig
   m_TagString: Untagged
@@ -238,20 +238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf296d7c0cdcc541bb5cb79750a9448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 1288642672}
---- !u!114 &1288642672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288642670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2218c1d73f5eb2a48a69214e2870e2f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: []
 --- !u!114 &1288642673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,12 +250,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73775397bd4bf08458cd374b0d717e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  adjustMusicVolume: 0
+  toggleMusicMute: 1
+  adjustSfxVolume: 0
+  toggleSfxMute: 1
   totalPlayerScore: 0
   totalPlayerGems: 0
   totalPlayerCoins: 0
   currentRunScore: 0
   highScore: 0
-  inventoryManager: {fileID: 1288642672}
 --- !u!4 &1288642674
 Transform:
   m_ObjectHideFlags: 0
@@ -285,3 +274,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1288642675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288642670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa9523164bf24d46841a0d2fb83389f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
