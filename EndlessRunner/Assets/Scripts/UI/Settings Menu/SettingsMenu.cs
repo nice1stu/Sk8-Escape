@@ -13,6 +13,7 @@ using UnityEngine.UI;
 //     )]
 public class SettingsMenu : MonoBehaviour
 {
+    // TODO: Bind pattern?
     // Startup scene is responsible for loading the StartMenu scene
     public static SettingsMenu MenuInstance;
 
@@ -29,28 +30,73 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] public Button backButton;
 
     [SerializeField] private SaveSettings persistentSettingsManager;
-    
+    public static bool StartHidden = true;
+    private static bool _isActive = !StartHidden;
     
     void Awake()
     {
-        MenuInstance = this;
+        MenuInstance ??= this;
 
         // Not great, interfacing with a static class would be better
         persistentSettingsManager ??= GetComponent<SaveSettings>(); // get component if null
-
+        
+        // Language Button's text will change to the currently selected language
+        // Get and cache the component here
         changeLanguageButtonText = changeLanguageButton.GetComponentInChildren<TMP_Text>(true);
         
-        // I am assured that there will always be a saved state, initialized on first boot
         SetUIStateFromSavedData();
+        
+        gameObject.SetActive(_isActive);
     }
     
+    // TODO: Refactor abhorrent eldritch abomination
     void Start()
     {
         
-        
+        effectsVolumeSlider.onValueChanged.AddListener(delegate
+        {
+            persistentSettingsManager.SaveSfxVolume = effectsVolumeSlider.value;
+            persistentSettingsManager.SaveSettingsData();
+            
+        } );
+        musicVolumeSlider.onValueChanged.AddListener(delegate
+        {
+            persistentSettingsManager.SaveMusicVolume = musicVolumeSlider.value;
+            persistentSettingsManager.SaveSettingsData();
+            
+        } );
 
+        effectsMuteToggle.onValueChanged.AddListener(delegate
+        {
+            persistentSettingsManager.SaveSfxMute = effectsMuteToggle.isOn;
+            persistentSettingsManager.SaveSettingsData();
+            
+        } );
+        
+        musicMuteToggle.onValueChanged.AddListener(delegate
+        {
+            persistentSettingsManager.SaveMusicMute = musicMuteToggle.isOn;
+            persistentSettingsManager.SaveSettingsData();
+        } );
+        
+        changeLanguageButton.onClick.AddListener(delegate
+        {
+            Debug.Log("Switch Language");
+            persistentSettingsManager.SaveSettingsData();
+        } );
+        
+        backButton.onClick.AddListener(ToggleSettingsMenu);
     }
 
+    public static void ToggleSettingsMenu()
+    {
+        Assert.IsNotNull(MenuInstance);
+        
+        _isActive = !_isActive;
+
+        MenuInstance.gameObject.SetActive(_isActive);
+    }
+    
     // Just to make things look a little cleaner, more consistent
     private static void SetSlider(float value, Slider slider) => slider.value = value;
     private static void SetToggle(bool isChecked, Toggle toggle) => toggle.isOn = isChecked;
@@ -70,8 +116,7 @@ public class SettingsMenu : MonoBehaviour
     {
         Assert.IsNotNull(persistentSettingsManager);
         Assert.IsNotNull(changeLanguageButtonText);  // checking this specifically since it's not a simple reference
-
-        // persistentSettingsManager.SaveSettingsData();
+        
         persistentSettingsManager.LoadSettingsData();
         SetUIFromState(persistentSettingsManager);
     }
