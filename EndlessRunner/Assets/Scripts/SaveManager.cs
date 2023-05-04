@@ -15,7 +15,7 @@ public class SaveManager : MonoBehaviour
     public int SavedPlayerCoins { get; set; }
     public int SavedHighScore { get; set; }
 
-    private void Start() => LoadData();
+    private void Awake() => LoadData();
 
     public void LoadData()
     {
