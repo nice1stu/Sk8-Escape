@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Inventory_Interfaces;
-using UnityEngine;
+using Item;
 
-namespace Inventory_Interfaces
+namespace Inventory
 {
     public interface IInventoryData
     {

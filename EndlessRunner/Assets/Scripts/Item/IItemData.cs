@@ -1,4 +1,6 @@
-namespace Inventory_Interfaces
+using Stat;
+
+namespace Item
 {
     public interface IItemData
     {

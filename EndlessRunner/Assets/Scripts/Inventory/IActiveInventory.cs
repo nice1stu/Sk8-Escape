@@ -1,6 +1,7 @@
 using System;
+using Item;
 
-namespace Inventory_Interfaces
+namespace Inventory
 {
     public interface IActiveInventory
     {
