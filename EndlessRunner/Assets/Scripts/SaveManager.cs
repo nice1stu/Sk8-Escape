@@ -35,6 +35,7 @@ public class SaveManager : MonoBehaviour
         inventoryManager.inventory = saveData.inventory;
     }
 
+    [ContextMenu("Save Data")]
     private void SaveData()
     {
         SaveData saveData = new SaveData
