@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 2467846553684925727}
   - component: {fileID: 2916409661291331584}
   - component: {fileID: 2916409661291331585}
+  - component: {fileID: 1599283817310161492}
+  - component: {fileID: 1599283817310161499}
+  - component: {fileID: 2371007868281178296}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -62,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277742112aee9604eba3047c96332e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 100
+  movementSpeed: 500
   ollieJumpForce: 16
   kickflipJumpForce: 11
   shuvitJumpForce: 12
@@ -72,6 +75,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 129
+  isAlive: 0
 --- !u!114 &2916409661291331581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +147,64 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1599283817310161492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6550543353071559523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4acd72ae290b8347884a4c18963015d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraShake: {fileID: 0}
+  life: {fileID: 0}
+--- !u!114 &1599283817310161499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6550543353071559523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 1c8dd2341babe684cae981cf2605cba3, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Touch
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &2371007868281178296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6550543353071559523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4acd72ae290b8347884a4c18963015d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraShake: {fileID: 0}
+  life: {fileID: 0}
 --- !u!1 &8923090069800149062
 GameObject:
   m_ObjectHideFlags: 0
