@@ -21,7 +21,6 @@ public class SlowMoController : MonoBehaviour, IPickupable
     public void OnPickup()
     {
         scoreModel.AddPowerUp();
-        Debug.Log("Destroyed powerup");
         Destroy(gameObject);
     }
 }
