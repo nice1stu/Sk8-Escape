@@ -4,7 +4,7 @@ namespace Item
 {
     public interface IItemData
     {
-        IItemConfig ItemConfig { get; set; }
-        IStats BonusStats { get; set; }
+        IItemConfig ItemConfig { get; }
+        IStats BonusStats { get; }
     }
 }
