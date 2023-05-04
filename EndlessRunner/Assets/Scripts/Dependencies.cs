@@ -2,7 +2,9 @@ using Inventory;
 
 public static class Dependencies
 {
-    public static IInventoryData Inventory { get; } = null;
+    private static readonly IInventoryData Inventory1 = null;
+
+    public static IInventoryData Inventory => Inventory1;
 
     public static IActiveInventory Equipped { get; } = null;
     // public static IPlayerStats PlayerStats {get;}
