@@ -1,3 +1,4 @@
+using Item;
 using UnityEngine;
 
 namespace Inventory
@@ -14,12 +15,18 @@ namespace Inventory
             {
                 Instantiate(itemPrefab, SkateboardContent);
             }
+            Dependencies.Instance.Inventory.ItemAdded+= InventoryOnItemAdded;
+        }
+
+        private void InventoryOnItemAdded(IItemData obj)
+        {
+            Instantiate(itemPrefab, SkateboardContent);
         }
 
         // Update is called once per frame
-        void Update()
+        void OnDestroy()
         {
-        
+            Dependencies.Instance.Inventory.ItemAdded-= InventoryOnItemAdded;
         }
     }
 }
