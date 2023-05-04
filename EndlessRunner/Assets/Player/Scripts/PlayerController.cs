@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug; //Needed to stop the default C# diagnostics from taking over debug commands
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,6 +31,14 @@ public class PlayerController : MonoBehaviour
     private InputAction tap;
     private PlayerInput playerInput;
 
+    private float oldTimeScale;
+    
+    private PlayerScoreModel scoreModel;
+
+    public Coroutine slowmoCoolDown;
+
+    private Stopwatch slowmoCoolDownTimer;
+
     private bool SwipeLock = false;
     private bool tappedOnce = false;
     
@@ -51,6 +62,9 @@ public class PlayerController : MonoBehaviour
         touch = playerInput.actions.FindAction("Touch");
         tap = playerInput.actions.FindAction("Tap");
 
+        slowmoCoolDownTimer = new Stopwatch();
+        
+
     }
 
     private void OnEnable()
@@ -61,6 +75,8 @@ public class PlayerController : MonoBehaviour
         dragActionLeft.performed += SwipeLeftReceived;
         touch.canceled += TouchStopped;
         tap.performed += Tap;
+
+        scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
     }
 
     private void OnDisable()
@@ -149,6 +165,44 @@ public class PlayerController : MonoBehaviour
     private void DoubleTap()
     {
         Debug.Log("Double tap!");
+        if (scoreModel.TryToUsePowerUp())
+        {
+            oldTimeScale = Time.timeScale;
+            Time.timeScale = 0.5f;
+            slowmoCoolDown = StartCoroutine(SlowmoCoolDown());
+            slowmoCoolDownTimer.Reset();
+            slowmoCoolDownTimer.Start();
+        }
+        
+    }
+
+    public void PauseSlowmo()
+    {
+        if (slowmoCoolDownTimer.IsRunning)
+        {
+            slowmoCoolDownTimer.Stop();
+        }
+        else
+        {
+            slowmoCoolDownTimer.Restart();
+        }
+    }
+
+    IEnumerator SlowmoCoolDown()
+    {
+        while (true)
+        {
+
+
+            Debug.Log("Elapsed time: " + slowmoCoolDownTimer.Elapsed.Seconds);
+            if (slowmoCoolDownTimer.Elapsed.Seconds > 3f)
+            {
+                Time.timeScale = oldTimeScale;
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     IEnumerator DoubleTapCooldown()
