@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 
+namespace UI.Scripts
+{
 public class UIManager : MonoBehaviour
 {
     public SaveManager saveManager;
@@ -26,4 +28,5 @@ public class UIManager : MonoBehaviour
         saveManager.SaveGameData();
         gemsView.text = saveManager.SaveTotalGems.ToString();
     }
+}
 }
