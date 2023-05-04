@@ -19,7 +19,7 @@ public class GameTester : MonoBehaviour
     private SaveManager _saveManager;
     private SaveSettings _saveSettings;
 
-    private void Start()
+    private void Awake()
     {
         // Get the Save components
         _saveManager = GetComponent<SaveManager>();
