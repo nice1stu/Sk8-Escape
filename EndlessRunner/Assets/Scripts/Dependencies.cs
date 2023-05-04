@@ -1,12 +1,18 @@
+using System;
 using Inventory;
+using UnityEngine;
 
-public static class Dependencies
+[CreateAssetMenu]
+public class Dependencies : ScriptableObject
 {
-    private static readonly IInventoryData Inventory1 = null;
+    public static Dependencies Instance;
+    [SerializeField] private DummyInventory dummyInventory;
+    
+    public IInventoryData Inventory => dummyInventory;
+    public IActiveInventory Equipped { get; } = null;
 
-    public static IInventoryData Inventory => Inventory1;
-
-    public static IActiveInventory Equipped { get; } = null;
-    // public static IPlayerStats PlayerStats {get;}
-    // public static IItemFactory ItemFactory {get;}
+    private void Awake()
+    {
+        Instance = this;
+    }
 }

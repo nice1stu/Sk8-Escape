@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af17f8181494f86aa36d9df7b763c0f, type: 3}
+  m_Name: Dependencies
+  m_EditorClassIdentifier: 
+  dummyInventory:
+    dummyItemTemplate:
+      bonusStats:
+        speed: 0
+        stability: 0
+        style: 0
+        balance: 0
+      itemConfig: {fileID: 11400000, guid: 09f3ff1d1a9c5487d91068175f9033b1, type: 2}
+    items:
+    - bonusStats:
+        speed: 0
+        stability: 0
+        style: 0
+        balance: 0
+      itemConfig: {fileID: 11400000, guid: 09f3ff1d1a9c5487d91068175f9033b1, type: 2}
+    - bonusStats:
+        speed: 0
+        stability: 0
+        style: 0
+        balance: 0
+      itemConfig: {fileID: 11400000, guid: 09f3ff1d1a9c5487d91068175f9033b1, type: 2}
+    - bonusStats:
+        speed: 0
+        stability: 0
+        style: 0
+        balance: 0
+      itemConfig: {fileID: 11400000, guid: 09f3ff1d1a9c5487d91068175f9033b1, type: 2}

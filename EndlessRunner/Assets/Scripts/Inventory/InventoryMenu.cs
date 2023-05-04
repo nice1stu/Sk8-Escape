@@ -10,7 +10,7 @@ namespace Inventory
         // Start is called before the first frame update
         void Start()
         {
-            foreach (var inventoryItem in Dependencies.Inventory.Items)
+            foreach (var inventoryItem in Dependencies.Instance.Inventory.Items)
             {
                 Instantiate(itemPrefab, SkateboardContent);
             }
