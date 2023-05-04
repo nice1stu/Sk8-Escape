@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RunInventoryManager : MonoBehaviour
 {
+    public static int coinAmount;
+    public static int chestAmount;
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("Pickupable"))
@@ -14,7 +16,16 @@ public class RunInventoryManager : MonoBehaviour
                 pickupable.OnPickup();
             }
             
-            Debug.Log("Nice!!!");
         }
     }
+    public int GetCoinAmount()
+    {
+        return coinAmount;
+    }
+
+    public int GetChestAmount()
+    {
+        return chestAmount;
+    }
+    
 }

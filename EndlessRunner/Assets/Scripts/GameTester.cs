@@ -12,7 +12,7 @@ public class GameTester : MonoBehaviour
     public InventoryManager inventoryManager;
     private SaveManager saveManager;
 
-    private void Start()
+    private void Awake()
     {
         // Get the SaveManager component
         saveManager = GetComponent<SaveManager>();

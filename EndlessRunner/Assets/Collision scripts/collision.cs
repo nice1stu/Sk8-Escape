@@ -3,22 +3,40 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class collision : MonoBehaviour
 {
-    public GameObject spawnPoint;
     
+    public CameraShake cameraShake;
+    public PlayerModel life;
+    
+
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.collider.gameObject.layer == LayerMask.NameToLayer("WallObstacles"))
         {
-            Death();
+            life.isAlive = false;
+           StartCoroutine(cameraShake.Shake(.13f,0.6f));
+           StartCoroutine(DelayCoroutine(1.0f));
+           
+           
         }
     }
 
-    void Death()
+    void AfterDeath()
     {
-        transform.position = spawnPoint.transform.position;
+        
+
+
+    }
+
+   
+    
+    IEnumerator DelayCoroutine(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        AfterDeath();
     }
     
 }

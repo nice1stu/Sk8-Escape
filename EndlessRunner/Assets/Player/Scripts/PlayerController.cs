@@ -2,6 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug; //Needed to stop the default C# diagnostics from taking over debug commands
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +22,26 @@ public class PlayerController : MonoBehaviour
 
     private SkateboardTrickState currentState;
 
+    //Input stuff for the touch controls
+    private InputAction dragActionUp;
+    private InputAction dragActionDown;
+    private InputAction dragActionRight;
+    private InputAction dragActionLeft;
+    private InputAction touch;
+    private InputAction tap;
+    private PlayerInput playerInput;
+
+    private float oldTimeScale;
+    
+    private PlayerScoreModel scoreModel;
+
+    public Coroutine slowmoCoolDown;
+
+    private Stopwatch slowmoCoolDownTimer;
+
+    private bool SwipeLock = false;
+    private bool tappedOnce = false;
+    
     // References
     private Rigidbody2D _rb;
     private PlayerModel _model;
@@ -27,6 +51,43 @@ public class PlayerController : MonoBehaviour
     private bool _grounded;
     private bool _canGrind;
 
+
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        dragActionUp = playerInput.actions.FindAction("SwipeUp");
+        dragActionDown = playerInput.actions.FindAction("SwipeDown");
+        dragActionLeft = playerInput.actions.FindAction("SwipeLeft");
+        dragActionRight = playerInput.actions.FindAction("SwipeRight");
+        touch = playerInput.actions.FindAction("Touch");
+        tap = playerInput.actions.FindAction("Tap");
+
+        slowmoCoolDownTimer = new Stopwatch();
+        
+
+    }
+
+    private void OnEnable()
+    {
+        dragActionUp.performed += SwipeUpReceived;
+        dragActionDown.performed += SwipeDownReceived;
+        dragActionRight.performed += SwipeRightReceived;
+        dragActionLeft.performed += SwipeLeftReceived;
+        touch.canceled += TouchStopped;
+        tap.performed += Tap;
+
+        scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
+    }
+
+    private void OnDisable()
+    {
+        dragActionUp.performed -= SwipeUpReceived;
+        dragActionDown.performed -= SwipeDownReceived;
+        dragActionRight.performed -= SwipeRightReceived;
+        dragActionLeft.performed -= SwipeLeftReceived;
+        touch.canceled -= TouchStopped;
+        tap.performed -= Tap;
+    }
 
     void Start()
     {
@@ -40,9 +101,124 @@ public class PlayerController : MonoBehaviour
     private bool upSwipe, downSwipe, leftSwipe, rightSwipe, press;
 
 
+    private void SwipeUpReceived(InputAction.CallbackContext context)
+    {
+        if (!SwipeLock)
+        {
+            SwipeLock = true;
+            Debug.Log("Up!");
+            upSwipe = true;
+            InputHandling();
+        }
+    }
+    
+    private void SwipeRightReceived(InputAction.CallbackContext context)
+    {
+        if (!SwipeLock)
+        {
+            SwipeLock = true;
+            Debug.Log("Right!");
+            rightSwipe = true;
+            InputHandling();
+        }
+    }
+    
+    private void SwipeLeftReceived(InputAction.CallbackContext context)
+    {
+        if (!SwipeLock)
+        {
+            SwipeLock = true;
+            Debug.Log("Left!");
+            leftSwipe = true;
+            InputHandling();
+        }
+    }
+
+    private void SwipeDownReceived(InputAction.CallbackContext context)
+    {
+        if (!SwipeLock)
+        {
+            SwipeLock = true;
+            Debug.Log("Down!");//TODO: Trigger crouch here!
+            downSwipe = true;
+            InputHandling();
+        }
+    }
+
+    private void Tap(InputAction.CallbackContext context)
+    {
+        Debug.Log("Running tap event");
+        if (!tappedOnce)
+        {
+            Debug.Log("Tap!");
+            tappedOnce = true;
+            StartCoroutine(DoubleTapCooldown());
+        }
+        else
+        {
+            DoubleTap();
+            tappedOnce = false;
+            StopCoroutine(DoubleTapCooldown());
+        }
+    }
+
+    private void DoubleTap()
+    {
+        Debug.Log("Double tap!");
+        if (scoreModel.TryToUsePowerUp())
+        {
+            oldTimeScale = Time.timeScale;
+            Time.timeScale = 0.5f;
+            slowmoCoolDown = StartCoroutine(SlowmoCoolDown());
+            slowmoCoolDownTimer.Reset();
+            slowmoCoolDownTimer.Start();
+        }
+        
+    }
+
+    public void PauseSlowmo()
+    {
+        if (slowmoCoolDownTimer.IsRunning)
+        {
+            slowmoCoolDownTimer.Stop();
+        }
+        else
+        {
+            slowmoCoolDownTimer.Restart();
+        }
+    }
+
+    IEnumerator SlowmoCoolDown()
+    {
+        while (true)
+        {
+
+
+            Debug.Log("Elapsed time: " + slowmoCoolDownTimer.Elapsed.Seconds);
+            if (slowmoCoolDownTimer.Elapsed.Seconds > 3f)
+            {
+                Time.timeScale = oldTimeScale;
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    IEnumerator DoubleTapCooldown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        tappedOnce = false;
+    }
+    
+    private void TouchStopped(InputAction.CallbackContext context)
+    {
+        SwipeLock = false;
+    }
+
     private void Update()
     {
-        GetInputs(true);
+        GetInputsKeyboard(true);
     }
 
     void FixedUpdate()
@@ -52,12 +228,14 @@ public class PlayerController : MonoBehaviour
         _grounded = GetGrounded();
         ConstantMove();
         DummyInputHandling();
-        GetInputs(false);
+        GetInputsKeyboard(false);
     }
 
-    private void GetInputs(bool get)
+    private void GetInputsKeyboard(bool get)
     {
         // tihihi
+        
+        //So how does this work?
         if (upSwipe != get)
             upSwipe = Input.GetKeyDown(KeyCode.UpArrow);
         if (downSwipe != get)
@@ -72,7 +250,7 @@ public class PlayerController : MonoBehaviour
 
     private void DummyInputHandling()
     {
-        Debug.Log(_grounded);
+        //Debug.Log(_grounded);
         if (upSwipe)
         {
             if (CanOllie())
@@ -108,6 +286,51 @@ public class PlayerController : MonoBehaviour
             return;
         }
     }
+    
+    private void InputHandling()
+    {
+        //Debug.Log(_grounded);
+        if (upSwipe)
+        {
+            if (CanOllie())
+            {
+                Ollie();
+                return;
+            }
+
+            if (CanKickflip())
+            {
+                Kickflip();
+                return;
+            }
+
+            upSwipe = false;
+        }
+
+        if (rightSwipe)
+        {
+            if (CanShuvit())
+            {
+                Shuvit();
+            }
+
+            rightSwipe = false;
+        }
+
+        if (CanCoast())
+        {
+            currentState = SkateboardTrickState.Coast;
+            return;
+        }
+
+        if (CanFall())
+        {
+            currentState = SkateboardTrickState.Falling;
+            return;
+        }
+    }
+    
+    
 
     private void ConstantMove()
     {
@@ -116,7 +339,7 @@ public class PlayerController : MonoBehaviour
 
     private void AddToCurrentVelocity(Vector2 addedVelocity)
     {
-        _rb.velocity = addedVelocity;
+        _rb.velocity = new Vector2(_rb.velocity.x, addedVelocity.y);
         return;
     }
 
