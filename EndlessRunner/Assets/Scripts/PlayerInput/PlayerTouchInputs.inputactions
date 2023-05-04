@@ -105,6 +105,17 @@
                 },
                 {
                     "name": "",
+                    "id": "8bfd4c95-76e7-42d9-a7f7-d1601da58f66",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ac0aa9a8-eb4a-457e-b67f-72f7bcfcc95b",
                     "path": "<Touchscreen>/delta/down",
                     "interactions": "",
