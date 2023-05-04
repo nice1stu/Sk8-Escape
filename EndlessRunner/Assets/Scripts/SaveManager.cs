@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Inventory.Scripts;
 using UnityEngine;
@@ -9,7 +10,8 @@ public class SaveManager : MonoBehaviour
     public int SaveTotalGems { get; set; }
     public int SaveTotalCoins { get; set; }
     public int SaveHighScore { get; set; }
-
+    
+    //public Countdown[] currentBoxes = new Countdown[4]; for testing
     private Countdown[] LootBoxes => LoadLootBoxData();
 
     private void SaveLootBoxData(Countdown[] lootBoxes)
