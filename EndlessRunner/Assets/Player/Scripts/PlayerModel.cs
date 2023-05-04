@@ -16,4 +16,6 @@ public class PlayerModel : MonoBehaviour
     [Header("Collisions")] 
     public float maxGroundAngle = 45f;
     public LayerMask groundLayers;
+    [Header("Other")]
+    public bool isAlive;
 }
