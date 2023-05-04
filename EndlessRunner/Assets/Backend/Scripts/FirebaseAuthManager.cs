@@ -68,7 +68,6 @@ namespace Backend.Scripts
             bool signedIn = user != auth.CurrentUser && auth.CurrentUser != null;
 
             if (!signedIn && user != null) message.text = "Signed out " + user.UserId;
-                //Debug.Log("Signed out " + user.UserId);
 
             user = auth.CurrentUser;
 
@@ -95,7 +94,6 @@ namespace Backend.Scripts
                 
                 string failedMessage = "Login Failed! Because ";
 
-                // For developers, todo: add a fail message for build and display it in game
                 switch (authError)
                 {
                     case AuthError.InvalidEmail:
@@ -114,7 +112,6 @@ namespace Backend.Scripts
                         failedMessage = "Login Failed";
                         break;
                 }
-
                 message.text = failedMessage;
             }
             else
@@ -125,8 +122,7 @@ namespace Backend.Scripts
 
                 UserName = user.DisplayName;
                 
-                //todo: Ask which scene to be loaded
-                // UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("StartMenu");
             }
         }
 
@@ -154,7 +150,6 @@ namespace Backend.Scripts
                     FirebaseException firebaseException = registerTask.Exception.GetBaseException() as FirebaseException;
                     AuthError authError = (AuthError)firebaseException.ErrorCode;
 
-                    //todo: display in game
                     string failedMessage = "Registration Failed! Because ";
                     switch (authError)
                     {
@@ -177,7 +172,6 @@ namespace Backend.Scripts
                             failedMessage = "Registration Failed";
                             break;
                     }
-
                     message.text = failedMessage;
                 }
                 else
@@ -202,7 +196,7 @@ namespace Backend.Scripts
                         AuthError authError = (AuthError)firebaseException.ErrorCode;
 
 
-                        string failedMessage = "Profile update Failed! Becuase ";
+                        string failedMessage = "Profile update Failed! Because ";
                         switch (authError)
                         {
                             case AuthError.InvalidEmail:
@@ -221,13 +215,12 @@ namespace Backend.Scripts
                                 failedMessage = "Profile update Failed";
                                 break;
                         }
-
                         message.text = failedMessage;
                     }
                     else
                     {
                         Debug.Log("Registration Successful Welcome " + user.DisplayName);
-                        LoginManager.Instance.OpenLoginPanel();
+                        UnityEngine.SceneManagement.SceneManager.LoadScene("StartMenu");
                     }
                 }
             }
