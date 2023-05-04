@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static RunInventoryManager;
 
 public class PlayerScoreView : MonoBehaviour
 {
@@ -23,5 +24,6 @@ public class PlayerScoreView : MonoBehaviour
         pointsText.SetText("Score: " + (int)model.GetScore());
         
         coinsText.SetText("Coins: " + model.GetCoins());
+        coinsText.SetText("Coins: " + coinAmount);
     }
 }
