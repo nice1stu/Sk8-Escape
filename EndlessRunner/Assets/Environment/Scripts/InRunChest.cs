@@ -18,7 +18,7 @@ public class InRunChest : MonoBehaviour, IPickupable
 
     public void OnPickup()
     {
-        coinAmount++;
+        chestAmount++;
         Debug.Log("chest amount:" + chestAmount);
         _audioSource.Play();
         _spriteRenderer.color = Color.clear;
