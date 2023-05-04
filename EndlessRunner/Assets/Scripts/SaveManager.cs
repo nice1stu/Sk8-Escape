@@ -1,6 +1,5 @@
 using System.IO;
 using UnityEngine;
-using System.Collections.Generic;
 
 
 public class SaveManager : MonoBehaviour
@@ -10,7 +9,6 @@ public class SaveManager : MonoBehaviour
     public int SaveTotalCoins { get; set; }
     public int SaveHighScore { get; set; }
 
-
     private MonoBehaviour[] LootBoxes => LoadLootBoxData();
 
     private void SaveLootBoxData(MonoBehaviour[] lootBoxes)
@@ -19,8 +17,8 @@ public class SaveManager : MonoBehaviour
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/lootBoxes.save.json", json);
     }
-    
-    public MonoBehaviour[] LoadLootBoxData()
+
+    private MonoBehaviour[] LoadLootBoxData()
     {
         string path = Application.persistentDataPath + "/lootBoxes.save.json";
         if (!File.Exists(path)) return null;
@@ -71,17 +69,4 @@ public class GameData
     public int totalGems;
     public int totalCoins;
     public int playerHighScore;
-    
-    private Dictionary<int, float> lootBoxCooldowns = new Dictionary<int, float>();
-
-    public float GetLootBoxCooldown(int lootBoxId)
-    {
-        float cooldown;
-        return lootBoxCooldowns.TryGetValue(lootBoxId, out cooldown) ? cooldown : 0f;
-    }
-
-    public void SetLootBoxCooldown(int lootBoxId, float cooldown)
-    {
-        lootBoxCooldowns[lootBoxId] = cooldown;
-    }
 }
