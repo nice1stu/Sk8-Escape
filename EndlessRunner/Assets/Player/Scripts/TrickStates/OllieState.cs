@@ -4,6 +4,10 @@ namespace Player
 {
     public class OllieState : TrickState
     {
+        public OllieState(float stateMinDuration) : base(stateMinDuration)
+        {
+            
+        }
         public override void Enter(PlayerController playerController)
         {
             base.Enter(playerController);

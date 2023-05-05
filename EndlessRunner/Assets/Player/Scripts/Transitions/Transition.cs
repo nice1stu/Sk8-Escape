@@ -1,6 +1,8 @@
+using UnityEngine;
+
 namespace Player
 {
-    public abstract class Transition
+    public abstract class Transition : MonoBehaviour
     {
         protected readonly TrickState from;
         protected readonly TrickState to;

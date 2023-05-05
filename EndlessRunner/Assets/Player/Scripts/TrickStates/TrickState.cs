@@ -8,7 +8,7 @@ namespace Player
         private float stateMinDuration;
         public float stateRemainingDuration;
 
-        protected TrickState(float stateMinDuration)
+        public TrickState(float stateMinDuration)
         {
             this.stateMinDuration = stateMinDuration;
         }

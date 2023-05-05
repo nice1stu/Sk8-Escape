@@ -53,11 +53,12 @@ namespace Player
 
             // Transitions
             var coast = new CoastState();
-            var ollie = new OllieState();
-            var kickflip = new KickflipState();
-            var shuvit = new ShuvitState();
+            var ollie = new OllieState(0.45f);
+            var kickflip = new KickflipState(0.3f);
+            var shuvit = new ShuvitState(0.3f);
             var coffin = new CoffinState();
             var falling = new FallingState();
+            var crashed = new CrashState();
             currentState = coast;
             
             // Up swipe
@@ -77,6 +78,14 @@ namespace Player
             new FallingTransition(kickflip, falling);
             new FallingTransition(shuvit, falling);
             new FallingTransition(coffin, falling);
+            
+            // Crash Transitions
+            new CrashTransition(coast, crashed);
+            new CrashTransition(ollie, crashed);
+            new CrashTransition(kickflip, crashed);
+            new CrashTransition(shuvit, crashed);
+            new CrashTransition(coffin, crashed);
+            new CrashTransition(falling, crashed);
             
             // Other transitions
             new TimedTransition(coffin, coast, model.coffinTime);
@@ -206,7 +215,6 @@ namespace Player
             UpdatePlayerHeight(targetPlayerHeight, model.smoothCrouch);
             if (model.isAlive)
                 ConstantMove();
-            ConstantMove();
             InputHandling();
             GetInputsKeyboard(false);
         }

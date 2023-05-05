@@ -4,6 +4,10 @@ namespace Player
 {
     public class KickflipState : TrickState
     {
+        public KickflipState(float stateMinDuration) : base(stateMinDuration)
+        {
+            
+        }
         public override void Enter(PlayerController playerController)
         {
             base.Enter(playerController);
