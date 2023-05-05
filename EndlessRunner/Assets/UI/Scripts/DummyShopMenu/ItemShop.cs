@@ -6,7 +6,6 @@ using UI.Scripts;
 
 public class ItemShop : MonoBehaviour
 {
-    public int coins;
     public ItemShopSo[] itemShopSO;
     public GameObject[] shopPanelsGO;
     public ShopTemplate[] shopPanels;
@@ -22,17 +21,11 @@ public class ItemShop : MonoBehaviour
         CheckPurchaseable();
     }
     
-    public void AddCoins() //Simple Script to add/generate coins
-    {
-        uiManager.SpendCoins(-5);
-        CheckPurchaseable();
-    }
-    
     public void CheckPurchaseable()
     {
         for (int i = 0; i < itemShopSO.Length; i++)
         {
-            if (!itemShopSO[i].purchased && coins >= itemShopSO[i].coinCost) //if coins is enough
+            if (!itemShopSO[i].purchased && uiManager.GetCoins() >= itemShopSO[i].coinCost) //if coins is enough
             {
                 myPurchaseBtns[i].interactable = true;
             }
@@ -43,8 +36,8 @@ public class ItemShop : MonoBehaviour
     
     public void PurchaseItem(int btnNo)
     {
-        if (coins < itemShopSO[btnNo].coinCost) return;
-        coins -= itemShopSO[btnNo].coinCost;
+        if (uiManager.GetCoins() < itemShopSO[btnNo].coinCost) return;
+        uiManager.SpendCoins(itemShopSO[btnNo].coinCost);
         itemShopSO[btnNo].purchased = true;
         CheckPurchaseable();
         //Unlock Item

@@ -30,7 +30,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] public Button backButton;
 
     [SerializeField] private SaveSettings persistentSettingsManager;
-    public static bool StartHidden = true;
+    public static bool StartHidden = false;
     private static bool _isActive = !StartHidden;
     
     void Awake()

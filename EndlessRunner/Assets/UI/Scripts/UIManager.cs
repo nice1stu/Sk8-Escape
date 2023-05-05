@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UI.Scripts
 {
@@ -15,6 +16,10 @@ public class UIManager : MonoBehaviour
         gemsView.text = saveManager.SaveTotalGems.ToString();
     }
 
+    public int GetCoins()
+    {
+        return saveManager.SaveTotalCoins;
+    }
     public void SpendCoins(int cost)
     {
         saveManager.SaveTotalCoins -= cost;
@@ -27,6 +32,16 @@ public class UIManager : MonoBehaviour
         saveManager.SaveTotalGems -= cost;
         saveManager.SaveGameData();
         gemsView.text = saveManager.SaveTotalGems.ToString();
+    }
+
+    public void OpenSettingsMenu()
+    {
+        SceneManager.LoadScene("SettingsMenu");
+    }
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene("StartMenu");
     }
 }
 }
