@@ -48,6 +48,7 @@ MonoBehaviour:
   obstaclePrefabs:
   - {fileID: 2477869576740326386, guid: 27355484d697a4a48bfdcd9dffc8175b, type: 3}
   - {fileID: 6332303130707236557, guid: 24eac75919209d445b3a793313fe0b28, type: 3}
+  - {fileID: 7323102187971478379, guid: dbca782530e57d64db175854454502b6, type: 3}
 --- !u!61 &9198230841458152304
 BoxCollider2D:
   m_ObjectHideFlags: 0

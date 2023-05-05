@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerScoreModel : MonoBehaviour
 {
-    private double score;
+    private static double score;
 
-    private int coins;
+    private static int coins;
 
     private int invincibilityPoints = 0;
     

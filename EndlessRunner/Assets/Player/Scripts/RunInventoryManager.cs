@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class RunInventoryManager : MonoBehaviour
@@ -23,9 +24,13 @@ public class RunInventoryManager : MonoBehaviour
         return coinAmount;
     }
 
+    public void SetCoinAmount(int set)
+    {
+        coinAmount = set;
+    }
+
     public int GetChestAmount()
     {
         return chestAmount;
     }
-    
 }

@@ -12,7 +12,8 @@ public class CameraController : MonoBehaviour
     
     private void LateUpdate()
     {
-        Vector3 desiredPosition = target.position + offset;
+        Vector3 targetPosition = target.position;
+        Vector3 desiredPosition = new Vector3(targetPosition.x + offset.x, transform.position.y, targetPosition.z + offset.z);
         transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref _velocity, damping);
     }
 }
