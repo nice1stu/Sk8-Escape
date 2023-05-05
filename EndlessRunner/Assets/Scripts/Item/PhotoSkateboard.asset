@@ -21,5 +21,5 @@ MonoBehaviour:
   bonusStats: 3
   itemName: Water Skateboard
   itemSprite: {fileID: 21300000, guid: d6a44ab95b0def041a7929981a2c23a1, type: 3}
-  itemIcon: {fileID: 21300000, guid: 0b167db686f4f0a458b10572eaf3a758, type: 3}
-  id: item.skateboard.blue
+  itemIcon: {fileID: 21300000, guid: aea0f945379a13548a2fd375836735b0, type: 3}
+  id: item.skateboard.photo
