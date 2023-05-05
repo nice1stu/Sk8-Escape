@@ -34,5 +34,10 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("SettingsMenu");
     }
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
 }
 }
