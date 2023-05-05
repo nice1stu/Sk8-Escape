@@ -22,12 +22,6 @@ public class ItemShop : MonoBehaviour
         CheckPurchaseable();
     }
     
-    public void AddCoins() //Simple Script to add/generate coins
-    {
-        uiManager.SpendCoins(-5);
-        CheckPurchaseable();
-    }
-    
     public void CheckPurchaseable()
     {
         for (int i = 0; i < itemShopSO.Length; i++)
