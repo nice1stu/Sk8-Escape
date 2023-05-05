@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -85,7 +86,10 @@ public class SettingsMenu : MonoBehaviour
             persistentSettingsManager.SaveSettingsData();
         } );
         
-        backButton.onClick.AddListener(ToggleSettingsMenu);
+        backButton.onClick.AddListener(delegate
+        {
+            SceneManager.LoadScene("StartMenu");
+        });
     }
 
     public static void ToggleSettingsMenu()
