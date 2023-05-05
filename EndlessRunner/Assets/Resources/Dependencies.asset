@@ -39,3 +39,9 @@ MonoBehaviour:
         style: 0
         balance: 0
       itemConfig: {fileID: 11400000, guid: 09f3ff1d1a9c5487d91068175f9033b1, type: 2}
+    - bonusStats:
+        speed: 0
+        stability: 0
+        style: 0
+        balance: 0
+      itemConfig: {fileID: 11400000, guid: 09f3ff1d1a9c5487d91068175f9033b1, type: 2}
