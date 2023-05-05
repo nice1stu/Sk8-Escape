@@ -13,14 +13,14 @@ namespace Inventory
         {
             foreach (var inventoryItem in Dependencies.Instance.Inventory.Items)
             {
-                Instantiate(itemPrefab, SkateboardContent);
+                Instantiate(itemPrefab, SkateboardContent).Setup(inventoryItem);
             }
             Dependencies.Instance.Inventory.ItemAdded+= InventoryOnItemAdded;
         }
 
         private void InventoryOnItemAdded(IItemData obj)
         {
-            Instantiate(itemPrefab, SkateboardContent);
+            Instantiate(itemPrefab, SkateboardContent).Setup(obj);
         }
 
         // Update is called once per frame

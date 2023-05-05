@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7697923653040179bdd2934999238aa, type: 3}
-  m_Name: BlueSkateboard
+  m_Name: ComicSkateboard
   m_EditorClassIdentifier: 
   baseStats:
     speed: 3
@@ -21,5 +21,5 @@ MonoBehaviour:
   bonusStats: 3
   itemName: Water Skateboard
   itemSprite: {fileID: 21300000, guid: d6a44ab95b0def041a7929981a2c23a1, type: 3}
-  itemIcon: {fileID: 21300000, guid: e92fc44f12c21dd44a49e390f39f7ffd, type: 3}
+  itemIcon: {fileID: 21300000, guid: 0b167db686f4f0a458b10572eaf3a758, type: 3}
   id: item.skateboard.blue
