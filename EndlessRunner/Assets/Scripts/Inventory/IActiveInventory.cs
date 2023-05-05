@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 using Item;
 
 namespace Inventory
 {
     public interface IActiveInventory
     {
-        IItemData[] EquippedItems { get; set; }
+        IEnumerable<IItemData> EquippedItems { get; }
 
         void Equip(IItemData item);
 

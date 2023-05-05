@@ -1,4 +1,5 @@
 using System;
+using System;
 using Inventory;
 using UnityEngine;
 
@@ -18,5 +19,5 @@ public class Dependencies : ScriptableObject
     [SerializeField] private DummyInventory dummyInventory;
     
     public IInventoryData Inventory => dummyInventory;
-    public IActiveInventory Equipped { get; } = null;
+    public IActiveInventory Equipped => dummyInventory;
 }
