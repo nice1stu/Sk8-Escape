@@ -129,7 +129,6 @@ namespace Player
                 SwipeLock = true;
                 Debug.Log("Up!");
                 upSwipe = true;
-                InputHandling();
             }
         }
 
@@ -140,7 +139,6 @@ namespace Player
                 SwipeLock = true;
                 Debug.Log("Right!");
                 rightSwipe = true;
-                InputHandling();
             }
         }
 
@@ -151,7 +149,6 @@ namespace Player
                 SwipeLock = true;
                 Debug.Log("Left!");
                 leftSwipe = true;
-                InputHandling();
             }
         }
 
@@ -162,7 +159,6 @@ namespace Player
                 SwipeLock = true;
                 Debug.Log("Down!"); //TODO: Trigger crouch here!
                 downSwipe = true;
-                InputHandling();
             }
         }
 
@@ -215,7 +211,6 @@ namespace Player
             UpdatePlayerHeight(targetPlayerHeight, model.smoothCrouch);
             if (model.isAlive)
                 ConstantMove();
-            InputHandling();
             GetInputsKeyboard(false);
         }
 
@@ -237,56 +232,7 @@ namespace Player
             if (hold != get)
                 hold = Input.GetKey(KeyCode.Space);
         }
-    
-
-        private void InputHandling()
-        {
-            // //Debug.Log(_grounded);
-            // if (upSwipe)
-            // {
-            //     if (_currentCoffin != null)
-            //     {
-            //         CancelCoffin();
-            //         return;
-            //     }
-            //
-            //     if (CanOllie())
-            //     {
-            //         Ollie();
-            //         return;
-            //     }
-            //
-            //     if (CanKickflip())
-            //     {
-            //         Kickflip();
-            //         return;
-            //     }
-            //
-            //     upSwipe = false;
-            // }
-            //
-            // if (rightSwipe)
-            // {
-            //     if (CanShuvit())
-            //     {
-            //         Shuvit();
-            //     }
-            //
-            //     rightSwipe = false;
-            // }
-            //
-            // if (downSwipe)
-            // {
-            //     if (CanCoffin())
-            //     {
-            //         _currentCoffin = StartCoroutine(Coffin());
-            //     }
-            //
-            //     downSwipe = false;
-            // }
-        }
-
-
+        
         private void ConstantMove()
         {
             rb.velocity = new Vector2(model.movementSpeed * Time.deltaTime, rb.velocity.y);
@@ -310,95 +256,6 @@ namespace Player
         {
             return (!grounded && rb.velocity.y < model.initialFallingVelocity);
         }
-
-        // private bool CanOllie()
-        // {
-        //     if (!grounded) return false;
-        //
-        //     if (currentState == SkateboardTrickState.Coast) return true;
-        //
-        //     return false;
-        // }
-
-        // private void Ollie()
-        // {
-        //     Debug.Log("Ollie");
-        //     currentState = SkateboardTrickState.Ollie;
-        //     AddToCurrentVelocity(Vector2.up * _model.ollieJumpForce);
-        //     grounded = false;
-        // }
-        //
-        // private bool CanKickflip()
-        // {
-        //     if (grounded) return false;
-        //
-        //     if (currentState == SkateboardTrickState.Ollie) return true;
-        //
-        //     return false;
-        // }
-        //
-        // private void Kickflip()
-        // {
-        //     Debug.Log("Kickflip");
-        //     currentState = SkateboardTrickState.Kickflip;
-        //     AddToCurrentVelocity(Vector2.up * _model.kickflipJumpForce);
-        // }
-        //
-        // private bool CanShuvit()
-        // {
-        //     if (!grounded) return false;
-        //
-        //     if (currentState == SkateboardTrickState.Coast) return true;
-        //
-        //     return false;
-        // }
-        //
-        // private void Shuvit()
-        // {
-        //     Debug.Log("Shuvit");
-        //     currentState = SkateboardTrickState.Shuvit;
-        //     AddToCurrentVelocity(Vector2.up * _model.shuvitJumpForce);
-        // }
-        //
-        // private void Grind()
-        // {
-        //     Debug.Log("Grind");
-        //     currentState = SkateboardTrickState.Grind;
-        //     _rb.velocity = new Vector2(_rb.velocity.x, 0);
-        // }
-        //
-        // private bool CanCoffin()
-        // {
-        //     if (!grounded) return false;
-        //     if (currentState == SkateboardTrickState.Coast) return true;
-        //     return false;
-        // }
-        //
-        // private Coroutine _currentCoffin;
-        //
-        // private IEnumerator Coffin()
-        // {
-        //     Debug.Log("Coffin");
-        //     currentState = SkateboardTrickState.Coffin;
-        //     _targetPlayerHeight = _model.playerCrouchHeight;
-        //     yield return new WaitForSeconds(_model.coffinTime);
-        //     _targetPlayerHeight = _model.playerStandHeight;
-        //     currentState = SkateboardTrickState.Coast;
-        //     CancelCoffin();
-        // }
-        //
-        // private void CancelCoffin()
-        // {
-        //     if (_currentCoffin != null) StopCoroutine(_currentCoffin);
-        //     _targetPlayerHeight = _model.playerStandHeight;
-        //     _currentCoffin = null;
-        //     currentState = SkateboardTrickState.Coast;
-        // }
-        //
-        // private bool CanGrind()
-        // {
-        //     
-        // }
 
         #endregion
 
