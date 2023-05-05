@@ -138,14 +138,4 @@ public class GameTester : MonoBehaviour
     {
         toggleSfxMute = false;
     }
-    
-    // [ContextMenu("Set Language")]
-    // private void SetLanguage()
-    // {
-    //     // Show a context menu with two options and assign the selected option to languageSetting
-    //     GenericMenu menu = new GenericMenu();
-    //     menu.AddItem(new GUIContent("English"), false, () => { languageSetting = "en"; });
-    //     menu.AddItem(new GUIContent("Swedish"), false, () => { languageSetting = "sv"; });
-    //     menu.ShowAsContext();
-    // }
 }
