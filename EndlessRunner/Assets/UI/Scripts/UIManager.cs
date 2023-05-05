@@ -16,6 +16,10 @@ public class UIManager : MonoBehaviour
         gemsView.text = saveManager.SaveTotalGems.ToString();
     }
 
+    public int GetCoins()
+    {
+        return saveManager.SaveTotalCoins;
+    }
     public void SpendCoins(int cost)
     {
         saveManager.SaveTotalCoins -= cost;
