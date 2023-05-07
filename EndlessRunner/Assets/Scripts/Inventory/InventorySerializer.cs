@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Inventory;
 using Item;
 using UnityEngine;
@@ -20,7 +21,7 @@ public class InventorySerializer
     
     private void Save(IItemData itemData)
     {
-        IEnumerable<IItemData> data = dummyInventory.Items;
+        List<IItemData> data = dummyInventory.Items.ToList();
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/inventory.save.json", json);
     }
@@ -32,8 +33,7 @@ public class InventorySerializer
         if (!File.Exists(path)) return null;
 
         string json = File.ReadAllText(path);
-        IEnumerable<IItemData> data = JsonUtility.FromJson<IEnumerable<IItemData>>(json);
-        IEnumerable < IItemData> thing = new List<ItemData>();
+        List<IItemData> data = JsonUtility.FromJson<List<IItemData>>(json);
         List<ItemData> itemDataList = new List<ItemData>();
         foreach (var itemData in data)
         {

@@ -7,6 +7,7 @@ using UnityEngine;
 public class Dependencies : ScriptableObject
 {
     private static Dependencies _instance;
+    
     public static Dependencies Instance
     {
         get
