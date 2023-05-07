@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public abstract class Transition : MonoBehaviour
+    public abstract class Transition
     {
         protected readonly TrickState from;
         protected readonly TrickState to;
