@@ -25,9 +25,13 @@ namespace Player
             _groundCheckDelay -= Time.deltaTime;
             if (!playerController.model.isAlive) return true; // If the player dies in any other way
             //Debug.Log(_previousState.stateRemainingDuration);
+            if (playerController.walled)
+            {
+                return true;
+            }
+            
             if (_groundCheckDelay <= 0)
             {
-                if (playerController.grounded && _previousState.stateRemainingDuration > 0) Debug.Log("bruh");
                 return (playerController.grounded && _previousState.stateRemainingDuration > 0); // if you touch the ground while performing a trick
             }
 

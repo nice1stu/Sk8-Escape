@@ -21,6 +21,10 @@ namespace Player
         public float initialFallingVelocity = 0.05f;
         [Header("Collisions")] 
         public float maxGroundAngle = 45f;
+        /// <summary>
+        /// Already assuming a 90 degree angle, so 90 +- the maxWallAngle
+        /// </summary>
+        public float maxWallAngle = 10f;
         public LayerMask groundLayers;
         [Header("Other")]
         public bool isAlive = true;

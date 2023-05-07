@@ -32,8 +32,10 @@ namespace Player
         public PlayerView view;
 
         // Variables
-        [FormerlySerializedAs("_grounded")] [HideInInspector]
+        [HideInInspector]
         public bool grounded;
+        [HideInInspector]
+        public bool walled;
         private bool _canGrind;
 
 
@@ -200,17 +202,18 @@ namespace Player
         private void Update()
         {
             GetInputsKeyboard(true);
-            currentState.Update(this);
+            // currentState.Update(this);
         }
 
         void FixedUpdate()
         {
             //Debug.Log(currentState);
             // GetInputs(true);
-            grounded = GetGrounded();
+            GroundCheck();
             UpdatePlayerHeight(targetPlayerHeight, model.smoothCrouch);
             if (model.isAlive)
                 ConstantMove();
+            currentState.Update(this);
             GetInputsKeyboard(false);
         }
 
@@ -295,8 +298,11 @@ namespace Player
 
         ContactPoint2D[] _collisionBuffer = new ContactPoint2D[100];
 
-        private bool GetGrounded()
+        [HideInInspector] public Vector2 wallNormal;
+        private void GroundCheck()
         {
+            walled = false;
+            grounded = false;
             int count = _col.GetContacts(_collisionBuffer);
             for (int i = 0; i < count; i++)
             {
@@ -304,11 +310,18 @@ namespace Player
 
                 if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.up) < model.maxGroundAngle)
                 {
-                    return true;
+                    grounded = true;
                 }
+ 
+                if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.left) < model.maxWallAngle)
+                {
+                    wallNormal = _collisionBuffer[i].normal;
+                    walled = true;
+                }
+                
             }
 
-            return false;
+            
         }
     }
 }
