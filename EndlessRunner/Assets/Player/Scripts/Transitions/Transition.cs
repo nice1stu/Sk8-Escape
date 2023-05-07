@@ -21,7 +21,7 @@ namespace Player
     
         public virtual void Exit(PlayerController playerController)
         {
-        
+            
         }
     
         public bool Update(PlayerController playerController)

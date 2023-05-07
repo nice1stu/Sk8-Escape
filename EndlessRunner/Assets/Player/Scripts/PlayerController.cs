@@ -7,8 +7,6 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
-    
-
         public TrickState currentState;
 
         //Input stuff for the touch controls
@@ -26,18 +24,18 @@ namespace Player
         // References
         [FormerlySerializedAs("_rb")] [HideInInspector]
         public Rigidbody2D rb;
+
         [FormerlySerializedAs("_model")] [HideInInspector]
         public PlayerModel model;
+
         private BoxCollider2D _col;
         public PlayerView view;
 
         // Variables
-        [HideInInspector]
-        public bool grounded;
-        [HideInInspector]
-        public bool walled;
-        private bool _canGrind;
-
+        [HideInInspector] public bool grounded;
+        [HideInInspector] public bool walled;
+        [HideInInspector] public Transform[] grindPath;
+        [HideInInspector] public bool _canGrind = false;
 
         private void Awake()
         {
@@ -59,28 +57,37 @@ namespace Player
             var kickflip = new KickflipState(0.3f);
             var shuvit = new ShuvitState(0.3f);
             var coffin = new CoffinState();
+            var grind = new GrindingState();
             var falling = new FallingState();
             var crashed = new CrashState();
             currentState = coast;
-            
+
             // Up swipe
             new OllieTransition(coast, ollie, dragActionUp);
             new KickflipTransition(ollie, kickflip, dragActionUp);
             new InputTransition(coffin, coast, dragActionUp);
-            
+
             // Right swipe
             new ShuvitTransition(coast, shuvit, dragActionRight);
-            
+
             // Down swipe
             new CoffinTransition(coast, coffin, dragActionDown);
 
+            // Transitions to grind
+            new GrindTransition(coast, grind, touch);
+            new GrindTransition(ollie, grind, touch);
+            new GrindTransition(kickflip, grind, touch);
+            new GrindTransition(shuvit, grind, touch);
+            new GrindTransition(falling, grind, touch);
+            
             // Transitions to falling
             new FallingTransition(coast, falling);
             new FallingTransition(ollie, falling);
             new FallingTransition(kickflip, falling);
             new FallingTransition(shuvit, falling);
             new FallingTransition(coffin, falling);
-            
+            new FallingTransition(grind, falling);
+
             // Crash Transitions
             new CrashTransition(coast, crashed);
             new CrashTransition(ollie, crashed);
@@ -88,11 +95,13 @@ namespace Player
             new CrashTransition(shuvit, crashed);
             new CrashTransition(coffin, crashed);
             new CrashTransition(falling, crashed);
-            
+
             // Other transitions
             new TimedTransition(coffin, coast, model.coffinTime);
             new GroundedTransition(falling, coast);
+            new GroundedTransition(grind, coast);
             
+
             currentState.Enter(this);
 
             targetPlayerHeight = model.playerStandHeight;
@@ -118,7 +127,7 @@ namespace Player
             touch.canceled -= TouchStopped;
             tap.performed -= Tap;
         }
-    
+
 
         private bool upSwipe, downSwipe, leftSwipe, rightSwipe, press, hold;
 
@@ -172,6 +181,7 @@ namespace Player
                 Debug.Log("Tap!");
                 tappedOnce = true;
                 StartCoroutine(DoubleTapCooldown());
+                CheckInteract();
             }
             else
             {
@@ -210,6 +220,8 @@ namespace Player
             //Debug.Log(currentState);
             // GetInputs(true);
             GroundCheck();
+            Debug.Log((grounded));
+            //CheckInteract();
             UpdatePlayerHeight(targetPlayerHeight, model.smoothCrouch);
             if (model.isAlive)
                 ConstantMove();
@@ -235,7 +247,7 @@ namespace Player
             if (hold != get)
                 hold = Input.GetKey(KeyCode.Space);
         }
-        
+
         private void ConstantMove()
         {
             rb.velocity = new Vector2(model.movementSpeed * Time.deltaTime, rb.velocity.y);
@@ -263,15 +275,22 @@ namespace Player
         #endregion
 
         private Collider2D[] interactBuffer = new Collider2D[100];
+
         private void CheckInteract()
         {
-            int count = Physics2D.OverlapBoxNonAlloc(_col.bounds.center, _col.size, transform.rotation.z, interactBuffer);
-            for (int i = 0; i < count; i++) 
-                if(interactBuffer[i].TryGetComponent(out IInteractable interactable)) interactable.Interact(this);
+            int count = Physics2D.OverlapBoxNonAlloc(_col.bounds.center, _col.size, transform.rotation.z,
+                interactBuffer, model.groundLayers);
+            for (int i = 0; i < count; i++)
+            {
+                if (interactBuffer[i].transform.parent == null) continue;
+                
+                if (interactBuffer[i].transform.parent.TryGetComponent(out IInteractable interactable))
+                    interactable.Interact(this);
+            }
         }
-    
-        [HideInInspector]
-        public float targetPlayerHeight;
+
+        [HideInInspector] public float targetPlayerHeight;
+
         private void UpdatePlayerHeight(float height, bool smooth = false)
         {
             view.DummyCoffinScaler(_col.size, _col.offset);
@@ -295,10 +314,17 @@ namespace Player
             view.DummyCoffinScaler(_col.size, _col.offset);
         }
 
+        public void EnterGrinding(Transform[] rail)
+        {
+            _canGrind = true;
+            grindPath = rail;
+        }
+
 
         ContactPoint2D[] _collisionBuffer = new ContactPoint2D[100];
 
         [HideInInspector] public Vector2 wallNormal;
+
         private void GroundCheck()
         {
             walled = false;
@@ -312,16 +338,13 @@ namespace Player
                 {
                     grounded = true;
                 }
- 
+
                 if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.left) < model.maxWallAngle)
                 {
                     wallNormal = _collisionBuffer[i].normal;
                     walled = true;
                 }
-                
             }
-
-            
         }
     }
 }

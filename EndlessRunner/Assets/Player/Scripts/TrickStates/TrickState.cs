@@ -32,7 +32,7 @@ namespace Player
 
         protected virtual void UpdateInternal(PlayerController playerController)
         {
-        
+            
         }
 
         public virtual void Enter(PlayerController playerController)
