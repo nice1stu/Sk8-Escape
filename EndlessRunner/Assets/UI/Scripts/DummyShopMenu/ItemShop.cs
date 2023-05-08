@@ -29,6 +29,11 @@ public class ItemShop : MonoBehaviour
             {
                 myPurchaseBtns[i].interactable = true;
             }
+
+            else if (itemShopSO[i].purchased)
+            {
+                shopPanels[i].coinsCostText.text = "Purchased";
+            }
             else
                 myPurchaseBtns[i].interactable = false;
         }
@@ -49,10 +54,7 @@ public class ItemShop : MonoBehaviour
         {
             shopPanels[i].titleTxt.text = itemShopSO[i].title;
             shopPanels[i].desriptionTxt.text = itemShopSO[i].description;
-            if (itemShopSO[i].purchased)
-                shopPanels[i].coinsCostText.text = "Purchased";
-            else
-                shopPanels[i].coinsCostText.text = "Coins: " + itemShopSO[i].coinCost;
+            shopPanels[i].coinsCostText.text = "Coins: " + itemShopSO[i].coinCost;
         }
     }
 }
