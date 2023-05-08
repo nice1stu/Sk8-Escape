@@ -42,6 +42,7 @@ public class collision : MonoBehaviour
                 life.isAlive = false;
                 StartCoroutine(cameraShake.Shake(.13f,0.6f));
                 StartCoroutine(DelayCoroutine(1.0f));
+                GetComponent<PlayerController>().CancelSlowmo();
             }
 
         }
