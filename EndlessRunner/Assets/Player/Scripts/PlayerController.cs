@@ -278,8 +278,7 @@ namespace Player
 
         private void CheckInteract()
         {
-            int count = Physics2D.OverlapBoxNonAlloc(_col.bounds.center, _col.size, transform.rotation.z,
-                interactBuffer, model.groundLayers);
+            int count = Physics2D.OverlapCircleNonAlloc(transform.position, model.interactRadius, interactBuffer, model.groundLayers);
             for (int i = 0; i < count; i++)
             {
                 if (interactBuffer[i].transform.parent == null) continue;

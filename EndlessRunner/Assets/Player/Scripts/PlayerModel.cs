@@ -26,7 +26,9 @@ namespace Player
         /// </summary>
         public float maxWallAngle = 10f;
         public LayerMask groundLayers;
-        [Header("Other")]
+        [Header("Other")] 
+        [Range(0.2f,1f)]
+        public float interactRadius = 1f;
         public bool isAlive = true;
     }
 }
