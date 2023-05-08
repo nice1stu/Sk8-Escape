@@ -9,6 +9,9 @@ public class DatabaseManager : MonoBehaviour
 {
     public InputField Name;
     public InputField Gold;
+
+    public Text NameText;
+    public Text GoldText;
     
     private string userID;  // userID is gonna show in firebase
     private DatabaseReference datareference;
@@ -28,8 +31,50 @@ public class DatabaseManager : MonoBehaviour
         // converts to json
         string json = JsonUtility.ToJson(newUserData);
 
-        // organizing users stats in firebase
+        // organizing users stats in firebase and setting json variable to raw json
         datareference.Child("user").Child(userID).SetRawJsonValueAsync(json);
     }
-    
+
+    // retrieves user's name from Firebase database and passes it to another function as string
+    public IEnumerator GetName(Action<string> onCallback)
+    {
+        var userNameData = datareference.Child("user").Child(userID).Child("name").GetValueAsync();
+        
+        // pauses the execution until database calls complete
+        yield return new WaitUntil(predicate: () => userNameData.IsCompleted);
+
+        if (userNameData != null)
+        {
+            DataSnapshot snapshot = userNameData.Result;
+
+            onCallback.Invoke(snapshot.Value.ToString());
+        }
+    }
+
+    public IEnumerator GetGold(Action<int> onCallback)
+    {
+        var userNameData = datareference.Child("user").Child(userID).Child("gold").GetValueAsync();
+
+        yield return new WaitUntil(predicate: () => userNameData.IsCompleted);
+
+        if (userNameData != null)
+        {
+            DataSnapshot snapshot = userNameData.Result;
+
+            onCallback.Invoke((int)snapshot.Value);
+        }
+    }
+
+    // retrieves name and gold and display's information ( UI )
+    public void GetUserInfo()
+    {
+        StartCoroutine(GetName((string name) =>
+        {
+            NameText.text = "Name: " + name;
+        }));
+        StartCoroutine(GetGold((int gold) =>
+        {
+            GoldText.text = "Gold: " + gold.ToString();
+        }));
+    }
 }
