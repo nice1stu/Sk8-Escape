@@ -7,7 +7,7 @@ using Lean.Localization;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemPreview : MonoBehaviour
+public class ItemDetailPopup : MonoBehaviour
 {
     public Image frame;
 
@@ -18,29 +18,10 @@ public class ItemPreview : MonoBehaviour
     public Button equipButton;
     public LeanLocalizedBehaviour equipLabel;
     private IItemData itemData;
-    private Action<IItemData> onDetailClicked;
 
-    public void Setup(IItemData itemData, Action<IItemData> onDetailClicked)
+    public void Setup(IItemData itemData)
     {
         this.itemData = itemData;
-        this.onDetailClicked = onDetailClicked;
-        item.sprite = itemData.ItemConfig.ItemIcon;
-        var equipped = Dependencies.Instance.Equipped.EquippedItems.Any(item => item == itemData);
-        if (equipped)
-        {
-            OnEquip();
-        }
-        else
-        {
-            OnUnEquip();
-        }
-        Dependencies.Instance.Equipped.ItemEquipped += EquippedOnItemEquipped;
-        Dependencies.Instance.Equipped.ItemUnequipped += EquippedOnItemUnequipped;
-    }
-
-    public void OnDetailClicked()
-    {
-        onDetailClicked?.Invoke(itemData);
     }
 
     private void OnDestroy()
