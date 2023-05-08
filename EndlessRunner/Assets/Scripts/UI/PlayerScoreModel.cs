@@ -8,6 +8,8 @@ public class PlayerScoreModel : MonoBehaviour
 
     private static int coins;
 
+    private int invincibilityPoints = 0;
+    
     private int powerUps;
     // Start is called before the first frame update
     void Start()

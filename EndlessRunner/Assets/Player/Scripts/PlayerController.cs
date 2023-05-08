@@ -188,6 +188,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void CancelSlowmo()
+    {
+        if (slowmoCoolDownTimer.IsRunning)
+        {
+            Time.timeScale = oldTimeScale;
+        }
+    }
+
     IEnumerator SlowmoCoolDown()
     {
         while (true)
