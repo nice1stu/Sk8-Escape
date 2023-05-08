@@ -33,6 +33,7 @@ public class ItemShop : MonoBehaviour
             else if (itemShopSO[i].purchased)
             {
                 shopPanels[i].coinsCostText.text = "Purchased";
+                myPurchaseBtns[i].interactable = false;
             }
             else
                 myPurchaseBtns[i].interactable = false;
