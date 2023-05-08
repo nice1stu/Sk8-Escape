@@ -25,8 +25,8 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] public Slider musicVolumeSlider;
     [SerializeField] public Toggle musicMuteToggle;
 
-    [SerializeField] public Button changeLanguageButton;
-    [SerializeField] private TMP_Text changeLanguageButtonText;
+    // [SerializeField] public Button changeLanguageButton;
+    // [SerializeField] private TMP_Text changeLanguageButtonText;
 
     [SerializeField] public Button backButton;
 
@@ -40,10 +40,6 @@ public class SettingsMenu : MonoBehaviour
 
         // Not great, interfacing with a static class would be better
         persistentSettingsManager ??= GetComponent<SaveSettings>(); // get component if null
-        
-        // Language Button's text will change to the currently selected language
-        // Get and cache the component here
-        changeLanguageButtonText = changeLanguageButton.GetComponentInChildren<TMP_Text>(true);
         
         SetUIStateFromSavedData();
         
@@ -79,13 +75,7 @@ public class SettingsMenu : MonoBehaviour
             persistentSettingsManager.SaveMusicMute = musicMuteToggle.isOn;
             persistentSettingsManager.SaveSettingsData();
         } );
-        
-        changeLanguageButton.onClick.AddListener(delegate
-        {
-            Debug.Log("Switch Language");
-            persistentSettingsManager.SaveSettingsData();
-        } );
-        
+
         backButton.onClick.AddListener(delegate
         {
             SceneManager.LoadScene("StartMenu");
@@ -112,22 +102,14 @@ public class SettingsMenu : MonoBehaviour
         SetToggle(state.SaveSfxMute,     effectsMuteToggle);
         SetSlider(state.SaveMusicVolume, musicVolumeSlider);
         SetToggle(state.SaveMusicMute,   musicMuteToggle);
-          SetText(state.SaveLanguageSetting, changeLanguageButtonText);
     }
     
     // Sets the UI to reflect backend values 
     private void SetUIStateFromSavedData()
     {
         Assert.IsNotNull(persistentSettingsManager);
-        Assert.IsNotNull(changeLanguageButtonText);  // checking this specifically since it's not a simple reference
-        
+
         persistentSettingsManager.LoadSettingsData();
         SetUIFromState(persistentSettingsManager);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
