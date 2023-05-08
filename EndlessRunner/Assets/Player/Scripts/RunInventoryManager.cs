@@ -7,6 +7,7 @@ using UnityEngine;
 public class RunInventoryManager : MonoBehaviour
 {
     public static int coinAmount;
+    public static int multiplier = 1;
     public static int chestAmount;
     private void OnTriggerEnter2D(Collider2D col)
     {
