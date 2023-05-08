@@ -31,7 +31,7 @@ namespace Backend.Scripts
         public InputField passwordRegisterField;
         public InputField confirmPasswordRegisterField;
 
-        [FormerlySerializedAs("errorMessage")] [Space] [Header("Message")] public TextMeshProUGUI message;
+        [Space] [Header("Message")] public TextMeshProUGUI message;
 
         private void Awake()
         {
