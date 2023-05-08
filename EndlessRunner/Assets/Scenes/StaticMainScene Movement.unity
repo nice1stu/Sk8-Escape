@@ -3706,38 +3706,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2916409661291331582, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: isAlive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2916409661291331582, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: coffinTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2916409661291331582, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: maxWallAngle
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2916409661291331582, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: grindLerpSpeed
-      value: 0.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 2916409661291331582, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: interactRadius
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2916409661291331584, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2916409661291331584, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: m_LinearDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2916409661291331584, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4674602963745211553, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
       propertyPath: m_RootOrder
       value: 3

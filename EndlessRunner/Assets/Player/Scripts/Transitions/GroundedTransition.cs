@@ -7,11 +7,7 @@ namespace Player
         public GroundedTransition(TrickState from, TrickState to) : base(from, to)
         {
         }
-
-        // public CoastTransition(TrickState from, TrickState to) : base(from, to, inputAction)
-        // {
-        //     
-        // }
+        
 
         protected override bool CanTransition(PlayerController playerController)
         {

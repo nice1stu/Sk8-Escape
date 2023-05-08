@@ -21,7 +21,7 @@ public class GrindingRail : MonoBehaviour, IInteractable
     public static bool IsWithinXBounds(Vector3 pos, Transform[] rail)
     {
         // Returns true if the position's x value is between the first and last point's x values of the rail
-        return pos.x < rail[rail.Length - 1].position.x && pos.x > rail[0].position.x;
+        return pos.x < rail[^1].position.x && pos.x > rail[0].position.x;
     }
 
     // Returns the position on the rail closest to the given position

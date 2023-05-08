@@ -7,13 +7,12 @@ namespace Player
         private readonly InputAction _inputAction;
         private bool _actionPending;
 
-        
-        
+
         public InputTransition(TrickState from, TrickState to, InputAction inputAction) : base(from, to)
         {
             _inputAction = inputAction;
         }
-        
+
 
         public override void Enter(PlayerController playerController)
         {
@@ -37,7 +36,7 @@ namespace Player
         {
             return true;
         }
-    
+
         protected override bool CanTransition(PlayerController playerController)
         {
             if (!CanTransitionInternal(playerController)) _actionPending = false;

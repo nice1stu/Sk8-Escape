@@ -79,7 +79,7 @@ namespace Player
             new GrindTransition(kickflip, grind, touch);
             new GrindTransition(shuvit, grind, touch);
             new GrindTransition(falling, grind, touch);
-            
+
             // Transitions to falling
             new FallingTransition(coast, falling);
             new FallingTransition(ollie, falling);
@@ -101,7 +101,7 @@ namespace Player
             new TimedTransition(coffin, coast, model.coffinTime);
             new GroundedTransition(falling, coast);
             new GroundedTransition(grind, coast);
-            
+
 
             CurrentState.Enter(this);
 
@@ -130,8 +130,6 @@ namespace Player
         }
 
 
-        private bool upSwipe, downSwipe, leftSwipe, rightSwipe, press, hold;
-
         #region TouchInput stuff
 
         private void SwipeUpReceived(InputAction.CallbackContext context)
@@ -140,7 +138,6 @@ namespace Player
             {
                 SwipeLock = true;
                 Debug.Log("Up!");
-                upSwipe = true;
             }
         }
 
@@ -150,7 +147,6 @@ namespace Player
             {
                 SwipeLock = true;
                 Debug.Log("Right!");
-                rightSwipe = true;
             }
         }
 
@@ -160,7 +156,6 @@ namespace Player
             {
                 SwipeLock = true;
                 Debug.Log("Left!");
-                leftSwipe = true;
             }
         }
 
@@ -170,7 +165,6 @@ namespace Player
             {
                 SwipeLock = true;
                 Debug.Log("Down!"); //TODO: Trigger crouch here!
-                downSwipe = true;
             }
         }
 
@@ -210,42 +204,13 @@ namespace Player
 
         #endregion
 
-        private void Update()
-        {
-            GetInputsKeyboard(true);
-            // currentState.Update(this);
-        }
-
         void FixedUpdate()
         {
-            //Debug.Log(currentState);
-            // GetInputs(true);
             GroundCheck();
-            //CheckInteract();
             UpdatePlayerHeight(targetPlayerHeight, model.smoothCrouch);
             if (model.isAlive)
                 ConstantMove();
             CurrentState.Update(this);
-            GetInputsKeyboard(false);
-        }
-
-        private void GetInputsKeyboard(bool get)
-        {
-            // tihihi
-
-            //So how does this work?
-            if (upSwipe != get)
-                upSwipe = Input.GetKeyDown(KeyCode.UpArrow);
-            if (downSwipe != get)
-                downSwipe = Input.GetKeyDown(KeyCode.DownArrow);
-            if (leftSwipe != get)
-                leftSwipe = Input.GetKeyDown(KeyCode.LeftArrow);
-            if (rightSwipe != get)
-                rightSwipe = Input.GetKeyDown(KeyCode.RightArrow);
-            if (press != get)
-                press = Input.GetKeyDown(KeyCode.Space);
-            if (hold != get)
-                hold = Input.GetKey(KeyCode.Space);
         }
 
         private void ConstantMove()
@@ -256,7 +221,6 @@ namespace Player
         public void AddToCurrentVelocity(Vector2 addedVelocity)
         {
             rb.velocity = new Vector2(rb.velocity.x, addedVelocity.y);
-            return;
         }
 
         #region Trick stuff
@@ -278,11 +242,12 @@ namespace Player
 
         private void CheckInteract()
         {
-            int count = Physics2D.OverlapCircleNonAlloc(transform.position, model.interactRadius, interactBuffer, model.groundLayers);
+            int count = Physics2D.OverlapCircleNonAlloc(transform.position, model.interactRadius, interactBuffer,
+                model.groundLayers);
             for (int i = 0; i < count; i++)
             {
                 if (interactBuffer[i].transform.parent == null) continue;
-                
+
                 if (interactBuffer[i].transform.parent.TryGetComponent(out IInteractable interactable))
                     interactable.Interact(this);
             }
