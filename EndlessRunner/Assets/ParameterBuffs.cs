@@ -8,6 +8,8 @@ public class ParameterBuffs : MonoBehaviour
     public float vision;
     [Range(0,100)]
     public float stability;
+    [Range(0.6f,2.5f)]
+    public float coffinTime;
     void Start()
     {
         Get();
@@ -22,5 +24,6 @@ public class ParameterBuffs : MonoBehaviour
     {
         FindObjectOfType<CameraController>().offset += new Vector3(vision, 0, 0);
         FindObjectOfType<collision>().survivalRate += stability;
+        FindObjectOfType<PlayerModel>().coffinTime = coffinTime;
     }
 }
