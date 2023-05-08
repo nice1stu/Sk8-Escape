@@ -1,4 +1,3 @@
-using Inventory;
 using Stat;
 using UnityEngine;
 

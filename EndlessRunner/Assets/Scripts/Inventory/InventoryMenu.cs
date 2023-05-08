@@ -8,25 +8,24 @@ namespace Inventory
         public Transform SkateboardContent;
 
         public ItemPreview itemPrefab;
+
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             foreach (var inventoryItem in Dependencies.Instance.Inventory.Items)
-            {
                 Instantiate(itemPrefab, SkateboardContent).Setup(inventoryItem);
-            }
-            Dependencies.Instance.Inventory.ItemAdded+= InventoryOnItemAdded;
+            Dependencies.Instance.Inventory.ItemAdded += InventoryOnItemAdded;
+        }
+
+        // Update is called once per frame
+        private void OnDestroy()
+        {
+            Dependencies.Instance.Inventory.ItemAdded -= InventoryOnItemAdded;
         }
 
         private void InventoryOnItemAdded(IItemData obj)
         {
             Instantiate(itemPrefab, SkateboardContent).Setup(obj);
-        }
-
-        // Update is called once per frame
-        void OnDestroy()
-        {
-            Dependencies.Instance.Inventory.ItemAdded-= InventoryOnItemAdded;
         }
     }
 }

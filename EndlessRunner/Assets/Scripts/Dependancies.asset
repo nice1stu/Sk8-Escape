@@ -22,33 +22,22 @@ MonoBehaviour:
       itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
     items:
     - bonusStats:
-        speed: 0
-        stability: 0
-        style: 0
-        balance: 0
-      itemConfig: {fileID: 0}
+        speed: 10
+        stability: 5
+        style: 4
+        balance: 20
+      itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
     - bonusStats:
-        speed: 0
-        stability: 0
-        style: 0
-        balance: 0
-      itemConfig: {fileID: 0}
+        speed: 10
+        stability: 5
+        style: 4
+        balance: 20
+      itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
     - bonusStats:
-        speed: 0
-        stability: 0
-        style: 0
-        balance: 0
-      itemConfig: {fileID: 0}
-    - bonusStats:
-        speed: 0
-        stability: 0
-        style: 0
-        balance: 0
-      itemConfig: {fileID: 0}
-    - bonusStats:
-        speed: 0
-        stability: 0
-        style: 0
-        balance: 0
-      itemConfig: {fileID: 0}
+        speed: 10
+        stability: 5
+        style: 4
+        balance: 20
+      itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
     equippedItemIndex: 0
+  itemDataBase: {fileID: 0}

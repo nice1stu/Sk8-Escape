@@ -22,9 +22,9 @@ namespace Serialization
             {
                 this.value = value;
                 ValueChanged?.Invoke(value);
-            } 
+            }
         }
-    
+
 
         public event Action<int> ValueChanged;
     }

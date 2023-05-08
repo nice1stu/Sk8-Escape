@@ -1,13 +1,16 @@
-using System;
-using System;
 using Inventory;
+using Item;
 using UnityEngine;
 
 [CreateAssetMenu]
 public class Dependencies : ScriptableObject
 {
     private static Dependencies _instance;
-    
+    [SerializeField] private DummyInventory dummyInventory;
+
+    private InventorySerializer inventorySerializer;
+    [SerializeField] private ItemDataBaseSO itemDataBase;
+
     public static Dependencies Instance
     {
         get
@@ -17,26 +20,22 @@ public class Dependencies : ScriptableObject
             return _instance;
         }
     }
-    [SerializeField] private DummyInventory dummyInventory;
-    
-    private InventorySerializer inventorySerializer;
 
-    
+
     public IInventoryData Inventory => dummyInventory;
     public IActiveInventory Equipped => dummyInventory;
 
     private void OnEnable()
     {
         //Move to constructor when not scriptableObject anymore
-        inventorySerializer = new InventorySerializer(dummyInventory);
+        inventorySerializer = new InventorySerializer(dummyInventory, itemDataBase);
         dummyInventory.CreateDummyItem();
         Load();
     }
-    void Load()
+
+    private void Load()
     {
-        dummyInventory.Load();
-    }
-    public Dependencies(){
-        
+        var items = inventorySerializer.Load();
+        dummyInventory.Load(items);
     }
 }

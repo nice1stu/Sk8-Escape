@@ -6,7 +6,7 @@ namespace Serialization
     {
         string Key { get; set; }
         int Value { get; set; }
-        
+
         event Action<int> ValueChanged;
     }
 }
