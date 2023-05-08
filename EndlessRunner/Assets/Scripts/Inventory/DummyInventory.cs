@@ -59,9 +59,7 @@ namespace Inventory
 
         public event Action<IItemData> ItemUnequipped;
         public event Action<IItemData> ItemEquipped;
-
-        [ContextMenu("Load")]
-        void Load()
+        public void Load()
         {
             items = InventorySerializer.Load();
         }

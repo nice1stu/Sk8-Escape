@@ -19,6 +19,24 @@ public class Dependencies : ScriptableObject
     }
     [SerializeField] private DummyInventory dummyInventory;
     
+    private InventorySerializer inventorySerializer;
+
+    
     public IInventoryData Inventory => dummyInventory;
     public IActiveInventory Equipped => dummyInventory;
+
+    private void OnEnable()
+    {
+        //Move to constructor when not scriptableObject anymore
+        inventorySerializer = new InventorySerializer(dummyInventory);
+        dummyInventory.CreateDummyItem();
+        Load();
+    }
+    void Load()
+    {
+        dummyInventory.Load();
+    }
+    public Dependencies(){
+        
+    }
 }
