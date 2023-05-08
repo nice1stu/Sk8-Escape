@@ -5,6 +5,7 @@ using System.Linq;
 using Item;
 using Stat;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Inventory
 {
@@ -33,8 +34,8 @@ namespace Inventory
 
         private ItemData Convert(SerializableItemData serializableItemData)
         {
-            return new ItemData(serializableItemData.BonusStats,
-                _itemDataBase.GetWithID(serializableItemData.ItemConfigID));
+            return new ItemData(serializableItemData.bonusStats,
+                _itemDataBase.GetWithID(serializableItemData.itemConfigID));
         }
 
         private Stats Convert(IStats stats)
@@ -64,7 +65,7 @@ namespace Inventory
 
             var json = File.ReadAllText(path);
             var data = JsonUtility.FromJson<SerializableInventory>(json);
-            return data._serializableItemDatas.Select(Convert).ToList();
+            return data.serializableItemDatas.Select(Convert).ToList();
         }
 
         ~InventorySerializer()
@@ -81,24 +82,24 @@ namespace Inventory
         [Serializable]
         public class SerializableItemData
         {
-            public string ItemConfigID;
-            public Stats BonusStats;
+            public string itemConfigID; 
+            public Stats bonusStats;
 
             public SerializableItemData(string itemConfigID, Stats bonusStats)
             {
-                ItemConfigID = itemConfigID;
-                BonusStats = bonusStats;
+                this.itemConfigID = itemConfigID;
+                this.bonusStats = bonusStats;
             }
         }
 
         [Serializable]
         private class SerializableInventory
         {
-            public List<SerializableItemData> _serializableItemDatas;
+            public List<SerializableItemData> serializableItemDatas;
 
             public SerializableInventory(List<SerializableItemData> serializableItemDatas)
             {
-                _serializableItemDatas = serializableItemDatas;
+                this.serializableItemDatas = serializableItemDatas;
             }
         }
     }

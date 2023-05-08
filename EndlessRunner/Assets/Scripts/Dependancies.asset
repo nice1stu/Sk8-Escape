@@ -19,25 +19,37 @@ MonoBehaviour:
         stability: 5
         style: 4
         balance: 20
-      itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
+      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
     items:
     - bonusStats:
         speed: 10
         stability: 5
         style: 4
         balance: 20
-      itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
+      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
     - bonusStats:
         speed: 10
         stability: 5
         style: 4
         balance: 20
-      itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
+      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
     - bonusStats:
         speed: 10
         stability: 5
         style: 4
         balance: 20
-      itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
+      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
+    - bonusStats:
+        speed: 10
+        stability: 5
+        style: 4
+        balance: 20
+      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
+    - bonusStats:
+        speed: 10
+        stability: 5
+        style: 4
+        balance: 20
+      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
     equippedItemIndex: 0
-  itemDataBase: {fileID: 0}
+  itemDataBase: {fileID: 11400000, guid: 4294f6ae730b5d24eb27075ad78a2e12, type: 2}

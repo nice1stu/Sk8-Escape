@@ -9,11 +9,11 @@ namespace Item
     public class ItemDataBaseSO : ScriptableObject
     {
         [SerializeField] private ItemConfigSO[] itemConfigs;
-        public IEnumerable<ItemConfigSO> ItemConfigs=> itemConfigs;
+        private IEnumerable<ItemConfigSO> ItemConfigs=> itemConfigs;
 
         public ItemConfigSO GetWithID(string id)
         {
-            return itemConfigs.First(it => it.Id == id);
+            return ItemConfigs.First(it => it.Id == id);
         }
     }
 }

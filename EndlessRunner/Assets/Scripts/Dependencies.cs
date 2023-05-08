@@ -29,8 +29,12 @@ public class Dependencies : ScriptableObject
     {
         //Move to constructor when not scriptableObject anymore
         inventorySerializer = new InventorySerializer(dummyInventory, itemDataBase);
-        dummyInventory.CreateDummyItem();
         Load();
+    }
+
+    public void CreateItemButton()
+    {
+        dummyInventory.CreateDummyItem();
     }
 
     private void Load()
