@@ -7,7 +7,7 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
-        public TrickState currentState;
+        public TrickState CurrentState;
 
         //Input stuff for the touch controls
         private InputAction dragActionUp;
@@ -60,7 +60,7 @@ namespace Player
             var grind = new GrindingState();
             var falling = new FallingState();
             var crashed = new CrashState();
-            currentState = coast;
+            CurrentState = coast;
 
             // Up swipe
             new OllieTransition(coast, ollie, dragActionUp);
@@ -87,6 +87,7 @@ namespace Player
             new FallingTransition(shuvit, falling);
             new FallingTransition(coffin, falling);
             new FallingTransition(grind, falling);
+            //new FallingTransition(grind, falling, ) // add holding here
 
             // Crash Transitions
             new CrashTransition(coast, crashed);
@@ -102,7 +103,7 @@ namespace Player
             new GroundedTransition(grind, coast);
             
 
-            currentState.Enter(this);
+            CurrentState.Enter(this);
 
             targetPlayerHeight = model.playerStandHeight;
             UpdatePlayerHeight(targetPlayerHeight);
@@ -220,12 +221,11 @@ namespace Player
             //Debug.Log(currentState);
             // GetInputs(true);
             GroundCheck();
-            Debug.Log((grounded));
             //CheckInteract();
             UpdatePlayerHeight(targetPlayerHeight, model.smoothCrouch);
             if (model.isAlive)
                 ConstantMove();
-            currentState.Update(this);
+            CurrentState.Update(this);
             GetInputsKeyboard(false);
         }
 

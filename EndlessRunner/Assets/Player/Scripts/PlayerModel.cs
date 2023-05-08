@@ -30,5 +30,6 @@ namespace Player
         [Range(0.2f,1f)]
         public float interactRadius = 1f;
         public bool isAlive = true;
+        public float grindLerpToTime = 0.4f;
     }
 }

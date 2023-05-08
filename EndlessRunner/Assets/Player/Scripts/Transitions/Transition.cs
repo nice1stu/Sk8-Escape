@@ -30,7 +30,7 @@ namespace Player
             
             from.Exit(playerController);
             to.Enter(playerController);
-            playerController.currentState = to;
+            playerController.CurrentState = to;
             return true;
         }
 

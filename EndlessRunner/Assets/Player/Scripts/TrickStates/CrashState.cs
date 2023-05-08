@@ -10,6 +10,7 @@ namespace Player
             playerController.model.isAlive = false;
             playerController.rb.constraints = RigidbodyConstraints2D.None;
             playerController.rb.AddForce(playerController.wallNormal * 16, ForceMode2D.Impulse);
+            playerController.rb.AddTorque(10, ForceMode2D.Impulse);
         }
     }
 }
