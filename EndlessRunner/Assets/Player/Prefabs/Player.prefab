@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 2916409661291331585}
   - component: {fileID: 1599283817310161492}
   - component: {fileID: 1599283817310161499}
-  - component: {fileID: 2371007868281178296}
   - component: {fileID: 1599283817310161503}
   - component: {fileID: 1599283817310161516}
   m_Layer: 8
@@ -56,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   model: {fileID: 0}
-  view: {fileID: 796181845}
+  view: {fileID: 375905537}
   grounded: 0
   walled: 0
   grindPath: []
@@ -91,19 +90,9 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 129
-  isAlive: 0
---- !u!114 &2916409661291331581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6550543353071559523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 574f53ef8c7793048849fd16e10453a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  interactRadius: 0.3
+  isAlive: 1
+  grindLerpToTime: 0.4
 --- !u!114 &2467846553684925727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +169,7 @@ MonoBehaviour:
   survivalRate: 0
   invincible: 0
   defaultDukeTime: 1
+  invicibilityTokens: 0
 --- !u!114 &1599283817310161499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,23 +200,6 @@ MonoBehaviour:
   m_DefaultActionMap: Touch
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2371007868281178296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6550543353071559523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4acd72ae290b8347884a4c18963015d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraShake: {fileID: 0}
-  life: {fileID: 0}
-  survivalRate: 0
-  invincible: 0
-  defaultDukeTime: 1
 --- !u!212 &1599283817310161503
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -303,6 +276,7 @@ GameObject:
   - component: {fileID: 7608416816816859095}
   - component: {fileID: 8576138277199023141}
   - component: {fileID: 1477643488}
+  - component: {fileID: 375905537}
   m_Layer: 0
   m_Name: Player gfx
   m_TagString: Untagged
@@ -318,7 +292,6 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8923090069800149062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -399,3 +372,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &375905537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923090069800149062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574f53ef8c7793048849fd16e10453a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
