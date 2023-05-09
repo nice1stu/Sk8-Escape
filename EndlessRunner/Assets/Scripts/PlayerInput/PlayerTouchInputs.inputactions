@@ -83,8 +83,30 @@
                 },
                 {
                     "name": "",
+                    "id": "641d5356-5a8f-44f7-8aa7-f69a2dbd23cf",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwipeUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fcd8e39a-02a4-4b46-ab68-484e326fd6da",
                     "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "882ec9c9-f1cf-424a-aef5-3284a58eef38",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -105,7 +127,9 @@
                 },
                 {
                     "name": "",
+
                     "id": "f87941af-709f-4693-911b-e56deee06c5a",
+
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
@@ -118,6 +142,17 @@
                     "name": "",
                     "id": "ac0aa9a8-eb4a-457e-b67f-72f7bcfcc95b",
                     "path": "<Touchscreen>/delta/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwipeDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5663e3f1-3ffd-4640-b130-c7fbdf6b2d71",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -149,8 +184,30 @@
                 },
                 {
                     "name": "",
+                    "id": "448d1d61-f9f6-455f-8167-97c9e04d46ef",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwipeRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "cf4e32d8-0509-4870-a30d-a0401d2c0c11",
                     "path": "<Touchscreen>/delta/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwipeLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "98ea9586-276a-4698-8ed2-af9b9ae88d8e",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
