@@ -3,25 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Item;
-using Lean.Localization;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemDetailPopup : MonoBehaviour
 {
-    public Image frame;
+    public TextMeshProUGUI skateboardLabel;
 
-    public Image backGround;
+    public Image skateboardIcon;
 
-    public Image item;
-    // Start is called before the first frame update
-    public Button equipButton;
-    public LeanLocalizedBehaviour equipLabel;
+    public TextMeshProUGUI stabilityValueLabel;
+    public TextMeshProUGUI speedValueLabel;
+    public TextMeshProUGUI styleValueLabel;
+    public TextMeshProUGUI balanceValueLabel;
+    
     private IItemData itemData;
 
     public void Setup(IItemData itemData)
     {
         this.itemData = itemData;
+        skateboardLabel.text = itemData.ItemConfig.ItemName;
+        skateboardIcon.sprite = itemData.ItemConfig.ItemIcon;
+        stabilityValueLabel.text = itemData.TotalStats.Stability.ToString();
+        speedValueLabel.text = itemData.TotalStats.Stability.ToString();
+        balanceValueLabel.text = itemData.TotalStats.Balance.ToString();
+        styleValueLabel.text = itemData.TotalStats.Style.ToString();
     }
 
     private void OnDestroy()
@@ -48,14 +55,11 @@ public class ItemDetailPopup : MonoBehaviour
 
     private void OnUnEquip()
     {
-        equipButton.interactable = true;
-        equipLabel.TranslationName = "equip";
+        
     }
 
     private void OnEquip()
     {
-        equipButton.interactable = false;
-        equipLabel.TranslationName = "equipped";
     }
 
     public void Equip()
