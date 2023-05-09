@@ -3,30 +3,22 @@ using UnityEngine;
 
 namespace AudioSettingInterface
 {
-    public class AudioSettings : IAudioSettings
-    {
-        public IAudioChannelSettings Music { get; set; }
-        public IAudioChannelSettings SFX { get; set; }
-
-        public AudioSettings()
-        {
-            Music = new AudioChannelSettings { Volume = 1, Muted = false };
-            SFX = new AudioChannelSettings { Volume = 1, Muted = false };
-        }
-    }
-
-    public class AudioSettingsManager : AudioSettings
+    public class AudioSettingsManager : MonoBehaviour
     {
         private const string SettingsFilePath = "settings.save.json";
 
-        public AudioSettingsManager()
+        private AudioSettings _audioSettings;
+
+        private void Awake()
         {
+            _audioSettings = new AudioSettings();
+
             LoadSettings();
         }
 
         public void SaveSettings()
         {
-            string json = JsonUtility.ToJson(this);
+            string json = JsonUtility.ToJson(_audioSettings);
             File.WriteAllText(Application.persistentDataPath + "/" + SettingsFilePath, json);
         }
 
@@ -38,19 +30,15 @@ namespace AudioSettingInterface
                 if (File.Exists(filePath))
                 {
                     string json = File.ReadAllText(filePath);
-                    JsonUtility.FromJsonOverwrite(json, this);
+                    JsonUtility.FromJsonOverwrite(json, _audioSettings);
                 }
             }
             catch (IOException)
             {
-                // If there's an error loading settings, just use the defaults
+                // Use defaults if there are any errors loading
             }
+            _audioSettings.Music.Volume = PlayerPrefs.GetFloat("MusicVolume", 1);
+            _audioSettings.Music.Muted = PlayerPrefs.GetInt("MusicMuted", 0) == 1;
         }
-    }
-
-    public class AudioChannelSettings : IAudioChannelSettings
-    {
-        public float Volume { get; set; }
-        public bool Muted { get; set; }
     }
 }
