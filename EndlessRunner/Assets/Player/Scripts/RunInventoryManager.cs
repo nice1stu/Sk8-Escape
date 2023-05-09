@@ -4,19 +4,23 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class RunInventoryManager : MonoBehaviour
+namespace Player
 {
+    public class RunInventoryManager : MonoBehaviour
     public static int coinAmount;
     public static int chestAmount;
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.layer == LayerMask.NameToLayer("Pickupable"))
+        private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.TryGetComponent(out IPickupable pickupable))
+            if (col.gameObject.layer == LayerMask.NameToLayer("Pickupable"))
             {
-                pickupable.OnPickup();
+                if (col.TryGetComponent(out IPickupable pickupable))
+                {
+                    pickupable.OnPickup();
+                }
+          
             }
-            
         }
     }
     public int GetCoinAmount()
