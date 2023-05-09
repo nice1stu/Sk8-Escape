@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6277986983059288211, guid: f2332683232deb748b9f3253ad93185a, type: 3}
       propertyPath: m_margin.z
-      value: 64
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6277986983059288211, guid: f2332683232deb748b9f3253ad93185a, type: 3}
       propertyPath: m_HorizontalAlignment
