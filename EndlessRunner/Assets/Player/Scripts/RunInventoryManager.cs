@@ -1,8 +1,15 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace Player
 {
     public class RunInventoryManager : MonoBehaviour
+    public static int coinAmount;
+    public static int chestAmount;
+    private void OnTriggerEnter2D(Collider2D col)
     {
         private void OnTriggerEnter2D(Collider2D col)
         {
@@ -12,9 +19,22 @@ namespace Player
                 {
                     pickupable.OnPickup();
                 }
-            
-                Debug.Log("Nice!!!");
+          
             }
         }
+    }
+    public int GetCoinAmount()
+    {
+        return coinAmount;
+    }
+
+    public void SetCoinAmount(int set)
+    {
+        coinAmount = set;
+    }
+
+    public int GetChestAmount()
+    {
+        return chestAmount;
     }
 }

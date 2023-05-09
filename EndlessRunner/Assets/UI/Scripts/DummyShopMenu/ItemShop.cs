@@ -2,30 +2,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UI.Scripts;
 
 public class ItemShop : MonoBehaviour
 {
-    public int coins;
-    public TMP_Text coinUI;
     public ItemShopSo[] itemShopSO;
     public GameObject[] shopPanelsGO;
     public ShopTemplate[] shopPanels;
     public Button[] myPurchaseBtns;
+    public UIManager uiManager;
     
     // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < itemShopSO.Length; i++) //looping through number of SO inside the shop
             shopPanelsGO[i].SetActive(true);
-        coinUI.text = "Coins: " + coins;
         LoadPanel();
-        CheckPurchaseable();
-    }
-    
-    public void AddCoins() //Simple Script to add/generate coins
-    {
-        coins+=5;
-        coinUI.text = "Coins: " + coins;
         CheckPurchaseable();
     }
     
@@ -33,7 +25,7 @@ public class ItemShop : MonoBehaviour
     {
         for (int i = 0; i < itemShopSO.Length; i++)
         {
-            if (!itemShopSO[i].purchased && coins >= itemShopSO[i].coinCost) //if coins is enough
+            if (!itemShopSO[i].purchased && uiManager.GetCoins() >= itemShopSO[i].coinCost) //if coins is enough
             {
                 myPurchaseBtns[i].interactable = true;
             }
@@ -44,9 +36,8 @@ public class ItemShop : MonoBehaviour
     
     public void PurchaseItem(int btnNo)
     {
-        if (coins < itemShopSO[btnNo].coinCost) return;
-        coins -= itemShopSO[btnNo].coinCost;
-        coinUI.text = "Coins: " + coins;
+        if (uiManager.GetCoins() < itemShopSO[btnNo].coinCost) return;
+        uiManager.SpendCoins(itemShopSO[btnNo].coinCost);
         itemShopSO[btnNo].purchased = true;
         CheckPurchaseable();
         //Unlock Item

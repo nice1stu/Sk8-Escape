@@ -2,12 +2,23 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug; //Needed to stop the default C# diagnostics from taking over debug commands
 
 namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
+
         public TrickState CurrentState;
+
+  
+    private float oldTimeScale;
+    private PlayerScoreModel scoreModel;
+
+    public Coroutine slowmoCoolDown;
+
+    private Stopwatch slowmoCoolDownTimer;  
 
         //Input stuff for the touch controls
         private InputAction dragActionUp;
@@ -30,6 +41,42 @@ namespace Player
 
         private BoxCollider2D _col;
         public PlayerView view;
+
+        slowmoCoolDownTimer = new Stopwatch();
+        
+
+    }
+
+    private void OnEnable()
+    {
+        dragActionUp.performed += SwipeUpReceived;
+        dragActionDown.performed += SwipeDownReceived;
+        dragActionRight.performed += SwipeRightReceived;
+        dragActionLeft.performed += SwipeLeftReceived;
+        touch.canceled += TouchStopped;
+        tap.performed += Tap;
+
+        scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
+    }
+
+    private void OnDisable()
+    {
+        dragActionUp.performed -= SwipeUpReceived;
+        dragActionDown.performed -= SwipeDownReceived;
+        dragActionRight.performed -= SwipeRightReceived;
+        dragActionLeft.performed -= SwipeLeftReceived;
+        touch.canceled -= TouchStopped;
+        tap.performed -= Tap;
+    }
+
+    void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+        _model = GetComponent<PlayerModel>();
+        _col = GetComponent<BoxCollider2D>();
+
+        currentState = SkateboardTrickState.Coast;
+    }
 
         // Variables
         [HideInInspector] public bool grounded;
@@ -128,7 +175,56 @@ namespace Player
             touch.canceled -= TouchStopped;
             tap.performed -= Tap;
         }
+    private void DoubleTap()
+    {
+        Debug.Log("Double tap!");
+        if (scoreModel.TryToUsePowerUp())
+        {
+            oldTimeScale = Time.timeScale;
+            Time.timeScale = 0.5f;
+            slowmoCoolDown = StartCoroutine(SlowmoCoolDown());
+            slowmoCoolDownTimer.Reset();
+            slowmoCoolDownTimer.Start();
+        }
+        
+    }
 
+    public void PauseSlowmo()
+    {
+        if (slowmoCoolDownTimer.IsRunning)
+        {
+            slowmoCoolDownTimer.Stop();
+        }
+        else
+        {
+            slowmoCoolDownTimer.Restart();
+        }
+    }
+
+    public void CancelSlowmo()
+    {
+        if (slowmoCoolDownTimer.IsRunning)
+        {
+            Time.timeScale = oldTimeScale;
+        }
+    }
+
+    IEnumerator SlowmoCoolDown()
+    {
+        while (true)
+        {
+
+
+            Debug.Log("Elapsed time: " + slowmoCoolDownTimer.Elapsed.Seconds);
+            if (slowmoCoolDownTimer.Elapsed.Seconds > 3f)
+            {
+                Time.timeScale = oldTimeScale;
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 
         #region TouchInput stuff
 

@@ -1,10 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_android_client_id,@string/default_web_client_id">
   <string name="gcm_defaultSenderId" translatable="false">466560751828</string>
   <string name="google_storage_bucket" translatable="false">endlessrunner-35062.appspot.com</string>
   <string name="project_id" translatable="false">endlessrunner-35062</string>
   <string name="google_api_key" translatable="false">AIzaSyCuFKj3G5KmxJ-o-ftf8F57OQLJThPBAk0</string>
   <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCuFKj3G5KmxJ-o-ftf8F57OQLJThPBAk0</string>
   <string name="google_app_id" translatable="false">1:466560751828:android:dba8bc2b83f0263d184341</string>
-  <string name="default_web_client_id" translatable="false">466560751828-5cqnv1hpa4g0ilt6rmh3bi4ukipvp2fk.apps.googleusercontent.com</string>
+  <string name="default_android_client_id" translatable="false">466560751828-gun789feje54c99s4th0edkp6ora7ueq.apps.googleusercontent.com</string>
+  <string name="default_web_client_id" translatable="false">466560751828-rqj8kit7725q7vjk86peeimp9pq8piop.apps.googleusercontent.com</string>
 </resources>
