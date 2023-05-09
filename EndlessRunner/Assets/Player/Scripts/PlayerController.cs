@@ -316,7 +316,6 @@ namespace Player
 
         private void UpdatePlayerHeight(float height, bool smooth = false)
         {
-            view.DummyCoffinScaler(_col.size, _col.offset);
             if (smooth)
             {
                 float heightFrom = _col.size.y;
@@ -333,8 +332,6 @@ namespace Player
                 _col.size = new Vector2(_col.size.x, height);
                 _col.offset = (_col.size.y / 2) * Vector2.up;
             }
-
-            view.DummyCoffinScaler(_col.size, _col.offset);
         }
 
         public void EnterGrinding(Transform[] rail)
