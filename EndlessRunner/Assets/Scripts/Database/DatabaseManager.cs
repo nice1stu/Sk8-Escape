@@ -69,13 +69,13 @@ public class DatabaseManager : MonoBehaviour
     // should retrieves name and gold and display's information ( UI )
     public void GetUserInfo()
     {
-        StartCoroutine(GetName((string Username) =>
+        StartCoroutine(GetName((Username) =>
         {
-            NameText.text = "Name: " + Username.ToString();
+            NameText.text = "Name: " + Username;
         }));
-        StartCoroutine(GetGold((int gold) =>
+        StartCoroutine(GetGold((gold) =>
         {
-            GoldText.text = "Gold: " + gold.ToString();
+            GoldText.text = "Gold: " + gold;
         }));
     }
 
