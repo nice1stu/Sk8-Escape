@@ -3,17 +3,24 @@ using UnityEngine;
 
 namespace AudioSettingInterface
 {
+    public class AudioSettings : IAudioSettings
+    {
+        public IAudioChannelSettings Music { get; set; }
+        public IAudioChannelSettings SFX { get; set; }
+
+        public AudioSettings()
+        {
+            Music = new AudioChannelSettings { Volume = 1, Muted = false };
+            SFX = new AudioChannelSettings { Volume = 1, Muted = false };
+        }
+    }
+
     public class AudioSettingsManager : AudioSettings
     {
         private const string SettingsFilePath = "settings.save.json";
 
         public AudioSettingsManager()
         {
-            // Set default values for music and SFX
-            music = new AudioChannelSettings { Volume = 1, Muted = false };
-            sfx = new AudioChannelSettings { Volume = 1, Muted = false };
-
-            // Load saved settings from file
             LoadSettings();
         }
 
@@ -36,7 +43,7 @@ namespace AudioSettingInterface
             }
             catch (IOException)
             {
-                // Use default if there is error in loading saved settings
+                // If there's an error loading settings, just use the defaults
             }
         }
     }

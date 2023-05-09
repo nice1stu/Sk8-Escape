@@ -2,13 +2,13 @@ namespace AudioSettingInterface
 {
     public interface IAudioChannelSettings
     {
-        public float Volume{get;set;}
-        public bool Muted{get;set;}
+        public float Volume { get; set; }
+        public bool Muted { get; set; }
     }
 
-    public abstract class AudioSettings
+    public interface IAudioSettings
     {
-        protected IAudioChannelSettings music;
-        protected IAudioChannelSettings sfx;
+        IAudioChannelSettings Music { get; }
+        IAudioChannelSettings SFX { get; }
     }
 }
