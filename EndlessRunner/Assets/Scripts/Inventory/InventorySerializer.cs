@@ -42,10 +42,12 @@ namespace Inventory
         {
             return new Stats
             {
-                Speed = stats.Speed,
+                CoffinTimeAdded = stats.CoffinTimeAdded,
                 Stability = stats.Stability,
-                Style = stats.Style,
-                Balance = stats.Balance
+                Vision = stats.Vision,
+                GrindMiniGameBallSize = stats.GrindMiniGameBallSize,
+                GrindLeniency = stats.GrindLeniency,
+                ScoreMultiplier = stats.ScoreMultiplier
             };
         }
 

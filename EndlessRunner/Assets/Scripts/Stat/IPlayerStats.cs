@@ -1,19 +1,23 @@
+using System;
 using Inventory;
 using Stat;
+using UnityEngine;
 
-public interface IPlayerStats
+namespace Stat
 {
-    IActiveInventory activeInventory { get; }
-
-    IStats GetCurrentStats()
+    public interface IPlayerStats
     {
-        var stats = new Stats();
-        foreach (var item in activeInventory.EquippedItems)
-        {
-            // stats += item.BonusStats;
-            // stats += item.ItemConfig.BaseStats;
-        }
+        IActiveInventory ActiveInventory { get; }
 
-        return stats;
+        Stats GetCurrentStats()
+        {
+            var stats = new Stats();
+            foreach (var item in ActiveInventory.EquippedItems)
+            {
+                stats = stats.Add(item.BonusStats);
+                stats = stats.Add(item.ItemConfig.BaseStats);
+            }
+            return stats;
+        }
     }
 }

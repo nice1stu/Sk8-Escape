@@ -1,20 +1,23 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Stat
 {
     [Serializable]
     public struct Stats : IStats
     {
-        [SerializeField] private int speed;
+        [SerializeField] private int coffinTimeAdded;
         [SerializeField] private int stability;
-        [SerializeField] private int style;
-        [SerializeField] private int balance;
+        [SerializeField] private int vision;
+        [SerializeField] private int grindMiniGameBallSize;
+        [SerializeField] private int grindLeniency;
+        [SerializeField] private int scoreMultiplier;
 
-        public int Speed
+        public int CoffinTimeAdded
         {
-            readonly get => speed;
-            set => speed = value;
+            readonly get => coffinTimeAdded;
+            set => coffinTimeAdded = value;
         }
 
         public int Stability
@@ -23,16 +26,49 @@ namespace Stat
             set => stability = value;
         }
 
-        public int Style
+        public int Vision
         {
-            readonly get => style;
-            set => style = value;
+            readonly get => vision;
+            set => vision = value;
         }
 
-        public int Balance
+        public int GrindMiniGameBallSize
         {
-            readonly get => balance;
-            set => balance = value;
+            readonly get => grindMiniGameBallSize;
+            set => grindMiniGameBallSize = value;
+        }
+
+        public int GrindLeniency
+        {
+            readonly get => grindLeniency;
+            set => grindLeniency = value;
+        }
+
+        public int ScoreMultiplier
+        {
+            readonly get => scoreMultiplier;
+            set => scoreMultiplier = value;
+        }
+
+        public Stats Add(IStats stats)
+        {
+            //adds bonus stats
+            var newStats = new Stats();
+            newStats.GrindMiniGameBallSize += stats.GrindMiniGameBallSize;
+            newStats.Stability += stats.Stability;
+            newStats.CoffinTimeAdded += stats.CoffinTimeAdded;
+            newStats.Vision += stats.Vision;
+            newStats.GrindLeniency += stats.GrindLeniency;
+            newStats.ScoreMultiplier += stats.ScoreMultiplier;
+            //adds base stats
+            newStats.GrindMiniGameBallSize += stats.GrindMiniGameBallSize;
+            newStats.Stability += stats.Stability;
+            newStats.CoffinTimeAdded += stats.CoffinTimeAdded;
+            newStats.Vision += stats.Vision;
+            newStats.GrindLeniency += stats.GrindLeniency;
+            newStats.ScoreMultiplier += stats.ScoreMultiplier;
+
+            return newStats;
         }
     }
 }
