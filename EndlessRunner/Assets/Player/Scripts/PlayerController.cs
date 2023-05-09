@@ -41,6 +41,9 @@ namespace Player
         private BoxCollider2D _col;
         public PlayerView view;
 
+        [HideInInspector]
+        public PlayerDeathHandler deathHandler;
+
         
 
 
@@ -78,6 +81,7 @@ namespace Player
             rb = GetComponent<Rigidbody2D>();
             model = GetComponent<PlayerModel>();
             _col = GetComponent<BoxCollider2D>();
+            deathHandler = GetComponent<PlayerDeathHandler>();
             dragActionUp = playerInput.actions.FindAction("SwipeUp");
             dragActionDown = playerInput.actions.FindAction("SwipeDown");
             dragActionLeft = playerInput.actions.FindAction("SwipeLeft");
@@ -362,7 +366,7 @@ namespace Player
                 if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.left) < model.maxWallAngle)
                 {
                     wallNormal = _collisionBuffer[i].normal;
-                    walled = true;
+                    walled = deathHandler.OnDeath();
                 }
             }
         }
