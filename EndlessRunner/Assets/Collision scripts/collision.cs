@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,6 +16,8 @@ public class collision : MonoBehaviour
     public float survivalRate;
     public bool invincible;
     public float defaultDukeTime = 1f;
+
+    public int invicibilityTokens = 0;
     
     private void OnCollisionEnter2D(Collision2D col)
     {
@@ -22,6 +25,11 @@ public class collision : MonoBehaviour
         if (col.collider.gameObject.layer == LayerMask.NameToLayer("WallObstacles") &&!invincible)
         {
             float surviveFloat = Random.Range(0, 100f);
+            if (invicibilityTokens > 0)
+            {
+                surviveFloat = -1;
+                invicibilityTokens--;
+            }
             if (surviveFloat<survivalRate)
             {
                 Debug.Log("survived");
@@ -35,6 +43,7 @@ public class collision : MonoBehaviour
                 life.isAlive = false;
                 StartCoroutine(cameraShake.Shake(.13f,0.6f));
                 StartCoroutine(DelayCoroutine(1.0f));
+                GetComponent<PlayerController>().CancelSlowmo();
             }
 
         }
