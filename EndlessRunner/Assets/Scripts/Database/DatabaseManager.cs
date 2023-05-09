@@ -27,12 +27,12 @@ public class DatabaseManager : MonoBehaviour
     public void CreateUser()
     {
         // creates new name and gold
-        UserData newUserData = new UserData(Name.text, Int32.Parse(Gold.text)); 
+        UserData newUserData = new UserData(Name.text, int.Parse(Gold.text)); 
         // converts to json
         string json = JsonUtility.ToJson(newUserData);
 
         // organizing users stats in firebase and setting json variable to raw json
-        datareference.Child("user").Child(userID).SetRawJsonValueAsync(json);
+        datareference.Child("users").Child(userID).SetRawJsonValueAsync(json);
     }
 
     // retrieves user's name from Firebase database and passes it to another function as string
@@ -42,29 +42,29 @@ public class DatabaseManager : MonoBehaviour
         
         // pauses the execution until database calls complete
         yield return new WaitUntil(predicate: () => userNameData.IsCompleted);
-
+    
         if (userNameData != null)
         {
             DataSnapshot snapshot = userNameData.Result;
-
+    
             onCallback.Invoke(snapshot.Value.ToString());
         }
     }
-
+    
     public IEnumerator GetGold(Action<int> onCallback)
     {
         var userNameData = datareference.Child("user").Child(userID).Child("gold").GetValueAsync();
-
+    
         yield return new WaitUntil(predicate: () => userNameData.IsCompleted);
-
+    
         if (userNameData != null)
         {
             DataSnapshot snapshot = userNameData.Result;
-
+    
             onCallback.Invoke((int)snapshot.Value);
         }
     }
-
+    
     // retrieves name and gold and display's information ( UI )
     public void GetUserInfo()
     {
