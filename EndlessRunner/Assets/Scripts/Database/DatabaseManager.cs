@@ -53,13 +53,13 @@ public class DatabaseManager : MonoBehaviour
     
     public IEnumerator GetGold(Action<int> onCallback)
     {
-        var userNameData = datareference.Child("user").Child(userID).Child("gold").GetValueAsync();
+        var userGoldData = datareference.Child("user").Child(userID).Child("gold").GetValueAsync();
     
-        yield return new WaitUntil(predicate: () => userNameData.IsCompleted);
+        yield return new WaitUntil(predicate: () => userGoldData.IsCompleted);
     
-        if (userNameData != null)
+        if (userGoldData != null)
         {
-            DataSnapshot snapshot = userNameData.Result;
+            DataSnapshot snapshot = userGoldData.Result;
     
             onCallback.Invoke((int)snapshot.Value);
         }
