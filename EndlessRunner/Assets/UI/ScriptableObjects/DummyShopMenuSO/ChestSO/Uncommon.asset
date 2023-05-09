@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6e228bb4521364ea2f53214a0ed434, type: 3}
   m_Name: Uncommon
   m_EditorClassIdentifier: 
-  title: 
-  description: 
-  coinCost: 0
-  Sprite: {fileID: 0}
+  title: Uncommon Chest
+  description: not normal chest
+  coinCost: 2
+  Sprite: {fileID: 21300000, guid: 75a728336ae634347b11996db821a50a, type: 3}
