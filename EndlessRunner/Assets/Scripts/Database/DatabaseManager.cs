@@ -9,6 +9,7 @@ public class DatabaseManager : MonoBehaviour
 {
     public InputField Name;
     public InputField Gold;
+    public InputField Silver;
 
     public Text NameText;
     public Text GoldText;
@@ -27,7 +28,7 @@ public class DatabaseManager : MonoBehaviour
     public void CreateUser()
     {
         // creates new name and gold
-        UserData newUserData = new UserData(Name.text, int.Parse(Gold.text)); 
+        UserData newUserData = new UserData(Name.text, int.Parse(Gold.text), int.Parse(Silver.text)); 
         // converts to json
         string json = JsonUtility.ToJson(newUserData);
 
@@ -35,46 +36,46 @@ public class DatabaseManager : MonoBehaviour
         datareference.Child("users").Child(userID).SetRawJsonValueAsync(json);
     }
 
-    // retrieves user's name from Firebase database and passes it to another function as string
-    public IEnumerator GetName(Action<string> onCallback)
-    {
-        var userNameData = datareference.Child("user").Child(userID).Child("name").GetValueAsync();
-        
-        // pauses the execution until database calls complete
-        yield return new WaitUntil(predicate: () => userNameData.IsCompleted);
-    
-        if (userNameData != null)
-        {
-            DataSnapshot snapshot = userNameData.Result;
-    
-            onCallback.Invoke(snapshot.Value.ToString());
-        }
-    }
-    
-    public IEnumerator GetGold(Action<int> onCallback)
-    {
-        var userGoldData = datareference.Child("user").Child(userID).Child("gold").GetValueAsync();
-    
-        yield return new WaitUntil(predicate: () => userGoldData.IsCompleted);
-    
-        if (userGoldData != null)
-        {
-            DataSnapshot snapshot = userGoldData.Result;
-    
-            onCallback.Invoke((int)snapshot.Value);
-        }
-    }
-    
-    // retrieves name and gold and display's information ( UI )
-    public void GetUserInfo()
-    {
-        StartCoroutine(GetName((string name) =>
-        {
-            NameText.text = "Name: " + name;
-        }));
-        StartCoroutine(GetGold((int gold) =>
-        {
-            GoldText.text = "Gold: " + gold.ToString();
-        }));
-    }
+    // // retrieves user's name from Firebase database and passes it to another function as string
+    // public IEnumerator GetName(Action<string> onCallback)
+    // {
+    //     var userNameData = datareference.Child("user").Child(userID).Child("name").GetValueAsync();
+    //     
+    //     // pauses the execution until database calls complete
+    //     yield return new WaitUntil(predicate: () => userNameData.IsCompleted);
+    //
+    //     if (userNameData != null)
+    //     {
+    //         DataSnapshot snapshot = userNameData.Result;
+    //
+    //         onCallback.Invoke(snapshot.Value.ToString());
+    //     }
+    // }
+    //
+    // public IEnumerator GetGold(Action<int> onCallback)
+    // {
+    //     var userGoldData = datareference.Child("user").Child(userID).Child("gold").GetValueAsync();
+    //
+    //     yield return new WaitUntil(predicate: () => userGoldData.IsCompleted);
+    //
+    //     if (userGoldData != null)
+    //     {
+    //         DataSnapshot snapshot = userGoldData.Result;
+    //
+    //         onCallback.Invoke(int.Parse(snapshot.Value.ToString()));
+    //     }
+    // }
+    //
+    // // should retrieves name and gold and display's information ( UI )
+    // public void GetUserInfo()
+    // {
+    //     StartCoroutine(GetName((string name) =>
+    //     {
+    //         NameText.text = "Name: " + name;
+    //     }));
+    //     StartCoroutine(GetGold((int gold) =>
+    //     {
+    //         GoldText.text = "Gold: " + gold.ToString();
+    //     }));
+    // }
 }
