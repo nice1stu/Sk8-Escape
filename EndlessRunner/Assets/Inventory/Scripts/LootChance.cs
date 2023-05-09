@@ -4,7 +4,7 @@ namespace Inventory.Scripts
 {
     public struct LootChance
     {
-        private ItemConfigSO _itemConfig;
+        private IItemConfig _itemConfig;
         private int _chance; // weight
     }
 }
