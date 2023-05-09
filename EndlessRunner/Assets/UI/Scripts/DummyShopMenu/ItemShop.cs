@@ -1,21 +1,22 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UI.Scripts;
 
 public class ItemShop : MonoBehaviour
 {
-    public ItemShopSo[] itemShopSO;
+    public ShopChestSo[] shopChestSO;
     public GameObject[] shopPanelsGO;
     public ShopTemplate[] shopPanels;
     public Button[] myPurchaseBtns;
     public UIManager uiManager;
+
+    
     
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < itemShopSO.Length; i++) //looping through number of SO inside the shop
+        for (int i = 0; i < shopChestSO.Length; i++) //looping through number of SO inside the shop
             shopPanelsGO[i].SetActive(true);
         LoadPanel();
         CheckPurchaseable();
@@ -23,9 +24,9 @@ public class ItemShop : MonoBehaviour
     
     public void CheckPurchaseable()
     {
-        for (int i = 0; i < itemShopSO.Length; i++)
+        for (int i = 0; i < shopChestSO.Length; i++)
         {
-            if (!itemShopSO[i].purchased && uiManager.GetCoins() >= itemShopSO[i].coinCost) //if coins is enough
+            if (uiManager.GetCoins() >= shopChestSO[i].coinCost) //if coins is enough
             {
                 myPurchaseBtns[i].interactable = true;
             }
@@ -36,23 +37,25 @@ public class ItemShop : MonoBehaviour
     
     public void PurchaseItem(int btnNo)
     {
-        if (uiManager.GetCoins() < itemShopSO[btnNo].coinCost) return;
-        uiManager.SpendCoins(itemShopSO[btnNo].coinCost);
-        itemShopSO[btnNo].purchased = true;
+        if (uiManager.GetCoins() < shopChestSO[btnNo].coinCost) return;
+        uiManager.SpendCoins(shopChestSO[btnNo].coinCost);
         CheckPurchaseable();
-        //Unlock Item
+        UnlockChest();
     }
     
     public void LoadPanel()
     {
-        for (int i = 0; i < itemShopSO.Length; i++)
+        for (int i = 0; i < shopChestSO.Length; i++)
         {
-            shopPanels[i].titleTxt.text = itemShopSO[i].title;
-            shopPanels[i].desriptionTxt.text = itemShopSO[i].description;
-            if (itemShopSO[i].purchased)
-                shopPanels[i].coinsCostText.text = "Purchased";
-            else
-                shopPanels[i].coinsCostText.text = "Coins: " + itemShopSO[i].coinCost;
+            shopPanels[i].titleTxt.text = shopChestSO[i].title;
+            // shopPanels[i].desriptionTxt.text = shopChestSO[i].description;
+            shopPanels[i].coinsCostText.text = "Coins: " + shopChestSO[i].coinCost;
+            shopPanels[i].Sprite = shopChestSO[i].Sprite;
         }
+    }
+
+    public void UnlockChest()
+    {
+        Debug.Log("Chest Unlock!");
     }
 }
