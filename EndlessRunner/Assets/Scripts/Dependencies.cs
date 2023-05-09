@@ -1,5 +1,6 @@
 using Inventory;
 using Item;
+using Stat;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -29,6 +30,7 @@ public class Dependencies : ScriptableObject
     {
         //Move to constructor when not scriptableObject anymore
         inventorySerializer = new InventorySerializer(dummyInventory, itemDataBase);
+        var playerStats = new PlayerStats(Equipped);
         Load();
     }
 
