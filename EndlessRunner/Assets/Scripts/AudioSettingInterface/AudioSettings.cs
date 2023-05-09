@@ -1,7 +1,6 @@
 using UnityEngine;
- using UnityEngine.Serialization;
- 
- namespace AudioSettingInterface
+
+namespace AudioSettingInterface
  {
      [System.Serializable]
      public class AudioSettings : IAudioSettings
@@ -10,6 +9,6 @@ using UnityEngine;
          [SerializeField] private AudioChannelSettings sfx;
  
          public IAudioChannelSettings Music => music;
-         public IAudioChannelSettings SFX => sfx;
+         public IAudioChannelSettings Sfx => sfx;
      }
  }

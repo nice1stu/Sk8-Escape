@@ -9,6 +9,6 @@ namespace AudioSettingInterface
     public interface IAudioSettings
     {
         IAudioChannelSettings Music { get; }
-        IAudioChannelSettings SFX { get; }
+        IAudioChannelSettings Sfx { get; }
     }
 }
