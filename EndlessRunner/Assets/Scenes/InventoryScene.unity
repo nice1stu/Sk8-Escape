@@ -2691,7 +2691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skateboardLabel: {fileID: 0}
   skateboardIcon: {fileID: 0}
-  stabilityValue: {fileID: 0}
+  stabilityValueLabel: {fileID: 0}
   speedValueLabel: {fileID: 0}
   styleValueLabel: {fileID: 0}
   balanceValueLabel: {fileID: 0}
