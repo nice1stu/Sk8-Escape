@@ -12,6 +12,9 @@ namespace AudioSettingsSaver
 
         private void Start()
         {
+            // Initialize a new AudioSettings object
+            _audioSettings = new AudioSettings();
+
             // Load settings on start
             musicVolume = _audioSettings.Music.Volume;
             musicMuted = _audioSettings.Music.Muted;

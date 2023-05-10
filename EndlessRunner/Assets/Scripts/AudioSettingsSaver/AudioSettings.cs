@@ -11,7 +11,7 @@ namespace AudioSettingsSaver
 
         private const string SettingsFilePath = "audio_settings.json";
 
-        protected AudioSettings()
+        public AudioSettings()
         {
             Load();
         }
