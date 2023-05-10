@@ -1,15 +1,14 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace AudioSettingsSaver
 {
     public class AudioSettingsTest : MonoBehaviour
     {
         private AudioSettings _audioSettings;
-        [FormerlySerializedAs("_musicVolume")] [SerializeField] private float musicVolume = 1f;
-        [FormerlySerializedAs("_sfxVolume")] [SerializeField] private float sfxVolume = 1f;
-        [FormerlySerializedAs("_musicMuted")] [SerializeField] private bool musicMuted;
-        [FormerlySerializedAs("_sfxMuted")] [SerializeField] private bool sfxMuted;
+        [SerializeField] private float musicVolume = 1f;
+        [SerializeField] private float sfxVolume = 1f;
+        [SerializeField] private bool musicMuted;
+        [SerializeField] private bool sfxMuted;
 
         private void Start()
         {

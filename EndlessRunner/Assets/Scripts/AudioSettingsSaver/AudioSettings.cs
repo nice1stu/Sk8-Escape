@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AudioSettingsSaver
 {
-    public abstract class AudioSettings : IAudioSettings
+    public class AudioSettings : IAudioSettings
     {
         private AudioChannelSettings _music;
         private AudioChannelSettings _sfx;
