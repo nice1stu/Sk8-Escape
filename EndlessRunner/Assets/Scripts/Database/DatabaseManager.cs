@@ -39,46 +39,64 @@ public class DatabaseManager : MonoBehaviour
     // retrieves user's name from Firebase database and passes it to another function as string
     public IEnumerator GetName(Action<string> onCallback)
     {
-        var userNameData = datareference.Child("user").Child(userID).Child("name").GetValueAsync();
+        var userNameData = datareference.Child("users").Child(userID).Child("name").GetValueAsync();
         
         // pauses the execution until database calls complete
         yield return new WaitUntil(predicate: () => userNameData.IsCompleted);
-    
-        if (userNameData != null)
+
+        if (userNameData.Exception != null)
         {
-            DataSnapshot snapshot = userNameData.Result;
-    
+            Debug.LogError($"Failed to retrieve name data {userNameData.Exception}");
+        }
+        
+        DataSnapshot snapshot = userNameData.Result;
+
+        if (snapshot != null && snapshot.Exists)
+        {
             onCallback.Invoke(snapshot.Value.ToString());
+        }
+        else
+        {
+            Debug.LogError("Name data does not exist.");
         }
     }
     
     public IEnumerator GetGold(Action<int> onCallback)
     {
-        var userGoldData = datareference.Child("user").Child(userID).Child("gold").GetValueAsync();
+        var userGoldData = datareference.Child("users").Child(userID).Child("gold").GetValueAsync();
     
         yield return new WaitUntil(predicate: () => userGoldData.IsCompleted);
-    
-        if (userGoldData != null)
+
+        if (userGoldData.Exception != null)
         {
-            DataSnapshot snapshot = userGoldData.Result;
-    
+            Debug.LogError($"Failed to retrieve gold data: {userGoldData.Exception}");
+        }
+
+        DataSnapshot snapshot = userGoldData.Result;
+        if (snapshot != null && snapshot.Exists)
+        {
             onCallback.Invoke(int.Parse(snapshot.Value.ToString()));
+        }
+        else
+        {
+            Debug.LogError("Gold data does not exist.");
         }
     }
     
     // should retrieves name and gold and display's information ( UI )
     public void GetUserInfo()
     {
-        StartCoroutine(GetName((Username) =>
+        StartCoroutine(GetName((string name) =>
         {
-            NameText.text = "Name: " + Username;
+            NameText.text = "Name: " + name.ToString();
         }));
-        StartCoroutine(GetGold((gold) =>
+        StartCoroutine(GetGold((int gold) =>
         {
-            GoldText.text = "Gold: " + gold;
+            GoldText.text = "Gold: " + gold.ToString();
         }));
     }
 
+    // updating the data
     public void UpdateName()
     {
         datareference.Child("users").Child(userID).Child("name").SetValueAsync(Name.text);
