@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace AudioSettings
 {
@@ -21,7 +20,7 @@ namespace AudioSettings
             LoadSettings();
         }
 
-        public void SaveSettings(Tuple<float, bool> other)
+        private void SaveSettings(Tuple<float, bool> other)
         {
             audioSettings.IsMuted = audioSettings.Music.Muted && audioSettings.Sfx.Muted;
             string json = JsonUtility.ToJson(audioSettings);

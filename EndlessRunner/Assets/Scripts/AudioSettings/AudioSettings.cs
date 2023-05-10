@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace AudioSettings
 {
@@ -23,7 +22,6 @@ namespace AudioSettings
                 sfx.SetGlobalMute(globalMuted);
             }
         }
-
-        public bool IsMuted { get; set; } // Add this property
+        public bool IsMuted { get; set; }
     }
 }

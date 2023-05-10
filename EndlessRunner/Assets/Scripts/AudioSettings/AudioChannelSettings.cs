@@ -11,8 +11,8 @@ namespace AudioSettings
         public event Action<Tuple<float, bool>> VolumeAndMutedChanged; 
         [SerializeField] private AudioMixer audioMixer;
 
-        [FormerlySerializedAs("_muted")] [SerializeField] private bool muted;
-        [FormerlySerializedAs("_volume")] [SerializeField] private float volume;
+        [SerializeField] private bool muted;
+        [SerializeField] private float volume;
 
         public float Volume
         {
