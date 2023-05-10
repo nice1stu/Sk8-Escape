@@ -19,7 +19,6 @@ public class ItemShop : MonoBehaviour
         for (int i = 0; i < shopChestSo.Length; i++) //looping through number of SO inside the shop
             shopPanelsGo[i].SetActive(true);
         LoadPanel();
-        CheckPurchaseable();
     }
     
     //this method is will check you have enough coins to purchase the item.
