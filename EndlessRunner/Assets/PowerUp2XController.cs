@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using static RunInventoryManager;
+using static Player.RunInventoryManager;
 using UnityEngine;
 
 public class PowerUp2XController : MonoBehaviour, IPickupable
@@ -11,7 +11,7 @@ public class PowerUp2XController : MonoBehaviour, IPickupable
     private IEnumerator timer;
 
     private PlayerScoreModel hudScore;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,6 @@ public class PowerUp2XController : MonoBehaviour, IPickupable
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void OnDisable()
