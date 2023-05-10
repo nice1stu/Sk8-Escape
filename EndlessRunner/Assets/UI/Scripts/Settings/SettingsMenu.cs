@@ -74,6 +74,7 @@ public class SettingsMenu : MonoBehaviour
     // Sets the UI to reflect backend values 
     private void SetUIStateFromSavedData()
     {
+        // Blocked: Awaiting interface
         Assert.IsNotNull(persistentSettingsManager);
 
         persistentSettingsManager.LoadSettingsData();

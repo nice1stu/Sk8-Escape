@@ -469,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3585858195544455562, guid: 16d0c1e7f45999043b72123790444647, type: 3}
       propertyPath: m_Name
-      value: LeanLocalization
+      value: Settings - LeanLocalization Phrases
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16d0c1e7f45999043b72123790444647, type: 3}

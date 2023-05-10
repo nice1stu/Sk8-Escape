@@ -396,9 +396,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1639358706}
     m_Modifications:
+    - target: {fileID: 1219186248582701568, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
+      propertyPath: m_text
+      value: Tyst
+      objectReference: {fileID: 0}
     - target: {fileID: 1541361712427763920, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
       propertyPath: m_text
-      value: Settings
+      value: "Inst\xE4llningar"
       objectReference: {fileID: 0}
     - target: {fileID: 1541361712427763921, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
       propertyPath: m_RootOrder
@@ -414,7 +418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2144682134195181694, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
       propertyPath: m_text
-      value: Effects Volume
+      value: Musik Volym
       objectReference: {fileID: 0}
     - target: {fileID: 2144682134736837126, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
       propertyPath: m_AnchorMax.x
@@ -546,7 +550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985795272360098450, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
       propertyPath: m_text
-      value: Sound
+      value: Ljud
       objectReference: {fileID: 0}
     - target: {fileID: 4985795272360098451, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
       propertyPath: m_SizeDelta.x
@@ -554,11 +558,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985795272598462608, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
       propertyPath: m_text
-      value: Language
+      value: "Spr\xE5k"
       objectReference: {fileID: 0}
     - target: {fileID: 4985795272598462609, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949409895775656239, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
+      propertyPath: m_text
+      value: Tyst
       objectReference: {fileID: 0}
     - target: {fileID: 6897428443637948562, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
       propertyPath: m_AnchorMax.x
@@ -570,7 +578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6897428443892441937, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
       propertyPath: m_text
-      value: Effects Volume
+      value: Effect Volym
       objectReference: {fileID: 0}
     - target: {fileID: 6897428444400541993, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
       propertyPath: m_AnchorMax.x
