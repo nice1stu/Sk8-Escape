@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace AudioSettingInterface
+namespace AudioSettings
 {
     [System.Serializable]
     public struct AudioChannelSettings : IAudioChannelSettings
@@ -28,19 +28,17 @@ namespace AudioSettingInterface
             }
         }
 
+        [SerializeField] private bool _muted;
         public bool Muted
         {
             get => _muted;
             set
             {
                 _muted = value;
-
-                // Save mute status to player preferences or any persistent storage
-                VolumeAndMutedChanged?.Invoke(new Tuple<float, bool>(_volume,_muted));
-
-                // Set mute status on mixer
+                VolumeAndMutedChanged?.Invoke(new Tuple<float, bool>(_volume, _muted));
                 audioMixer.SetFloat("Volume", _muted ? -80 : Mathf.Log10(_volume) * 20);
             }
         }
+
     }
 }

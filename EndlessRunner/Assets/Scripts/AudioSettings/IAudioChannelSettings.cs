@@ -1,6 +1,6 @@
 using System;
 
-namespace AudioSettingInterface
+namespace AudioSettings
 {
     public interface IAudioChannelSettings
     {
