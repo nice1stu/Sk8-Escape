@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 public class ParameterBuffs : MonoBehaviour
@@ -21,6 +22,6 @@ public class ParameterBuffs : MonoBehaviour
     void Buff()
     {
         FindObjectOfType<CameraController>().offset += new Vector3(vision, 0, 0);
-        FindObjectOfType<collision>().survivalRate += stability;
+        FindObjectOfType<PlayerDeathHandler>().survivalRate += stability;
     }
 }
