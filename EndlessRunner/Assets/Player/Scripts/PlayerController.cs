@@ -26,6 +26,8 @@ namespace Player
         private InputAction dragActionLeft;
         private InputAction touch;
         private InputAction tap;
+        private InputAction touchDownAction;
+        private InputAction touchUpAction;
         private PlayerInput playerInput;
 
         private bool SwipeLock = false;
@@ -41,10 +43,7 @@ namespace Player
         private BoxCollider2D _col;
         public PlayerView view;
 
-        [HideInInspector]
-        public PlayerDeathHandler deathHandler;
-
-        
+        [HideInInspector] public PlayerDeathHandler deathHandler;
 
 
         private void OnEnable()
@@ -55,6 +54,9 @@ namespace Player
             dragActionLeft.performed += SwipeLeftReceived;
             touch.canceled += TouchStopped;
             tap.performed += Tap;
+            touchDownAction.performed += OnTouchDownPerformed;
+            touchUpAction.performed += OnTouchUpPerformed;
+
 
             scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
         }
@@ -67,6 +69,8 @@ namespace Player
             dragActionLeft.performed -= SwipeLeftReceived;
             touch.canceled -= TouchStopped;
             tap.performed -= Tap;
+            touchDownAction.performed -= OnTouchDownPerformed;
+            touchUpAction.performed -= OnTouchUpPerformed;
         }
 
         // Variables
@@ -86,10 +90,12 @@ namespace Player
             dragActionDown = playerInput.actions.FindAction("SwipeDown");
             dragActionLeft = playerInput.actions.FindAction("SwipeLeft");
             dragActionRight = playerInput.actions.FindAction("SwipeRight");
+            touchDownAction = playerInput.actions.FindAction("TouchDown");
+            touchUpAction = playerInput.actions.FindAction("TouchUp");
             touch = playerInput.actions.FindAction("Touch");
             tap = playerInput.actions.FindAction("Tap");
             slowmoCoolDownTimer = new Stopwatch();
-            
+
 
             // Transitions
             var coast = new CoastState();
@@ -114,11 +120,11 @@ namespace Player
             new CoffinTransition(coast, coffin, dragActionDown);
 
             // Transitions to grind
-            new GrindTransition(coast, grind, touch);
-            new GrindTransition(ollie, grind, touch);
-            new GrindTransition(kickflip, grind, touch);
-            new GrindTransition(shuvit, grind, touch);
-            new GrindTransition(falling, grind, touch);
+            new GrindTransition(coast, grind, touchDownAction);
+            new GrindTransition(ollie, grind, touchDownAction);
+            new GrindTransition(kickflip, grind, touchDownAction);
+            new GrindTransition(shuvit, grind, touchDownAction);
+            new GrindTransition(falling, grind, touchDownAction);
 
             // Transitions to falling
             new FallingTransition(coast, falling);
@@ -127,7 +133,7 @@ namespace Player
             new FallingTransition(shuvit, falling);
             new FallingTransition(coffin, falling);
             new FallingTransition(grind, falling);
-            //new FallingTransition(grind, falling, ) // add holding here
+            new InputTransition(grind, falling, touchUpAction); // add holding here
 
             // Crash Transitions
             new CrashTransition(coast, crashed);
@@ -148,18 +154,21 @@ namespace Player
             targetPlayerHeight = model.playerStandHeight;
             UpdatePlayerHeight(targetPlayerHeight);
         }
-        
+
 
         private void DoubleTap()
         {
             Debug.Log("Double tap!");
-            if (scoreModel.TryToUsePowerUp())
+            if (scoreModel != null)
             {
-                oldTimeScale = Time.timeScale;
-                Time.timeScale = 0.5f;
-                slowmoCoolDown = StartCoroutine(SlowmoCoolDown());
-                slowmoCoolDownTimer.Reset();
-                slowmoCoolDownTimer.Start();
+                if (scoreModel.TryToUsePowerUp())
+                {
+                    oldTimeScale = Time.timeScale;
+                    Time.timeScale = 0.5f;
+                    slowmoCoolDown = StartCoroutine(SlowmoCoolDown());
+                    slowmoCoolDownTimer.Reset();
+                    slowmoCoolDownTimer.Start();
+                }
             }
         }
 
@@ -263,6 +272,16 @@ namespace Player
         private void TouchStopped(InputAction.CallbackContext context)
         {
             SwipeLock = false;
+        }
+
+        private void OnTouchDownPerformed(InputAction.CallbackContext context)
+        {
+            Debug.Log("TouchDown");
+        }
+
+        private void OnTouchUpPerformed(InputAction.CallbackContext context)
+        {
+            Debug.Log("TouchUp");
         }
 
         #endregion
