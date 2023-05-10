@@ -1,44 +1,62 @@
+using System;
 using System.IO;
 using UnityEngine;
 
 namespace AudioSettingInterface
 {
-    public class AudioSettingsManager : MonoBehaviour
+    public class AudioSettingsManager : MonoBehaviour, IDisposable
     {
         private const string SettingsFilePath = "settings.save.json";
 
-        private AudioSettings _audioSettings;
+        public AudioSettings _audioSettings = new AudioSettings();
 
+        public AudioSettingsManager()
+        {
+            _audioSettings.Music.VolumeAndMutedChanged += SaveSettings;
+        }
+
+        
         private void Awake()
         {
-            _audioSettings = new AudioSettings();
-
             LoadSettings();
         }
 
-        public void SaveSettings()
+        public void SaveSettings(Tuple<float, bool> other)
         {
             string json = JsonUtility.ToJson(_audioSettings);
             File.WriteAllText(Application.persistentDataPath + "/" + SettingsFilePath, json);
         }
-
+        
         private void LoadSettings()
         {
-            try
+            string filePath = Path.Combine(Application.persistentDataPath, SettingsFilePath);
+            if (File.Exists(filePath))
             {
-                string filePath = Application.persistentDataPath + "/" + SettingsFilePath;
-                if (File.Exists(filePath))
+                string json = File.ReadAllText(filePath);
+                if (!string.IsNullOrEmpty(json))
                 {
-                    string json = File.ReadAllText(filePath);
-                    JsonUtility.FromJsonOverwrite(json, _audioSettings);
+                    _audioSettings = JsonUtility.FromJson<AudioSettings>(json);
+                    return;
                 }
             }
-            catch (IOException)
-            {
-                // Use defaults if there are any errors loading
-            }
-            _audioSettings.Music.Volume = PlayerPrefs.GetFloat("MusicVolume", 1);
-            _audioSettings.Music.Muted = PlayerPrefs.GetInt("MusicMuted", 0) == 1;
+            // If the file doesn't exist or is empty, use defaults
+            _audioSettings.Music.Volume = 1f;
+        }
+        
+        ~AudioSettingsManager()
+        {
+            ReleaseUnmanagedResources();
+        }
+        private void ReleaseUnmanagedResources()
+        {
+            // TODO release unmanaged resources here
+            _audioSettings.Music.VolumeAndMutedChanged -= SaveSettings;
+        }
+
+        public void Dispose()
+        {
+            ReleaseUnmanagedResources();
+            GC.SuppressFinalize(this);
         }
     }
 }

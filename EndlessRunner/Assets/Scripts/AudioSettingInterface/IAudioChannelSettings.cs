@@ -1,9 +1,13 @@
+using System;
+
 namespace AudioSettingInterface
 {
     public interface IAudioChannelSettings
     {
         public float Volume { get; set; }
         public bool Muted { get; set; }
+        
+        event Action<Tuple<float, bool>> VolumeAndMutedChanged;
     }
 
     public interface IAudioSettings

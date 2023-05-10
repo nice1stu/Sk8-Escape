@@ -1,15 +1,17 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
 namespace AudioSettingInterface
 {
     [System.Serializable]
-    public class AudioChannelSettings : IAudioChannelSettings
+    public struct AudioChannelSettings : IAudioChannelSettings
     {
+        public event Action<Tuple<float, bool>> VolumeAndMutedChanged; 
         [SerializeField] private AudioMixer audioMixer;
 
-        private bool _muted;
-        private float _volume;
+        [SerializeField]private bool _muted;
+        [SerializeField] float _volume;
 
         public float Volume
         {
@@ -19,7 +21,7 @@ namespace AudioSettingInterface
                 _volume = value;
 
                 // Save volume to player preferences or any persistent storage
-                PlayerPrefs.SetFloat("MusicVolume", _volume);
+                VolumeAndMutedChanged?.Invoke(new Tuple<float, bool>(_volume,_muted));
 
                 // Set volume on mixer
                 audioMixer.SetFloat("Volume", Mathf.Log10(_volume) * 20);
@@ -34,7 +36,7 @@ namespace AudioSettingInterface
                 _muted = value;
 
                 // Save mute status to player preferences or any persistent storage
-                PlayerPrefs.SetInt("MusicMuted", _muted ? 1 : 0);
+                VolumeAndMutedChanged?.Invoke(new Tuple<float, bool>(_volume,_muted));
 
                 // Set mute status on mixer
                 audioMixer.SetFloat("Volume", _muted ? -80 : Mathf.Log10(_volume) * 20);
