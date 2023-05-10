@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b6e228bb4521364ea2f53214a0ed434, type: 3}
-  m_Name: Trial
+  m_Name: Common
   m_EditorClassIdentifier: 
-  title: Trial Chest
-  description: Just for Testing
-  coinCost: 1
-  Sprite: {fileID: 21300000, guid: 62b7b8d998e4442c1982a1b29211b431, type: 3}
+  title: Common Chest
+  coinCost: 1000
