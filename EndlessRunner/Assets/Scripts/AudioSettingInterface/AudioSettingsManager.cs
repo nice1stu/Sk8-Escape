@@ -14,7 +14,6 @@ namespace AudioSettingInterface
         {
             _audioSettings.Music.VolumeAndMutedChanged += SaveSettings;
         }
-
         
         private void Awake()
         {
