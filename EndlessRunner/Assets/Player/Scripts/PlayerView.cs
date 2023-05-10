@@ -6,6 +6,13 @@ namespace Player
     {
         private SpriteRenderer _spriteRenderer;
 
+        public Animation characterAnimation;
+        public Animation skateboardAnimation;
+
+        public AnimationClip[] characterAnimations;
+        public AnimationClip[] skateboardAnimations;
+        
+        
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -28,6 +35,22 @@ namespace Player
         {
             transform.localScale = scale;
             transform.localPosition = new Vector3(transform.localPosition.x, offset.y);
+        }
+
+        public void PlayCoastAnim()
+        {
+            characterAnimation.clip = characterAnimations[0];
+            characterAnimation.Play();
+            skateboardAnimation.clip = skateboardAnimations[0];
+            skateboardAnimation.Play();
+        }
+        
+        public void PlayOllieAnim() 
+        {
+            characterAnimation.clip = characterAnimations[1];
+            characterAnimation.Play();
+            skateboardAnimation.clip = skateboardAnimations[1];
+            skateboardAnimation.Play();
         }
     }
 }
