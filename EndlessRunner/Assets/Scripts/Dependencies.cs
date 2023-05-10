@@ -1,6 +1,7 @@
 using System;
 using System;
 using Inventory;
+using Inventory.Scripts;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -17,7 +18,9 @@ public class Dependencies : ScriptableObject
         }
     }
     [SerializeField] private DummyInventory dummyInventory;
+    [SerializeField] private DummyLootBoxInventory dummyLootBoxInventory;
     
     public IInventoryData Inventory => dummyInventory;
     public IActiveInventory Equipped => dummyInventory;
+    public ILootBoxInventory LootBoxes => dummyLootBoxInventory;
 }
