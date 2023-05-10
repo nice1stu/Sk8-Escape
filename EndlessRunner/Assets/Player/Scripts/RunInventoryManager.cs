@@ -22,8 +22,7 @@ namespace Player
                 }
             }
         }
-
-
+        
         public int GetCoinAmount()
         {
             return coinAmount;
@@ -33,10 +32,14 @@ namespace Player
         {
             coinAmount = set;
         }
+        
 
         public int GetChestAmount()
         {
             return chestAmount;
         }
+
+        
+        
     }
 }
