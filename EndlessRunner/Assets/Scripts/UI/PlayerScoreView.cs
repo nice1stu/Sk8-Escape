@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static RunInventoryManager;
+using static Player.RunInventoryManager;
 
 public class PlayerScoreView : MonoBehaviour
 {
@@ -23,7 +23,7 @@ public class PlayerScoreView : MonoBehaviour
         //Here we convert the score which is a float into an int, because the player doesnt want to see decimals
         pointsText.SetText("Score: " + (int)model.GetScore());
         
-        coinsText.SetText("Coins: " + model.GetCoins());
+        //coinsText.SetText("Coins: " + model.GetCoins());
         coinsText.SetText("Coins: " + coinAmount);
     }
 }
