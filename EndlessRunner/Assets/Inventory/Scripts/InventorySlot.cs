@@ -9,6 +9,7 @@ namespace Inventory.Scripts
         [SerializeField] private int index;
         //Countdown for the inventory slot
         private Countdown _countdown;
+       
 
         private void Start()
         {
@@ -20,17 +21,19 @@ namespace Inventory.Scripts
 
         private void LootBoxesOnLootBoxRemoved(int arg1, ILootBoxData arg2)
         {
+            if (index != arg1) return;
             _countdown.StopCountDown();
             OnRemove(arg2);
         }
 
         private void LootBoxesOnLootBoxAdded(int arg1, ILootBoxData arg2)
         {
+            if (index != arg1) return;
             _countdown.StartCountdown(arg2);
             AddLootBoxIcon(arg2);
         }
 
-        public void AddLootBoxIcon(ILootBoxData lootBox)//Function to set the loot box icon on the inventory slot
+        private void AddLootBoxIcon(ILootBoxData lootBox)//Function to set the loot box icon on the inventory slot
         {
             var childrenToLootBoxItem = gameObject.GetComponentsInChildren<Image>();//Gets all children with an image component
             var slotIcon = FindObjectOfType<Image>(); //Finds image so that it wont be null (we did this to make rider stop complaining)
@@ -44,8 +47,8 @@ namespace Inventory.Scripts
             slotIcon.sprite = lootBox.Config.Icon;//Sets the slot icon sprite to the loot box image
             _countdown.StartCountdown(lootBox);//Start countdown
         }
-        
-        public void OnRemove(ILootBoxData lootBox)//This function is supposed to be called on the discard button
+
+        private void OnRemove(ILootBoxData lootBox)//This function is supposed to be called on the discard button
         {
             //This part is the same as the AddLootBoxIcon function
             var childrenToLootBoxItem = gameObject.GetComponentsInChildren<Image>();
