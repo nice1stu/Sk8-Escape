@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// For testing only, delete for game
 namespace AudioSettingsSaver
 {
     public class AudioSettingsTest : MonoBehaviour
