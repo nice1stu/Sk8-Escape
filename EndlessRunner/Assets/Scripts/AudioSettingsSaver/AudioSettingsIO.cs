@@ -1,35 +1,52 @@
-using UnityEngine;
 using System.IO;
+using UnityEngine;
 
 namespace AudioSettingsSaver
 {
-    public class AudioSettingsManager
+    public class AudioSettingsIO : MonoBehaviour
     {
-        private readonly string _settingsFilePath;
+        private const string SettingsFileName = "audio_settings.json";
 
-        public AudioSettingsManager(string settingsFilePath)
+        // The current audio settings
+        private AudioSettings _currentSettings;
+
+        private void Awake()
         {
-            _settingsFilePath = settingsFilePath;
+            // Load the audio settings from the JSON file
+            LoadSettings();
         }
 
-        public void SaveSettings(IAudioSettings settings)
+        private void LoadSettings()
         {
-            var serializedSettings = JsonUtility.ToJson(settings);
-            File.WriteAllText(_settingsFilePath, serializedSettings);
+            string filePath = Path.Combine(Application.persistentDataPath, SettingsFileName);
+            if (File.Exists(filePath))
+            {
+                // Read the JSON file and deserialize it into an instance of AudioSettings
+                string json = File.ReadAllText(filePath);
+                _currentSettings = JsonUtility.FromJson<AudioSettings>(json);
+            }
+            else
+            {
+                // Create a new instance of AudioSettings with default values
+                _currentSettings = new AudioSettings();
+            }
         }
 
-        public AudioSettings LoadSettings()
+        private void SaveSettings()
         {
-            try
-            {
-                var serializedSettings = File.ReadAllText(_settingsFilePath);
-                var settings = JsonUtility.FromJson<AudioSettings>(serializedSettings);
-                return settings ?? new AudioSettings();
-            }
-            catch (FileNotFoundException)
-            {
-                return new AudioSettings();
-            }
+            // Serialize the current settings to JSON
+            string json = JsonUtility.ToJson(_currentSettings, true);
+
+            // Write the JSON to a file in the persistent data path
+            string filePath = Path.Combine(Application.persistentDataPath, SettingsFileName);
+            File.WriteAllText(filePath, json);
+        }
+
+        // Updates the current audio settings and saves them to the JSON file
+        public void UpdateAudioSettings(AudioSettings newSettings)
+        {
+            _currentSettings = newSettings;
+            SaveSettings();
         }
     }
 }
