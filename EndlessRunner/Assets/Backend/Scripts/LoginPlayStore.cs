@@ -20,21 +20,7 @@ namespace Backend.Scripts
                     {
                         FirebaseAuth auth = FirebaseAuth.DefaultInstance;
                         Credential credential = PlayGamesAuthProvider.GetCredential(code);
-                        // auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
-                        // {
-                        //     if (task.IsCanceled)
-                        //     {
-                        //         // canceled
-                        //     }
-                        //     else if (task.IsFaulted)
-                        //     {
-                        //         // error  task.Exception
-                        //     }
-                        //     else
-                        //     {
-                        //         FirebaseUser newUser = task.Result;
-                        //     }
-                        // });
+  
                         StartCoroutine(AuthGet());
 
                         IEnumerator AuthGet()
@@ -57,7 +43,6 @@ namespace Backend.Scripts
                         }
                     });
                 }
-
                 message.text += "PGP authenticate failed";
             });
         }
