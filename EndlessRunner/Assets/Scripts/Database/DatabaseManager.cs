@@ -39,7 +39,7 @@ public class DatabaseManager : MonoBehaviour
     // retrieves user's name from Firebase database and passes it to another function as string
     public IEnumerator GetName(Action<string> onCallback)
     {
-        var userNameData = datareference.Child("users").Child(userID).Child("name").GetValueAsync();
+        var userNameData = datareference.Child("users").Child(userID).Child("username").GetValueAsync();
         
         // pauses the execution until database calls complete
         yield return new WaitUntil(predicate: () => userNameData.IsCompleted);
