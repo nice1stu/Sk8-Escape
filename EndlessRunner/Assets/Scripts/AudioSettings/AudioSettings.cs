@@ -1,27 +1,29 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace AudioSettings
- {
-     [System.Serializable]
-     public struct AudioSettings : IAudioSettings
-     {
-         [SerializeField] private AudioChannelSettings music;
-         [SerializeField] private AudioChannelSettings sfx;
+{
+    [System.Serializable]
+    public struct AudioSettings : IAudioSettings
+    {
+        [SerializeField] private AudioChannelSettings music;
+        [SerializeField] private AudioChannelSettings sfx;
+        [SerializeField] private bool globalMuted;
 
-         public IAudioChannelSettings Music => music;
-         public IAudioChannelSettings Sfx => sfx;
-         
-         [SerializeField] private bool _isMuted;
-         public bool IsMuted
-         {
-             get => _isMuted;
-             set
-             {
-                 _isMuted = value;
-                 music.Muted = _isMuted;
-                 sfx.Muted = _isMuted;
-             }
-         }
+        public IAudioChannelSettings Music => music;
+        public IAudioChannelSettings Sfx => sfx;
 
-     }
- }
+        public bool Muted
+        {
+            get => globalMuted;
+            set
+            {
+                globalMuted = value;
+                music.SetGlobalMute(globalMuted);
+                sfx.SetGlobalMute(globalMuted);
+            }
+        }
+
+        public bool IsMuted { get; set; } // Add this property
+    }
+}

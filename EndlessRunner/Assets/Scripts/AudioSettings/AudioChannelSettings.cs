@@ -1,44 +1,52 @@
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 namespace AudioSettings
 {
-    [System.Serializable]
+    [Serializable]
     public struct AudioChannelSettings : IAudioChannelSettings
     {
         public event Action<Tuple<float, bool>> VolumeAndMutedChanged; 
         [SerializeField] private AudioMixer audioMixer;
 
-        [SerializeField]private bool _muted;
-        [SerializeField] float _volume;
+        [FormerlySerializedAs("_muted")] [SerializeField] private bool muted;
+        [FormerlySerializedAs("_volume")] [SerializeField] private float volume;
 
         public float Volume
         {
-            get => _volume;
+            get => volume;
             set
             {
-                _volume = value;
+                volume = value;
 
                 // Save volume to player preferences or any persistent storage
-                VolumeAndMutedChanged?.Invoke(new Tuple<float, bool>(_volume,_muted));
+                VolumeAndMutedChanged?.Invoke(new Tuple<float, bool>(volume,muted));
 
                 // Set volume on mixer
-                audioMixer.SetFloat("Volume", Mathf.Log10(_volume) * 20);
+                audioMixer.SetFloat("Volume", Mathf.Log10(volume) * 20);
             }
         }
 
-        [SerializeField] private bool _muted;
         public bool Muted
         {
-            get => _muted;
+            get => muted;
             set
             {
-                _muted = value;
-                VolumeAndMutedChanged?.Invoke(new Tuple<float, bool>(_volume, _muted));
-                audioMixer.SetFloat("Volume", _muted ? -80 : Mathf.Log10(_volume) * 20);
+                muted = value;
+
+                // Save mute status to player preferences or any persistent storage
+                VolumeAndMutedChanged?.Invoke(new Tuple<float, bool>(volume, muted));
+
+                // Set mute status on mixer
+                audioMixer.SetFloat("Volume", muted ? -80 : Mathf.Log10(volume) * 20);
             }
         }
 
+        public void SetGlobalMute(bool isMuted)
+        {
+            Muted = isMuted;
+        }
     }
 }
