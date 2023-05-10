@@ -498,6 +498,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: X2 PowerUp
       objectReference: {fileID: 0}
+    - target: {fileID: 5887838942773356414, guid: 010d2035a8824ab41bbde4aec6923af1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 010d2035a8824ab41bbde4aec6923af1, type: 3}
 --- !u!224 &5843595234618197335 stripped
@@ -515,6 +519,10 @@ PrefabInstance:
     - target: {fileID: 5714348558751031793, guid: 564dc93f9a3237b4eb5a5edb89e0679c, type: 3}
       propertyPath: m_Name
       value: Invincibility
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714348558751031793, guid: 564dc93f9a3237b4eb5a5edb89e0679c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8758186171089451351, guid: 564dc93f9a3237b4eb5a5edb89e0679c, type: 3}
       propertyPath: m_Pivot.x
@@ -617,6 +625,10 @@ PrefabInstance:
     - target: {fileID: 6118671285244189099, guid: 2f91215e740d1234186a0cfe6b7972ba, type: 3}
       propertyPath: m_Name
       value: Magnetism
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118671285244189099, guid: 2f91215e740d1234186a0cfe6b7972ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8362282093386113734, guid: 2f91215e740d1234186a0cfe6b7972ba, type: 3}
       propertyPath: m_Pivot.x
@@ -998,6 +1010,10 @@ PrefabInstance:
     - target: {fileID: 1240511845041624257, guid: a7f2ebe239128624daa77fc1614f6ab7, type: 3}
       propertyPath: m_Name
       value: Slowmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240511845041624257, guid: a7f2ebe239128624daa77fc1614f6ab7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4120684299828511450, guid: a7f2ebe239128624daa77fc1614f6ab7, type: 3}
       propertyPath: m_Pivot.x
