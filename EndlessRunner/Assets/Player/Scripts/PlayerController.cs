@@ -19,7 +19,7 @@ namespace Player
 
         private Stopwatch slowmoCoolDownTimer;
 
-        private ParticleSystem particles;
+        public ParticleSystem particles;
 
         //Input stuff for the touch controls
         private InputAction dragActionUp;
