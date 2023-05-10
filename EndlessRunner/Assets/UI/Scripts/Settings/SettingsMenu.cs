@@ -18,13 +18,6 @@ public class SettingsMenu : MonoBehaviour
     // Startup scene is responsible for loading the StartMenu scene
     public static SettingsMenu MenuInstance;
 
-    // UI Element References
-    [SerializeField] public Slider effectsVolumeSlider;
-    [SerializeField] public Toggle effectsMuteToggle;
-    
-    [SerializeField] public Slider musicVolumeSlider;
-    [SerializeField] public Toggle musicMuteToggle;
-
     // [SerializeField] public Button changeLanguageButton;
     // [SerializeField] private TMP_Text changeLanguageButtonText;
 
@@ -49,33 +42,6 @@ public class SettingsMenu : MonoBehaviour
     // TODO: Refactor abhorrent eldritch abomination
     void Start()
     {
-        
-        effectsVolumeSlider.onValueChanged.AddListener(delegate
-        {
-            persistentSettingsManager.SaveSfxVolume = effectsVolumeSlider.value;
-            persistentSettingsManager.SaveSettingsData();
-            
-        } );
-        musicVolumeSlider.onValueChanged.AddListener(delegate
-        {
-            persistentSettingsManager.SaveMusicVolume = musicVolumeSlider.value;
-            persistentSettingsManager.SaveSettingsData();
-            
-        } );
-
-        effectsMuteToggle.onValueChanged.AddListener(delegate
-        {
-            persistentSettingsManager.SaveSfxMute = effectsMuteToggle.isOn;
-            persistentSettingsManager.SaveSettingsData();
-            
-        } );
-        
-        musicMuteToggle.onValueChanged.AddListener(delegate
-        {
-            persistentSettingsManager.SaveMusicMute = musicMuteToggle.isOn;
-            persistentSettingsManager.SaveSettingsData();
-        } );
-
         backButton.onClick.AddListener(delegate
         {
             SceneManager.LoadScene("StartMenu");
@@ -98,10 +64,10 @@ public class SettingsMenu : MonoBehaviour
 
     private void SetUIFromState(SaveSettings state)
     {
-        SetSlider(state.SaveSfxVolume,   effectsVolumeSlider);
-        SetToggle(state.SaveSfxMute,     effectsMuteToggle);
-        SetSlider(state.SaveMusicVolume, musicVolumeSlider);
-        SetToggle(state.SaveMusicMute,   musicMuteToggle);
+        // SetSlider(state.SaveSfxVolume,   effectsVolumeSlider);
+        // SetToggle(state.SaveSfxMute,     effectsMuteToggle);
+        // SetSlider(state.SaveMusicVolume, musicVolumeSlider);
+        // SetToggle(state.SaveMusicMute,   musicMuteToggle);
     }
     
     // Sets the UI to reflect backend values 
