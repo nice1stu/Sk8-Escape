@@ -1,45 +1,43 @@
-using System.Collections.Generic;
+using System;
+using Item;
 using UnityEngine;
 
 namespace Inventory.Scripts
 {
-    public class LootBoxInventory : MonoBehaviour
+    public class LootBoxInventory : ILootBoxInventory
     {
+        [SerializeField] private ILootBoxData[] _slots;
+
         //This is the fixed array that stores the loot boxes
-        private static readonly BaseLootBox[] LootBoxSlots = new BaseLootBox[4];
+        public ILootBoxData[] Slots => _slots;
         //This is the list that stores the inventory slots
-        private readonly List<InventorySlot> _inventorySlots = new();
-
-        private void Start()
-        {
-            //On start, adds inventory slots to the list
-            _inventorySlots.AddRange(GetComponentsInChildren<InventorySlot>());
-        }
-
-        //May be removed in a later stage, good for testing
-        [ContextMenu("Add Loot Box")]
         
-        void Add()//This function is for the context menu
+        public void AddLootBox(ILootBoxData lootBox)
         {
-            AddLootBox(FindObjectOfType<BaseLootBox>());
-        }
-
-        void AddLootBox(BaseLootBox lootBox) //Adds loot boxes to the loot box inventory
-        {
-            for (var i = 0; i < LootBoxSlots.Length; i++)
+            for (var i = 0; i < _slots.Length; i++)
             {
-                if (LootBoxSlots[i] == null)//Find the first empty slot
+                if (_slots[i] == null)//Find the first empty slot
                 {
-                    LootBoxSlots[i] = lootBox;
-                    _inventorySlots[i].AddLootBoxIcon(lootBox);//Adds the loot box image to the inventory slot
+                    _slots[i] = lootBox;
+                    LootBoxAdded?.Invoke(i, lootBox);
                     return;
                 }
             }
         }
 
-        public static void RemoveLootBox(int index)//Removes the loot box at the index(check InventorySlot script)
+        public void OpenLootBox(ILootBoxData lootBox)
         {
-            LootBoxSlots[index] = null;
+            var slotIndex = Array.IndexOf(_slots, lootBox);
+            if (slotIndex == -1) return;
+            if (DateTime.UtcNow - lootBox.OpeningStartTime < lootBox.Config.TimeToOpen) return;
+            _slots[slotIndex] = null;
+            LootBoxRemoved?.Invoke(slotIndex, lootBox);
+            //TODO: Use ItemFactory to create items
+            LootBoxOpened?.Invoke(lootBox, Array.Empty<IItemData>());
         }
+
+        public event Action<int, ILootBoxData> LootBoxAdded;
+        public event Action<int, ILootBoxData> LootBoxRemoved;
+        public event Action<ILootBoxData, IItemData[]> LootBoxOpened;
     }
 }

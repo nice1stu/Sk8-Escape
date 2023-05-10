@@ -1,451 +1,393 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug; //Needed to stop the default C# diagnostics from taking over debug commands
 
-
-public class PlayerController : MonoBehaviour
+namespace Player
 {
-    public enum SkateboardTrickState
+    public class PlayerController : MonoBehaviour
     {
-        Coast,
-        Falling,
-        Ollie,
-        Kickflip,
-        Shuvit,
-        Coffin,
-        Grind
-    }
-
-    private SkateboardTrickState currentState;
-
-    //Input stuff for the touch controls
-    private InputAction dragActionUp;
-    private InputAction dragActionDown;
-    private InputAction dragActionRight;
-    private InputAction dragActionLeft;
-    private InputAction touch;
-    private InputAction tap;
-    private PlayerInput playerInput;
-
-    private float oldTimeScale;
-    
-    private PlayerScoreModel scoreModel;
-
-    public Coroutine slowmoCoolDown;
-
-    private Stopwatch slowmoCoolDownTimer;
-
-    private bool SwipeLock = false;
-    private bool tappedOnce = false;
-    
-    // References
-    private Rigidbody2D _rb;
-    private PlayerModel _model;
-    private BoxCollider2D _col;
-
-    // Variables
-    private bool _grounded;
-    private bool _canGrind;
+        public TrickState CurrentState;
 
 
-    private void Awake()
-    {
-        playerInput = GetComponent<PlayerInput>();
-        dragActionUp = playerInput.actions.FindAction("SwipeUp");
-        dragActionDown = playerInput.actions.FindAction("SwipeDown");
-        dragActionLeft = playerInput.actions.FindAction("SwipeLeft");
-        dragActionRight = playerInput.actions.FindAction("SwipeRight");
-        touch = playerInput.actions.FindAction("Touch");
-        tap = playerInput.actions.FindAction("Tap");
+        private float oldTimeScale;
+        private PlayerScoreModel scoreModel;
 
-        slowmoCoolDownTimer = new Stopwatch();
-        
+        public Coroutine slowmoCoolDown;
 
-    }
+        private Stopwatch slowmoCoolDownTimer;
 
-    private void OnEnable()
-    {
-        dragActionUp.performed += SwipeUpReceived;
-        dragActionDown.performed += SwipeDownReceived;
-        dragActionRight.performed += SwipeRightReceived;
-        dragActionLeft.performed += SwipeLeftReceived;
-        touch.canceled += TouchStopped;
-        tap.performed += Tap;
+        //Input stuff for the touch controls
+        private InputAction dragActionUp;
+        private InputAction dragActionDown;
+        private InputAction dragActionRight;
+        private InputAction dragActionLeft;
+        private InputAction touch;
+        private InputAction tap;
+        private InputAction touchDownAction;
+        private InputAction touchUpAction;
+        private PlayerInput playerInput;
 
-        scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
-    }
+        private bool SwipeLock = false;
+        private bool tappedOnce = false;
 
-    private void OnDisable()
-    {
-        dragActionUp.performed -= SwipeUpReceived;
-        dragActionDown.performed -= SwipeDownReceived;
-        dragActionRight.performed -= SwipeRightReceived;
-        dragActionLeft.performed -= SwipeLeftReceived;
-        touch.canceled -= TouchStopped;
-        tap.performed -= Tap;
-    }
+        // References
+        [FormerlySerializedAs("_rb")] [HideInInspector]
+        public Rigidbody2D rb;
 
-    void Start()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-        _model = GetComponent<PlayerModel>();
-        _col = GetComponent<BoxCollider2D>();
+        [FormerlySerializedAs("_model")] [HideInInspector]
+        public PlayerModel model;
 
-        currentState = SkateboardTrickState.Coast;
-    }
+        private BoxCollider2D _col;
+        public PlayerView view;
 
-    private bool upSwipe, downSwipe, leftSwipe, rightSwipe, press;
+        [HideInInspector] public PlayerDeathHandler deathHandler;
 
 
-    private void SwipeUpReceived(InputAction.CallbackContext context)
-    {
-        if (!SwipeLock)
+        private void OnEnable()
         {
-            SwipeLock = true;
-            Debug.Log("Up!");
-            upSwipe = true;
-            InputHandling();
+            dragActionUp.performed += SwipeUpReceived;
+            dragActionDown.performed += SwipeDownReceived;
+            dragActionRight.performed += SwipeRightReceived;
+            dragActionLeft.performed += SwipeLeftReceived;
+            touch.canceled += TouchStopped;
+            tap.performed += Tap;
+            touchDownAction.performed += OnTouchDownPerformed;
+            touchUpAction.performed += OnTouchUpPerformed;
+
+
+            scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
         }
-    }
-    
-    private void SwipeRightReceived(InputAction.CallbackContext context)
-    {
-        if (!SwipeLock)
-        {
-            SwipeLock = true;
-            Debug.Log("Right!");
-            rightSwipe = true;
-            InputHandling();
-        }
-    }
-    
-    private void SwipeLeftReceived(InputAction.CallbackContext context)
-    {
-        if (!SwipeLock)
-        {
-            SwipeLock = true;
-            Debug.Log("Left!");
-            leftSwipe = true;
-            InputHandling();
-        }
-    }
 
-    private void SwipeDownReceived(InputAction.CallbackContext context)
-    {
-        if (!SwipeLock)
+        private void OnDisable()
         {
-            SwipeLock = true;
-            Debug.Log("Down!");//TODO: Trigger crouch here!
-            downSwipe = true;
-            InputHandling();
+            dragActionUp.performed -= SwipeUpReceived;
+            dragActionDown.performed -= SwipeDownReceived;
+            dragActionRight.performed -= SwipeRightReceived;
+            dragActionLeft.performed -= SwipeLeftReceived;
+            touch.canceled -= TouchStopped;
+            tap.performed -= Tap;
+            touchDownAction.performed -= OnTouchDownPerformed;
+            touchUpAction.performed -= OnTouchUpPerformed;
         }
-    }
 
-    private void Tap(InputAction.CallbackContext context)
-    {
-        Debug.Log("Running tap event");
-        if (!tappedOnce)
-        {
-            Debug.Log("Tap!");
-            tappedOnce = true;
-            StartCoroutine(DoubleTapCooldown());
-        }
-        else
-        {
-            DoubleTap();
-            tappedOnce = false;
-            StopCoroutine(DoubleTapCooldown());
-        }
-    }
+        // Variables
+        [HideInInspector] public bool grounded;
+        [HideInInspector] public bool walled;
+        [HideInInspector] public Transform[] grindPath;
+        [HideInInspector] public bool _canGrind = false;
 
-    private void DoubleTap()
-    {
-        Debug.Log("Double tap!");
-        if (scoreModel.TryToUsePowerUp())
+        private void Awake()
         {
-            oldTimeScale = Time.timeScale;
-            Time.timeScale = 0.5f;
-            slowmoCoolDown = StartCoroutine(SlowmoCoolDown());
-            slowmoCoolDownTimer.Reset();
-            slowmoCoolDownTimer.Start();
-        }
-        
-    }
-
-    public void PauseSlowmo()
-    {
-        if (slowmoCoolDownTimer.IsRunning)
-        {
-            slowmoCoolDownTimer.Stop();
-        }
-        else
-        {
-            slowmoCoolDownTimer.Restart();
-        }
-    }
-
-    public void CancelSlowmo()
-    {
-        if (slowmoCoolDownTimer.IsRunning)
-        {
-            Time.timeScale = oldTimeScale;
-        }
-    }
-
-    IEnumerator SlowmoCoolDown()
-    {
-        while (true)
-        {
+            playerInput = GetComponent<PlayerInput>();
+            rb = GetComponent<Rigidbody2D>();
+            model = GetComponent<PlayerModel>();
+            _col = GetComponent<BoxCollider2D>();
+            deathHandler = GetComponent<PlayerDeathHandler>();
+            dragActionUp = playerInput.actions.FindAction("SwipeUp");
+            dragActionDown = playerInput.actions.FindAction("SwipeDown");
+            dragActionLeft = playerInput.actions.FindAction("SwipeLeft");
+            dragActionRight = playerInput.actions.FindAction("SwipeRight");
+            touchDownAction = playerInput.actions.FindAction("TouchDown");
+            touchUpAction = playerInput.actions.FindAction("TouchUp");
+            touch = playerInput.actions.FindAction("Touch");
+            tap = playerInput.actions.FindAction("Tap");
+            slowmoCoolDownTimer = new Stopwatch();
 
 
-            Debug.Log("Elapsed time: " + slowmoCoolDownTimer.Elapsed.Seconds);
-            if (slowmoCoolDownTimer.Elapsed.Seconds > 3f)
+            // Transitions
+            var coast = new CoastState();
+            var ollie = new OllieState(0.45f);
+            var kickflip = new KickflipState(0.3f);
+            var shuvit = new ShuvitState(0.3f);
+            var coffin = new CoffinState();
+            var grind = new GrindingState();
+            var falling = new FallingState();
+            var crashed = new CrashState();
+            CurrentState = coast;
+
+            // Up swipe
+            new OllieTransition(coast, ollie, dragActionUp);
+            new KickflipTransition(ollie, kickflip, dragActionUp);
+            new InputTransition(coffin, coast, dragActionUp);
+
+            // Right swipe
+            new ShuvitTransition(coast, shuvit, dragActionRight);
+
+            // Down swipe
+            new CoffinTransition(coast, coffin, dragActionDown);
+
+            // Transitions to grind
+            new GrindTransition(coast, grind, touchDownAction);
+            new GrindTransition(ollie, grind, touchDownAction);
+            new GrindTransition(kickflip, grind, touchDownAction);
+            new GrindTransition(shuvit, grind, touchDownAction);
+            new GrindTransition(falling, grind, touchDownAction);
+
+            // Transitions to falling
+            new FallingTransition(coast, falling);
+            new FallingTransition(ollie, falling);
+            new FallingTransition(kickflip, falling);
+            new FallingTransition(shuvit, falling);
+            new FallingTransition(coffin, falling);
+            new FallingTransition(grind, falling);
+            new InputTransition(grind, falling, touchUpAction); // add holding here
+
+            // Crash Transitions
+            new CrashTransition(coast, crashed);
+            new CrashTransition(ollie, crashed);
+            new CrashTransition(kickflip, crashed);
+            new CrashTransition(shuvit, crashed);
+            new CrashTransition(coffin, crashed);
+            new CrashTransition(falling, crashed);
+
+            // Other transitions
+            new TimedTransition(coffin, coast, model.coffinTime);
+            new GroundedTransition(falling, coast);
+            new GroundedTransition(grind, coast);
+
+
+            CurrentState.Enter(this);
+
+            targetPlayerHeight = model.playerStandHeight;
+            UpdatePlayerHeight(targetPlayerHeight);
+        }
+
+
+        private void DoubleTap()
+        {
+            Debug.Log("Double tap!");
+            if (scoreModel != null)
+            {
+                if (scoreModel.TryToUsePowerUp())
+                {
+                    oldTimeScale = Time.timeScale;
+                    Time.timeScale = 0.5f;
+                    slowmoCoolDown = StartCoroutine(SlowmoCoolDown());
+                    slowmoCoolDownTimer.Reset();
+                    slowmoCoolDownTimer.Start();
+                }
+            }
+        }
+
+        public void PauseSlowmo()
+        {
+            if (slowmoCoolDownTimer.IsRunning)
+            {
+                slowmoCoolDownTimer.Stop();
+            }
+            else
+            {
+                slowmoCoolDownTimer.Restart();
+            }
+        }
+
+        public void CancelSlowmo()
+        {
+            if (slowmoCoolDownTimer.IsRunning)
             {
                 Time.timeScale = oldTimeScale;
-                yield break;
             }
-
-            yield return new WaitForSeconds(0.1f);
         }
-    }
 
-    IEnumerator DoubleTapCooldown()
-    {
-        yield return new WaitForSeconds(0.5f);
-        tappedOnce = false;
-    }
-    
-    private void TouchStopped(InputAction.CallbackContext context)
-    {
-        SwipeLock = false;
-    }
-
-    private void Update()
-    {
-        GetInputsKeyboard(true);
-    }
-
-    void FixedUpdate()
-    {
-        //Debug.Log(currentState);
-        // GetInputs(true);
-        _grounded = GetGrounded();
-        ConstantMove();
-        DummyInputHandling();
-        GetInputsKeyboard(false);
-    }
-
-    private void GetInputsKeyboard(bool get)
-    {
-        // tihihi
-        
-        //So how does this work?
-        if (upSwipe != get)
-            upSwipe = Input.GetKeyDown(KeyCode.UpArrow);
-        if (downSwipe != get)
-            downSwipe = Input.GetKeyDown(KeyCode.DownArrow);
-        if (leftSwipe != get)
-            leftSwipe = Input.GetKeyDown(KeyCode.LeftArrow);
-        if (rightSwipe != get)
-            rightSwipe = Input.GetKeyDown(KeyCode.RightArrow);
-        if (press != get)
-            press = Input.GetKeyDown(KeyCode.Space);
-    }
-
-    private void DummyInputHandling()
-    {
-        //Debug.Log(_grounded);
-        if (upSwipe)
+        IEnumerator SlowmoCoolDown()
         {
-            if (CanOllie())
+            while (true)
             {
-                Ollie();
-                return;
-            }
+                Debug.Log("Elapsed time: " + slowmoCoolDownTimer.Elapsed.Seconds);
+                if (slowmoCoolDownTimer.Elapsed.Seconds > 3f)
+                {
+                    Time.timeScale = oldTimeScale;
+                    yield break;
+                }
 
-            if (CanKickflip())
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+
+        #region TouchInput stuff
+
+        private void SwipeUpReceived(InputAction.CallbackContext context)
+        {
+            if (!SwipeLock)
             {
-                Kickflip();
-                return;
+                SwipeLock = true;
+                Debug.Log("Up!");
             }
         }
 
-        if (rightSwipe)
+        private void SwipeRightReceived(InputAction.CallbackContext context)
         {
-            if (CanShuvit())
+            if (!SwipeLock)
             {
-                Shuvit();
+                SwipeLock = true;
+                Debug.Log("Right!");
             }
         }
 
-        if (CanCoast())
+        private void SwipeLeftReceived(InputAction.CallbackContext context)
         {
-            currentState = SkateboardTrickState.Coast;
-            return;
-        }
-
-        if (CanFall())
-        {
-            currentState = SkateboardTrickState.Falling;
-            return;
-        }
-    }
-    
-    private void InputHandling()
-    {
-        //Debug.Log(_grounded);
-        if (upSwipe)
-        {
-            if (CanOllie())
+            if (!SwipeLock)
             {
-                Ollie();
-                return;
+                SwipeLock = true;
+                Debug.Log("Left!");
             }
+        }
 
-            if (CanKickflip())
+        private void SwipeDownReceived(InputAction.CallbackContext context)
+        {
+            if (!SwipeLock)
             {
-                Kickflip();
-                return;
+                SwipeLock = true;
+                Debug.Log("Down!"); //TODO: Trigger crouch here!
             }
-
-            upSwipe = false;
         }
 
-        if (rightSwipe)
+        private void Tap(InputAction.CallbackContext context)
         {
-            if (CanShuvit())
+            Debug.Log("Running tap event");
+            if (!tappedOnce)
             {
-                Shuvit();
+                Debug.Log("Tap!");
+                tappedOnce = true;
+                StartCoroutine(DoubleTapCooldown());
+                CheckInteract();
             }
-
-            rightSwipe = false;
-        }
-
-        if (CanCoast())
-        {
-            currentState = SkateboardTrickState.Coast;
-            return;
-        }
-
-        if (CanFall())
-        {
-            currentState = SkateboardTrickState.Falling;
-            return;
-        }
-    }
-    
-    
-
-    private void ConstantMove()
-    {
-        _rb.velocity = new Vector2(_model.movementSpeed * Time.deltaTime, _rb.velocity.y);
-    }
-
-    private void AddToCurrentVelocity(Vector2 addedVelocity)
-    {
-        _rb.velocity = new Vector2(_rb.velocity.x, addedVelocity.y);
-        return;
-    }
-
-    #region Trick stuff
-
-    // Assuming it's checked after all the other tricks
-    private bool CanCoast()
-    {
-        return _grounded && _rb.velocity.y <= -Mathf.Epsilon; // epsilon is a "really tiny number" // leo
-    }
-
-    private bool CanFall()
-    {
-        return (!_grounded && _rb.velocity.y < _model.initialFallingVelocity);
-    }
-
-    private bool CanOllie()
-    {
-        if (!_grounded) return false;
-
-        if (currentState == SkateboardTrickState.Coast) return true;
-
-        return false;
-    }
-
-    private void Ollie()
-    {
-        Debug.Log("Ollie");
-        currentState = SkateboardTrickState.Ollie;
-        AddToCurrentVelocity(Vector2.up * _model.ollieJumpForce);
-        _grounded = false;
-    }
-
-    private bool CanKickflip()
-    {
-        if (_grounded) return false;
-
-        if (currentState == SkateboardTrickState.Ollie) return true;
-
-        return false;
-    }
-
-    private void Kickflip()
-    {
-        Debug.Log("Kickflip");
-        currentState = SkateboardTrickState.Kickflip;
-        AddToCurrentVelocity(Vector2.up * _model.kickflipJumpForce);
-    }
-
-    private bool CanShuvit()
-    {
-        if (!_grounded) return false;
-
-        if (currentState == SkateboardTrickState.Coast) return true;
-
-        return false;
-    }
-
-    private void Shuvit()
-    {
-        Debug.Log("Shuvit");
-        currentState = SkateboardTrickState.Shuvit;
-        AddToCurrentVelocity(Vector2.up * _model.shuvitJumpForce);
-    }
-
-    private void Grind()
-    {
-        Debug.Log("Grind");
-        currentState = SkateboardTrickState.Grind;
-        _rb.velocity = new Vector2(_rb.velocity.x, 0);
-    }
-
-    private IEnumerator Coffin()
-    {
-        Debug.Log("Coffin");
-        currentState = SkateboardTrickState.Coffin;
-        _col.size = new Vector2(_col.size.x, _col.size.y / 4);
-        yield return new WaitForSecondsRealtime(_model.coffinTime);
-        _col.size = new Vector2(_col.size.x, _col.size.y * 4);
-    }
-
-    #endregion
-
-    ContactPoint2D[] _collisionBuffer = new ContactPoint2D[100];
-
-    private bool GetGrounded()
-    {
-        int count = _col.GetContacts(_collisionBuffer);
-        for (int i = 0; i < count; i++)
-        {
-            if (((1 << _collisionBuffer[i].collider.gameObject.layer) & _model.groundLayers) == 0) continue;
-
-            if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.up) < _model.maxGroundAngle)
+            else
             {
-                return true;
+                DoubleTap();
+                tappedOnce = false;
+                StopCoroutine(DoubleTapCooldown());
             }
         }
 
-        return false;
+        IEnumerator DoubleTapCooldown()
+        {
+            yield return new WaitForSeconds(0.5f);
+            tappedOnce = false;
+        }
+
+        private void TouchStopped(InputAction.CallbackContext context)
+        {
+            SwipeLock = false;
+        }
+
+        private void OnTouchDownPerformed(InputAction.CallbackContext context)
+        {
+            Debug.Log("TouchDown");
+        }
+
+        private void OnTouchUpPerformed(InputAction.CallbackContext context)
+        {
+            Debug.Log("TouchUp");
+        }
+
+        #endregion
+
+        void FixedUpdate()
+        {
+            GroundCheck();
+            UpdatePlayerHeight(targetPlayerHeight, model.smoothCrouch);
+            if (model.isAlive)
+                ConstantMove();
+            CurrentState.Update(this);
+        }
+
+        private void ConstantMove()
+        {
+            rb.velocity = new Vector2(model.movementSpeed * Time.deltaTime, rb.velocity.y);
+        }
+
+        public void AddToCurrentVelocity(Vector2 addedVelocity)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, addedVelocity.y);
+        }
+
+        #region Trick stuff
+
+        // Assuming it's checked after all the other tricks
+        private bool CanCoast()
+        {
+            return grounded && rb.velocity.y <= -Mathf.Epsilon; // epsilon is a "really tiny number" // leo
+        }
+
+        private bool CanFall()
+        {
+            return (!grounded && rb.velocity.y < model.initialFallingVelocity);
+        }
+
+        #endregion
+
+        private Collider2D[] interactBuffer = new Collider2D[100];
+
+        private void CheckInteract()
+        {
+            int count = Physics2D.OverlapCircleNonAlloc(transform.position, model.interactRadius, interactBuffer,
+                model.groundLayers);
+            for (int i = 0; i < count; i++)
+            {
+                if (interactBuffer[i].transform.parent == null) continue;
+
+                if (interactBuffer[i].transform.parent.TryGetComponent(out IInteractable interactable))
+                    interactable.Interact(this);
+            }
+        }
+
+        [HideInInspector] public float targetPlayerHeight;
+
+        private void UpdatePlayerHeight(float height, bool smooth = false)
+        {
+            if (smooth)
+            {
+                float heightFrom = _col.size.y;
+                _col.size = new Vector2(_col.size.x,
+                    Mathf.Lerp(_col.size.y, height, model.crouchSharpness * Time.fixedDeltaTime));
+                _col.offset = (_col.size.y / 2) * Vector2.up;
+                if (!grounded)
+                {
+                    transform.position += (heightFrom - _col.size.y) * model.crouchAirRatio * Vector3.up;
+                }
+            }
+            else
+            {
+                _col.size = new Vector2(_col.size.x, height);
+                _col.offset = (_col.size.y / 2) * Vector2.up;
+            }
+        }
+
+        public void EnterGrinding(Transform[] rail)
+        {
+            _canGrind = true;
+            grindPath = rail;
+        }
+
+
+        ContactPoint2D[] _collisionBuffer = new ContactPoint2D[100];
+
+        [HideInInspector] public Vector2 wallNormal;
+
+        private void GroundCheck()
+        {
+            walled = false;
+            grounded = false;
+            int count = _col.GetContacts(_collisionBuffer);
+            for (int i = 0; i < count; i++)
+            {
+                if (((1 << _collisionBuffer[i].collider.gameObject.layer) & model.groundLayers) == 0) continue;
+
+                if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.up) < model.maxGroundAngle)
+                {
+                    grounded = true;
+                }
+
+                if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.left) < model.maxWallAngle)
+                {
+                    wallNormal = _collisionBuffer[i].normal;
+                    walled = deathHandler.OnDeath();
+                }
+            }
+        }
     }
 }

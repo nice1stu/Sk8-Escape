@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 3355548852476635691}
   - component: {fileID: 1979249137786194632}
   - component: {fileID: 1540773351}
-  - component: {fileID: 806712435}
-  - component: {fileID: 806712432}
+  - component: {fileID: 6988993146386840862}
   m_Layer: 6
   m_Name: SlowmoPowerUp
   m_TagString: Untagged
@@ -116,23 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f2e05a417bc8b4cb441874ae9acab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &806712435
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7855647741794374007}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
---- !u!114 &806712432
+--- !u!114 &6988993146386840862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,6 +124,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7855647741794374007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f2e05a417bc8b4cb441874ae9acab0, type: 3}
+  m_Script: {fileID: 11500000, guid: 6aefcda3272700b4fa90022e66d7a94e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeSpan: 10
