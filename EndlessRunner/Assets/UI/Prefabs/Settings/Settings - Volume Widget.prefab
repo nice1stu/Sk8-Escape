@@ -934,6 +934,7 @@ GameObject:
   - component: {fileID: 207329603176569444}
   - component: {fileID: 207329603176569446}
   - component: {fileID: 207329603176569445}
+  - component: {fileID: 424406922751098538}
   m_Layer: 5
   m_Name: Label Row
   m_TagString: Untagged
@@ -989,7 +990,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sound Volume
+  m_text: <Sound> Volume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edeeb60f6f06843bc9fde047ef1eeaf4, type: 2}
   m_sharedMaterial: {fileID: -956002204491142425, guid: edeeb60f6f06843bc9fde047ef1eeaf4, type: 2}
@@ -1058,6 +1059,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &424406922751098538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207329603176569443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 
+  FallbackText: <Sound> Volume
 --- !u!1001 &207329601770150538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1184,6 +1199,25 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5716191415619256767, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
   m_PrefabInstance: {fileID: 207329601770150538}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5598934082377571126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5716191415619256764, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
+  m_PrefabInstance: {fileID: 207329601770150538}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1562266503236037359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5598934082377571126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Mute
+  FallbackText: Mute
 --- !u!1001 &8308831505691597539
 PrefabInstance:
   m_ObjectHideFlags: 0
