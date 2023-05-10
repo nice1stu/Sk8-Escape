@@ -22,13 +22,6 @@ public class PlayerScoreView : MonoBehaviour
     {
         //Here we convert the score which is a float into an int, because the player doesnt want to see decimals
         pointsText.SetText(" " + (int)model.GetScore());
-        
-
-        coinsText.SetText(" " + model.GetCoins());
         coinsText.SetText(" " + coinAmount);
-
-        //coinsText.SetText("Coins: " + model.GetCoins());
-        coinsText.SetText("Coins: " + coinAmount);
-
     }
 }
