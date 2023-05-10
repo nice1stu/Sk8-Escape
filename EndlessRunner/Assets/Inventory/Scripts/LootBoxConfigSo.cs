@@ -10,14 +10,13 @@ namespace Inventory.Scripts
         [SerializeField] private string lootBoxName;
         [SerializeField] private string id;
         [SerializeField] private TimeSpan _timeToOpen;
-        [SerializeField] private LootChance[] _lootChances;
+        [SerializeField] private LootChance[] lootChances;
 
         public Sprite Icon => icon;
         public string LootBoxName => lootBoxName;
         public string Id => id;
         public TimeSpan TimeToOpen => _timeToOpen;
-        public LootChance[] LootChances => _lootChances;
-
-        Sprite ILootBoxConfig.Icon => icon;
+        public LootChance[] LootChances => lootChances;
+        
     }
 }
