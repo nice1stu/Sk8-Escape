@@ -19,6 +19,8 @@ namespace Player
 
         private Stopwatch slowmoCoolDownTimer;
 
+        private ParticleSystem particles;
+
         //Input stuff for the touch controls
         private InputAction dragActionUp;
         private InputAction dragActionDown;
@@ -56,9 +58,14 @@ namespace Player
             tap.performed += Tap;
             touchDownAction.performed += OnTouchDownPerformed;
             touchUpAction.performed += OnTouchUpPerformed;
+            
+            
+            
 
 
             scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
+            particles = gameObject.GetComponentInChildren<ParticleSystem>();
+            particles.Play();
         }
 
         private void OnDisable()
@@ -215,6 +222,8 @@ namespace Player
             {
                 SwipeLock = true;
                 Debug.Log("Up!");
+                particles.Play();
+                
             }
         }
 
