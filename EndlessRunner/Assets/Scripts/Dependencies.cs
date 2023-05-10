@@ -2,12 +2,15 @@ using Inventory;
 using Item;
 using Stat;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu]
 public class Dependencies : ScriptableObject
 {
     private static Dependencies _instance;
     [SerializeField] private DummyInventory dummyInventory;
+
+    [SerializeField] private PlayerInventory playerInventory;
 
     private InventorySerializer inventorySerializer;
     [SerializeField] private ItemDataBaseSO itemDataBase;
@@ -23,13 +26,13 @@ public class Dependencies : ScriptableObject
     }
 
 
-    public IInventoryData Inventory => dummyInventory;
-    public IActiveInventory Equipped => dummyInventory;
+    public IInventoryData Inventory => playerInventory;
+    public IActiveInventory Equipped => playerInventory;
 
     private void OnEnable()
     {
         //Move to constructor when not scriptableObject anymore
-        inventorySerializer = new InventorySerializer(dummyInventory, itemDataBase);
+        inventorySerializer = new InventorySerializer(playerInventory, itemDataBase);
         var playerStats = new PlayerStats(Equipped);
         Load();
     }
