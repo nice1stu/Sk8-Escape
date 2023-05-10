@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static RunInventoryManager;
+using static Player.RunInventoryManager;
 
 public class PlayerScoreView : MonoBehaviour
 {

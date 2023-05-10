@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using static RunInventoryManager;
+using static Player.RunInventoryManager;
 using UnityEngine;
 
 public class InRunCoin : MonoBehaviour, IPickupable

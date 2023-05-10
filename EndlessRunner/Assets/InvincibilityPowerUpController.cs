@@ -20,7 +20,7 @@ public class InvincibilityPowerUpController : MonoBehaviour, IPickupable
 
     public void OnPickup()
     {
-        player.GetComponent<collision>().invicibilityTokens++;
+        player.GetComponent<PlayerDeathHandler>().invicibilityTokens++;
         Destroy(gameObject);
     }
 }

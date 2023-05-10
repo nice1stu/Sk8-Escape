@@ -1,5 +1,6 @@
 using System;
 using Ads.Scripts;
+using Player;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
