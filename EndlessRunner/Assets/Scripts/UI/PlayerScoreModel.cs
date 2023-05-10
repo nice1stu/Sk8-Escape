@@ -6,6 +6,8 @@ public class PlayerScoreModel : MonoBehaviour
 {
     private static double score;
 
+    public int multiplier = 1;
+
     private static int coins;
 
     private int invincibilityPoints = 0;
@@ -35,7 +37,7 @@ public class PlayerScoreModel : MonoBehaviour
     
     public void AddToScore(float toAdd)
     {
-        score += toAdd;
+        score += (toAdd * multiplier);
     }
 
     public double GetScore()
