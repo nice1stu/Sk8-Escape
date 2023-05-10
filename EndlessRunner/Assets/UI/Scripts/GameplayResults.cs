@@ -60,7 +60,11 @@ public class GameplayResults : MonoBehaviour
     }
 
 
-    public void GoToMainMenu() => SceneManager.LoadScene("StartMenu");
+    public void GoToMainMenu()
+    {
+        cointest.SetCoinAmount(0);
+        SceneManager.LoadScene("StartMenu");
+    }
 
     public void WatchAds()
     {
