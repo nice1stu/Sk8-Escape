@@ -17,15 +17,28 @@ public class SettingsMenu : MonoBehaviour
     // TODO: Bind pattern?
     // Startup scene is responsible for loading the StartMenu scene
     public static SettingsMenu MenuInstance;
+    
+    // Placeholder till interwoven with other scenes
 
+    
     // [SerializeField] public Button changeLanguageButton;
     // [SerializeField] private TMP_Text changeLanguageButtonText;
-
-    [SerializeField] public Button backButton;
 
     [SerializeField] private SaveSettings persistentSettingsManager;
     public static bool StartHidden = false;
     private static bool _isActive = !StartHidden;
+    
+    public static void ReturnToStartupScene() => SceneManager.LoadScene("StartMenu");
+
+    public static void ToggleSettingsMenu()
+    {
+        Assert.IsNotNull(MenuInstance);
+        
+        _isActive = !_isActive;
+
+        MenuInstance.gameObject.SetActive(_isActive);
+    }
+    
     
     void Awake()
     {
@@ -39,24 +52,12 @@ public class SettingsMenu : MonoBehaviour
         gameObject.SetActive(_isActive);
     }
     
-    // TODO: Refactor abhorrent eldritch abomination
     void Start()
     {
-        backButton.onClick.AddListener(delegate
-        {
-            SceneManager.LoadScene("StartMenu");
-        });
+
     }
 
-    public static void ToggleSettingsMenu()
-    {
-        Assert.IsNotNull(MenuInstance);
-        
-        _isActive = !_isActive;
 
-        MenuInstance.gameObject.SetActive(_isActive);
-    }
-    
     // Just to make things look a little cleaner, more consistent
     private static void SetSlider(float value, Slider slider) => slider.value = value;
     private static void SetToggle(bool isChecked, Toggle toggle) => toggle.isOn = isChecked;

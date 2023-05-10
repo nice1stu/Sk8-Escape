@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace UI
 {
@@ -12,7 +14,10 @@ namespace UI
         // cache dropdown reference
         protected TMP_Dropdown DropDown;
 
-        protected string DropDownSelectionText => DropDown.options[DropDown.value].text;
+        [SerializeField] public UnityEvent postDropdownPopulated = new();
+
+        protected string CurrentText => DropDown.options[DropDown.value].text;
+        protected void SetSelection(string text) => DropDown.value = DropDown.options.FindIndex(option => option.text == text);
         
         [ExecuteAlways]
         public virtual void Awake()
@@ -24,6 +29,8 @@ namespace UI
         {
             DropDown.ClearOptions();
             DropDown.AddOptions(arr.ToList());
+            
+            postDropdownPopulated.Invoke();
         }
     }
 }
