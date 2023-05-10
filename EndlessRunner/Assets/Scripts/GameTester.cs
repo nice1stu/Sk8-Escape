@@ -74,7 +74,7 @@ public class GameTester : MonoBehaviour
         toggleSfxMute= _saveSettings.SaveSfxMute;
         languageSetting = _saveSettings.SaveLanguageSetting;
     }
-
+    #if UNITY_EDITOR
     [ContextMenu("Add Points")]
     private void AddGPoints()
     {
@@ -148,4 +148,5 @@ public class GameTester : MonoBehaviour
         menu.AddItem(new GUIContent("Swedish"), false, () => { languageSetting = "sv"; });
         menu.ShowAsContext();
     }
+    #endif
 }

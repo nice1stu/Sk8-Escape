@@ -10,7 +10,7 @@ namespace Player
     {
         public static int coinAmount;
         public static int chestAmount;
-
+        public static int multiplier = 1;
 
         private void OnTriggerEnter2D(Collider2D col)
         {
