@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Serialization;
 
 namespace AudioSettings
 {
@@ -20,11 +19,9 @@ namespace AudioSettings
             set
             {
                 volume = value;
-
-                // Save volume to player preferences or any persistent storage
+                
                 VolumeAndMutedChanged?.Invoke(new Tuple<float, bool>(volume,muted));
-
-                // Set volume on mixer
+                
                 audioMixer.SetFloat("Volume", Mathf.Log10(volume) * 20);
             }
         }
@@ -35,11 +32,9 @@ namespace AudioSettings
             set
             {
                 muted = value;
-
-                // Save mute status to player preferences or any persistent storage
+                
                 VolumeAndMutedChanged?.Invoke(new Tuple<float, bool>(volume, muted));
-
-                // Set mute status on mixer
+                
                 audioMixer.SetFloat("Volume", muted ? -80 : Mathf.Log10(volume) * 20);
             }
         }
