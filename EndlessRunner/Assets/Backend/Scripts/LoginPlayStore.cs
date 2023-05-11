@@ -10,40 +10,42 @@ namespace Backend.Scripts
     public class LoginPlayStore : MonoBehaviour
     {
         [Space] [Header("Message")] public TextMeshProUGUI message;
+
         void Start()
         {
-            PlayGamesPlatform.Instance.Authenticate(status =>
-            {
-                if (status == SignInStatus.Success)
+            Debug.Log("start");
+            PlayGamesPlatform.Instance.Authenticate(status => {
+                Debug.Log("authenticate");
+                if (status != SignInStatus.Success)
                 {
-                    PlayGamesPlatform.Instance.RequestServerSideAccess(true, code =>
+                    Debug.Log("not signed in");
+                    return;
+                }
+                Debug.Log("sign in success");
+                PlayGamesPlatform.Instance.RequestServerSideAccess(true, code =>
+                {
+                    Debug.Log("requested server access");
+                    FirebaseAuth auth = FirebaseAuth.DefaultInstance;
+                    Credential credential = PlayGamesAuthProvider.GetCredential(code);
+                    auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
                     {
-                        FirebaseAuth auth = FirebaseAuth.DefaultInstance;
-                        Credential credential = PlayGamesAuthProvider.GetCredential(code);
-  
-                        StartCoroutine(AuthGet());
-
-                        IEnumerator AuthGet()
+                        Debug.Log("what happens next");
+                        if (task.IsCanceled)
                         {
-                            System.Threading.Tasks.Task<FirebaseUser> task = auth.SignInWithCredentialAsync(credential);
-                            while (!task.IsCompleted) yield return null;
-                            if (task.IsCanceled)
-                            {
-                                message.text += "Auth canceled";
-                            }
-                            else if (task.IsFaulted)
-                            {
-                                message.text += "Faulted" + task.Exception;
-                            }
-                            else
-                            {
-                                FirebaseUser newUser = task.Result;
-                                message.text += "Fully authenticated user";
-                            }
+                            Debug.Log("cancelled");
+                        }
+                        else if (task.IsFaulted)
+                        {
+                            // error  task.Exception
+                            Debug.Log("error" + task.Exception);
+                        }
+                        else
+                        {
+                            FirebaseUser newUser = task.Result;
+                            Debug.Log("done");
                         }
                     });
-                }
-                message.text += "PGP authenticate failed";
+                });
             });
         }
     }
