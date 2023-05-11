@@ -32,6 +32,6 @@ public class ParameterBuffs : MonoBehaviour
         var playerModel = GetComponent<PlayerModel>();
         playerModel.coffinTime = coffinTime;
         playerModel.interactRadius = grindLeniency;
-        
+        FindObjectOfType<PlayerScoreModel>().multiplier = scoreMultiplier;
     }
 }
