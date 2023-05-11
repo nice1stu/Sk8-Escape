@@ -12,7 +12,7 @@ namespace Player
         {
             base.Enter(playerController);
             playerController.AddToCurrentVelocity(Vector2.up * playerController.model.kickflipJumpForce);
-            playerController.particles.Play();
+            playerController.trickParticles.Play();
 
         }
     }
