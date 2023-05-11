@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c1103b5ebd2804599ac9ffe7870dc9a2, type: 3}
+    - target: {fileID: 3701995378806645785, guid: ea2fab6a17f855f44a2ef53db68c5aa8, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7372549
+      objectReference: {fileID: 0}
     - target: {fileID: 4973451266550379955, guid: ea2fab6a17f855f44a2ef53db68c5aa8, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 335.585
@@ -149,9 +153,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0540207e177934627a3bfac6e3313d1e, type: 2}
     - target: {fileID: 6826632453673054031, guid: ea2fab6a17f855f44a2ef53db68c5aa8, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0.7372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826632453673054031, guid: ea2fab6a17f855f44a2ef53db68c5aa8, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 6520046113461452524, guid: 0540207e177934627a3bfac6e3313d1e, type: 2}
+    - target: {fileID: 6826632453673054031, guid: ea2fab6a17f855f44a2ef53db68c5aa8, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 3170893823
+      objectReference: {fileID: 0}
     - target: {fileID: 7846058078074090857, guid: ea2fab6a17f855f44a2ef53db68c5aa8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -216,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14509805, g: 0.21960784, b: 0.34901962, a: 1}
+  m_Color: {r: 0.05490196, g: 0.36862746, b: 0.9137255, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -302,9 +314,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0540207e177934627a3bfac6e3313d1e, type: 2}
     - target: {fileID: 4322399783275625899, guid: 5e4b0f5041f305d4a87b273889f41cb6, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0.7372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 4322399783275625899, guid: 5e4b0f5041f305d4a87b273889f41cb6, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 6520046113461452524, guid: 0540207e177934627a3bfac6e3313d1e, type: 2}
+    - target: {fileID: 4322399783275625899, guid: 5e4b0f5041f305d4a87b273889f41cb6, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 3170893823
+      objectReference: {fileID: 0}
     - target: {fileID: 4550319842341392663, guid: 5e4b0f5041f305d4a87b273889f41cb6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -353,6 +373,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 5467447bbc4f14fe49c505a10a0829ab, type: 3}
+    - target: {fileID: 6206255580011820797, guid: 5e4b0f5041f305d4a87b273889f41cb6, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7372549
+      objectReference: {fileID: 0}
     - target: {fileID: 8306742326114905067, guid: 5e4b0f5041f305d4a87b273889f41cb6, type: 3}
       propertyPath: m_Name
       value: Currency Row Premium
@@ -422,7 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14509805, g: 0.21960784, b: 0.34901962, a: 1}
+  m_Color: {r: 0.05490196, g: 0.36862746, b: 0.9137255, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

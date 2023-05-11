@@ -18,10 +18,12 @@ public class ItemPreview : MonoBehaviour
     public Button equipButton;
     public LeanLocalizedBehaviour equipLabel;
     private IItemData itemData;
+    private Action<IItemData> onDetailClicked;
 
-    public void Setup(IItemData itemData)
+    public void Setup(IItemData itemData, Action<IItemData> onDetailClicked)
     {
         this.itemData = itemData;
+        this.onDetailClicked = onDetailClicked;
         item.sprite = itemData.ItemConfig.ItemIcon;
         var equipped = Dependencies.Instance.Equipped.EquippedItems.Any(item => item == itemData);
         if (equipped)
@@ -34,6 +36,11 @@ public class ItemPreview : MonoBehaviour
         }
         Dependencies.Instance.Equipped.ItemEquipped += EquippedOnItemEquipped;
         Dependencies.Instance.Equipped.ItemUnequipped += EquippedOnItemUnequipped;
+    }
+
+    public void OnDetailClicked()
+    {
+        onDetailClicked?.Invoke(itemData);
     }
 
     private void OnDestroy()
