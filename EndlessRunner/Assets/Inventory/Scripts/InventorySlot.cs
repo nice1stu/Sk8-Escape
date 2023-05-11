@@ -14,10 +14,14 @@ namespace Inventory.Scripts
 
         private void Start()
         {
+            _countdown ??= GetComponentInChildren<Countdown>();
             var currentState = Dependencies.Instance.LootBoxes.Slots[index];
+            if (currentState != null)
+            {
+                AddLootBoxIcon(currentState);
+            }
             Dependencies.Instance.LootBoxes.LootBoxAdded += LootBoxesOnLootBoxAdded;
             Dependencies.Instance.LootBoxes.LootBoxRemoved += LootBoxesOnLootBoxRemoved;
-            _countdown ??= GetComponentInChildren<Countdown>();
         }
 
         private void OnDestroy()
@@ -30,14 +34,12 @@ namespace Inventory.Scripts
         private void LootBoxesOnLootBoxRemoved(int arg1, ILootBoxData arg2)
         {
             if (index != arg1) return;
-            _countdown.StopCountDown();
             OnRemove(arg2);
         }
 
         private void LootBoxesOnLootBoxAdded(int arg1, ILootBoxData arg2)
         {
             if (index != arg1) return;
-            _countdown.StartCountdown(arg2);
             AddLootBoxIcon(arg2);
         }
 
@@ -68,7 +70,7 @@ namespace Inventory.Scripts
                     slotIcon = child;
                 }
             }
-            
+            _countdown.StopCountDown();
             slotIcon.sprite = null;//Removes the image
             Dependencies.Instance.LootBoxes.OpenLootBox(lootBox);//Calls the function to remove from the loot box inventory
         }
