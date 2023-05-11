@@ -255,8 +255,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: debug.keystore'
-  AndroidKeyaliasName: gp22
+  AndroidKeystoreName: C:/Users/nihan/Desktop/keystore/user.keystore
+  AndroidKeyaliasName: sk8escapekey
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
