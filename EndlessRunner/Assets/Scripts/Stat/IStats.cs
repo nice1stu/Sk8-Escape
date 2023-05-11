@@ -2,9 +2,14 @@ namespace Stat
 {
     public interface IStats
     {
-        int Speed { get; set; }
+        int CoffinTimeAdded { get; set; }
         int Stability { get; set; }
-        int Style { get; set; }
-        int Balance { get; set; }
+        int Vision { get; set; }
+        int GrindMiniGameBallSize { get; set; }
+        
+        int GrindLeniency { get; set; }
+        int ScoreMultiplier { get; set; }
+
+        Stats Add(IStats other);
     }
 }

@@ -1186,6 +1186,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1776583399804716048, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d7ece6d9fa6b41ecafd08c67e90c517, type: 2}
+    - target: {fileID: 1776583399804716048, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CreateItemButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776583399804716048, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Dependencies, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4255846706749608868, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
       propertyPath: m_fontSize
       value: 49.8
