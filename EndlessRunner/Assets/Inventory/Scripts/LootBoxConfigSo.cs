@@ -9,13 +9,13 @@ namespace Inventory.Scripts
         [SerializeField] private Sprite icon;
         [SerializeField] private string lootBoxName;
         [SerializeField] private string id;
-        [SerializeField] private TimeSpan _timeToOpen;
+        [SerializeField] private int _minutesToOpen;
         [SerializeField] private LootChance[] lootChances;
 
         public Sprite Icon => icon;
         public string LootBoxName => lootBoxName;
         public string Id => id;
-        public TimeSpan TimeToOpen => _timeToOpen;
+        public TimeSpan TimeToOpen => new TimeSpan(0, _minutesToOpen, 0);
         public LootChance[] LootChances => lootChances;
         
     }
