@@ -32,8 +32,8 @@ namespace Inventory.Scripts
             throw new NotImplementedException();
         }
 
-        public event Action<int, IItemData> LootBoxAdded;
-        public event Action<int, IItemData> LootBoxRemoved;
+        public event Action<int, ILootBoxData> LootBoxAdded;
+        public event Action<int, ILootBoxData> LootBoxRemoved;
         public event Action<ILootBoxData, IItemData[]> LootBoxOpened;
 
         public void TriggerDummyLotBoxOpened()
