@@ -1,12 +1,12 @@
 using System;
 using Item;
-using UnityEngine;
 
 namespace Inventory.Scripts
 {
     public class LootBoxInventory : ILootBoxInventory
     {
-        [SerializeField] private ILootBoxData[] _slots;
+        public int count;
+        private ILootBoxData[] _slots;
 
         //This is the fixed array that stores the loot boxes
         public ILootBoxData[] Slots => _slots;
@@ -20,6 +20,7 @@ namespace Inventory.Scripts
                 {
                     _slots[i] = lootBox;
                     LootBoxAdded?.Invoke(i, lootBox);
+                    count++;
                     return;
                 }
             }
@@ -31,6 +32,7 @@ namespace Inventory.Scripts
             if (slotIndex == -1) return;
             if (DateTime.UtcNow - lootBox.OpeningStartTime < lootBox.Config.TimeToOpen) return;
             _slots[slotIndex] = null;
+            count--;
             LootBoxRemoved?.Invoke(slotIndex, lootBox);
             //TODO: Use ItemFactory to create items
             LootBoxOpened?.Invoke(lootBox, Array.Empty<IItemData>());
