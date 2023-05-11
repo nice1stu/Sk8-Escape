@@ -230,9 +230,10 @@ MonoBehaviour:
   skateboardLabel: {fileID: 7427043933598548052}
   skateboardIcon: {fileID: 7427043935278918396}
   stabilityValueLabel: {fileID: 3624909235952338784}
-  speedValueLabel: {fileID: 2842056693975725078}
+  gripValueLabel: {fileID: 2842056693975725078}
   styleValueLabel: {fileID: 2842056692435920409}
   balanceValueLabel: {fileID: 2842056693497002643}
+  visionValueLabel: {fileID: 7442159265847196613}
 --- !u!1 &7427043934155642102
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,6 +817,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8307608160614132163, guid: f4fae34fb681d8346b8cdd947e9ae70d, type: 3}
   m_PrefabInstance: {fileID: 2820650805790521401}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7442159265847196613 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4639598884856005628, guid: f4fae34fb681d8346b8cdd947e9ae70d, type: 3}
+  m_PrefabInstance: {fileID: 2820650805790521401}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8354858290528418458 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6113246922523034275, guid: f4fae34fb681d8346b8cdd947e9ae70d, type: 3}
