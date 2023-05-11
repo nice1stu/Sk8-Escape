@@ -146,6 +146,62 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: PauseSlowmo
       objectReference: {fileID: 0}
+    - target: {fileID: 5033843635522318497, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033843635522318497, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033843635522318497, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143694352156353570, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143694352156353570, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143694352156353570, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143694352156353570, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272584749038093421, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272584749038093421, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272584749038093421, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5445458036583010542, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5445458036583010542, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5445458036583010542, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5445458036583010542, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7979479341303576800, guid: 6e887da11c2d5bf4da92cc16995b268b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -797,7 +853,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4969486597088626211, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
       propertyPath: obstaclePrefabs.Array.size
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4969486597088626211, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
       propertyPath: obstaclePrefabs.Array.data[2]
@@ -815,6 +871,18 @@ PrefabInstance:
       propertyPath: obstaclePrefabs.Array.data[5]
       value: 
       objectReference: {fileID: 6332303130707236557, guid: 8b6f04fe59bed594c99fedbb0f6564ff, type: 3}
+    - target: {fileID: 4969486597088626211, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
+      propertyPath: obstaclePrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 2519757773818008860, guid: f62fc1842395c3f41b8946c6e5b8286e, type: 3}
+    - target: {fileID: 4969486597088626211, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
+      propertyPath: obstaclePrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 4596067331610768573, guid: 7ff55e3dfe4b1754cae480abd996c915, type: 3}
+    - target: {fileID: 4969486597088626211, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
+      propertyPath: obstaclePrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 5758717914761048803, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
     - target: {fileID: 5916089449596760925, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
       propertyPath: m_Name
       value: Obstacle spawner

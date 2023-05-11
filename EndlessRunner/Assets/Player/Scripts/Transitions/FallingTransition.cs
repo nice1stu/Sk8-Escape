@@ -12,7 +12,7 @@ namespace Player
 
         protected override bool CanTransition(PlayerController playerController)
         {
-            return (!playerController.grounded && playerController.rb.velocity.y < playerController.model.initialFallingVelocity && !playerController._canGrind);
+            return (!playerController.grounded && playerController.rb.velocity.y < playerController.model.initialFallingVelocity/* && !playerController._canGrind*/);
         }
     }
 }
