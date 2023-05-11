@@ -1,4 +1,5 @@
 
+using Inventory.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 using UI.Scripts;
@@ -10,9 +11,13 @@ public class ItemShop : MonoBehaviour
     public ShopTemplate[] shopPanels;
     public Button[] myPurchaseBtns;
     public UIManager uiManager;
+    public LootBoxInventory lootbox;
     
-    public PopupWindow popupWindow;
-
+    public PopupWindow popupWarning;
+    public PopupWindow popupConfirmation;
+    public bool purchaseSuccess = true;
+    private int test;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,21 +31,8 @@ public class ItemShop : MonoBehaviour
     //when you purchase the item this item will be called
     public void PurchaseItem(int btnNo)
     {
-        if (uiManager.GetCoins() < shopChestSo[btnNo].coinCost)
-        {
-            popupWindow.ShowPopup("Not enough coins");
-            return;
-        }
-
-        /*if (slot.count == 4)
-        {
-            popupWindow.ShowPopup("LootBoxSlot is full");
-            return;
-        }*/
-        
-        popupWindow.ShowPopup("Purchase successful");
-        uiManager.SpendCoins(shopChestSo[btnNo].coinCost);
-        PurchasedChest();
+        popupConfirmation.ShowPopupConfirmation("Purchase Item?");
+        test = btnNo;
     }
     
     //this method is to load every details in unity.
@@ -56,6 +48,26 @@ public class ItemShop : MonoBehaviour
     //when you purchase the item this method will be called
     public void PurchasedChest()
     {
+        // Integration add logic when buying
         Debug.Log("Chest Unlock!");
+        //lootbox.AddLootBox(0);
+    }
+
+    public void CheckPurchase()
+    {
+        if (uiManager.GetCoins() < shopChestSo[test].coinCost)
+        {
+            popupWarning.ShowPopupMessage("Not enough coins");
+            return;
+        }
+
+       /* if (lootbox == 4)
+        {
+            popupWarning.ShowPopup("LootBoxSlot is full");
+            return;
+        }*/
+        
+        uiManager.SpendCoins(shopChestSo[test].coinCost);
+        PurchasedChest();
     }
 }
