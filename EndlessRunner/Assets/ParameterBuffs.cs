@@ -28,6 +28,7 @@ public class ParameterBuffs : MonoBehaviour
     {
         FindObjectOfType<CameraController>().offset += new Vector3(vision, 0, 0);
         FindObjectOfType<collision>().survivalRate += stability;
-        FindObjectOfType<PlayerModel>().coffinTime = coffinTime;
+        var playerModel = FindObjectOfType<PlayerModel>();
+        playerModel.coffinTime = coffinTime;
     }
 }
