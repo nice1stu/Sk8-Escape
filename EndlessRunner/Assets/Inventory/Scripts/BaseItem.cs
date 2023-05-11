@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace Inventory.Scripts
 {
-    public class LootBoxData : MonoBehaviour
+    public abstract class BaseItem : ScriptableObject
     {
-       
+        
     }
 }

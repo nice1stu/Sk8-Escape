@@ -486,6 +486,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2860136475030102636}
+  - component: {fileID: 415531151813979491}
+  - component: {fileID: 8561601234888560161}
   m_Layer: 5
   m_Name: LootBoxItem
   m_TagString: Untagged
@@ -517,3 +519,32 @@ RectTransform:
   m_AnchoredPosition: {x: -162, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &415531151813979491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9026750967568763246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd44edf6263ed4a4fb7e044ef86e828f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeRemainingValue: 0
+  timeRemainingDisplay: {fileID: 4597041083646714589}
+  itemIcon: {fileID: 4697776058967094523}
+  discardButton: {fileID: 3431753350961526017}
+--- !u!114 &8561601234888560161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9026750967568763246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5fa2f33dbcb0e4a8ca906d2f6042a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0

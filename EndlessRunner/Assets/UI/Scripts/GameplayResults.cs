@@ -47,6 +47,7 @@ public class GameplayResults : MonoBehaviour
 
     private void OnDisable()
     {
+        cointest.SetCoinAmount(0);
         _scoreManager.SetScore(0);
         hasPlayedAd = false;
     }
@@ -55,16 +56,12 @@ public class GameplayResults : MonoBehaviour
     {
         // Reset the score to zero
        
-        cointest.SetCoinAmount(0);
+
         SceneManager.LoadScene("MainScene");
     }
 
 
-    public void GoToMainMenu()
-    {
-        cointest.SetCoinAmount(0);
-        SceneManager.LoadScene("StartMenu");
-    }
+    public void GoToMainMenu() => SceneManager.LoadScene("StartMenu");
 
     public void WatchAds()
     {
