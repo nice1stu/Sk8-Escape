@@ -147,11 +147,6 @@ namespace Player
             new TimedTransition(coffin, coast, model.coffinTime);
             new GroundedTransition(falling, coast);
             new GroundedTransition(grind, coast);
-            new GroundedTransition(ollie, coast);
-            new GroundedTransition(kickflip, coast);
-            new GroundedTransition(shuvit, coast);
-            new GroundedTransition(grind, coast);
-            
 
 
             CurrentState.Enter(this);
