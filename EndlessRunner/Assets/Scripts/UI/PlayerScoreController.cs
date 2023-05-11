@@ -25,7 +25,12 @@ public class PlayerScoreController: MonoBehaviour
         float newPlayerPosition = player.transform.position.x;
         
         //This *can* result is taking points away from the player if they travel backwards, but in practice that should never happen
-        model.AddToScore(newPlayerPosition - oldPlayerPosition); //This might make us a bit vulnerable to round errors, but do we really care *that* much?
+        float points = newPlayerPosition - oldPlayerPosition;
+        if (points < 0)
+        {
+            points = 0;
+        }
+        model.AddToScore(points); //This might make us a bit vulnerable to round errors, but do we really care *that* much?
 
         oldPlayerPosition = newPlayerPosition;
     }
