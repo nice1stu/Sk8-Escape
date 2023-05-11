@@ -1,3 +1,4 @@
+using System.Linq;
 using Inventory;
 using Item;
 using Stat;
@@ -7,8 +8,11 @@ using UnityEngine.Serialization;
 [CreateAssetMenu]
 public class Dependencies : ScriptableObject
 {
+    private ItemFactory _itemFactory;
+    
     private static Dependencies _instance;
     [SerializeField] private DummyInventory dummyInventory;
+    [SerializeField] private ItemConfigSO dummyItem;
 
     [SerializeField] private PlayerInventory playerInventory;
 
@@ -33,18 +37,19 @@ public class Dependencies : ScriptableObject
     {
         //Move to constructor when not scriptableObject anymore
         inventorySerializer = new InventorySerializer(playerInventory, itemDataBase);
+        _itemFactory = new ItemFactory(playerInventory);
         var playerStats = new PlayerStats(Equipped);
         Load();
     }
 
     public void CreateItemButton()
     {
-        dummyInventory.CreateDummyItem();
+        _itemFactory.CreateItem(dummyItem);
     }
 
     private void Load()
     {
         var items = inventorySerializer.Load();
-        dummyInventory.Load(items);
+        playerInventory.Load(items);
     }
 }

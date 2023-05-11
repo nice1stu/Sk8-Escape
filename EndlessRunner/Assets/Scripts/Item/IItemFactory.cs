@@ -1,4 +1,5 @@
 using Inventory;
+using Stat;
 
 namespace Item
 {
@@ -6,6 +7,6 @@ namespace Item
     {
         IInventoryData Inventory { get; }
 
-        void CreateItem(IItemConfig itemConfig);
+        void CreateItem(ItemConfigSO itemConfig);
     }
 }

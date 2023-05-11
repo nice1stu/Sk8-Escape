@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Item;
 
 namespace Inventory
@@ -8,14 +9,16 @@ namespace Inventory
     [Serializable]
     public class PlayerInventory : EquippedItemsInventory,IInventoryData
     {
-        private List<IItemData> _items = new ();
+        private IList<IItemData> _items;
         public IEnumerable<IItemData> Items => _items;
         public void AddItem(IItemData item)
         {
             _items.Add(item);
             ItemAdded?.Invoke(item);
         }
-
+        public void Load(IEnumerable<IItemData> items){
+            _items = items.ToList();
+        }
         public event Action<IItemData> ItemAdded;
     }
 }
