@@ -20,6 +20,7 @@ namespace Player
             playerController.rb.gravityScale = 0;
             playerController.rb.velocity = new Vector2(playerController.rb.velocity.x, 0);
             elapsed = 0f;
+            playerController.grindParticles.Play();
         }
 
         protected override void UpdateInternal(PlayerController playerController)
@@ -45,6 +46,7 @@ namespace Player
         {
             base.Exit(playerController);
             playerController.rb.gravityScale = _gravityCache;
+            playerController.grindParticles.Stop();
         }
 
         private Vector2 FollowRailVelocity(Rigidbody2D rb)
