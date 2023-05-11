@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6e228bb4521364ea2f53214a0ed434, type: 3}
   m_Name: Common
   m_EditorClassIdentifier: 
+  lootBox: {fileID: 11400000, guid: 702cdf382dd8a1e4ca8d6ddac26e36d4, type: 2}
   title: Common Chest
   coinCost: 1000

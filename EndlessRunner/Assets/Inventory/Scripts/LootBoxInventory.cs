@@ -1,16 +1,34 @@
 using System;
 using Item;
-using UnityEngine;
+using Unity.VisualScripting;
 
 namespace Inventory.Scripts
 {
     public class LootBoxInventory : ILootBoxInventory
     {
-        [SerializeField] private ILootBoxData[] _slots;
+        public bool IsFull //Shop need this one to check if the loot box inventory is full or not
+        {
+            get
+            {
+                foreach (var lootBoxData in _slots)
+                {
+                    if (lootBoxData == null) return false;
+                }
+
+                return true;
+            }
+        }
+
+        private ILootBoxData[] _slots;
 
         //This is the fixed array that stores the loot boxes
         public ILootBoxData[] Slots => _slots;
         //This is the list that stores the inventory slots
+
+        public LootBoxInventory()
+        {
+            _slots = new ILootBoxData[4];
+        }
         
         public void AddLootBox(ILootBoxData lootBox)
         {
