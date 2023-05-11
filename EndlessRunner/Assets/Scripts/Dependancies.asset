@@ -15,41 +15,30 @@ MonoBehaviour:
   dummyInventory:
     dummyItemTemplate:
       bonusStats:
-        speed: 10
+        coffinTimeAdded: 0
         stability: 5
-        style: 4
-        balance: 20
+        vision: 0
+        grindMiniGameBallSize: 0
+        grindLeniency: 0
+        scoreMultiplier: 0
       itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
     items:
     - bonusStats:
-        speed: 10
-        stability: 5
-        style: 4
-        balance: 20
+        coffinTimeAdded: 0
+        stability: 0
+        vision: 1
+        grindMiniGameBallSize: 0
+        grindLeniency: 1
+        scoreMultiplier: 0
       itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
     - bonusStats:
-        speed: 10
-        stability: 5
-        style: 4
-        balance: 20
-      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
-    - bonusStats:
-        speed: 10
-        stability: 5
-        style: 4
-        balance: 20
-      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
-    - bonusStats:
-        speed: 10
-        stability: 5
-        style: 4
-        balance: 20
-      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
-    - bonusStats:
-        speed: 10
-        stability: 5
-        style: 4
-        balance: 20
+        coffinTimeAdded: 0
+        stability: 0
+        vision: 1
+        grindMiniGameBallSize: 0
+        grindLeniency: 0
+        scoreMultiplier: 1
       itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
     equippedItemIndex: 0
+  dummyItem: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
   itemDataBase: {fileID: 11400000, guid: 4294f6ae730b5d24eb27075ad78a2e12, type: 2}
