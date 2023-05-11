@@ -2,6 +2,7 @@ using System.Linq;
 using Inventory;
 using Item;
 using Stat;
+using Inventory.Scripts;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -28,6 +29,9 @@ public class Dependencies : ScriptableObject
             return _instance;
         }
     }
+    private LootBoxInventory _lootBoxInventory = new LootBoxInventory();
+
+    public ILootBoxInventory LootBoxes => _lootBoxInventory;
 
 
     public IInventoryData Inventory => playerInventory;

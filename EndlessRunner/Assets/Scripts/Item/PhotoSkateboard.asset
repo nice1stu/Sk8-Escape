@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7697923653040179bdd2934999238aa, type: 3}
+  m_Name: PhotoSkateboard
+  m_EditorClassIdentifier: 
+  baseStats:
+    speed: 3
+    stability: 1
+    style: 2
+    balance: 1
+  itemType: 1
+  bonusStats: 3
+  itemName: Water Skateboard
+  itemSprite: {fileID: 21300000, guid: d6a44ab95b0def041a7929981a2c23a1, type: 3}
+  itemIcon: {fileID: 21300000, guid: db9c505651ca7d4409bb8ef0ad713ced, type: 3}
+  id: item.skateboard.photo

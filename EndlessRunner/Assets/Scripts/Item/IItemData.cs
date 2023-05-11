@@ -7,5 +7,6 @@ namespace Item
         IItemConfig ItemConfig { get; }
         //actual implementation of the bonus stats
         IStats BonusStats { get; }
+        IStats TotalStats { get; }
     }
 }

@@ -3,29 +3,38 @@ using UnityEngine;
 
 namespace Inventory
 {
+    
     public class InventoryMenu : MonoBehaviour
     {
         public Transform SkateboardContent;
+        public ItemDetailPopup popup;
 
         public ItemPreview itemPrefab;
-
         // Start is called before the first frame update
-        private void Start()
+        void Start()
         {
             foreach (var inventoryItem in Dependencies.Instance.Inventory.Items)
-                Instantiate(itemPrefab, SkateboardContent).Setup(inventoryItem);
-            Dependencies.Instance.Inventory.ItemAdded += InventoryOnItemAdded;
+            {
+                Instantiate(itemPrefab, SkateboardContent).Setup(inventoryItem, ShowItemDetailPopup);
+            }
+            Dependencies.Instance.Inventory.ItemAdded+= InventoryOnItemAdded;
         }
 
-        // Update is called once per frame
-        private void OnDestroy()
+        void ShowItemDetailPopup(IItemData itemData)
         {
-            Dependencies.Instance.Inventory.ItemAdded -= InventoryOnItemAdded;
+            popup.Setup(itemData);
+            popup.gameObject.SetActive(true);
         }
 
         private void InventoryOnItemAdded(IItemData obj)
         {
-            Instantiate(itemPrefab, SkateboardContent).Setup(obj);
+            Instantiate(itemPrefab, SkateboardContent).Setup(obj, ShowItemDetailPopup);
+        }
+
+        // Update is called once per frame
+        void OnDestroy()
+        {
+            Dependencies.Instance.Inventory.ItemAdded-= InventoryOnItemAdded;
         }
     }
 }

@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using static RunInventoryManager;
+using static Player.RunInventoryManager;
 using UnityEngine;
 
 public class InRunCoin : MonoBehaviour, IPickupable
@@ -8,6 +8,7 @@ public class InRunCoin : MonoBehaviour, IPickupable
     private AudioSource _audioSource;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _col;
+    
 
     private void Awake()
     {
@@ -18,7 +19,7 @@ public class InRunCoin : MonoBehaviour, IPickupable
 
     public void OnPickup()
     {
-        coinAmount++;
+        coinAmount += (1 * multiplier);
         Debug.Log("coin amount:" + coinAmount);
         _audioSource.Play();
         _spriteRenderer.color = Color.clear;
