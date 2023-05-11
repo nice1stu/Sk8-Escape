@@ -3,6 +3,30 @@ using UnityEngine;
 
 namespace AudioSettingsSaver
 {
+    public class AudioSettings : IAudioSettings
+    {
+        public IAudioChannelSettings Music { get; set; }
+        public IAudioChannelSettings Sfx { get; set; }
+
+        public AudioSettings()
+        {
+            Music = new AudioChannelSettings(1f, false); // Default music settings
+            Sfx = new AudioChannelSettings(1f, false); // Default SFX settings
+        }
+    }
+
+    public class AudioChannelSettings : IAudioChannelSettings
+    {
+        public float Volume { get; set; }
+        public bool Muted { get; set; }
+
+        public AudioChannelSettings(float volume, bool muted)
+        {
+            Volume = volume;
+            Muted = muted;
+        }
+    }
+
     public class AudioSettingsIO
     {
         private const string SettingsFileName = "audio_settings.json";
@@ -29,6 +53,7 @@ namespace AudioSettingsSaver
             {
                 // Create a new instance of AudioSettings with default values
                 _currentSettings = new AudioSettings();
+                SaveSettings(); // Save the default settings to a JSON file
             }
         }
 
