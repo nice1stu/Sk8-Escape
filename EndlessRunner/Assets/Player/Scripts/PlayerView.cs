@@ -47,6 +47,13 @@ namespace Player
         {
             characterAnimation.Play("PlayerJump");
             skateboardAnimation.Play("BoardOllie");
+            
+        }
+        
+        public void PlayKickflipAnim()
+        {
+            characterAnimation.Play("PlayerJump");
+            skateboardAnimation.Play("BoardKickflip");
         }
     }
 }
