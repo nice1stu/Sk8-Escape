@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace AudioSettingsSaver
 {
-    public class AudioSettingsIO : MonoBehaviour
+    public class AudioSettingsIO
     {
         private const string SettingsFileName = "audio_settings.json";
 
         // The current audio settings
         private AudioSettings _currentSettings;
 
-        private void Awake()
+        public AudioSettingsIO()
         {
             // Load the audio settings from the JSON file
             LoadSettings();
@@ -27,7 +27,7 @@ namespace AudioSettingsSaver
             }
             else
             {
-                // Create a new instance of AudioSettings with default values
+                // Use default settings if the JSON file doesn't exist or if there's an error loading the settings
                 _currentSettings = new AudioSettings();
             }
         }
@@ -41,12 +41,29 @@ namespace AudioSettingsSaver
             string filePath = Path.Combine(Application.persistentDataPath, SettingsFileName);
             File.WriteAllText(filePath, json);
         }
-
-        // Updates the current audio settings and saves them to the JSON file
-        public void UpdateAudioSettings(AudioSettings newSettings)
+    }
+    
+    public class DefaultAudioSettings : IAudioSettings
+    {
+        public DefaultAudioSettings()
         {
-            _currentSettings = newSettings;
-            SaveSettings();
+            Music = new DefaultAudioChannelSettings();
+            Sfx = new DefaultAudioChannelSettings();
         }
+
+        public IAudioChannelSettings Music { get; }
+        public IAudioChannelSettings Sfx { get; }
+    }
+
+    public class DefaultAudioChannelSettings : IAudioChannelSettings
+    {
+        public DefaultAudioChannelSettings()
+        {
+            Volume = 1f;
+            Muted = false;
+        }
+
+        public float Volume { get; set; }
+        public bool Muted { get; set; }
     }
 }

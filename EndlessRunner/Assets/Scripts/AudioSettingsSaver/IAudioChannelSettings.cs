@@ -1,4 +1,4 @@
-namespace AudioSettingInterface
+namespace AudioSettingsSaver
 {
     public interface IAudioChannelSettings
     {
@@ -9,6 +9,6 @@ namespace AudioSettingInterface
     public interface IAudioSettings
     {
         IAudioChannelSettings Music { get; }
-        IAudioChannelSettings SFX { get; }
+        IAudioChannelSettings Sfx { get; }
     }
 }
