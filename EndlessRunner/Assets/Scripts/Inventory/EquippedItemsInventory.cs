@@ -7,7 +7,7 @@ namespace Inventory
 {
     public class EquippedItemsInventory : IActiveInventory
     {
-        private List<IItemData> _equippedItems;
+        private List<IItemData> _equippedItems = new List<IItemData>();
         public IEnumerable<IItemData> EquippedItems => _equippedItems;
 
         public void Equip(IItemData item)

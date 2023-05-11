@@ -60,13 +60,13 @@ namespace Stat
             newStats.Vision += stats.Vision;
             newStats.GrindLeniency += stats.GrindLeniency;
             newStats.ScoreMultiplier += stats.ScoreMultiplier;
-            //adds base stats
-            newStats.GrindMiniGameBallSize += stats.GrindMiniGameBallSize;
-            newStats.Stability += stats.Stability;
-            newStats.CoffinTimeAdded += stats.CoffinTimeAdded;
-            newStats.Vision += stats.Vision;
-            newStats.GrindLeniency += stats.GrindLeniency;
-            newStats.ScoreMultiplier += stats.ScoreMultiplier;
+
+            newStats.GrindMiniGameBallSize += GrindMiniGameBallSize;
+            newStats.Stability += Stability;
+            newStats.CoffinTimeAdded += CoffinTimeAdded;
+            newStats.Vision += Vision;
+            newStats.GrindLeniency += GrindLeniency;
+            newStats.ScoreMultiplier += ScoreMultiplier;
 
             return newStats;
         }
