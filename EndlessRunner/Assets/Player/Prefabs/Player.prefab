@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 7
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 701cc34f38c842940ac9c10396fe37c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574f53ef8c7793048849fd16e10453a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterAnimation: {fileID: 1941611383102090107}
-  skateboardAnimation: {fileID: 648376264027771465}
+  characterAnimation: {fileID: 6814374504102093861}
+  skateboardAnimation: {fileID: 1626855852268549789}
   characterAnimations:
   - {fileID: 7400000, guid: 3305c66e6c1d68e4db058be9ca128d02, type: 2}
   - {fileID: 7400000, guid: 51b3d4fa1f5f12c42b61b99b808b2075, type: 2}
@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 1599283817310161499}
   - component: {fileID: 1599283817310161516}
   - component: {fileID: 1464391285}
+  - component: {fileID: 1599283817310161501}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -406,6 +407,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vision: 0
   stability: 0
+--- !u!114 &1599283817310161501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6550543353071559523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1688b53762e39448bd84d7c120a11c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vision: 6.12
+  stability: 24
 --- !u!1 &8923090069800149062
 GameObject:
   m_ObjectHideFlags: 0
