@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ namespace Inventory.Scripts
         //Index for the inventory slot
         [SerializeField] private int index;
         //Countdown for the inventory slot
-        private Countdown _countdown;
+        [SerializeField] private Countdown _countdown;
        
 
         private void Start()
@@ -16,7 +17,14 @@ namespace Inventory.Scripts
             var currentState = Dependencies.Instance.LootBoxes.Slots[index];
             Dependencies.Instance.LootBoxes.LootBoxAdded += LootBoxesOnLootBoxAdded;
             Dependencies.Instance.LootBoxes.LootBoxRemoved += LootBoxesOnLootBoxRemoved;
-            _countdown = gameObject.AddComponent<Countdown>();//adds the countdown script to the inventory slot gameObject
+            _countdown ??= GetComponentInChildren<Countdown>();
+        }
+
+        private void OnDestroy()
+        {
+            Dependencies.Instance.LootBoxes.LootBoxAdded -= LootBoxesOnLootBoxAdded;
+            Dependencies.Instance.LootBoxes.LootBoxRemoved -= LootBoxesOnLootBoxRemoved;
+
         }
 
         private void LootBoxesOnLootBoxRemoved(int arg1, ILootBoxData arg2)
