@@ -1,4 +1,5 @@
 
+using System;
 using Inventory.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,9 +44,6 @@ public class ItemShop : MonoBehaviour
             shopPanels[i].coinsCostText.text = "Coins: " + shopChestSo[i].coinCost;
         }
     }
-    
-    //when you purchase the item this method will be called
-    
 
     public void CheckPurchase()
     {
@@ -55,13 +53,12 @@ public class ItemShop : MonoBehaviour
             return;
         }
 
-       /* if (lootbox == 4)
+        if (Dependencies.Instance.LootBoxes.IsFull)
         {
-            popupWarning.ShowPopup("LootBoxSlot is full");
+            popupWarning.ShowPopupMessage("LootBoxSlot is full");
             return;
-        }*/
-        
+        }
         uiManager.SpendCoins(shopChestSo[test].coinCost);
-        
+        Dependencies.Instance.LootBoxes.AddLootBox(new LootBoxData(shopChestSo[test].lootBox, DateTime.UtcNow));
     }
 }
