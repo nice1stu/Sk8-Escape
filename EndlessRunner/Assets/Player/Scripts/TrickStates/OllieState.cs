@@ -11,6 +11,7 @@ namespace Player
         public override void Enter(PlayerController playerController)
         {
             base.Enter(playerController);
+            playerController.view.PlayOllieAnim();
             playerController.AddToCurrentVelocity(Vector2.up * playerController.model.ollieJumpForce);
 
         }

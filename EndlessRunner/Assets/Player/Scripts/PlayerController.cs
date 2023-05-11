@@ -85,7 +85,8 @@ namespace Player
         [HideInInspector] public bool grounded;
         [HideInInspector] public bool walled;
         [HideInInspector] public Transform[] grindPath;
-        [HideInInspector] public bool _canGrind = false;
+        [HideInInspector] public bool canGrind = false;
+        [HideInInspector] public bool isGrinding = false;
 
         private void Awake()
         {
@@ -369,7 +370,7 @@ namespace Player
 
         public void EnterGrinding(Transform[] rail)
         {
-            _canGrind = true;
+            canGrind = true;
             grindPath = rail;
         }
 

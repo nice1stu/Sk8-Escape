@@ -13,8 +13,10 @@ namespace Player
         public override void Enter(PlayerController playerController)
         {
             base.Enter(playerController);
+            playerController.isGrinding = true;
             _grindPath = playerController.grindPath;
             _gravityCache = playerController.rb.gravityScale;
+            playerController.view.PlayGrindAnim();
             playerController.rb.gravityScale = 0;
             playerController.rb.velocity = new Vector2(playerController.rb.velocity.x, 0);
             elapsed = 0f;
@@ -23,9 +25,9 @@ namespace Player
 
         protected override void UpdateInternal(PlayerController playerController)
         {
-            playerController._canGrind = GrindingRail.IsWithinXBounds(playerController.transform.position, _grindPath);
+            playerController.canGrind = GrindingRail.IsWithinXBounds(playerController.transform.position, _grindPath);
 
-            if (!playerController._canGrind)
+            if (!playerController.canGrind)
             {
                 playerController.rb.gravityScale = _gravityCache;
                 return;
