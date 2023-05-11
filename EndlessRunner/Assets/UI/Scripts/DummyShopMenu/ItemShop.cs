@@ -11,8 +11,7 @@ public class ItemShop : MonoBehaviour
     public ShopTemplate[] shopPanels;
     public Button[] myPurchaseBtns;
     public UIManager uiManager;
-    public LootBoxInventory lootbox;
-    
+
     public PopupWindow popupWarning;
     public PopupWindow popupConfirmation;
     public bool purchaseSuccess = true;
@@ -46,12 +45,7 @@ public class ItemShop : MonoBehaviour
     }
     
     //when you purchase the item this method will be called
-    public void PurchasedChest()
-    {
-        // Integration add logic when buying
-        Debug.Log("Chest Unlock!");
-        //lootbox.AddLootBox(0);
-    }
+    
 
     public void CheckPurchase()
     {
@@ -68,6 +62,6 @@ public class ItemShop : MonoBehaviour
         }*/
         
         uiManager.SpendCoins(shopChestSo[test].coinCost);
-        PurchasedChest();
+        
     }
 }
