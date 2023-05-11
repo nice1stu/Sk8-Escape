@@ -20,6 +20,8 @@ namespace Inventory.Scripts
 
         [SerializeField] private DummyLootBoxData openEventLootBox;
         [SerializeField] private ItemData[] openEventItems;
+
+        public bool IsFull { get; }
         
         public ILootBoxData[] Slots { get; }
         public void AddLootBox(ILootBoxData lootBox)
