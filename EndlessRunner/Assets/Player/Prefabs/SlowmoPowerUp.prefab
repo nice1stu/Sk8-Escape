@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3355548852476635691}
   - component: {fileID: 1979249137786194632}
   - component: {fileID: 1540773351}
+  - component: {fileID: 6988993146386840862}
   m_Layer: 6
   m_Name: SlowmoPowerUp
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7855647741794374007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 39.758854, y: 33.18297, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0, g: 0.4647832, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 20589f13efb474954bad13773b35b160, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -114,3 +115,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f2e05a417bc8b4cb441874ae9acab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6988993146386840862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855647741794374007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aefcda3272700b4fa90022e66d7a94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeSpan: 10

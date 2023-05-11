@@ -1,4 +1,3 @@
-using Inventory;
 using Stat;
 using UnityEngine;
 
@@ -8,6 +7,7 @@ namespace Item
     {
         IStats BaseStats { get; }
         ItemType ItemType { get; }
+        //amount of BonusStats
         int BonusStats { get; }
         string ItemName { get; }
         Sprite ItemSprite { get; }

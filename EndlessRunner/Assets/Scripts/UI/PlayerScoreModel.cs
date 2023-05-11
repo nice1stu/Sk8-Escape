@@ -6,8 +6,12 @@ public class PlayerScoreModel : MonoBehaviour
 {
     private static double score;
 
+    public float multiplier = 1;
+
     private static int coins;
 
+    private int invincibilityPoints = 0;
+    
     private int powerUps;
     // Start is called before the first frame update
     void Start()
@@ -33,7 +37,7 @@ public class PlayerScoreModel : MonoBehaviour
     
     public void AddToScore(float toAdd)
     {
-        score += toAdd;
+        score += (toAdd * multiplier);
     }
 
     public double GetScore()

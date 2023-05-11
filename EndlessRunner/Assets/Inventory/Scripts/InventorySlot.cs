@@ -9,14 +9,41 @@ namespace Inventory.Scripts
         //Index for the inventory slot
         [SerializeField] private int index;
         //Countdown for the inventory slot
-        private Countdown _countdown;
+        [SerializeField] private Countdown _countdown;
+       
 
         private void Start()
         {
-            _countdown = gameObject.AddComponent<Countdown>();//adds the countdown script to the inventory slot gameObject
+            _countdown ??= GetComponentInChildren<Countdown>();
+            var currentState = Dependencies.Instance.LootBoxes.Slots[index];
+            if (currentState != null)
+            {
+                AddLootBoxIcon(currentState);
+            }
+            Dependencies.Instance.LootBoxes.LootBoxAdded += LootBoxesOnLootBoxAdded;
+            Dependencies.Instance.LootBoxes.LootBoxRemoved += LootBoxesOnLootBoxRemoved;
         }
-        
-        public void AddLootBoxIcon(BaseLootBox lootBox)//Function to set the loot box icon on the inventory slot
+
+        private void OnDestroy()
+        {
+            Dependencies.Instance.LootBoxes.LootBoxAdded -= LootBoxesOnLootBoxAdded;
+            Dependencies.Instance.LootBoxes.LootBoxRemoved -= LootBoxesOnLootBoxRemoved;
+
+        }
+
+        private void LootBoxesOnLootBoxRemoved(int arg1, ILootBoxData arg2)
+        {
+            if (index != arg1) return;
+            OnRemove(arg2);
+        }
+
+        private void LootBoxesOnLootBoxAdded(int arg1, ILootBoxData arg2)
+        {
+            if (index != arg1) return;
+            AddLootBoxIcon(arg2);
+        }
+
+        private void AddLootBoxIcon(ILootBoxData lootBox)//Function to set the loot box icon on the inventory slot
         {
             var childrenToLootBoxItem = gameObject.GetComponentsInChildren<Image>();//Gets all children with an image component
             var slotIcon = FindObjectOfType<Image>(); //Finds image so that it wont be null (we did this to make rider stop complaining)
@@ -27,18 +54,11 @@ namespace Inventory.Scripts
                     slotIcon = child;//If it's true, set slot icon to child
                 }
             }
-            slotIcon.sprite = lootBox.Icon;//Sets the slot icon sprite to the loot box image
+            slotIcon.sprite = lootBox.Config.Icon;//Sets the slot icon sprite to the loot box image
             _countdown.StartCountdown(lootBox);//Start countdown
         }
 
-        //May be removed in a later stage, good for testing
-        [ContextMenu("Remove Loot Box")]
-        void Remove()//This function is for the context menu
-        {
-            OnRemove();
-        }
-        
-        public void OnRemove()//This function is supposed to be called on the discard button
+        private void OnRemove(ILootBoxData lootBox)//This function is supposed to be called on the discard button
         {
             //This part is the same as the AddLootBoxIcon function
             var childrenToLootBoxItem = gameObject.GetComponentsInChildren<Image>();
@@ -50,9 +70,9 @@ namespace Inventory.Scripts
                     slotIcon = child;
                 }
             }
-            
+            _countdown.StopCountDown();
             slotIcon.sprite = null;//Removes the image
-            LootBoxInventory.RemoveLootBox(index);//Calls the function to remove from the loot box inventory
+            Dependencies.Instance.LootBoxes.OpenLootBox(lootBox);//Calls the function to remove from the loot box inventory
         }
     }
 }
