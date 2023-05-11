@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Player;
 
 public class ParameterBuffs : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class ParameterBuffs : MonoBehaviour
     public float stability;
     [Range(0.6f,2.5f)]
     public float coffinTime;
-    [Range(1,2)]
+    [Range(.2f,1)]
     public float grindLeniency;
     [Range(1,3f)]
     public float scoreMultiplier;
@@ -26,9 +27,11 @@ public class ParameterBuffs : MonoBehaviour
     }
     void Buff()
     {
-        FindObjectOfType<CameraController>().offset += new Vector3(vision, 0, 0);
-        FindObjectOfType<collision>().survivalRate += stability;
-        var playerModel = FindObjectOfType<PlayerModel>();
+        GetComponent<CameraController>().offset += new Vector3(vision, 0, 0);
+        GetComponent<PlayerDeathHandler>().survivalRate += stability;
+        var playerModel = GetComponent<PlayerModel>();
         playerModel.coffinTime = coffinTime;
+        playerModel.interactRadius = grindLeniency;
+        
     }
 }
