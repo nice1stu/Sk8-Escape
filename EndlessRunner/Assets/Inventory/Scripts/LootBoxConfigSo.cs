@@ -7,15 +7,21 @@ namespace Inventory.Scripts
     public class LootBoxConfigSo : ScriptableObject, ILootBoxConfig
     {
         [SerializeField] private Sprite icon;
+        [SerializeField] private Sprite boxOpen;
         [SerializeField] private string lootBoxName;
         [SerializeField] private string id;
-        [SerializeField] private TimeSpan _timeToOpen;
+        [SerializeField] private int _minutesToOpen;
         [SerializeField] private LootChance[] lootChances;
+        [SerializeField] private AudioClip _openSfx;
 
         public Sprite Icon => icon;
+        public Sprite BoxOpen => boxOpen;
+
+        public AudioClip OpenSFX => _openSfx;
+
         public string LootBoxName => lootBoxName;
         public string Id => id;
-        public TimeSpan TimeToOpen => _timeToOpen;
+        public TimeSpan TimeToOpen => new TimeSpan(0, _minutesToOpen, 0);
         public LootChance[] LootChances => lootChances;
         
     }

@@ -67,12 +67,14 @@ public class ItemPreview : MonoBehaviour
 
     private void OnUnEquip()
     {
-        equipButton.interactable = true;
+        if (equipButton == null) return;
+            equipButton.interactable = true;
         equipLabel.TranslationName = "equip";
     }
 
     private void OnEquip()
     {
+        if (equipButton == null) return;
         equipButton.interactable = false;
         equipLabel.TranslationName = "equipped";
     }

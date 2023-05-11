@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,28 +9,37 @@ namespace Inventory.Scripts
         //Index for the inventory slot
         [SerializeField] private int index;
         //Countdown for the inventory slot
-        private Countdown _countdown;
+        [SerializeField] private Countdown _countdown;
        
 
         private void Start()
         {
+            _countdown ??= GetComponentInChildren<Countdown>();
             var currentState = Dependencies.Instance.LootBoxes.Slots[index];
+            if (currentState != null)
+            {
+                AddLootBoxIcon(currentState);
+            }
             Dependencies.Instance.LootBoxes.LootBoxAdded += LootBoxesOnLootBoxAdded;
             Dependencies.Instance.LootBoxes.LootBoxRemoved += LootBoxesOnLootBoxRemoved;
-            _countdown = gameObject.AddComponent<Countdown>();//adds the countdown script to the inventory slot gameObject
+        }
+
+        private void OnDestroy()
+        {
+            Dependencies.Instance.LootBoxes.LootBoxAdded -= LootBoxesOnLootBoxAdded;
+            Dependencies.Instance.LootBoxes.LootBoxRemoved -= LootBoxesOnLootBoxRemoved;
+
         }
 
         private void LootBoxesOnLootBoxRemoved(int arg1, ILootBoxData arg2)
         {
             if (index != arg1) return;
-            _countdown.StopCountDown();
             OnRemove(arg2);
         }
 
         private void LootBoxesOnLootBoxAdded(int arg1, ILootBoxData arg2)
         {
             if (index != arg1) return;
-            _countdown.StartCountdown(arg2);
             AddLootBoxIcon(arg2);
         }
 
@@ -60,7 +70,7 @@ namespace Inventory.Scripts
                     slotIcon = child;
                 }
             }
-            
+            _countdown.StopCountDown();
             slotIcon.sprite = null;//Removes the image
             Dependencies.Instance.LootBoxes.OpenLootBox(lootBox);//Calls the function to remove from the loot box inventory
         }

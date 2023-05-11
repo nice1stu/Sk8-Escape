@@ -1,61 +1,64 @@
 
+using System;
+using Inventory.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UI.Scripts;
 
 public class ItemShop : MonoBehaviour
 {
-    public ItemShopSo[] itemShopSO;
-    public GameObject[] shopPanelsGO;
+    public ShopChestSo[] shopChestSo;
+    public GameObject[] shopPanelsGo;
     public ShopTemplate[] shopPanels;
     public Button[] myPurchaseBtns;
     public UIManager uiManager;
+
+    public PopupWindow popupWarning;
+    public PopupWindow popupConfirmation;
+    public bool purchaseSuccess = true;
+    private int test;
     
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < itemShopSO.Length; i++) //looping through number of SO inside the shop
-            shopPanelsGO[i].SetActive(true);
+        for (int i = 0; i < shopChestSo.Length; i++) //looping through number of SO inside the shop
+            shopPanelsGo[i].SetActive(true);
         LoadPanel();
-        CheckPurchaseable();
     }
     
-    public void CheckPurchaseable()
-    {
-        for (int i = 0; i < itemShopSO.Length; i++)
-        {
-            if (!itemShopSO[i].purchased && uiManager.GetCoins() >= itemShopSO[i].coinCost) //if coins is enough
-            {
-                myPurchaseBtns[i].interactable = true;
-            }
+    //this method is will check you have enough coins to purchase the item.
 
-            else if (itemShopSO[i].purchased)
-            {
-                shopPanels[i].coinsCostText.text = "Purchased";
-                myPurchaseBtns[i].interactable = false;
-            }
-            else
-                myPurchaseBtns[i].interactable = false;
-        }
-    }
-    
+    //when you purchase the item this item will be called
     public void PurchaseItem(int btnNo)
     {
-        if (uiManager.GetCoins() < itemShopSO[btnNo].coinCost) return;
-        uiManager.SpendCoins(itemShopSO[btnNo].coinCost);
-        itemShopSO[btnNo].purchased = true;
-        CheckPurchaseable();
-        //Unlock Item
+        popupConfirmation.ShowPopupConfirmation("Purchase Item?");
+        test = btnNo;
     }
     
+    //this method is to load every details in unity.
     public void LoadPanel()
     {
-        for (int i = 0; i < itemShopSO.Length; i++)
+        for (int i = 0; i < shopChestSo.Length; i++)
         {
-            shopPanels[i].titleTxt.text = itemShopSO[i].title;
-            shopPanels[i].desriptionTxt.text = itemShopSO[i].description;
-            shopPanels[i].coinsCostText.text = "Coins: " + itemShopSO[i].coinCost;
+            shopPanels[i].titleTxt.text = shopChestSo[i].title;
+            shopPanels[i].coinsCostText.text = "Coins: " + shopChestSo[i].coinCost;
         }
+    }
+
+    public void CheckPurchase()
+    {
+        if (uiManager.GetCoins() < shopChestSo[test].coinCost)
+        {
+            popupWarning.ShowPopupMessage("Not enough coins");
+            return;
+        }
+
+        if (Dependencies.Instance.LootBoxes.IsFull)
+        {
+            popupWarning.ShowPopupMessage("LootBoxSlot is full");
+            return;
+        }
+        uiManager.SpendCoins(shopChestSo[test].coinCost);
+        Dependencies.Instance.LootBoxes.AddLootBox(new LootBoxData(shopChestSo[test].lootBox, DateTime.UtcNow));
     }
 }
