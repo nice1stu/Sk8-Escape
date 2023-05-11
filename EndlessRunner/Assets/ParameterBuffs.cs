@@ -27,7 +27,7 @@ public class ParameterBuffs : MonoBehaviour
     }
     void Buff()
     {
-        GetComponent<CameraController>().offset += new Vector3(vision, 0, 0);
+        FindObjectOfType<CameraController>().offset += new Vector3(vision, 0, 0);
         GetComponent<PlayerDeathHandler>().survivalRate += stability;
         var playerModel = GetComponent<PlayerModel>();
         playerModel.coffinTime = coffinTime;
