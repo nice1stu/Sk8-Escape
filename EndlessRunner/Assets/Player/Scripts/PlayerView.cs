@@ -6,8 +6,8 @@ namespace Player
     {
         private SpriteRenderer _spriteRenderer;
 
-        public Animation characterAnimation;
-        public Animation skateboardAnimation;
+        public Animator characterAnimation;
+        public Animator skateboardAnimation;
 
         public AnimationClip[] characterAnimations;
         public AnimationClip[] skateboardAnimations;
@@ -39,18 +39,14 @@ namespace Player
 
         public void PlayCoastAnim()
         {
-            characterAnimation.clip = characterAnimations[0];
-            characterAnimation.Play();
-            skateboardAnimation.clip = skateboardAnimations[0];
-            skateboardAnimation.Play();
+            characterAnimation.Play("PlayerIdle");
+            skateboardAnimation.Play("BoardIdle");
         }
         
         public void PlayOllieAnim() 
         {
-            characterAnimation.clip = characterAnimations[1];
-            characterAnimation.Play();
-            skateboardAnimation.clip = skateboardAnimations[1];
-            skateboardAnimation.Play();
+            characterAnimation.Play("PlayerJump");
+            skateboardAnimation.Play("BoardOllie");
         }
     }
 }
