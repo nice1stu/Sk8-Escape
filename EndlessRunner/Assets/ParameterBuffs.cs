@@ -10,6 +10,10 @@ public class ParameterBuffs : MonoBehaviour
     public float stability;
     [Range(0.6f,2.5f)]
     public float coffinTime;
+    [Range(1,2)]
+    public float grindLeniency;
+    [Range(1,3f)]
+    public float scoreMultiplier;
     void Start()
     {
         Get();
