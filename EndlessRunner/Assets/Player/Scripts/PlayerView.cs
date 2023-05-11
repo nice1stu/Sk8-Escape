@@ -52,7 +52,7 @@ namespace Player
         
         public void PlayKickflipAnim()
         {
-            characterAnimation.Play("PlayerJump");
+            characterAnimation.Play("PlayerKickflip");
             skateboardAnimation.Play("BoardKickflip");
         }
         
