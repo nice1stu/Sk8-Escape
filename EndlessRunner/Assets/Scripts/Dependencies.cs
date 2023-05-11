@@ -30,10 +30,9 @@ public class Dependencies : ScriptableObject
         }
     }
     private LootBoxInventory _lootBoxInventory = new LootBoxInventory();
+    [SerializeField] private DummyLootBoxInventory _dummyLootBoxInventory = new();
 
     public ILootBoxInventory LootBoxes => _lootBoxInventory;
-
-
     public IInventoryData Inventory => playerInventory;
     public IActiveInventory Equipped => playerInventory;
 
