@@ -55,5 +55,11 @@ namespace Player
             characterAnimation.Play("PlayerJump");
             skateboardAnimation.Play("BoardKickflip");
         }
+        
+        public void PlayGrindAnim()
+        {
+            characterAnimation.Play("PlayerGrind");
+            skateboardAnimation.Play("BoardGrind");
+        }
     }
 }

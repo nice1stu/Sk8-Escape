@@ -15,6 +15,7 @@ namespace Player
             base.Enter(playerController);
             _grindPath = playerController.grindPath;
             _gravityCache = playerController.rb.gravityScale;
+            playerController.view.PlayGrindAnim();
             playerController.rb.gravityScale = 0;
             playerController.rb.velocity = new Vector2(playerController.rb.velocity.x, 0);
             elapsed = 0f;
