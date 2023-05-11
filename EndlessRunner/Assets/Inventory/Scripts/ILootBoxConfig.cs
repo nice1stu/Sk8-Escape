@@ -11,5 +11,7 @@ namespace Inventory.Scripts
         TimeSpan TimeToOpen { get; }
         LootChance[] LootChances { get; }
         
+        Sprite BoxOpen { get; }
+        
     }
 }

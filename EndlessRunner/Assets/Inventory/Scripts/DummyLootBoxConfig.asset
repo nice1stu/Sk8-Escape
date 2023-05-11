@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e63fdbc5dead043a2c73a3efe83bc8, type: 3}
   m_Name: DummyLootBoxConfig
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 4a7022308da4a4b02a74aa58ea880561, type: 3}
+  icon: {fileID: 21300000, guid: 5674fbf6acb3541069b44a334bb0c5fc, type: 3}
+  boxOpen: {fileID: 21300000, guid: 1d0ce02d907094600977b24975485bca, type: 3}
   lootBoxName: Dummy Box
   id: lootbox.dummy
   lootChances:
