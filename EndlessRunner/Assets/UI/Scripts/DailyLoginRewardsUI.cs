@@ -5,15 +5,11 @@ using UnityEngine;
 public class DailyLoginRewardsUI : MonoBehaviour
 {
     
-    // Start is called before the first frame update
-    void Start()
+    public GameObject dailyRewardsWindow;
+    
+    public void HideDailyRewardsWindow()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Disable the popup window game object
+        dailyRewardsWindow.SetActive(false);
     }
 }
