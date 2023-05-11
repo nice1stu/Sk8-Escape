@@ -59,15 +59,15 @@ namespace Inventory
             File.WriteAllText(Application.persistentDataPath + "/inventory.save.json", json);
         }
 
-        public List<ItemData> Load()
+        public IEnumerable<ItemData> Load()
         {
             //do I make fields of dummyInventory public or do I call this function from dummyInventory?
             var path = Application.persistentDataPath + "/inventory.save.json";
-            if (!File.Exists(path)) return null;
+            if (!File.Exists(path)) return Array.Empty<ItemData>();
 
             var json = File.ReadAllText(path);
             var data = JsonUtility.FromJson<SerializableInventory>(json);
-            return data.serializableItemDatas.Select(Convert).ToList();
+            return data.serializableItemDatas.Select(Convert).ToArray();
         }
 
         ~InventorySerializer()

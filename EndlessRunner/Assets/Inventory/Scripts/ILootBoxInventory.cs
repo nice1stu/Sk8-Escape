@@ -5,6 +5,7 @@ namespace Inventory.Scripts
 {
     public interface ILootBoxInventory
     {
+        bool IsFull { get; }
         ILootBoxData[] Slots { get; }
         
         void AddLootBox(ILootBoxData lootBox); // discard it, if no free slot

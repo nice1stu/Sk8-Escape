@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07e63fdbc5dead043a2c73a3efe83bc8, type: 3}
-  m_Name: UncommonLootBox 1
+  m_Name: CommonLootBox
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: a38f6628bbff1439c9dc9f26111da2b6, type: 3}
-  lootBoxName: Uncommon Loot Box
-  id: lootbox.uncommon
+  icon: {fileID: 21300000, guid: 3443cb2d270604476a4ea0374c523dd7, type: 3}
+  boxOpen: {fileID: 21300000, guid: 536c14bc596d3407a94ccc26d32b76e4, type: 3}
+  lootBoxName: Common Loot Box
+  id: lootbox.common
+  _minutesToOpen: 1
   lootChances: []
+  _openSfx: {fileID: 8300000, guid: 3f3ea1156e476e64fbf8abcfd128bf5e, type: 3}

@@ -37,6 +37,7 @@ namespace Player
 
         public virtual void Enter(PlayerController playerController)
         {
+            playerController.isGrinding = false;
             stateRemainingDuration = stateMinDuration;
             Debug.Log("Trickstate: "+ this);
             foreach (var transition in transitions)
