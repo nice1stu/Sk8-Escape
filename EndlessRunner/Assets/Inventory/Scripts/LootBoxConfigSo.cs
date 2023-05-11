@@ -12,9 +12,13 @@ namespace Inventory.Scripts
         [SerializeField] private string id;
         [SerializeField] private TimeSpan _timeToOpen;
         [SerializeField] private LootChance[] lootChances;
+        [SerializeField] private AudioClip _openSfx;
 
         public Sprite Icon => icon;
         public Sprite BoxOpen => boxOpen;
+
+        public AudioClip OpenSFX => _openSfx;
+
         public string LootBoxName => lootBoxName;
         public string Id => id;
         public TimeSpan TimeToOpen => _timeToOpen;

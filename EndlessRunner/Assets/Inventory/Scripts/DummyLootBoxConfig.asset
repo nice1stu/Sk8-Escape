@@ -21,3 +21,4 @@ MonoBehaviour:
     chance: 1
   - itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
     chance: 1
+  _openSfx: {fileID: 8300000, guid: f2bd4ef9185c58749a9eb7ae6d688596, type: 3}

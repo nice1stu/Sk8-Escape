@@ -246,25 +246,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4442179709157389797, guid: 0e730e1356887ce42881c9406fc01050, type: 3}
   m_PrefabInstance: {fileID: 8589333717013007176}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &155453233 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8237560907962457330, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-  m_PrefabInstance: {fileID: 5288060136387569228}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &155453235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155453233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: rewards
-  FallbackText: REWARDS
 --- !u!1 &159242979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,25 +1182,6 @@ MonoBehaviour:
   - Language: Swedish
     Text: "\xC4ndra spr\xE5k"
     Object: {fileID: 0}
---- !u!1 &838534068 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4981704052783853151, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-  m_PrefabInstance: {fileID: 5288060136387569228}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &838534070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838534068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: receivedReward
-  FallbackText: YOU HAVE RECEIVED A REWARD!
 --- !u!1 &861898730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,25 +1344,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1062624579 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4808949736754812754, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-  m_PrefabInstance: {fileID: 5288060136387569228}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1062624583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062624579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: continue
-  FallbackText: 
 --- !u!224 &1232730440 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7556530676259657393, guid: 0615e4e5061350c45ac4f3f038c66247, type: 3}
@@ -2155,45 +2098,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1648479169, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1537361131028211975, guid: 6828046a50f653542af91e2880101ba0, type: 3}
       propertyPath: m_Name
       value: LootBoxOpenPopup
-      objectReference: {fileID: 0}
-    - target: {fileID: 1537361131028211975, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1711964299759569580, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1711964299759569580, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1711964299759569580, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1711964299759569580, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1711964299759569580, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1711964299759569580, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3282325775707572534, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-      propertyPath: m_text
-      value: CONTINUE
       objectReference: {fileID: 0}
     - target: {fileID: 4693906920240734490, guid: 6828046a50f653542af91e2880101ba0, type: 3}
       propertyPath: m_Pivot.x
@@ -2278,14 +2185,6 @@ PrefabInstance:
     - target: {fileID: 4693906920240734490, guid: 6828046a50f653542af91e2880101ba0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4832634461862496018, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5642424855981254851, guid: 6828046a50f653542af91e2880101ba0, type: 3}
-      propertyPath: m_Material
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6828046a50f653542af91e2880101ba0, type: 3}

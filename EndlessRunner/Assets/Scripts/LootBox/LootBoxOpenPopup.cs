@@ -24,11 +24,13 @@ public class LootBoxOpenPopup : MonoBehaviour
     private List<ItemPreview> rewardItems = new();
 
     public Transform rewardItemParent;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         Dependencies.Instance.LootBoxes.LootBoxOpened += LootBoxesOnLootBoxOpened;
+        this.audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void LootBoxesOnLootBoxOpened(ILootBoxData arg1, IItemData[] arg2)
@@ -77,6 +79,7 @@ public class LootBoxOpenPopup : MonoBehaviour
         CloseButton.SetActive(true);
         openFx.SetActive(true);
         rewardItemParent.gameObject.SetActive(true);
+        audioSource.PlayOneShot(lootBox.Config.OpenSFX);
     }
     
 }

@@ -13,5 +13,7 @@ namespace Inventory.Scripts
         
         Sprite BoxOpen { get; }
         
+        AudioClip OpenSFX { get; }
+        
     }
 }
