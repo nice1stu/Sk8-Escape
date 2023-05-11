@@ -27,8 +27,9 @@ public class ItemDetailPopup : MonoBehaviour
         skateboardIcon.sprite = itemData.ItemConfig.ItemIcon;
         stabilityValueLabel.text = itemData.TotalStats.Stability.ToString();
         speedValueLabel.text = itemData.TotalStats.Stability.ToString();
-        balanceValueLabel.text = itemData.TotalStats.Balance.ToString();
-        styleValueLabel.text = itemData.TotalStats.Style.ToString();
+        //TODO change to correct variables instead of vision
+        balanceValueLabel.text = itemData.TotalStats.Vision.ToString();
+        styleValueLabel.text = itemData.TotalStats.Vision.ToString();
     }
 
     private void OnDestroy()
