@@ -27,7 +27,7 @@ namespace AudioSettingsSaver
             }
             else
             {
-                // Use default settings if the JSON file doesn't exist or if there's an error loading the settings
+                // Create a new instance of AudioSettings with default values
                 _currentSettings = new AudioSettings();
             }
         }
@@ -41,29 +41,5 @@ namespace AudioSettingsSaver
             string filePath = Path.Combine(Application.persistentDataPath, SettingsFileName);
             File.WriteAllText(filePath, json);
         }
-    }
-    
-    public class DefaultAudioSettings : IAudioSettings
-    {
-        public DefaultAudioSettings()
-        {
-            Music = new DefaultAudioChannelSettings();
-            Sfx = new DefaultAudioChannelSettings();
-        }
-
-        public IAudioChannelSettings Music { get; }
-        public IAudioChannelSettings Sfx { get; }
-    }
-
-    public class DefaultAudioChannelSettings : IAudioChannelSettings
-    {
-        public DefaultAudioChannelSettings()
-        {
-            Volume = 1f;
-            Muted = false;
-        }
-
-        public float Volume { get; set; }
-        public bool Muted { get; set; }
     }
 }
