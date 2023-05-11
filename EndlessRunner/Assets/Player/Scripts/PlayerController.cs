@@ -66,7 +66,8 @@ namespace Player
 
             scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
             trickParticles = gameObject.GetComponentInChildren<ParticleSystem>();
-            trickParticles.Play();
+            if (trickParticles != null)
+                trickParticles.Play();
         }
 
         private void OnDisable()
@@ -224,7 +225,8 @@ namespace Player
             {
                 SwipeLock = true;
                 Debug.Log("Up!");
-                trickParticles.Play();
+                if(trickParticles != null)
+                    trickParticles.Play();
                 
             }
         }
