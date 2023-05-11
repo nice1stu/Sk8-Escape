@@ -18,7 +18,13 @@ public class LootBoxOpenPopup : MonoBehaviour
     private ILootBoxData lootBox;
 
     public GameObject openFx;
-    
+
+    public ItemPreview rewardItemPrefab;
+
+    private List<ItemPreview> rewardItems = new();
+
+    public Transform rewardItemParent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +40,23 @@ public class LootBoxOpenPopup : MonoBehaviour
         LootBoxIcon.sprite = arg1.Config.Icon;
         LootBoxIcon.SetNativeSize();
         this.lootBox = arg1;
+        
+        foreach (var itemPreview in rewardItems)
+        {
+            Destroy(itemPreview.gameObject);
+        }
+
+        rewardItems.Clear();
+        
+        foreach (var itemData in arg2)
+        {
+            var rewardItem = Instantiate(rewardItemPrefab, rewardItemParent);
+            rewardItem.Setup(itemData, null);
+            rewardItems.Add(rewardItem);
+        }
+
+        rewardItemParent.gameObject.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -53,6 +76,7 @@ public class LootBoxOpenPopup : MonoBehaviour
         LootBoxIcon.SetNativeSize();
         CloseButton.SetActive(true);
         openFx.SetActive(true);
+        rewardItemParent.gameObject.SetActive(true);
     }
     
 }
