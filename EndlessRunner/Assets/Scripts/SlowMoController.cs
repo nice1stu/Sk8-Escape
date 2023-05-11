@@ -1,21 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SlowMoController : MonoBehaviour, IPickupable
 {
     private PlayerScoreModel scoreModel;
-    
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 
     public void OnPickup()

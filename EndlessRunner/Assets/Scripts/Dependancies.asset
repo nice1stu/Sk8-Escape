@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af17f8181494f86aa36d9df7b763c0f, type: 3}
+  m_Name: Dependancies
+  m_EditorClassIdentifier: 
+  dummyInventory:
+    dummyItemTemplate:
+      bonusStats:
+        coffinTimeAdded: 0
+        stability: 5
+        vision: 0
+        grindMiniGameBallSize: 0
+        grindLeniency: 0
+        scoreMultiplier: 0
+      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
+    items:
+    - bonusStats:
+        coffinTimeAdded: 0
+        stability: 0
+        vision: 1
+        grindMiniGameBallSize: 0
+        grindLeniency: 1
+        scoreMultiplier: 0
+      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
+    - bonusStats:
+        coffinTimeAdded: 0
+        stability: 0
+        vision: 1
+        grindMiniGameBallSize: 0
+        grindLeniency: 0
+        scoreMultiplier: 1
+      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
+    equippedItemIndex: 0
+  dummyItem: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
+  itemDataBase: {fileID: 11400000, guid: 4294f6ae730b5d24eb27075ad78a2e12, type: 2}

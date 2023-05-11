@@ -6,7 +6,7 @@ namespace Inventory
 {
     public interface IInventoryData
     {
-        IEnumerable<IItemData> Items {get;}
+        IEnumerable<IItemData> Items { get; }
 
         void AddItem(IItemData item);
 
