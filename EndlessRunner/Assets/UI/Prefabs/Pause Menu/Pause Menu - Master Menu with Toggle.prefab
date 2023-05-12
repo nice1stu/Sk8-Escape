@@ -153,6 +153,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4344937544487815132, guid: a44e89bb3c5ebef44936704c7b7c7511, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344937544487815132, guid: a44e89bb3c5ebef44936704c7b7c7511, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TogglePauseState
+      objectReference: {fileID: 0}
     - target: {fileID: 7086458477074947170, guid: a44e89bb3c5ebef44936704c7b7c7511, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

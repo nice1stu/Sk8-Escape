@@ -18,18 +18,36 @@ public class SettingsMenu : MonoBehaviour
     // Startup scene is responsible for loading the StartMenu scene
     public static SettingsMenu MenuInstance;
     
+    
+    
     // Placeholder till interwoven with other scenes
 
     
     // [SerializeField] public Button changeLanguageButton;
     // [SerializeField] private TMP_Text changeLanguageButtonText;
 
-    [SerializeField] private SaveSettings persistentSettingsManager;
+    // [SerializeField] private SaveSettings persistentSettingsManager;
     public static bool StartHidden = false;
     private static bool _isActive = !StartHidden;
     
     public static void ReturnToStartupScene() => SceneManager.LoadScene("StartMenu");
+    
 
+    public static void UnloadAdditiveScene()
+    {
+        var lastLoadedScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
+        if (SceneManager.sceneCount > 1)
+        {
+            SceneManager.UnloadSceneAsync(lastLoadedScene);
+        }
+        else
+        {
+            SceneManager.LoadScene("StartMenu");
+        }
+        
+        
+    } 
+    
     public static void ToggleSettingsMenu()
     {
         Assert.IsNotNull(MenuInstance);
@@ -45,7 +63,7 @@ public class SettingsMenu : MonoBehaviour
         MenuInstance ??= this;
 
         // Not great, interfacing with a static class would be better
-        persistentSettingsManager ??= GetComponent<SaveSettings>(); // get component if null
+        // persistentSettingsManager ??= GetComponent<SaveSettings>(); // get component if null
         
         SetUIStateFromSavedData();
         
@@ -75,9 +93,9 @@ public class SettingsMenu : MonoBehaviour
     private void SetUIStateFromSavedData()
     {
         // Blocked: Awaiting interface
-        Assert.IsNotNull(persistentSettingsManager);
+        // Assert.IsNotNull(persistentSettingsManager);
 
-        persistentSettingsManager.LoadSettingsData();
-        SetUIFromState(persistentSettingsManager);
+        // persistentSettingsManager.LoadSettingsData();
+        // SetUIFromState(persistentSettingsManager);
     }
 }

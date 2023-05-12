@@ -436,6 +436,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2347683743699276830, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnloadAdditiveScene
+      objectReference: {fileID: 0}
     - target: {fileID: 3401987670375392516, guid: 512b01e0b1b4f6d4689a593fc7705b72, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
