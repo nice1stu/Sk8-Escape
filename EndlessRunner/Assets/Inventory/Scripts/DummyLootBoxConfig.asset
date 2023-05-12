@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e63fdbc5dead043a2c73a3efe83bc8, type: 3}
+  m_Name: DummyLootBoxConfig
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 5674fbf6acb3541069b44a334bb0c5fc, type: 3}
+  boxOpen: {fileID: 21300000, guid: 1d0ce02d907094600977b24975485bca, type: 3}
+  lootBoxName: Dummy Box
+  id: lootbox.dummy
+  lootChances:
+  - itemConfig: {fileID: 11400000, guid: 09f3ff1d1a9c5487d91068175f9033b1, type: 2}
+    chance: 1
+  - itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
+    chance: 1
+  _openSfx: {fileID: 8300000, guid: f2bd4ef9185c58749a9eb7ae6d688596, type: 3}

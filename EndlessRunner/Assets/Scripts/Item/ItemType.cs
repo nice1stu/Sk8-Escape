@@ -4,6 +4,6 @@ namespace Item
     {
         Character = 0,
         SkateBoard = 1,
-        Consumable = 2,
+        Consumable = 2
     }
 }

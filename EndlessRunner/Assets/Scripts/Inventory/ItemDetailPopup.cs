@@ -5,6 +5,7 @@ using System.Linq;
 using Item;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ItemDetailPopup : MonoBehaviour
@@ -14,9 +15,10 @@ public class ItemDetailPopup : MonoBehaviour
     public Image skateboardIcon;
 
     public TextMeshProUGUI stabilityValueLabel;
-    public TextMeshProUGUI speedValueLabel;
+    [FormerlySerializedAs("speedValueLabel")] public TextMeshProUGUI gripValueLabel;
     public TextMeshProUGUI styleValueLabel;
     public TextMeshProUGUI balanceValueLabel;
+    public TextMeshProUGUI visionValueLabel;
     
     private IItemData itemData;
 
@@ -26,9 +28,11 @@ public class ItemDetailPopup : MonoBehaviour
         skateboardLabel.text = itemData.ItemConfig.ItemName;
         skateboardIcon.sprite = itemData.ItemConfig.ItemIcon;
         stabilityValueLabel.text = itemData.TotalStats.Stability.ToString();
-        speedValueLabel.text = itemData.TotalStats.Stability.ToString();
-        balanceValueLabel.text = itemData.TotalStats.Balance.ToString();
-        styleValueLabel.text = itemData.TotalStats.Style.ToString();
+        gripValueLabel.text = itemData.TotalStats.CoffinTimeAdded.ToString();
+        //TODO change to correct variables instead of vision
+        balanceValueLabel.text = itemData.TotalStats.GrindLeniency.ToString();
+        styleValueLabel.text = itemData.TotalStats.ScoreMultiplier.ToString();
+        visionValueLabel.text = itemData.TotalStats.Vision.ToString();
     }
 
     private void OnDestroy()

@@ -13,6 +13,8 @@ namespace Player
             base.Enter(playerController);
             playerController.view.PlayKickflipAnim();
             playerController.AddToCurrentVelocity(Vector2.up * playerController.model.kickflipJumpForce);
+            if (playerController.trickParticles != null)
+                playerController.trickParticles.Play();
 
         }
     }

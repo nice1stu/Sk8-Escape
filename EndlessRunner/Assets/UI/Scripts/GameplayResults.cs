@@ -47,14 +47,14 @@ public class GameplayResults : MonoBehaviour
 
     private void OnDisable()
     {
-        _scoreManager.SetScore(0);
+        
         hasPlayedAd = false;
     }
 
     public void PlayAgain()
     {
         // Reset the score to zero
-       
+        _scoreManager.SetScore(0);
         cointest.SetCoinAmount(0);
         SceneManager.LoadScene("MainScene");
     }
@@ -62,6 +62,7 @@ public class GameplayResults : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        _scoreManager.SetScore(0);
         cointest.SetCoinAmount(0);
         SceneManager.LoadScene("StartMenu");
     }

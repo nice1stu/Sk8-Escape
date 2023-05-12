@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6e228bb4521364ea2f53214a0ed434, type: 3}
   m_Name: Uncommon
   m_EditorClassIdentifier: 
+  lootBox: {fileID: 11400000, guid: 7ae71db5a19b7514ebb34e74a7155c57, type: 2}
   title: Uncommon Chest
-  description: not normal chest
-  coinCost: 2
-  Sprite: {fileID: 21300000, guid: 75a728336ae634347b11996db821a50a, type: 3}
+  coinCost: 100

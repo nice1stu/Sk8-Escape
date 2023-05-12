@@ -19,6 +19,9 @@ namespace Player
 
         private Stopwatch slowmoCoolDownTimer;
 
+        public ParticleSystem trickParticles;
+        public ParticleSystem grindParticles;
+
         //Input stuff for the touch controls
         private InputAction dragActionUp;
         private InputAction dragActionDown;
@@ -56,9 +59,17 @@ namespace Player
             tap.performed += Tap;
             touchDownAction.performed += OnTouchDownPerformed;
             touchUpAction.performed += OnTouchUpPerformed;
+            
+            
+            
 
 
             scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
+            //trickParticles = gameObject.GetComponentInChildren<ParticleSystem>();
+            
+            trickParticles.Stop();
+            grindParticles.Stop();
+
         }
 
         private void OnDisable()
@@ -77,7 +88,8 @@ namespace Player
         [HideInInspector] public bool grounded;
         [HideInInspector] public bool walled;
         [HideInInspector] public Transform[] grindPath;
-        [HideInInspector] public bool _canGrind = false;
+        [HideInInspector] public bool canGrind = false;
+        [HideInInspector] public bool isGrinding = false;
 
         private void Awake()
         {
@@ -110,6 +122,7 @@ namespace Player
 
             // Up swipe
             new OllieTransition(coast, ollie, dragActionUp);
+            new OllieTransition(grind, ollie, dragActionUp);
             new KickflipTransition(ollie, kickflip, dragActionUp);
             new InputTransition(coffin, coast, dragActionUp);
 
@@ -215,6 +228,9 @@ namespace Player
             {
                 SwipeLock = true;
                 Debug.Log("Up!");
+                if(trickParticles != null)
+                    trickParticles.Play();
+                
             }
         }
 
@@ -359,7 +375,7 @@ namespace Player
 
         public void EnterGrinding(Transform[] rail)
         {
-            _canGrind = true;
+            canGrind = true;
             grindPath = rail;
         }
 

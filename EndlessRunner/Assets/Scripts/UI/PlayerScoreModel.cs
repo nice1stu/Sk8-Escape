@@ -6,11 +6,11 @@ public class PlayerScoreModel : MonoBehaviour
 {
     private static double score;
 
-    public int multiplier = 1;
+    public float multiplier = 1;
 
     private static int coins;
 
-    private int invincibilityPoints = 0;
+    //private int invincibilityPoints = 0;
     
     private int powerUps;
     // Start is called before the first frame update
