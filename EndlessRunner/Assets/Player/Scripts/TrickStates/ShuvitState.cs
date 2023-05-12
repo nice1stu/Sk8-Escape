@@ -12,6 +12,7 @@ namespace Player
         public override void Enter(PlayerController playerController)
         {
             base.Enter(playerController);
+            playerController.view.PlayShuvitAnim();
             playerController.AddToCurrentVelocity(Vector2.up * playerController.model.shuvitJumpForce);
 
         }

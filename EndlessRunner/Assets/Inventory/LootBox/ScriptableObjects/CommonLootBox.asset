@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CommonLootBox
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 3443cb2d270604476a4ea0374c523dd7, type: 3}
-  boxOpen: {fileID: 21300000, guid: 536c14bc596d3407a94ccc26d32b76e4, type: 3}
+  boxOpen: {fileID: 21300000, guid: 3621ce2d30e934b948cad0f135eb1d58, type: 3}
   lootBoxName: Common Loot Box
   id: lootbox.common
   _minutesToOpen: 1
