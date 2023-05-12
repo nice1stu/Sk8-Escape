@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     public static void LoadSettingsAdditively() => SceneManager.LoadScene("SettingsMenu", LoadSceneMode.Additive);
     public static void LoadStartMenuScene()     => SceneManager.LoadScene("StartMenu");
 
+    
     public bool startActive = false;
     private bool _isPaused;
     
