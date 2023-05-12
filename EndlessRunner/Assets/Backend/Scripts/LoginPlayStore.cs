@@ -1,50 +1,67 @@
-using System.Collections;
 using Firebase.Auth;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
-using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 namespace Backend.Scripts
 {
     public class LoginPlayStore : MonoBehaviour
     {
-        [Space] [Header("Message")] public TextMeshProUGUI message;
-
         void Start()
         {
+            Debug.Log("activate");
+            PlayGamesPlatform.Activate();
             Debug.Log("start");
-            PlayGamesPlatform.Instance.Authenticate(status => {
-                Debug.Log("authenticate");
-                if (status != SignInStatus.Success)
+            PlayGamesPlatform.Instance.Authenticate(ProcessAutomaticAuth);
+        }
+
+        private static void ProcessAutomaticAuth(SignInStatus status)
+        {
+            Debug.Log("authenticate");
+            if (status != SignInStatus.Success)
+            {
+                Debug.Log("not signed in");
+                PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessManualAuth);
+            }
+            else
+            {
+                ProcessManualAuth(status);
+            }
+        }
+
+        private static void ProcessManualAuth(SignInStatus status)
+        {
+            Debug.Log("authenticate");
+            if (status != SignInStatus.Success)
+            {
+                Debug.Log("not signed in");
+                return;
+            }
+
+            Debug.Log("sign in success");
+            PlayGamesPlatform.Instance.RequestServerSideAccess(true, code =>
+            {
+                Debug.Log("requested server access");
+                FirebaseAuth auth = FirebaseAuth.DefaultInstance;
+                Credential credential = PlayGamesAuthProvider.GetCredential(code);
+                auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
                 {
-                    Debug.Log("not signed in");
-                    return;
-                }
-                Debug.Log("sign in success");
-                PlayGamesPlatform.Instance.RequestServerSideAccess(true, code =>
-                {
-                    Debug.Log("requested server access");
-                    FirebaseAuth auth = FirebaseAuth.DefaultInstance;
-                    Credential credential = PlayGamesAuthProvider.GetCredential(code);
-                    auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
+                    Debug.Log("what happens next");
+                    if (task.IsCanceled)
                     {
-                        Debug.Log("what happens next");
-                        if (task.IsCanceled)
-                        {
-                            Debug.Log("cancelled");
-                        }
-                        else if (task.IsFaulted)
-                        {
-                            // error  task.Exception
-                            Debug.Log("error" + task.Exception);
-                        }
-                        else
-                        {
-                            FirebaseUser newUser = task.Result;
-                            Debug.Log("done");
-                        }
-                    });
+                        Debug.Log("cancelled");
+                    }
+                    else if (task.IsFaulted)
+                    {
+                        // error  task.Exception
+                        Debug.Log("error" + task.Exception);
+                    }
+                    else
+                    {
+                        FirebaseUser newUser = task.Result;
+                        Debug.Log("done");
+                    }
                 });
             });
         }
