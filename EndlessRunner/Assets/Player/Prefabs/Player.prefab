@@ -5009,7 +5009,6 @@ GameObject:
   - component: {fileID: 1599283817310161499}
   - component: {fileID: 1599283817310161516}
   - component: {fileID: 1599283817310161501}
-  - component: {fileID: 7433847864056062947}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -5121,7 +5120,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2916409661291331585
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5221,28 +5220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1688b53762e39448bd84d7c120a11c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vision: 6.12
+  vision: 8
   stability: 24
-  coffinTime: 0
-  grindLeniency: 0
-  scoreMultiplier: 0
---- !u!114 &7433847864056062947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6550543353071559523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1688b53762e39448bd84d7c120a11c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vision: 6.12
-  stability: 24
-  coffinTime: 0
-  grindLeniency: 0
-  scoreMultiplier: 0
+  coffinTime: 0.95
+  grindLeniency: 0.326
+  scoreMultiplier: 1.44
 --- !u!1 &8923090069800149062
 GameObject:
   m_ObjectHideFlags: 0
@@ -5272,7 +5254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8923090069800149062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -7.63}
+  m_LocalPosition: {x: 0, y: 0.649, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

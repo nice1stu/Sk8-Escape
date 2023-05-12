@@ -119,6 +119,7 @@ namespace Player
 
             // Up swipe
             new OllieTransition(coast, ollie, dragActionUp);
+            new OllieTransition(grind, ollie, dragActionUp);
             new KickflipTransition(ollie, kickflip, dragActionUp);
             new InputTransition(coffin, coast, dragActionUp);
 

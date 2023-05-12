@@ -965,20 +965,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 796537592}
     - target: {fileID: 1599283817310161501, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: vision
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1599283817310161501, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: coffinTime
-      value: 0.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 1599283817310161501, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
       propertyPath: grindLeniency
-      value: 0.326
-      objectReference: {fileID: 0}
-    - target: {fileID: 1599283817310161501, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
-      propertyPath: scoreMultiplier
-      value: 1.44
+      value: 0.461
       objectReference: {fileID: 0}
     - target: {fileID: 4674602963745211553, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
       propertyPath: m_RootOrder
