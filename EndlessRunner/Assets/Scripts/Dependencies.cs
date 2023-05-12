@@ -39,10 +39,11 @@ public class Dependencies : ScriptableObject
     private void OnEnable()
     {
         //Move to constructor when not scriptableObject anymore
-        inventorySerializer = new InventorySerializer(playerInventory, itemDataBase);
+        inventorySerializer = new InventorySerializer(playerInventory, itemDataBase, playerInventory);
         _itemFactory = new ItemFactory(playerInventory);
         var playerStats = new PlayerStats(Equipped);
         Load();
+        playerStats.GetCurrentStats();
     }
 
     public void CreateItemButton()
@@ -53,6 +54,7 @@ public class Dependencies : ScriptableObject
     private void Load()
     {
         var items = inventorySerializer.Load();
-        playerInventory.Load(items);
+        var equipedIndices = inventorySerializer.LoadEquip();
+        playerInventory.Load(items,equipedIndices);
     }
 }
