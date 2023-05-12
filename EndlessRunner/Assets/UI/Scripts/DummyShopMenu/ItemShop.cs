@@ -41,7 +41,7 @@ public class ItemShop : MonoBehaviour
         for (int i = 0; i < shopChestSo.Length; i++)
         {
             shopPanels[i].titleTxt.text = shopChestSo[i].title;
-            shopPanels[i].coinsCostText.text = "Coins: " + shopChestSo[i].coinCost;
+            shopPanels[i].coinsCostText.text = "" + shopChestSo[i].coinCost;
         }
     }
 
