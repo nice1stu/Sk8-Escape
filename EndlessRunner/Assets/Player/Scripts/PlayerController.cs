@@ -65,8 +65,11 @@ namespace Player
 
 
             scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
-            trickParticles = gameObject.GetComponentInChildren<ParticleSystem>();
-         
+            //trickParticles = gameObject.GetComponentInChildren<ParticleSystem>();
+            
+            trickParticles.Stop();
+            grindParticles.Stop();
+
         }
 
         private void OnDisable()

@@ -960,6 +960,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1195136500, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
+      propertyPath: simulationSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195136500, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
+      propertyPath: ShapeModule.m_Position.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195136500, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
+      propertyPath: ShapeModule.m_Position.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195136500, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
+      propertyPath: ShapeModule.m_Position.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195136500, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195136500, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
+      propertyPath: ShapeModule.m_Rotation.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195136500, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
+      propertyPath: ShapeModule.m_Rotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195136500, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1599283817310161492, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
       propertyPath: cameraShake
       value: 
