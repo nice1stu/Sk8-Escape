@@ -8,6 +8,8 @@ namespace Inventory.Scripts
 {
     public class LootBoxInventory : ILootBoxInventory
     {
+        private readonly IItemFactory _itemFactory;
+
         public bool IsFull //Shop need this one to check if the loot box inventory is full or not
         {
             get
@@ -27,8 +29,9 @@ namespace Inventory.Scripts
         public ILootBoxData[] Slots => _slots;
         //This is the list that stores the inventory slots
 
-        public LootBoxInventory()
+        public LootBoxInventory(IItemFactory itemFactory)
         {
+            _itemFactory = itemFactory;
             _slots = new ILootBoxData[4];
         }
         
@@ -53,7 +56,12 @@ namespace Inventory.Scripts
             _slots[slotIndex] = null;
             LootBoxRemoved?.Invoke(slotIndex, lootBox);
             //TODO: Use ItemFactory to create items
-            LootBoxOpened?.Invoke(lootBox, Array.Empty<IItemData>());
+            List<IItemData> items = new List<IItemData>();
+            foreach (var item in lootBox.Config.LootChances)
+            {
+                items.Add(_itemFactory.CreateItem(item.itemConfig));
+            }
+            LootBoxOpened?.Invoke(lootBox, items.ToArray());
         }
 
         public void Load(IEnumerable<ILootBoxData> lootBoxes)

@@ -31,8 +31,7 @@ public class Dependencies : ScriptableObject
             return _instance;
         }
     }
-    private LootBoxInventory _lootBoxInventory = new LootBoxInventory();
-    [SerializeField] private DummyLootBoxInventory _dummyLootBoxInventory = new();
+    private LootBoxInventory _lootBoxInventory;
 
     public ILootBoxInventory LootBoxes => _lootBoxInventory;
     public IInventoryData Inventory => playerInventory;
@@ -41,9 +40,10 @@ public class Dependencies : ScriptableObject
     private void OnEnable()
     {
         //Move to constructor when not scriptableObject anymore
+        _itemFactory = new ItemFactory(playerInventory);
+        _lootBoxInventory = new LootBoxInventory(_itemFactory);
         inventorySerializer = new InventorySerializer(playerInventory, itemDataBase);
         lootBoxSerializer = new LootBoxSerializer(_lootBoxInventory, lootBoxDataBase);
-        _itemFactory = new ItemFactory(playerInventory);
         var playerStats = new PlayerStats(Equipped);
         Load();
     }
