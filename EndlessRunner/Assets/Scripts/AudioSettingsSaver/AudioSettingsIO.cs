@@ -40,7 +40,7 @@ namespace AudioSettingsSaver
             LoadSettings();
         }
 
-        private void LoadSettings()
+        public void LoadSettings()
         {
             string filePath = Path.Combine(Application.persistentDataPath, SettingsFileName);
             if (File.Exists(filePath))
@@ -57,7 +57,7 @@ namespace AudioSettingsSaver
             }
         }
 
-        private void SaveSettings()
+        public void SaveSettings()
         {
             // Serialize the current settings to JSON
             string json = JsonUtility.ToJson(_currentSettings, true);
