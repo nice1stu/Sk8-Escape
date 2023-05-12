@@ -425,7 +425,9 @@ MonoBehaviour:
   - {fileID: 3851700506564716181}
   - {fileID: 3851700506598876083}
   uiManager: {fileID: 0}
-  popupWindow: {fileID: 1496873283}
+  popupWarning: {fileID: 0}
+  popupConfirmation: {fileID: 0}
+  purchaseSuccess: 1
 --- !u!114 &1496873283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,8 +440,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bcd1449e904ac741bd00f8f3dbfd900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupWindow: {fileID: 0}
+  popupWindowMessage: {fileID: 0}
   messageText: {fileID: 0}
+  popupWindowConfirmation: {fileID: 0}
+  confiramtionText: {fileID: 0}
 --- !u!1 &2883757274540832085
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +483,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 4}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &2883757274540832088

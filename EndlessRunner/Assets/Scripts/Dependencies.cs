@@ -18,7 +18,9 @@ public class Dependencies : ScriptableObject
     [SerializeField] private PlayerInventory playerInventory;
 
     private InventorySerializer inventorySerializer;
+    private LootBoxSerializer lootBoxSerializer;
     [SerializeField] private ItemDataBaseSO itemDataBase;
+    [SerializeField] private LootBoxDataBaseSo lootBoxDataBase;
 
     public static Dependencies Instance
     {
@@ -40,6 +42,7 @@ public class Dependencies : ScriptableObject
     {
         //Move to constructor when not scriptableObject anymore
         inventorySerializer = new InventorySerializer(playerInventory, itemDataBase);
+        lootBoxSerializer = new LootBoxSerializer(_lootBoxInventory, lootBoxDataBase);
         _itemFactory = new ItemFactory(playerInventory);
         var playerStats = new PlayerStats(Equipped);
         Load();
@@ -54,5 +57,7 @@ public class Dependencies : ScriptableObject
     {
         var items = inventorySerializer.Load();
         playerInventory.Load(items);
+        var lootBoxes = lootBoxSerializer.Load();
+        _lootBoxInventory.Load(lootBoxes);
     }
 }
