@@ -16,6 +16,7 @@ namespace Player
         public override void Exit(PlayerController playerController)
         {
             base.Exit(playerController);
+            playerController.view.PlayCoffinExitAnim();
             playerController.targetPlayerHeight = playerController.model.playerStandHeight;
         }
     }

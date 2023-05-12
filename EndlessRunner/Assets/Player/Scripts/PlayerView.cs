@@ -67,5 +67,11 @@ namespace Player
             characterAnimation.Play("PlayerCoffin");
             skateboardAnimation.Play("BoardIdle");
         }
+        
+        public void PlayCoffinExitAnim()
+        {
+            characterAnimation.Play("PlayerCoffinExit");
+            skateboardAnimation.Play("BoardIdle");
+        }
     }
 }
