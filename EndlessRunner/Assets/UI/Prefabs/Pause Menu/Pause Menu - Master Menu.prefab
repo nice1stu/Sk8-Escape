@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49e6d3df770ab54ab026d39472c009b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartActive: 1
+  StartActive: 0
 --- !u!1001 &2450187981624038707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -641,11 +641,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6190591827581873004, guid: 63499523faf4b4bebbfe749ef8e2bc48, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleGameplayPaused
+      value: SetGameplayPaused
       objectReference: {fileID: 0}
     - target: {fileID: 6190591827581873004, guid: 63499523faf4b4bebbfe749ef8e2bc48, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: TogglePauseMenuActive
+      value: SetTogglePauseMenuState
       objectReference: {fileID: 0}
     - target: {fileID: 6190591827581873004, guid: 63499523faf4b4bebbfe749ef8e2bc48, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
