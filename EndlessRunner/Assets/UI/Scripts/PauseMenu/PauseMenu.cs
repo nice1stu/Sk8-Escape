@@ -9,9 +9,13 @@ public class PauseMenu : MonoBehaviour
 {
     // Experimental
     public static void LoadSettingsAdditively() => SceneManager.LoadScene("SettingsMenu", LoadSceneMode.Additive);
-    public static void LoadStartMenuScene()     => SceneManager.LoadScene("StartMenu");
+    public static void LoadStartMenuScene()
+    {
+        Time.timeScale = previousTimescale;
+        SceneManager.LoadScene("StartMenu");
+    }
 
-    
+
     public bool startActive = false;
     private bool _isPaused;
     
