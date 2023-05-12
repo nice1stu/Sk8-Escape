@@ -8,6 +8,7 @@ namespace Player
         public override void Enter(PlayerController playerController)
         {
             base.Enter(playerController);
+            playerController.view.PlayCoffinAnim();
             playerController.targetPlayerHeight = playerController.model.playerCrouchHeight;
         }
         
