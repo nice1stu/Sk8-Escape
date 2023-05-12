@@ -11,8 +11,10 @@ namespace Player
         public override void Enter(PlayerController playerController)
         {
             base.Enter(playerController);
+            playerController.view.PlayKickflipAnim();
             playerController.AddToCurrentVelocity(Vector2.up * playerController.model.kickflipJumpForce);
-            playerController.trickParticles.Play();
+            if (playerController.trickParticles != null)
+                playerController.trickParticles.Play();
 
         }
     }

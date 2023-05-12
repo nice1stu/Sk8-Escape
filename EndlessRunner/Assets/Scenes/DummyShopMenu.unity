@@ -821,6 +821,62 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3851700506564716181, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506564716181, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506564716181, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506564716181, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506564716181, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PurchasedChest
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506564716181, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Inventory.Scripts.LootBoxInfoSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506564716181, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506598876083, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506598876083, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506598876083, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506598876083, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506598876083, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PurchasedChest
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506598876083, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Inventory.Scripts.LootBoxInfoSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851700506598876083, guid: 7b50173928b60654cb44caf84152632a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b50173928b60654cb44caf84152632a, type: 3}
 --- !u!1 &2080034008
