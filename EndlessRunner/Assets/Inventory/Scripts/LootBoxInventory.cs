@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Item;
 using Unity.VisualScripting;
+using Random = UnityEngine.Random;
 
 namespace Inventory.Scripts
 {
@@ -59,6 +60,8 @@ namespace Inventory.Scripts
             List<IItemData> items = new List<IItemData>();
             foreach (var item in lootBox.Config.LootChances)
             {
+                //Todo: Randomize the possibility to get a better item
+                var itemPossibility = Random.Range(0, 100);
                 items.Add(_itemFactory.CreateItem(item.itemConfig));
             }
             LootBoxOpened?.Invoke(lootBox, items.ToArray());
