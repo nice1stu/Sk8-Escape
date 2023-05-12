@@ -66,8 +66,7 @@ namespace Player
 
             scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
             trickParticles = gameObject.GetComponentInChildren<ParticleSystem>();
-            if (trickParticles != null)
-                trickParticles.Play();
+         
         }
 
         private void OnDisable()
