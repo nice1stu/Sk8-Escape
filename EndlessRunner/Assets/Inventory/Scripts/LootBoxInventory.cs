@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Item;
 using Unity.VisualScripting;
 
@@ -52,6 +54,11 @@ namespace Inventory.Scripts
             LootBoxRemoved?.Invoke(slotIndex, lootBox);
             //TODO: Use ItemFactory to create items
             LootBoxOpened?.Invoke(lootBox, Array.Empty<IItemData>());
+        }
+
+        public void Load(IEnumerable<ILootBoxData> lootBoxes)
+        {
+            _slots = lootBoxes.ToArray();
         }
 
         public event Action<int, ILootBoxData> LootBoxAdded;
