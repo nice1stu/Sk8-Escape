@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: RareLootBox
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: a38f6628bbff1439c9dc9f26111da2b6, type: 3}
+  boxOpen: {fileID: 0}
   lootBoxName: Rare Loot Box
   id: lootbox.rare
-  lootChances: []
+  _minutesToOpen: 0
+  lootChances:
+  - itemConfig: {fileID: 0}
+    chance: 0
+  - itemConfig: {fileID: 0}
+    chance: 0
+  _openSfx: {fileID: 0}
