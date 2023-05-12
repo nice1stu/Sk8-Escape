@@ -76,7 +76,7 @@ namespace Player
         
         public void PlayShuvitAnim()
         {
-            characterAnimation.Play("PlayerCoffinExit");
+            characterAnimation.Play("PlayerJump");
             skateboardAnimation.Play("BoardShuvit");
         }
     }
