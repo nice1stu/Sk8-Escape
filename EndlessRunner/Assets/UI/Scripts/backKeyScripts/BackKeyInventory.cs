@@ -1,22 +1,22 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BackKeyInventory : MonoBehaviour
 {
     public ItemDetailPopup itemPopUp;
-    
-    // Update is called once per frame
+    public Button PopUpBackButton;
+    public Button InventoryBackButton;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (itemPopUp.gameObject.activeInHierarchy)
             {
-                itemPopUp.gameObject.SetActive(false);
+                PopUpBackButton.onClick.Invoke();
             }
             else
             {
-                SceneManager.LoadScene("StartMenu");
+                InventoryBackButton.onClick.Invoke();
             }
         }
     }
