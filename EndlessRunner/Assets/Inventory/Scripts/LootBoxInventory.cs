@@ -55,14 +55,15 @@ namespace Inventory.Scripts
             if (DateTime.UtcNow - lootBox.OpeningStartTime < lootBox.Config.TimeToOpen) return;
             _slots[slotIndex] = null;
             LootBoxRemoved?.Invoke(slotIndex, lootBox);
-            //TODO: Use ItemFactory to create items
+            //Use ItemFactory to create items
             List<IItemData> items = new List<IItemData>();
             foreach (var item in lootBox.Config.LootChances)
             {
-                //Todo: Randomize the possibility to get a better item
+                //Randomize the possibility to get a better item
                 var itemPossibility = Random.Range(0, 100);
                 if (itemPossibility < item.chance)
                 {
+                    //TODO: randomize which rarity and give bonus stats based on rarity.
                     items.Add(_itemFactory.CreateItem(item.itemConfig));
                     break;
                 }
