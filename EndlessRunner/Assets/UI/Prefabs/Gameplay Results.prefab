@@ -396,6 +396,9 @@ MonoBehaviour:
   ads: {fileID: 7255695583564001975}
   cointest: {fileID: 1680754619}
   adButton: {fileID: 6209122174949245172}
+  scorePhraseName: Score
+  highScorePhraseName: Highscore
+  coinsPhraseName: Coins
 --- !u!114 &2797083086886405066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,6 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513914068e2c5834c88470dec0080a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multiplier: 1
 --- !u!114 &1680754619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +464,7 @@ GameObject:
   - component: {fileID: 6209122175146556941}
   - component: {fileID: 6209122175146556943}
   - component: {fileID: 6209122175146556942}
+  - component: {fileID: 3881246281627492949}
   m_Layer: 5
   m_Name: Items collected Header txt
   m_TagString: Untagged
@@ -484,8 +489,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -17.10701}
-  m_SizeDelta: {x: 200, y: 34.214}
+  m_AnchoredPosition: {x: 2.5059, y: -17.10701}
+  m_SizeDelta: {x: 452.94, y: 34.214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6209122175146556943
 CanvasRenderer:
@@ -584,6 +589,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3881246281627492949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209122175146556940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 
+  FallbackText: Items Collected
 --- !u!1 &6209122175508310271
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +904,7 @@ GameObject:
   - component: {fileID: 6209122175790201130}
   - component: {fileID: 6209122175790201132}
   - component: {fileID: 6209122175790201131}
+  - component: {fileID: 1842193769421931026}
   m_Layer: 5
   m_Name: Main Menu Text
   m_TagString: Untagged
@@ -1009,6 +1029,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1842193769421931026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209122175790201129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 
+  FallbackText: Main Menu
 --- !u!1 &6209122175854483142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,7 +1187,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Coins : '
+  m_text: 'Coins: 000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1368,6 +1402,7 @@ GameObject:
   - component: {fileID: 6209122176194645199}
   - component: {fileID: 6209122176194645201}
   - component: {fileID: 6209122176194645200}
+  - component: {fileID: 942677524776753618}
   m_Layer: 5
   m_Name: Result text
   m_TagString: Untagged
@@ -1492,6 +1527,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &942677524776753618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209122176194645198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 
+  FallbackText: RESULTS
 --- !u!1 &6209122176282155256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,6 +1552,7 @@ GameObject:
   - component: {fileID: 6209122176282155257}
   - component: {fileID: 6209122176282155259}
   - component: {fileID: 6209122176282155258}
+  - component: {fileID: 8300496018251841946}
   m_Layer: 5
   m_Name: DoubleCoins txt
   m_TagString: Untagged
@@ -1627,6 +1677,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8300496018251841946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209122176282155256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 
+  FallbackText: x2 coins
 --- !u!1 &6209122176545572265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,6 +1702,7 @@ GameObject:
   - component: {fileID: 6209122176545572266}
   - component: {fileID: 6209122176545572268}
   - component: {fileID: 6209122176545572267}
+  - component: {fileID: 6038212698358331319}
   m_Layer: 5
   m_Name: Play Again Text
   m_TagString: Untagged
@@ -1762,6 +1827,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6038212698358331319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209122176545572265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 
+  FallbackText: Play Again
 --- !u!1 &6209122176753605003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,6 +2120,7 @@ GameObject:
   - component: {fileID: 6209122177000675761}
   - component: {fileID: 6209122177000675763}
   - component: {fileID: 6209122177000675762}
+  - component: {fileID: 4147992506646441057}
   m_Layer: 5
   m_Name: WatchAds Text
   m_TagString: Untagged
@@ -2165,3 +2245,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4147992506646441057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209122177000675760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 
+  FallbackText: Watch ads
