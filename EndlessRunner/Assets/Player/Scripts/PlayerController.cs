@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using System.Diagnostics;
+using Player.Input;
 using Debug = UnityEngine.Debug; //Needed to stop the default C# diagnostics from taking over debug commands
 
 namespace Player
@@ -108,7 +109,11 @@ namespace Player
             tap = playerInput.actions.FindAction("Tap");
             slowmoCoolDownTimer = new Stopwatch();
 
-
+            var swipeActionUp = new SwipeInputAction(dragActionUp, touch, touchUpAction);
+            var swipeActionDown = new SwipeInputAction(dragActionDown, touch, touchUpAction);
+            var swipeActionRight = new SwipeInputAction(dragActionRight, touch, touchUpAction);
+            
+            
             // Transitions
             var coast = new CoastState();
             var ollie = new OllieState(0.45f);
@@ -121,16 +126,16 @@ namespace Player
             CurrentState = coast;
 
             // Up swipe
-            new OllieTransition(coast, ollie, dragActionUp);
-            new OllieTransition(grind, ollie, dragActionUp);
-            new KickflipTransition(ollie, kickflip, dragActionUp);
+            new OllieTransition(coast, ollie, swipeActionUp);
+            new OllieTransition(grind, ollie, swipeActionUp);
+            new KickflipTransition(ollie, kickflip, swipeActionUp);
             new InputTransition(coffin, coast, dragActionUp);
 
             // Right swipe
-            new ShuvitTransition(coast, shuvit, dragActionRight);
+            new ShuvitTransition(coast, shuvit, swipeActionRight);
 
             // Down swipe
-            new CoffinTransition(coast, coffin, dragActionDown);
+            new CoffinTransition(coast, coffin, swipeActionDown);
 
             // Transitions to grind
             new GrindTransition(coast, grind, touchDownAction);
@@ -228,9 +233,6 @@ namespace Player
             {
                 SwipeLock = true;
                 Debug.Log("Up!");
-                if(trickParticles != null)
-                    trickParticles.Play();
-                
             }
         }
 

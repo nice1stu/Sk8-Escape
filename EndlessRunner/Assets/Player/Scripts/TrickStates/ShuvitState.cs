@@ -14,6 +14,8 @@ namespace Player
             base.Enter(playerController);
             playerController.view.PlayShuvitAnim();
             playerController.AddToCurrentVelocity(Vector2.up * playerController.model.shuvitJumpForce);
+            if(playerController.trickParticles != null)
+                playerController.trickParticles.Play();
 
         }
     }
