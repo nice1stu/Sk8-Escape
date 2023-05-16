@@ -65,9 +65,11 @@ namespace Player
 
 
             scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
-            trickParticles = gameObject.GetComponentInChildren<ParticleSystem>();
-            if (trickParticles != null)
-                trickParticles.Play();
+            //trickParticles = gameObject.GetComponentInChildren<ParticleSystem>();
+            
+            trickParticles.Stop();
+            grindParticles.Stop();
+
         }
 
         private void OnDisable()
@@ -120,6 +122,7 @@ namespace Player
 
             // Up swipe
             new OllieTransition(coast, ollie, dragActionUp);
+            new OllieTransition(grind, ollie, dragActionUp);
             new KickflipTransition(ollie, kickflip, dragActionUp);
             new InputTransition(coffin, coast, dragActionUp);
 

@@ -17,18 +17,18 @@ namespace Ads.Scripts
         //If you want to be in test mode or not
         public bool testMode = true;
         
-        private void Awake()
-        {
-            InitializeAds();
-        }
-        private void Update()
-        {
-            //Run the ad
-            if (Advertisement.isInitialized && !adStarted && GameplayResults.hasPlayedAd)
-            {
-                LoadAd(); 
-            }
-        }
+        // private void Awake()
+        // {
+        //     InitializeAds();
+        // }
+        // private void Update()
+        // {
+        //     //Run the ad
+        //     if (Advertisement.isInitialized && !adStarted && GameplayResults.hasPlayedAd)
+        //     {
+        //         LoadAd(); 
+        //     }
+        // }
 
         public void InitializeAds()
         {
