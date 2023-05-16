@@ -11,12 +11,14 @@ public class ItemShop : MonoBehaviour
     public GameObject[] shopPanelsGo;
     public ShopTemplate[] shopPanels;
     public Button[] myPurchaseBtns;
+    public GameObject[] disablePanel;
     public UIManager uiManager;
 
     public PopupWindow popupWarning;
     public PopupWindow popupConfirmation;
     public bool purchaseSuccess = true;
     private int test;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,13 @@ public class ItemShop : MonoBehaviour
         {
             shopPanels[i].titleTxt.text = shopChestSo[i].title;
             shopPanels[i].coinsCostText.text = "" + shopChestSo[i].coinCost;
+            
+            //if coin is not enough disable pop up
+            if (uiManager.GetCoins() < shopChestSo[i].coinCost)
+            {
+                disablePanel[i].SetActive(true);
+                Debug.Log("ok its works");
+            }
         }
     }
 

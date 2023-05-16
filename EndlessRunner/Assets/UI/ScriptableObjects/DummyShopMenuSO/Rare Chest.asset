@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b6e228bb4521364ea2f53214a0ed434, type: 3}
-  m_Name: Uncommon
+  m_Name: Rare Chest
   m_EditorClassIdentifier: 
-  lootBox: {fileID: 11400000, guid: 7ae71db5a19b7514ebb34e74a7155c57, type: 2}
-  title: Uncommon Chest
-  coinCost: 100
+  lootBox: {fileID: 11400000, guid: 35ad9ab9b11ad7c4889fbf2b6b25f375, type: 2}
+  title: Rare Chest
+  coinCost: 1000
