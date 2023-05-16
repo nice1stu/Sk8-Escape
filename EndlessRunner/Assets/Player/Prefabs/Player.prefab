@@ -167,7 +167,7 @@ ParticleSystem:
   m_GameObject: {fileID: 916092106247586840}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 4
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -410,7 +410,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -787,13 +787,13 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 25
+    angle: 1
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 90, y: 0, z: 40}
+    m_Position: {x: -1, y: -0.5, z: -5}
+    m_Rotation: {x: 0, y: 270, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -5223,7 +5223,7 @@ MonoBehaviour:
   vision: 8
   stability: 24
   coffinTime: 0.95
-  grindLeniency: 0.326
+  grindLeniency: 0.461
   scoreMultiplier: 1.44
 --- !u!1 &8923090069800149062
 GameObject:
