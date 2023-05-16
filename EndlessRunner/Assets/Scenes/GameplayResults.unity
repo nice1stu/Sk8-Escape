@@ -386,6 +386,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 23.292
       objectReference: {fileID: 0}
+    - target: {fileID: 6209122175790201131, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
+      propertyPath: m_text
+      value: Start Meny
+      objectReference: {fileID: 0}
     - target: {fileID: 6209122175854483143, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
       propertyPath: m_SizeDelta.y
       value: -104.12
@@ -397,6 +401,22 @@ PrefabInstance:
     - target: {fileID: 6209122176057642909, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
       propertyPath: m_text
       value: 'Coins: 000'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209122176194645200, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
+      propertyPath: m_text
+      value: RESULTAT
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209122176282155258, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
+      propertyPath: m_text
+      value: x2 mynt
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209122176545572267, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
+      propertyPath: m_text
+      value: Spela Igen
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209122177000675762, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
+      propertyPath: m_text
+      value: Se Reklam
       objectReference: {fileID: 0}
     - target: {fileID: 8300496018251841946, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
       propertyPath: translationName

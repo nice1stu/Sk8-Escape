@@ -1987,6 +1987,7 @@ GameObject:
   - component: {fileID: 6209122176917748399}
   - component: {fileID: 6209122176917748398}
   - component: {fileID: 6209122176917748397}
+  - component: {fileID: 721117335452118076}
   m_Layer: 5
   m_Name: Main Menu Button
   m_TagString: Untagged
@@ -2109,6 +2110,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &721117335452118076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209122176917748395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5085c4002a5fc34db03ce5df6dde624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backButton: {fileID: 6209122176917748397}
 --- !u!1 &6209122177000675760
 GameObject:
   m_ObjectHideFlags: 0
