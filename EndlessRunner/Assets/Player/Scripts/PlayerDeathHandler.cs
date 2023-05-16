@@ -18,6 +18,13 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public int invicibilityTokens = 0;
 
+    private HUDInvincibility hudLogic;
+
+    private void Start()
+    {
+        hudLogic = GameObject.FindWithTag("HUD").GetComponentInChildren<HUDInvincibility>();
+    }
+
     public bool OnDeath()
     {
         float surviveFloat = Random.Range(0, 100f);
@@ -25,6 +32,10 @@ public class PlayerDeathHandler : MonoBehaviour
         {
             surviveFloat = -1;
             invicibilityTokens--;
+            if (invicibilityTokens == 0)
+            {
+                hudLogic.SetEnabled(false);
+            }
         }
 
         if (surviveFloat < survivalRate)

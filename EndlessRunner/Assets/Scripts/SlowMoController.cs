@@ -3,11 +3,13 @@ using UnityEngine;
 public class SlowMoController : MonoBehaviour, IPickupable
 {
     private PlayerScoreModel scoreModel;
+    private HUDSlowmo HUDElement;
 
     // Start is called before the first frame update
     private void Start()
     {
         scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
+        HUDElement = GameObject.FindWithTag("HUD").GetComponentInChildren<HUDSlowmo>();
     }
 
     // Update is called once per frame
@@ -18,6 +20,7 @@ public class SlowMoController : MonoBehaviour, IPickupable
     public void OnPickup()
     {
         scoreModel.AddPowerUp();
+        HUDElement.SetEnabled(true);
         Destroy(gameObject);
     }
 }
