@@ -1,16 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartMenuBackKey : MonoBehaviour
 {
+    public GameObject ConfirmExitPopUp;
+
+    public Button ExitGameButton;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //Debug.Log("exit button pressed, game should exit if not in editor");
-            Application.Quit();
+            if (!ConfirmExitPopUp.gameObject.activeInHierarchy)
+            {
+                ConfirmExitPopUp.gameObject.SetActive(true);
+            }
+            else
+            {
+                ExitGameButton.onClick.Invoke();
+            }
         }
 
     }
