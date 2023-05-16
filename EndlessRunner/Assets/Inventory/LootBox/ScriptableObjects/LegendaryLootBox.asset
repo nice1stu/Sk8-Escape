@@ -19,5 +19,5 @@ MonoBehaviour:
   _minutesToOpen: 0
   lootChances:
   - itemConfig: {fileID: 0}
-    chance: 0
+    chance: 100
   _openSfx: {fileID: 0}

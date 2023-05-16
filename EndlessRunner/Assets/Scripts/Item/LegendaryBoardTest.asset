@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db1103256d2a5654086b7b26b6935d7d, type: 3}
-  m_Name: IceBoard
+  m_Name: LegendaryBoardTest
   m_EditorClassIdentifier: 
   baseStats:
     coffinTimeAdded: 0
-    stability: 3
+    stability: 0
     vision: 0
     grindMiniGameBallSize: 0
     grindLeniency: 0
     scoreMultiplier: 0
   itemType: 1
-  bonusStats: 3
-  itemName: IceBoard
-  itemSprite: {fileID: 21300000, guid: e39c693152e9445889e78ac5146a362b, type: 3}
-  itemIcon: {fileID: 21300000, guid: e39c693152e9445889e78ac5146a362b, type: 3}
-  id: 2
+  bonusStats: 7
+  itemName: Legendary Board
+  itemSprite: {fileID: 21300000, guid: e7ec272c8286444cbada26ced869c7f1, type: 3}
+  itemIcon: {fileID: 21300000, guid: e7ec272c8286444cbada26ced869c7f1, type: 3}
+  id: 3

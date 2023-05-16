@@ -18,8 +18,8 @@ MonoBehaviour:
   id: lootbox.rare
   _minutesToOpen: 0
   lootChances:
-  - itemConfig: {fileID: 0}
-    chance: 0
-  - itemConfig: {fileID: 0}
-    chance: 0
+  - itemConfig: {fileID: 11400000, guid: b44437e3ceea84644a60019552102ec7, type: 2}
+    chance: 90
+  - itemConfig: {fileID: 11400000, guid: d3dd408f74144bf48b32a469cac4c95d, type: 2}
+    chance: 10
   _openSfx: {fileID: 0}
