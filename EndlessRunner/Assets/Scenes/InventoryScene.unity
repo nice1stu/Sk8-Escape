@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 276984969}
   - component: {fileID: 276984968}
   - component: {fileID: 276984971}
+  - component: {fileID: 276984972}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -293,6 +294,19 @@ MonoBehaviour:
   SkateboardContent: {fileID: 973254413}
   popup: {fileID: 1520181838}
   itemPrefab: {fileID: 3660116507546659293, guid: 074e9c859224d9448b2c3d5b478b1245, type: 3}
+--- !u!114 &276984972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276984966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d7186cd14daec4eabe5bcda2bdbd05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPopUp: {fileID: 1520181838}
 --- !u!1 &455265676
 GameObject:
   m_ObjectHideFlags: 0
