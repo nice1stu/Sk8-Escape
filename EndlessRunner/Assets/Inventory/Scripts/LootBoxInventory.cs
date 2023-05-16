@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Item;
-using Unity.VisualScripting;
 using Random = UnityEngine.Random;
 
 namespace Inventory.Scripts
@@ -62,7 +61,12 @@ namespace Inventory.Scripts
             {
                 //Todo: Randomize the possibility to get a better item
                 var itemPossibility = Random.Range(0, 100);
-                items.Add(_itemFactory.CreateItem(item.itemConfig));
+                if (itemPossibility < item.chance)
+                {
+                    items.Add(_itemFactory.CreateItem(item.itemConfig));
+                    break;
+                }
+                
             }
             LootBoxOpened?.Invoke(lootBox, items.ToArray());
         }
@@ -71,6 +75,8 @@ namespace Inventory.Scripts
         {
             _slots = lootBoxes.ToArray();
         }
+
+        
 
         public event Action<int, ILootBoxData> LootBoxAdded;
         public event Action<int, ILootBoxData> LootBoxRemoved;
