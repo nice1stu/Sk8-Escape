@@ -43,7 +43,6 @@ public class Dependencies : ScriptableObject
         inventorySerializer = new InventorySerializer(playerInventory, itemDataBase, playerInventory);
         _itemFactory = new ItemFactory(playerInventory);
         _lootBoxInventory = new LootBoxInventory(_itemFactory);
-        inventorySerializer = new InventorySerializer(playerInventory, itemDataBase);
         lootBoxSerializer = new LootBoxSerializer(_lootBoxInventory, lootBoxDataBase);
         var playerStats = new PlayerStats(Equipped);
         Load();
@@ -58,7 +57,6 @@ public class Dependencies : ScriptableObject
     private void Load()
     {
         var items = inventorySerializer.Load();
-        playerInventory.Load(items);
         var lootBoxes = lootBoxSerializer.Load();
         _lootBoxInventory.Load(lootBoxes);
         var equipedIndices = inventorySerializer.LoadEquip();
