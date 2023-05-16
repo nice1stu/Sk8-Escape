@@ -66,7 +66,10 @@ namespace Inventory.Scripts
                     items.Add(_itemFactory.CreateItem(item.itemConfig));
                     break;
                 }
-                
+            }
+            if (items.Count == 0)
+            {
+                items.Add(_itemFactory.CreateItem(lootBox.Config.LootChances[0].itemConfig));
             }
             LootBoxOpened?.Invoke(lootBox, items.ToArray());
         }
