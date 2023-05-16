@@ -2,7 +2,6 @@ using Firebase.Auth;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 namespace Backend.Scripts
 {
@@ -10,6 +9,7 @@ namespace Backend.Scripts
     {
         void Start()
         {
+            PlayGamesPlatform.DebugLogEnabled = true;
             Debug.Log("activate");
             PlayGamesPlatform.Activate();
             Debug.Log("start");
@@ -32,10 +32,10 @@ namespace Backend.Scripts
 
         private static void ProcessManualAuth(SignInStatus status)
         {
-            Debug.Log("authenticate");
+            Debug.Log("authenticate second");
             if (status != SignInStatus.Success)
             {
-                Debug.Log("not signed in");
+                Debug.Log("not signed in second");
                 return;
             }
 
