@@ -266,6 +266,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6209122175100364235, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209122175100364235, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 878b57ee97533614aac8526fb6823b17, type: 3}
+    - target: {fileID: 6209122175100364235, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
+      propertyPath: m_Color.a
+      value: 0.6509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209122175100364235, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209122175100364235, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209122175100364235, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6209122175100364237, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
       propertyPath: cointest
       value: 
