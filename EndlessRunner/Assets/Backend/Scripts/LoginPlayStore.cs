@@ -7,63 +7,60 @@ namespace Backend.Scripts
 {
     public class LoginPlayStore : MonoBehaviour
     {
+        private PlayGamesClientConfiguration _clientConfiguration;
         void Start()
         {
+            Debug.Log("configure");
+            ConfigureGPGS();
+            
             PlayGamesPlatform.DebugLogEnabled = true;
+            PlayGamesPlatform.Activate();
+            
+            Debug.Log("signin");
+            SignInGPGS(SignInInteractivity.CanPromptOnce, _clientConfiguration);
+        }
+
+        void ConfigureGPGS()
+        {
+            Debug.Log("building");
+            _clientConfiguration = new PlayGamesClientConfiguration.Builder().Build();
+        }
+
+        void SignInGPGS(SignInInteractivity interactivity, PlayGamesClientConfiguration configuration)
+        {
+            
+            configuration = _clientConfiguration;
+            Debug.Log("initialize");
+            PlayGamesPlatform.InitializeInstance(configuration);
             Debug.Log("activate");
             PlayGamesPlatform.Activate();
-            Debug.Log("start");
-            PlayGamesPlatform.Instance.Authenticate(ProcessAutomaticAuth);
-        }
-
-        private static void ProcessAutomaticAuth(SignInStatus status)
-        {
-            Debug.Log("authenticate");
-            if (status != SignInStatus.Success)
+            
+            PlayGamesPlatform.Instance.Authenticate(interactivity, (code) =>
             {
-                Debug.Log("not signed in");
-                PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessManualAuth);
-            }
-            else
-            {
-                ProcessManualAuth(status);
-            }
-        }
-
-        private static void ProcessManualAuth(SignInStatus status)
-        {
-            Debug.Log("authenticate second");
-            if (status != SignInStatus.Success)
-            {
-                Debug.Log("not signed in second");
-                return;
-            }
-
-            Debug.Log("sign in success");
-            PlayGamesPlatform.Instance.RequestServerSideAccess(true, code =>
-            {
-                Debug.Log("requested server access");
-                FirebaseAuth auth = FirebaseAuth.DefaultInstance;
-                Credential credential = PlayGamesAuthProvider.GetCredential(code);
-                auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
+                Debug.Log("auth");
+                if (code == SignInStatus.Success)
                 {
-                    Debug.Log("what happens next");
-                    if (task.IsCanceled)
-                    {
-                        Debug.Log("cancelled");
-                    }
-                    else if (task.IsFaulted)
-                    {
-                        // error  task.Exception
-                        Debug.Log("error" + task.Exception);
-                    }
-                    else
-                    {
-                        FirebaseUser newUser = task.Result;
-                        Debug.Log("done");
-                    }
-                });
+                    Debug.Log("signed in");
+                }
+                else
+                {
+                    Debug.Log("code is: " + code);
+                }
+            });
+            
+            PlayGamesPlatform.Instance.Authenticate(code =>
+            {
+                Debug.Log("auth");
+                if (code)
+                {
+                    Debug.Log("signed in");
+                }
+                else
+                {
+                    Debug.Log("failed");
+                }
             });
         }
+        
     }
 }
