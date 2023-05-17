@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Firebase.Database;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class DatabaseManager : MonoBehaviour
@@ -10,9 +11,11 @@ public class DatabaseManager : MonoBehaviour
     public InputField Name;
     public InputField Gold;
     public InputField Silver;
+    public InputField Coins;
 
     public Text NameText;
     public Text GoldText;
+    public Text CoinText;
     
     private string userID;  // userID is gonna show in firebase
     private DatabaseReference datareference;
@@ -82,6 +85,27 @@ public class DatabaseManager : MonoBehaviour
             Debug.LogError("Gold data does not exist.");
         }
     }
+    public IEnumerator GetCoins(Action<int> onCallback)
+    {
+        var userCoinsData = datareference.Child("users").Child(userID).Child("coins").GetValueAsync();
+    
+        yield return new WaitUntil(predicate: () => userCoinsData.IsCompleted);
+
+        if (userCoinsData.Exception != null)
+        {
+            Debug.LogError($"Failed to retrieve gold data: {userCoinsData.Exception}");
+        }
+
+        DataSnapshot snapshot = userCoinsData.Result;
+        if (snapshot != null && snapshot.Exists)
+        {
+            onCallback.Invoke(int.Parse(snapshot.Value.ToString()));
+        }
+        else
+        {
+            Debug.LogError("Coin data does not exist.");
+        }
+    }
     
     // should retrieves name and gold and display's information ( UI )
     public void GetUserInfo()
@@ -94,12 +118,16 @@ public class DatabaseManager : MonoBehaviour
         {
             GoldText.text = "Gold: " + gold.ToString();
         }));
+        StartCoroutine(GetCoins((int coins) =>
+        {
+            CoinText.text = "Coins: " + coins.ToString();
+        }));
     }
 
     // updating the data
     public void UpdateName()
     {
-        datareference.Child("users").Child(userID).Child("name").SetValueAsync(Name.text);
+        datareference.Child("users").Child(userID).Child("username").SetValueAsync(Name.text);
     }
     public void UpdateGold()
     {
@@ -108,5 +136,9 @@ public class DatabaseManager : MonoBehaviour
     public void UpdateSilver()
     {
         datareference.Child("users").Child(userID).Child("silver").SetValueAsync(Silver.text);
+    }
+    public void UpdateCoins()
+    {
+        datareference.Child("users").Child(userID).Child("coins").SetValueAsync(Silver.text);
     }
 }

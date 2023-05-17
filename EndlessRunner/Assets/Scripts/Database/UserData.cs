@@ -8,10 +8,12 @@ public class UserData
     public string username;
     public int gold;
     public int silver;
+    
 
     public UserData(string username, int gold, int silver) {
         this.username = username;
         this.gold = gold;
         this.silver = silver;
+        
     }
 }
