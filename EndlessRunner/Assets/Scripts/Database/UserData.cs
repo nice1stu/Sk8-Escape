@@ -6,14 +6,18 @@ public class UserData
 {
     // data we want to store to firebase
     public string username;
-    public int gold;
-    public int silver;
+    public int score;   //
+    public int gems;    //
+    public int coins;//
+    public int highscore;
     
 
-    public UserData(string username, int gold, int silver) {
+    public UserData(string username, int score, int gems, int coins, int highscore) {
         this.username = username;
-        this.gold = gold;
-        this.silver = silver;
-        
+        this.score = score;
+        this.gems = gems;
+        this.coins = coins;
+        this.highscore = highscore;
+
     }
 }

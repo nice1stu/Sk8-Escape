@@ -9,13 +9,16 @@ using UnityEngine.UI;
 public class DatabaseManager : MonoBehaviour
 {
     public InputField Name;
-    public InputField Gold;
-    public InputField Silver;
+    public InputField ScoreInput;
+    public InputField GemsInput;
     public InputField Coins;
+    public InputField HighscoreInput;
 
     public Text NameText;
-    public Text GoldText;
+    public Text ScoreText;
+    public Text GemsText;
     public Text CoinText;
+    public Text HighscoreText;
     
     private string userID;  // userID is gonna show in firebase
     private DatabaseReference datareference;
@@ -31,7 +34,13 @@ public class DatabaseManager : MonoBehaviour
     public void CreateUser()
     {
         // creates new name and gold
-        UserData newUserData = new UserData(Name.text, int.Parse(Gold.text), int.Parse(Silver.text)); 
+        UserData newUserData = new UserData(
+            Name.text,
+            int.Parse(ScoreInput.text), 
+            int.Parse(GemsInput.text), 
+            int.Parse(Coins.text), 
+            int.Parse(HighscoreInput.text)
+        ); 
         // converts to json
         string json = JsonUtility.ToJson(newUserData);
 
@@ -64,30 +73,72 @@ public class DatabaseManager : MonoBehaviour
         }
     }
     
-    public IEnumerator GetGold(Action<int> onCallback)
+    public IEnumerator GetScore(Action<int> onCallback)
     {
-        var userGoldData = datareference.Child("users").Child(userID).Child("gold").GetValueAsync();
+        var userScoreData = datareference.Child("users").Child(userID).Child("score").GetValueAsync();
     
-        yield return new WaitUntil(predicate: () => userGoldData.IsCompleted);
+        yield return new WaitUntil(predicate: () => userScoreData.IsCompleted);
 
-        if (userGoldData.Exception != null)
+        if (userScoreData.Exception != null)
         {
-            Debug.LogError($"Failed to retrieve gold data: {userGoldData.Exception}");
+            Debug.LogError($"Failed to retrieve score data: {userScoreData.Exception}");
         }
 
-        DataSnapshot snapshot = userGoldData.Result;
+        DataSnapshot snapshot = userScoreData.Result;
         if (snapshot != null && snapshot.Exists)
         {
             onCallback.Invoke(int.Parse(snapshot.Value.ToString()));
         }
         else
         {
-            Debug.LogError("Gold data does not exist.");
+            Debug.LogError("Score data does not exist.");
+        }
+    }
+    public IEnumerator GetGems(Action<int> onCallback)
+    {
+        var userGemsData = datareference.Child("users").Child(userID).Child("gems").GetValueAsync();
+    
+        yield return new WaitUntil(predicate: () => userGemsData.IsCompleted);
+
+        if (userGemsData.Exception != null)
+        {
+            Debug.LogError($"Failed to retrieve gems data: {userGemsData.Exception}");
+        }
+
+        DataSnapshot snapshot = userGemsData.Result;
+        if (snapshot != null && snapshot.Exists)
+        {
+            onCallback.Invoke(int.Parse(snapshot.Value.ToString()));
+        }
+        else
+        {
+            Debug.LogError("Gem data does not exist.");
         }
     }
     public IEnumerator GetCoins(Action<int> onCallback)
     {
         var userCoinsData = datareference.Child("users").Child(userID).Child("coins").GetValueAsync();
+    
+        yield return new WaitUntil(predicate: () => userCoinsData.IsCompleted);
+
+        if (userCoinsData.Exception != null)
+        {
+            Debug.LogError($"Failed to retrieve gold data: {userCoinsData.Exception}");
+        }
+
+        DataSnapshot snapshot = userCoinsData.Result;
+        if (snapshot != null && snapshot.Exists)
+        {
+            onCallback.Invoke(int.Parse(snapshot.Value.ToString()));
+        }
+        else
+        {
+            Debug.LogError("Coin data does not exist.");
+        }
+    }
+    public IEnumerator GetHighScore(Action<int> onCallback)
+    {
+        var userCoinsData = datareference.Child("users").Child(userID).Child("highscore").GetValueAsync();
     
         yield return new WaitUntil(predicate: () => userCoinsData.IsCompleted);
 
@@ -114,13 +165,21 @@ public class DatabaseManager : MonoBehaviour
         {
             NameText.text = "Name: " + name.ToString();
         }));
-        StartCoroutine(GetGold((int gold) =>
+        StartCoroutine(GetScore((int score) =>
         {
-            GoldText.text = "Gold: " + gold.ToString();
+            ScoreText.text = "Score: " + score.ToString();
         }));
         StartCoroutine(GetCoins((int coins) =>
         {
             CoinText.text = "Coins: " + coins.ToString();
+        }));
+        StartCoroutine(GetGems((int gems) =>
+        {
+            GemsText.text = "Gems: " + gems.ToString();
+        }));
+        StartCoroutine(GetHighScore((int highscore) =>
+        {
+            HighscoreText.text = "Highscore: " + highscore.ToString();
         }));
     }
 
@@ -129,16 +188,20 @@ public class DatabaseManager : MonoBehaviour
     {
         datareference.Child("users").Child(userID).Child("username").SetValueAsync(Name.text);
     }
-    public void UpdateGold()
+    public void UpdateScore()
     {
-        datareference.Child("users").Child(userID).Child("gold").SetValueAsync(Gold.text);
+        datareference.Child("users").Child(userID).Child("score").SetValueAsync(ScoreInput.text);
     }
-    public void UpdateSilver()
+    public void UpdateGems()
     {
-        datareference.Child("users").Child(userID).Child("silver").SetValueAsync(Silver.text);
+        datareference.Child("users").Child(userID).Child("gems").SetValueAsync(GemsInput.text);
     }
     public void UpdateCoins()
     {
-        datareference.Child("users").Child(userID).Child("coins").SetValueAsync(Silver.text);
+        datareference.Child("users").Child(userID).Child("coins").SetValueAsync(Coins.text);
+    }
+    public void UpdateHighScore()
+    {
+        datareference.Child("users").Child(userID).Child("highscore").SetValueAsync(HighscoreInput.text);
     }
 }
