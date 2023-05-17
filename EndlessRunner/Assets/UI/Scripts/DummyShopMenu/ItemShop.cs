@@ -44,13 +44,8 @@ public class ItemShop : MonoBehaviour
         {
             shopPanels[i].titleTxt.text = shopChestSo[i].title;
             shopPanels[i].coinsCostText.text = "" + shopChestSo[i].coinCost;
-            
-            //if coin is not enough disable pop up
-            if (uiManager.GetCoins() < shopChestSo[i].coinCost)
-            {
-                disablePanel[i].SetActive(true);
-                Debug.Log("ok its works");
-            }
+         
+            DisablePanel();
         }
     }
 
@@ -69,5 +64,17 @@ public class ItemShop : MonoBehaviour
         }
         uiManager.SpendCoins(shopChestSo[test].coinCost);
         Dependencies.Instance.LootBoxes.AddLootBox(new LootBoxData(shopChestSo[test].lootBox, DateTime.UtcNow));
+    }
+
+    public void DisablePanel()
+    {
+        for (int i = 0; i < shopChestSo.Length; i++)
+        {
+            //if coin is not enough disable pop up
+            if (uiManager.GetCoins() < shopChestSo[i].coinCost)
+            {
+                disablePanel[i].SetActive(true);
+            }
+        }
     }
 }
