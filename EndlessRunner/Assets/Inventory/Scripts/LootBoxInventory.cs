@@ -64,13 +64,16 @@ namespace Inventory.Scripts
                 if (itemPossibility < item.chance)
                 {
                     //TODO: randomize which rarity and give bonus stats based on rarity.
+                    SwitchRarity(item);
                     items.Add(_itemFactory.CreateItem(item.itemConfig));
                     break;
                 }
             }
             if (items.Count == 0)
             {
-                items.Add(_itemFactory.CreateItem(lootBox.Config.LootChances[0].itemConfig));
+                var item = lootBox.Config.LootChances[0];
+                SwitchRarity(item);
+                items.Add(_itemFactory.CreateItem(item.itemConfig));
             }
             LootBoxOpened?.Invoke(lootBox, items.ToArray());
         }
@@ -78,6 +81,34 @@ namespace Inventory.Scripts
         public void Load(IEnumerable<ILootBoxData> lootBoxes)
         {
             _slots = lootBoxes.ToArray();
+        }
+
+        private void SwitchRarity(LootChance item)
+        {
+            var rarityItem = Random.Range(0, 3);
+            switch (rarityItem)
+            {
+                case 0:
+                {
+                    item.itemConfig.BonusStats = 1;
+                    break;
+                }
+                case 1:
+                {
+                    item.itemConfig.BonusStats = 3;
+                    break;
+                }
+                case 2:
+                {
+                    item.itemConfig.BonusStats = 5;
+                    break;
+                }
+                case 3:
+                {
+                    item.itemConfig.BonusStats = 7;
+                    break;
+                }
+            }
         }
 
         
