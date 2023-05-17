@@ -1908,7 +1908,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 344165093781034904}
         m_TargetAssemblyTypeName: UI.Scripts.UIManager, Assembly-CSharp
-        m_MethodName: OpenSettingsMenu
+        m_MethodName: LoadSettingsAdditively
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
