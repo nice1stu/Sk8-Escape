@@ -672,7 +672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleTxt: {fileID: 3956912009199027726}
-  coinsCostText: {fileID: 9318924199186954}
+  costText: {fileID: 0}
 --- !u!1 &5155545288515416694
 GameObject:
   m_ObjectHideFlags: 0

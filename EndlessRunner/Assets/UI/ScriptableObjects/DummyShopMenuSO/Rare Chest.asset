@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootBox: {fileID: 11400000, guid: 35ad9ab9b11ad7c4889fbf2b6b25f375, type: 2}
   title: Rare Chest
-  coinCost: 1000
+  coinCost: 0
+  gemCost: 10

@@ -15,3 +15,4 @@ MonoBehaviour:
   lootBox: {fileID: 11400000, guid: 702cdf382dd8a1e4ca8d6ddac26e36d4, type: 2}
   title: Common Chest
   coinCost: 50
+  gemCost: 0
