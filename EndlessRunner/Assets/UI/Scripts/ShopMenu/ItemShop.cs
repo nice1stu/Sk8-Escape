@@ -42,7 +42,6 @@ public class ItemShop : MonoBehaviour
             shopPanels[i].titleTxt.text = shopChestSo[i].title;
             shopPanels[i].coinCostText.text = "" + shopChestSo[i].coinCost;
             shopPanels[i].gemCostText.text = "" + shopChestSo[i].gemCost;
-         
             DisablePanel();
         }
     }
@@ -69,7 +68,7 @@ public class ItemShop : MonoBehaviour
     {
         for (int i = 0; i < shopChestSo.Length; i++)
         {
-            //if coin is not enough disable pop up
+            //if coin/gem is not enough DisablePanel pop up
             if (uiManager.GetCoins() < shopChestSo[i].coinCost || uiManager.GetGems() < shopChestSo[i].gemCost)
             {
                 disablePanel[i].SetActive(true);

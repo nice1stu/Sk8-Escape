@@ -44,5 +44,11 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("StartMenu");
     }
+    
+    public int GetGems()
+    {
+        return saveManager.SaveTotalGems;
+    }
+    
 }
 }

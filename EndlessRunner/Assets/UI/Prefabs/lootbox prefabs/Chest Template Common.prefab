@@ -381,7 +381,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleTxt: {fileID: 1621339396091947030}
-  costText: {fileID: 0}
+  coinCostText: {fileID: 0}
+  gemCostText: {fileID: 0}
 --- !u!1 &2878058863562490373
 GameObject:
   m_ObjectHideFlags: 0
