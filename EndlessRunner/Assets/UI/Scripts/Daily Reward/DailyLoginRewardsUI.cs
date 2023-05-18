@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class DailyLoginRewardsUI : MonoBehaviour
 {
     
     public GameObject dailyRewardsWindow;
-    public DailyRewardsSO[] dailyRewardsSo;
+    public DailyRewardsSo[] dailyRewardsSo;
     public GameObject[] dailyRewardsPanelGo;
-    public ShopTemplate[] dailyRewardsPanel;
+    public DailyRewardsTemplate[] dailyRewardsPanel;
     public GameObject[] claimedGo;
     public Button[] claimBtns;
     public int days;
 
-    
     void Start()
     {
         for (int i = 0; i < dailyRewardsSo.Length; i++) //looping through number of SO inside the panel
@@ -27,8 +28,7 @@ public class DailyLoginRewardsUI : MonoBehaviour
         for (int i = 0; i < dailyRewardsSo.Length; i++)
         {
             dailyRewardsPanel[i].rewardTitleTxt.text = dailyRewardsSo[i].title;
-            dailyRewardsPanel[i].rewardTxt.text = "Coins: " + dailyRewardsSo[i].rewardCoins;
-            dailyRewardsPanel[i].rewardTxt.text = "Coins: " + dailyRewardsSo[i].rewardGems;
+            dailyRewardsPanel[i].rewardTxt.text = "" + dailyRewardsSo[i].reward;
         }
     }
 
@@ -45,6 +45,4 @@ public class DailyLoginRewardsUI : MonoBehaviour
         // Disable the popup window game object
         dailyRewardsWindow.SetActive(false);
     }
-    
-    
 }
