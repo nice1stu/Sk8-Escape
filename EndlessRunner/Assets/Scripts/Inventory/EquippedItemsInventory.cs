@@ -15,16 +15,29 @@ namespace Inventory
             foreach (var equippedItem in _equippedItems.Where(equippedItem =>
                          item.ItemConfig.ItemType == equippedItem.ItemConfig.ItemType))
             {
-                ItemUnequipped?.Invoke(equippedItem);
-                _equippedItems.Remove(equippedItem);
-                ItemEquipped?.Invoke(item);
                 _equippedItems.Add(item);
+                _equippedItems.Remove(equippedItem);
+                ItemUnequipped?.Invoke(equippedItem);
+                ItemEquipped?.Invoke(item);
                 return;
             }
 
-            ItemEquipped?.Invoke(item);
             _equippedItems.Add(item);
+            ItemEquipped?.Invoke(item);
         }
+
+        protected void LoadEquip(IItemData[] items, int[] indices)
+        {
+            var itemList = new List<IItemData>();
+            for (var i = 0; i < indices.Length; i++)
+            {
+               
+                itemList.Add(items[indices[i]]);
+            }
+
+            _equippedItems = itemList;
+        }
+        
 
         public event Action<IItemData> ItemUnequipped;
         public event Action<IItemData> ItemEquipped;

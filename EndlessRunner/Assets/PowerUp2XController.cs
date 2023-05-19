@@ -11,11 +11,15 @@ public class PowerUp2XController : MonoBehaviour, IPickupable
     private IEnumerator timer;
 
     private PlayerScoreModel hudScore;
+    
+    private HUDX2 HUDElement;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         hudScore = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
+        HUDElement = GameObject.FindWithTag("HUD").GetComponentInChildren<HUDX2>();
     }
 
     // Update is called once per frame
@@ -36,6 +40,7 @@ public class PowerUp2XController : MonoBehaviour, IPickupable
         timer = PowerUpCooldown();
         //StartCoroutine(timer);
         StartCoroutine(PowerUpCooldown());
+        HUDElement.SetEnabled(true);
         GetComponent<SpriteRenderer>().enabled = false;
     }
 
@@ -46,5 +51,9 @@ public class PowerUp2XController : MonoBehaviour, IPickupable
         yield return new WaitForSeconds(duration);
         hudScore.multiplier /= 2;
         multiplier /= 2;
+        if (multiplier == 1)
+        {
+            HUDElement.SetEnabled(false);
+        }
     }
 }
