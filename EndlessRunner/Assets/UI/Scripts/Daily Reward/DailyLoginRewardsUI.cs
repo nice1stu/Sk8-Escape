@@ -7,6 +7,7 @@ public class DailyLoginRewardsUI : MonoBehaviour
 {
     public GameObject dailyRewardsWindow; //This is the Popup window
     public GameObject rewardPopup;
+    public GameObject[] rewardsIcon;
     public DailyRewardsSo[] dailyRewardsSo; //scriptable object for daily rewards
     public GameObject[] dailyRewardsPanelGo; //daily rewards prefabs
     public DailyRewardsTemplate[] dailyRewardsPanel; //template for text
