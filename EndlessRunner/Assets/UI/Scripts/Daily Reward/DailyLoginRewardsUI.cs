@@ -43,12 +43,12 @@ public class DailyLoginRewardsUI : MonoBehaviour
             Debug.Log("curent streak: inside loop" + _currentStreak);
             EnableButtons();
         }
-        _currentStreak++;
+        DailyReward();
         dailyRewardsSo[btnNo].claimed = true;
         claimedGo[btnNo].SetActive(true);
-        DailyReward();
         CheckRewardTxtIsClaimed();
         Debug.Log("curent streak:" + _currentStreak);
+        _currentStreak++;
     }
     
     public void CheckRewardTxtIsClaimed()
@@ -103,10 +103,16 @@ public class DailyLoginRewardsUI : MonoBehaviour
 
     public void ShowPopupReward()
     {
+        for (int i = 0; i < rewardsIcon.Length; i++)
+        {
+            Debug.Log("Im here");
+            rewardsIcon[_currentStreak -1].SetActive(true);
+        }
         rewardPopup.SetActive(true);
     }
     public void HidePopupReward()
-    {
+    { 
+        rewardsIcon[_currentStreak].SetActive(false);
         rewardPopup.SetActive(false);
     }
 }
