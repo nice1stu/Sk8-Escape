@@ -203,6 +203,7 @@ namespace Player
             {
                 Time.timeScale = oldTimeScale;
             }
+            Time.timeScale = oldTimeScale;
         }
 
         IEnumerator SlowmoCoolDown()

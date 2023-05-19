@@ -5163,8 +5163,11 @@ MonoBehaviour:
   life: {fileID: 2916409661291331582}
   survivalRate: 0
   invincible: 0
-  defaultDukeTime: 1
+  defaultDukeTime: 3
+  gamePlayResults: {fileID: 0}
+  pauseButton: {fileID: 0}
   invicibilityTokens: 0
+  player: {fileID: 8576138277199023141}
 --- !u!114 &1599283817310161499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5239,7 +5242,7 @@ GameObject:
   - component: {fileID: 6814374504102093861}
   - component: {fileID: 1907240562}
   - component: {fileID: 1907240561}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Character gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}

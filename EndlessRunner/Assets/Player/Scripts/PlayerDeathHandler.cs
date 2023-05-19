@@ -14,10 +14,12 @@ public class PlayerDeathHandler : MonoBehaviour
     public PlayerModel life;
     public float survivalRate;
     public bool invincible;
-    public float defaultDukeTime = 1f;
+    public float defaultDukeTime = 3f;
     public GameObject gamePlayResults;
     public GameObject pauseButton;
     public int invicibilityTokens = 0;
+    public SpriteRenderer player;
+    
 
     private bool ranRecently = false;
 
@@ -58,6 +60,7 @@ public class PlayerDeathHandler : MonoBehaviour
             Debug.Log("survived");
             Rigidbody2D rb2d = life.gameObject.GetComponent<Rigidbody2D>();
             StartCoroutine(CO_invincibilityFrames(defaultDukeTime));
+            StartCoroutine(flashing());
             rb2d.velocity = new Vector2(rb2d.velocity.x, 20);
             return false;
         }
@@ -77,6 +80,30 @@ public class PlayerDeathHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         ranRecently = false;
+    }
+
+    public IEnumerator flashing()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+        if (player.color.a == 1f)
+        {
+            player.color = new Color(1f, 1f, 1f, 0.1f);
+        }
+        else
+        {
+            player.color = new Color(1f, 1f, 1f, 1f);
+        }
+
+        
+        
+        if (invincible)
+        {
+            StartCoroutine(flashing());
+        }
+        else
+        {
+            player.color = new Color(1f, 1f, 1f, 1f);
+        }
     }
 
     public IEnumerator CO_invincibilityFrames(float time)
@@ -101,12 +128,5 @@ public class PlayerDeathHandler : MonoBehaviour
         AfterDeath();
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Did we actually run this collision check?");
-        if (collision.gameObject.layer == 8)
-        {
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
-        }
-    }
+    
 }
