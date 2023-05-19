@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Day 1
   m_EditorClassIdentifier: 
   title: Day 1
-  reward: 10
+  reward: 100
   claimed: 0

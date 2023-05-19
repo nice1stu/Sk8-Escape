@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a0017ea9c5df44c87031952f1c9344, type: 3}
   m_Name: Day 5
   m_EditorClassIdentifier: 
-  title: Day 1
-  reward: 0
+  title: Day 5
+  reward: 300
   claimed: 0

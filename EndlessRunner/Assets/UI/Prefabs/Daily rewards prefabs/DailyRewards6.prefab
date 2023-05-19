@@ -30,13 +30,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8597163855857880228}
-  m_RootOrder: 0
+  m_Father: {fileID: 8597163856045372700}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00032043457, y: -9.767105}
-  m_SizeDelta: {x: 0.0019531, y: 28.4858}
+  m_AnchoredPosition: {x: -0.00010681152, y: -60.959976}
+  m_SizeDelta: {x: 0.002, y: 130.8738}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7622904648577982042
 CanvasRenderer:
@@ -107,7 +107,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8597163855857880228}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -242,7 +242,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8597163855857880228}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -390,18 +390,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8597163855857335116}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8597163856645267310}
-  m_Father: {fileID: 8597163856189370372}
-  m_RootOrder: 2
+  m_Father: {fileID: 8597163856045372700}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.0043755, y: 55.576}
+  m_AnchoredPosition: {x: 0.0023994022, y: -71.37273}
   m_SizeDelta: {x: 294.4, y: 111.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8597163855857335112
@@ -485,7 +485,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8597163855857335115}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1915648808, guid: b1ac78b91a92e254e975fa96c1b120e3, type: 3}
+        m_TargetAssemblyTypeName: DailyLoginRewardsUI, Assembly-CSharp
+        m_MethodName: ClaimReward
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8597163855857880231
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +528,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3133076769708659594}
   - {fileID: 8597163855609262093}
   - {fileID: 8597163855263908158}
   m_Father: {fileID: 8597163856045372700}
@@ -596,6 +607,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8597163855857880228}
+  - {fileID: 8597163855857335117}
+  - {fileID: 3133076769708659594}
   m_Father: {fileID: 8597163856189370372}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -675,7 +688,6 @@ RectTransform:
   m_Children:
   - {fileID: 8597163855612967731}
   - {fileID: 8597163856045372700}
-  - {fileID: 8597163855857335117}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -735,7 +747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rewardTitleTxt: {fileID: 8597163856301556305}
-  rewardTxt: {fileID: 8597163856645267311}
+  rewardTxt: {fileID: 8597163855263908159}
+  claimText: {fileID: 8597163856645267311}
 --- !u!1 &8597163856301556307
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,7 +815,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DAY 6
+  m_text: 6
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -829,8 +842,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -937,7 +950,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Claim
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
