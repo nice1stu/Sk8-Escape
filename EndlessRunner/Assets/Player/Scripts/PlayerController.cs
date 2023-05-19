@@ -108,6 +108,8 @@ namespace Player
             tap = playerInput.actions.FindAction("Tap");
             slowmoCoolDownTimer = new Stopwatch();
 
+            oldTimeScale = Time.timeScale;
+
 
             // Transitions
             var coast = new CoastState();
