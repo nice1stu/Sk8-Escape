@@ -19,6 +19,8 @@ public class PlayerDeathHandler : MonoBehaviour
     public GameObject pauseButton;
     public int invicibilityTokens = 0;
 
+    private bool ranRecently = false;
+
     private HUDInvincibility hudLogic;
 
     private void Start()
@@ -28,6 +30,18 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public bool OnDeath()
     {
+        if (ranRecently == true)
+        {
+            return false;
+        }
+
+        ranRecently = true;
+        
+        StartCoroutine(Cooldown());
+        
+        
+        Debug.Log("Did we run?");
+        
         float surviveFloat = Random.Range(0, 100f);
         if (invicibilityTokens > 0)
         {
@@ -59,8 +73,16 @@ public class PlayerDeathHandler : MonoBehaviour
         }
     }
 
+    public IEnumerator Cooldown()
+    {
+        yield return new WaitForSeconds(1);
+        ranRecently = false;
+    }
+
     public IEnumerator CO_invincibilityFrames(float time)
     {
+        Physics.IgnoreLayerCollision(8, 7);
+        Physics.IgnoreLayerCollision(7, 8);
         invincible = true;
         yield return new WaitForSeconds(time);
         invincible = false;
@@ -77,5 +99,14 @@ public class PlayerDeathHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
         AfterDeath();
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Did we actually run this collision check?");
+        if (collision.gameObject.layer == 8)
+        {
+            Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+        }
     }
 }
