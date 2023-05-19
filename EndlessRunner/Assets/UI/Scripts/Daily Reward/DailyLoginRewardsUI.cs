@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DailyLoginRewardsUI : MonoBehaviour
 {
     public GameObject dailyRewardsWindow; //This is the Popup window
+    public GameObject rewardPopup;
     public DailyRewardsSo[] dailyRewardsSo; //scriptable object for daily rewards
     public GameObject[] dailyRewardsPanelGo; //daily rewards prefabs
     public DailyRewardsTemplate[] dailyRewardsPanel; //template for text
@@ -68,6 +69,7 @@ public class DailyLoginRewardsUI : MonoBehaviour
 
     public void DailyReward()
     {
+        ShowPopupReward();
         //TO DO: daily rewards here
     }
 
@@ -96,5 +98,14 @@ public class DailyLoginRewardsUI : MonoBehaviour
     {
         // Disable the popup window game object
         dailyRewardsWindow.SetActive(false);
+    }
+
+    public void ShowPopupReward()
+    {
+        rewardPopup.SetActive(true);
+    }
+    public void HidePopupReward()
+    {
+        rewardPopup.SetActive(false);
     }
 }

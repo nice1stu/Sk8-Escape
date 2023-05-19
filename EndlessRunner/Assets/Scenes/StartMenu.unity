@@ -1742,6 +1742,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1717815866 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5777614739039793670, guid: 2cf67a0da0e9a1f4fb816573b41b065b, type: 3}
+  m_PrefabInstance: {fileID: 4346923130503199838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1847587902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2110,6 +2115,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 382707626609503082, guid: 2cf67a0da0e9a1f4fb816573b41b065b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 12}
+    - target: {fileID: 382707626609503082, guid: 2cf67a0da0e9a1f4fb816573b41b065b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HidePopupReward
+      objectReference: {fileID: 0}
     - target: {fileID: 3837499614691842273, guid: 2cf67a0da0e9a1f4fb816573b41b065b, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -2205,6 +2218,14 @@ PrefabInstance:
     - target: {fileID: 3837499615406612099, guid: 2cf67a0da0e9a1f4fb816573b41b065b, type: 3}
       propertyPath: m_Name
       value: Pop Up Daily reward
+      objectReference: {fileID: 0}
+    - target: {fileID: 4346923130503199826, guid: 2cf67a0da0e9a1f4fb816573b41b065b, type: 3}
+      propertyPath: rewardPopup
+      value: 
+      objectReference: {fileID: 1717815866}
+    - target: {fileID: 5777614739039793670, guid: 2cf67a0da0e9a1f4fb816573b41b065b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6232189884456461524, guid: 2cf67a0da0e9a1f4fb816573b41b065b, type: 3}
       propertyPath: m_AnchorMax.y
