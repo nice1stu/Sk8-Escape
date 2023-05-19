@@ -36,9 +36,9 @@ public class DailyLoginRewardsUI : MonoBehaviour
 
     public void ItemButton(int btnNo)
     {
-        if (btnNo == _currentStreak + 1)
+        if (btnNo == _currentStreak)
         {
-            Debug.Log("curent streak:" + _currentStreak);
+            Debug.Log("curent streak: inside loop" + _currentStreak);
             EnableButtons();
         }
         _currentStreak++;
