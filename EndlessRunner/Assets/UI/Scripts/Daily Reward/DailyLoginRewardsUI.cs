@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,8 +14,11 @@ public class DailyLoginRewardsUI : MonoBehaviour
     public DailyRewardsTemplate[] dailyRewardsPanel;
     public GameObject[] claimedGo;
     public Button[] claimBtns;
-    private int streakDays = 0;
-
+    
+    private int streakDays;
+    private int day = 0;
+    private int maxDay = 7;
+    
     void Start()
     {
         for (int i = 0; i < dailyRewardsSo.Length; i++) //looping through number of SO inside the panel
@@ -35,11 +39,23 @@ public class DailyLoginRewardsUI : MonoBehaviour
 
     public void ItemButton(int btnNo)
     {
-        Debug.Log("this works");
+        dailyRewardsSo[btnNo].claimed = true;
+        claimedGo[btnNo].SetActive(true);
+        DailyReward();
+        CheckRewardIsClaimed();
     }
     
     public void CheckRewardIsClaimed()
     {
+        // for (int i = day; i < claimBtns.Length; i++)
+        // {
+        //     
+        //     if (day < claimBtns.Length)
+        //     {
+        //         claimBtns[i].interactable = false;
+        //     }
+        // }
+        
         for (int i = 0 ; i < dailyRewardsSo.Length; i++)
         {
             if (!dailyRewardsSo[i].claimed)
@@ -61,8 +77,19 @@ public class DailyLoginRewardsUI : MonoBehaviour
         dailyRewardsWindow.SetActive(false);
     }
 
-    public void Reward()
+    public void DailyReward()
     {
-        
+        //TO DO: daily rewards here
+    }
+
+    public void ResetStreak()
+    {
+        for (int i = 0; i < dailyRewardsSo.Length; i++)
+        {
+            claimBtns[i].interactable = true;
+            dailyRewardsSo[i].claimed = false;
+            claimedGo[i].SetActive(false);
+            dailyRewardsPanel[i].claimText.text = "Unclaim";
+        }
     }
 }
