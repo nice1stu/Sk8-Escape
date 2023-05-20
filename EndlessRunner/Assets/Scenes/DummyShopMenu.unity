@@ -2293,7 +2293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2933106845134455482, guid: a8fbe41b48d95cf42a42de9035905748, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2933106845134455482, guid: a8fbe41b48d95cf42a42de9035905748, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2572,7 +2572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2667220885600350861, guid: 5c9ce78b205e78147ad947fc84432063, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2667220885600350861, guid: 5c9ce78b205e78147ad947fc84432063, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4193,7 +4193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleTxt: {fileID: 8763687985638825786}
-  coinCostText: {fileID: 2818688129513748155}
+  coinsCostText: {fileID: 0}
   gemCostText: {fileID: 112788667}
 --- !u!1 &5128634099472198077
 GameObject:
@@ -4346,7 +4346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleTxt: {fileID: 6776590790261621802}
-  coinCostText: {fileID: 7549040581727981614}
+  coinsCostText: {fileID: 0}
   gemCostText: {fileID: 646153075}
 --- !u!114 &5640166642350105880
 MonoBehaviour:
@@ -4361,7 +4361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleTxt: {fileID: 6776590790337855756}
-  coinCostText: {fileID: 7549040581697623304}
+  coinsCostText: {fileID: 0}
   gemCostText: {fileID: 39013699}
 --- !u!224 &5695472829203496130
 RectTransform:
