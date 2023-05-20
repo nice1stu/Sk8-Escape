@@ -44,6 +44,7 @@ public class PopupWindow : MonoBehaviour
     {
         // Disable the popup window game object
         popupWindowConfirmation.SetActive(false);
+        shop.LoadPanel();
     }
 
     public void confirmationSuccess()
