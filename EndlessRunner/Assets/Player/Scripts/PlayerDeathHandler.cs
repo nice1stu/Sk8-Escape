@@ -14,10 +14,14 @@ public class PlayerDeathHandler : MonoBehaviour
     public PlayerModel life;
     public float survivalRate;
     public bool invincible;
-    public float defaultDukeTime = 1f;
+    public float defaultDukeTime = 3f;
     public GameObject gamePlayResults;
     public GameObject pauseButton;
     public int invicibilityTokens = 0;
+    public SpriteRenderer player;
+    
+
+    private bool ranRecently = false;
 
     private HUDInvincibility hudLogic;
 
@@ -28,6 +32,18 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public bool OnDeath()
     {
+        if (ranRecently == true)
+        {
+            return false;
+        }
+
+        ranRecently = true;
+        
+        StartCoroutine(Cooldown());
+        
+        
+        Debug.Log("Did we run?");
+        
         float surviveFloat = Random.Range(0, 100f);
         if (invicibilityTokens > 0)
         {
@@ -44,6 +60,7 @@ public class PlayerDeathHandler : MonoBehaviour
             Debug.Log("survived");
             Rigidbody2D rb2d = life.gameObject.GetComponent<Rigidbody2D>();
             StartCoroutine(CO_invincibilityFrames(defaultDukeTime));
+            StartCoroutine(flashing());
             rb2d.velocity = new Vector2(rb2d.velocity.x, 20);
             return false;
         }
@@ -59,8 +76,40 @@ public class PlayerDeathHandler : MonoBehaviour
         }
     }
 
+    public IEnumerator Cooldown()
+    {
+        yield return new WaitForSeconds(1);
+        ranRecently = false;
+    }
+
+    public IEnumerator flashing()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+        if (player.color.a == 1f)
+        {
+            player.color = new Color(1f, 1f, 1f, 0.1f);
+        }
+        else
+        {
+            player.color = new Color(1f, 1f, 1f, 1f);
+        }
+
+        
+        
+        if (invincible)
+        {
+            StartCoroutine(flashing());
+        }
+        else
+        {
+            player.color = new Color(1f, 1f, 1f, 1f);
+        }
+    }
+
     public IEnumerator CO_invincibilityFrames(float time)
     {
+        Physics.IgnoreLayerCollision(8, 7);
+        Physics.IgnoreLayerCollision(7, 8);
         invincible = true;
         yield return new WaitForSeconds(time);
         invincible = false;
@@ -78,4 +127,6 @@ public class PlayerDeathHandler : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         AfterDeath();
     }
+
+    
 }
