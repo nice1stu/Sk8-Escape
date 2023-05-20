@@ -48,7 +48,13 @@ MonoBehaviour:
   obstaclePrefabs:
   - {fileID: 2477869576740326386, guid: 27355484d697a4a48bfdcd9dffc8175b, type: 3}
   - {fileID: 6332303130707236557, guid: 24eac75919209d445b3a793313fe0b28, type: 3}
+  - {fileID: 7323102187971478379, guid: a23fa1b0ee8641847b911bd5c6a8f458, type: 3}
+  - {fileID: 2477869576740326386, guid: 6001368ba341c4447ad888b8a0514a5f, type: 3}
   - {fileID: 7323102187971478379, guid: dbca782530e57d64db175854454502b6, type: 3}
+  - {fileID: 6332303130707236557, guid: 8b6f04fe59bed594c99fedbb0f6564ff, type: 3}
+  powerUpPrefabs:
+  - {fileID: 5744573527087162805, guid: 13e9f351569abc2429e74f5d8f15259d, type: 3}
+  - {fileID: 7855647741794374007, guid: 1fc93c34ada69294982cf8878ba35c23, type: 3}
 --- !u!61 &9198230841458152304
 BoxCollider2D:
   m_ObjectHideFlags: 0

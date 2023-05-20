@@ -6,6 +6,9 @@ TagManager:
   tags:
   - LootBoxIcon
   - HUD
+  - HUDslowmo
+  - HUDX2
+  - HUDInvincible
   layers:
   - Default
   - TransparentFX

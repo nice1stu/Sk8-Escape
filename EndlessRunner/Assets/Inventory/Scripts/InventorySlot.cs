@@ -55,6 +55,7 @@ namespace Inventory.Scripts
                 }
             }
             slotIcon.sprite = lootBox.Config.Icon;//Sets the slot icon sprite to the loot box image
+            slotIcon.enabled = true;
             _countdown.StartCountdown(lootBox);//Start countdown
         }
 
@@ -72,6 +73,7 @@ namespace Inventory.Scripts
             }
             _countdown.StopCountDown();
             slotIcon.sprite = null;//Removes the image
+            slotIcon.enabled = false;
             Dependencies.Instance.LootBoxes.OpenLootBox(lootBox);//Calls the function to remove from the loot box inventory
         }
     }

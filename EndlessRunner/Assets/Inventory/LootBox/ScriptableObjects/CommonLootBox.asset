@@ -13,9 +13,17 @@ MonoBehaviour:
   m_Name: CommonLootBox
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 3443cb2d270604476a4ea0374c523dd7, type: 3}
-  boxOpen: {fileID: 21300000, guid: 536c14bc596d3407a94ccc26d32b76e4, type: 3}
+  boxOpen: {fileID: 21300000, guid: 3621ce2d30e934b948cad0f135eb1d58, type: 3}
   lootBoxName: Common Loot Box
   id: lootbox.common
   _minutesToOpen: 1
-  lootChances: []
+  lootChances:
+  - itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
+    chance: 65
+  - itemConfig: {fileID: 11400000, guid: f1bec8577a1644e4e8fc217aff694619, type: 2}
+    chance: 25
+  - itemConfig: {fileID: 11400000, guid: b44437e3ceea84644a60019552102ec7, type: 2}
+    chance: 9
+  - itemConfig: {fileID: 11400000, guid: d3dd408f74144bf48b32a469cac4c95d, type: 2}
+    chance: 1
   _openSfx: {fileID: 8300000, guid: 3f3ea1156e476e64fbf8abcfd128bf5e, type: 3}

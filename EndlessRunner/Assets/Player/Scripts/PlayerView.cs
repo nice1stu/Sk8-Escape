@@ -61,5 +61,23 @@ namespace Player
             characterAnimation.Play("PlayerGrind");
             skateboardAnimation.Play("BoardGrind");
         }
+        
+        public void PlayCoffinAnim()
+        {
+            characterAnimation.Play("PlayerCoffin");
+            skateboardAnimation.Play("BoardIdle");
+        }
+        
+        public void PlayCoffinExitAnim()
+        {
+            characterAnimation.Play("PlayerCoffinExit");
+            skateboardAnimation.Play("BoardIdle");
+        }
+        
+        public void PlayShuvitAnim()
+        {
+            characterAnimation.Play("PlayerJump");
+            skateboardAnimation.Play("BoardShuvit");
+        }
     }
 }

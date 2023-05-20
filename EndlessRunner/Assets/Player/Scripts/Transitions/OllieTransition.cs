@@ -10,6 +10,7 @@ namespace Player
 
         protected override bool CanTransitionInternal(PlayerController playerController)
         {
+            if (playerController.isGrinding) return true;
             return playerController.grounded;
         }
     }

@@ -8,9 +8,9 @@ namespace Item
     public class ItemData : IItemData
     {
         [SerializeField] private Stats bonusStats;
-        [SerializeField] private ItemConfigSO itemConfig;
+        [SerializeField] private IItemConfig itemConfig;
 
-        public ItemData(Stats bonusStats, ItemConfigSO itemConfig)
+        public ItemData(Stats bonusStats, IItemConfig itemConfig)
         {
             this.bonusStats = bonusStats;
             this.itemConfig = itemConfig;

@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 276984969}
   - component: {fileID: 276984968}
   - component: {fileID: 276984971}
+  - component: {fileID: 276984972}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -293,6 +294,21 @@ MonoBehaviour:
   SkateboardContent: {fileID: 973254413}
   popup: {fileID: 1520181838}
   itemPrefab: {fileID: 3660116507546659293, guid: 074e9c859224d9448b2c3d5b478b1245, type: 3}
+--- !u!114 &276984972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276984966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d7186cd14daec4eabe5bcda2bdbd05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPopUp: {fileID: 1520181838}
+  PopUpBackButton: {fileID: 1556404645}
+  InventoryBackButton: {fileID: 624801100}
 --- !u!1 &455265676
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +366,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
   m_PrefabInstance: {fileID: 1372512212}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &624801100 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4255846707892873688, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
+  m_PrefabInstance: {fileID: 1776583398065186169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &694162867
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,6 +880,17 @@ MonoBehaviour:
   - Language: Swedish
     Text: "Br\xE4dor"
     Object: {fileID: 0}
+--- !u!114 &1556404645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7122811508512892988, guid: db912f3d511bb2c48bd453ee874d4018, type: 3}
+  m_PrefabInstance: {fileID: 7427043935078254935}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1625119602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,6 +1220,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1776583398400200907, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1776583398434441844, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1301,6 +1343,10 @@ PrefabInstance:
     - target: {fileID: 1776583399804716048, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Dependencies, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776583399804716063, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4255846706749608868, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
       propertyPath: m_fontSize
@@ -1437,6 +1483,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7427043933627296541, guid: db912f3d511bb2c48bd453ee874d4018, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427043934155642101, guid: db912f3d511bb2c48bd453ee874d4018, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7427043934619802233, guid: db912f3d511bb2c48bd453ee874d4018, type: 3}

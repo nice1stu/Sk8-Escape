@@ -18,7 +18,9 @@ public class Dependencies : ScriptableObject
     [SerializeField] private PlayerInventory playerInventory;
 
     private InventorySerializer inventorySerializer;
+    private LootBoxSerializer lootBoxSerializer;
     [SerializeField] private ItemDataBaseSO itemDataBase;
+    [SerializeField] private LootBoxDataBaseSo lootBoxDataBase;
 
     public static Dependencies Instance
     {
@@ -29,8 +31,7 @@ public class Dependencies : ScriptableObject
             return _instance;
         }
     }
-    private LootBoxInventory _lootBoxInventory = new LootBoxInventory();
-    [SerializeField] private DummyLootBoxInventory _dummyLootBoxInventory = new();
+    private LootBoxInventory _lootBoxInventory;
 
     public ILootBoxInventory LootBoxes => _lootBoxInventory;
     public IInventoryData Inventory => playerInventory;
@@ -39,10 +40,13 @@ public class Dependencies : ScriptableObject
     private void OnEnable()
     {
         //Move to constructor when not scriptableObject anymore
-        inventorySerializer = new InventorySerializer(playerInventory, itemDataBase);
+        inventorySerializer = new InventorySerializer(playerInventory, itemDataBase, playerInventory);
         _itemFactory = new ItemFactory(playerInventory);
+        _lootBoxInventory = new LootBoxInventory(_itemFactory);
+        lootBoxSerializer = new LootBoxSerializer(_lootBoxInventory, lootBoxDataBase);
         var playerStats = new PlayerStats(Equipped);
         Load();
+        playerStats.GetCurrentStats();
     }
 
     public void CreateItemButton()
@@ -53,6 +57,9 @@ public class Dependencies : ScriptableObject
     private void Load()
     {
         var items = inventorySerializer.Load();
-        playerInventory.Load(items);
+        var lootBoxes = lootBoxSerializer.Load();
+        _lootBoxInventory.Load(lootBoxes);
+        var equipedIndices = inventorySerializer.LoadEquip();
+        playerInventory.Load(items,equipedIndices);
     }
 }
