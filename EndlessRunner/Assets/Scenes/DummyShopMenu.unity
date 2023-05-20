@@ -123,58 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &22527487
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 22527488}
-  - component: {fileID: 22527489}
-  m_Layer: 0
-  m_Name: Kista
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &22527488
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22527487}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 591404988}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &22527489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22527487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: 0
-  entries:
-  - Language: English
-    Text: Chest
-    Object: {fileID: 0}
-  - Language: Swedish
-    Text: Kista
-    Object: {fileID: 0}
 --- !u!1 &29877902
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "L\xE4gg Till \xC4delstenar"
+  m_text: Add Gems
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1244,7 +1192,7 @@ GameObject:
   - component: {fileID: 551603984}
   - component: {fileID: 551603985}
   m_Layer: 0
-  m_Name: Rare
+  m_Name: Rare Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1280,10 +1228,10 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: English
-    Text: Rare
+    Text: Rare Chest
     Object: {fileID: 0}
   - Language: Swedish
-    Text: "S\xE4llsynt"
+    Text: "S\xE4llsynt Kista"
     Object: {fileID: 0}
 --- !u!1001 &591404987
 PrefabInstance:
@@ -1335,10 +1283,6 @@ PrefabInstance:
     - target: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3585858195544455561, guid: 16d0c1e7f45999043b72123790444647, type: 3}
-      propertyPath: currentLanguage
-      value: Swedish
       objectReference: {fileID: 0}
     - target: {fileID: 3585858195544455562, guid: 16d0c1e7f45999043b72123790444647, type: 3}
       propertyPath: m_Name
@@ -1526,7 +1470,7 @@ GameObject:
   - component: {fileID: 890819419}
   - component: {fileID: 890819420}
   m_Layer: 0
-  m_Name: Common
+  m_Name: Common Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1562,10 +1506,10 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: English
-    Text: Common
+    Text: Common Chest
     Object: {fileID: 0}
   - Language: Swedish
-    Text: Vanlig
+    Text: Vanlig Kista
     Object: {fileID: 0}
 --- !u!114 &1216210269 stripped
 MonoBehaviour:
@@ -2244,7 +2188,7 @@ GameObject:
   - component: {fileID: 1945131320}
   - component: {fileID: 1945131321}
   m_Layer: 0
-  m_Name: Uncommon
+  m_Name: Uncommon Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2280,10 +2224,10 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: English
-    Text: Uncommon
+    Text: Uncommon Chest
     Object: {fileID: 0}
   - Language: Swedish
-    Text: Ovanlig
+    Text: Ovanlig Chest
     Object: {fileID: 0}
 --- !u!1 &2080034008
 GameObject:
@@ -3281,7 +3225,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tillbaka
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3403,7 +3347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Butiksmeny
+  m_text: Shop Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4697,6 +4641,7 @@ GameObject:
   - component: {fileID: 8339980699986064381}
   - component: {fileID: 3495231327221936149}
   - component: {fileID: 6776590790261621802}
+  - component: {fileID: 8339980699986064382}
   m_Layer: 5
   m_Name: Title Txt
   m_TagString: Untagged
@@ -4715,6 +4660,7 @@ GameObject:
   - component: {fileID: 8339980700110796507}
   - component: {fileID: 3495231327259505971}
   - component: {fileID: 6776590790337855756}
+  - component: {fileID: 8339980700110796508}
   m_Layer: 5
   m_Name: Title Txt
   m_TagString: Untagged
@@ -4925,6 +4871,7 @@ GameObject:
   - component: {fileID: 15310199852645134}
   - component: {fileID: 148990814810767693}
   - component: {fileID: 8763687985638825786}
+  - component: {fileID: 8763687985638825787}
   m_Layer: 5
   m_Name: Title Txt
   m_TagString: Untagged
@@ -5706,6 +5653,20 @@ RectTransform:
   m_AnchoredPosition: {x: -0.7556, y: -55}
   m_SizeDelta: {x: 150.1357, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8339980699986064382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128634099472198077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Common Chest
+  FallbackText: Common Chest
 --- !u!224 &8339980700110796507
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5726,6 +5687,20 @@ RectTransform:
   m_AnchoredPosition: {x: -0.7556, y: -56}
   m_SizeDelta: {x: 150.1357, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8339980700110796508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128634099539455131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Uncommon Chest
+  FallbackText: Uncommon Chest
 --- !u!222 &8350752148648884356
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5907,6 +5882,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8763687985638825787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971576150022976863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Rare Chest
+  FallbackText: Rare Chest
 --- !u!222 &8787837107136058715
 CanvasRenderer:
   m_ObjectHideFlags: 0
