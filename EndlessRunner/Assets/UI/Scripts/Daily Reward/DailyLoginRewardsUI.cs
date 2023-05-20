@@ -14,7 +14,7 @@ public class DailyLoginRewardsUI : MonoBehaviour
     public GameObject[] claimedGo; //shadowed gameobject when the rewards claimed
     public Button[] claimBtns; //buttons for claiming
     
-    private int _currentStreak = 1;
+    private int _currentStreak = 0;
     private const int maxDay = 7;
     
     void Start()
@@ -22,7 +22,6 @@ public class DailyLoginRewardsUI : MonoBehaviour
         for (int i = 0; i < dailyRewardsSo.Length; i++) //looping through number of SO inside the panel
             dailyRewardsPanelGo[i].SetActive(true);
         LoadPanel();
-        EnableButtons();
     }
     
     //this function will update the gameobjects in the scene (text, buttons, etc)
@@ -33,36 +32,39 @@ public class DailyLoginRewardsUI : MonoBehaviour
             dailyRewardsPanel[i].rewardTitleTxt.text = dailyRewardsSo[i].title;
             dailyRewardsPanel[i].rewardTxt.text = "" + dailyRewardsSo[i].reward;
         }
-        CheckRewardTxtIsClaimed();
+        CheckClaimText();
+        EnableButtons();
     }
 
     public void ItemButton(int btnNo)
     {
-        if (btnNo == _currentStreak)
+        if (btnNo == _currentStreak + 1)
         {
             Debug.Log("curent streak: inside loop" + _currentStreak);
-            EnableButtons();
         }
         DailyReward();
         dailyRewardsSo[btnNo].claimed = true;
         claimedGo[btnNo].SetActive(true);
-        CheckRewardTxtIsClaimed();
+        CheckClaimText();
         Debug.Log("curent streak:" + _currentStreak);
+        dailyRewardsPanel[btnNo].claimText.text = "Claimed";
+
         _currentStreak++;
     }
     
-    public void CheckRewardTxtIsClaimed()
+    public void CheckClaimText()
     {
-        for (int i = 0 ; i < dailyRewardsSo.Length; i++)
+        for (int i = 0; i < dailyRewardsSo.Length; i++)
         {
-            if (!dailyRewardsSo[i].claimed)
-            {
-                dailyRewardsPanel[i].claimText.text = "Unclaim";
-            }
-            else
+            if (dailyRewardsSo[i].claimed)
             {
                 dailyRewardsPanel[i].claimText.text = "Claimed";
                 claimedGo[i].SetActive(true);
+            }
+            else
+            {
+                dailyRewardsPanel[i].claimText.text = "Unclaim";
+                claimedGo[i].SetActive(false);
             }
         }
     }
@@ -84,14 +86,15 @@ public class DailyLoginRewardsUI : MonoBehaviour
             claimedGo[i].SetActive(false);
             dailyRewardsPanel[i].claimText.text = "Unclaim";
         }
-        _currentStreak = 1;
+        _currentStreak = 0;
     }
 
     public void EnableButtons()
     {
-        for (int i = 0; i < _currentStreak && i < claimBtns.Length; i++)
+        for (int i = 0; i <= _currentStreak && i < claimBtns.Length; i++)
         {
-            claimBtns[i].interactable = true;
+            claimBtns[_currentStreak].interactable = true;
+            dailyRewardsPanel[_currentStreak].claimText.text = "Claim";
         }
     }
     
@@ -106,13 +109,15 @@ public class DailyLoginRewardsUI : MonoBehaviour
         for (int i = 0; i < rewardsIcon.Length; i++)
         {
             Debug.Log("Im here");
-            rewardsIcon[_currentStreak -1].SetActive(true);
+            rewardsIcon[_currentStreak].SetActive(true);
         }
         rewardPopup.SetActive(true);
     }
     public void HidePopupReward()
-    { 
-        rewardsIcon[_currentStreak].SetActive(false);
+    {  for (int i = 0; i < rewardsIcon.Length; i++)
+        {
+            rewardsIcon[i].SetActive(false);
+        }
         rewardPopup.SetActive(false);
     }
 }
