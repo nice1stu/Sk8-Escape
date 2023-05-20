@@ -8,4 +8,5 @@ public class ShopChestSo : ScriptableObject
     public LootBoxConfigSo lootBox;
     public string title;
     public int coinCost;
+    public int gemCost;
 }

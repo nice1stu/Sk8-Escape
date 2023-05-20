@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public SaveManager saveManager;
     public TextMeshProUGUI coinView;
     public TextMeshProUGUI gemsView;
+    public static void LoadSettingsAdditively() => SceneManager.LoadScene("SettingsMenu", LoadSceneMode.Additive);
     
     void Start()
     {
@@ -44,5 +45,11 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("StartMenu");
     }
+    
+    public int GetGems()
+    {
+        return saveManager.SaveTotalGems;
+    }
+    
 }
 }

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b6e228bb4521364ea2f53214a0ed434, type: 3}
-  m_Name: Uncommon
+  m_Script: {fileID: 11500000, guid: b3a0017ea9c5df44c87031952f1c9344, type: 3}
+  m_Name: Day 5
   m_EditorClassIdentifier: 
-  lootBox: {fileID: 11400000, guid: 7ae71db5a19b7514ebb34e74a7155c57, type: 2}
-  title: Uncommon Chest
-  coinCost: 100
+  title: Day 5
+  reward: 300
+  claimed: 0
