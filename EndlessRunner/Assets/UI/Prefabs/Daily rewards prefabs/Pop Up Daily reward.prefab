@@ -2604,8 +2604,7 @@ PrefabInstance:
       objectReference: {fileID: 4346923130503199826}
     - target: {fileID: 600584614862496702, guid: dea6f1582b3c7fd49b7da1c58f949810, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ItemButton
-      objectReference: {fileID: 0}
+      value:ClaimButton      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dea6f1582b3c7fd49b7da1c58f949810, type: 3}
 --- !u!1 &22736327154097772 stripped
@@ -3188,8 +3187,7 @@ PrefabInstance:
       objectReference: {fileID: 4346923130503199826}
     - target: {fileID: 4688509689153610075, guid: f47ddf5fca1203245804781b00be2c8d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ItemButton
-      objectReference: {fileID: 0}
+      value:ClaimButton      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f47ddf5fca1203245804781b00be2c8d, type: 3}
 --- !u!114 &4346923130842759996 stripped
@@ -3384,8 +3382,7 @@ PrefabInstance:
       objectReference: {fileID: 4346923130503199826}
     - target: {fileID: 4908394152398164693, guid: e3ef78929cb4a764c84b0630c7f5f677, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ItemButton
-      objectReference: {fileID: 0}
+      value:ClaimButton      objectReference: {fileID: 0}
     - target: {fileID: 4908394152620104088, guid: e3ef78929cb4a764c84b0630c7f5f677, type: 3}
       propertyPath: m_Name
       value: DailyRewards2
@@ -3550,8 +3547,7 @@ PrefabInstance:
       objectReference: {fileID: 4346923130503199826}
     - target: {fileID: 3785884595456828363, guid: dc85eba3bfe05e847a9e5146c3b45827, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ItemButton
-      objectReference: {fileID: 0}
+      value:ClaimButton      objectReference: {fileID: 0}
     - target: {fileID: 3785884595763374213, guid: dc85eba3bfe05e847a9e5146c3b45827, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3922,8 +3918,7 @@ PrefabInstance:
       objectReference: {fileID: 4346923130503199826}
     - target: {fileID: 6882992511375137196, guid: 050b7a580cc58f44693d4806a4d1c0bc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ItemButton
-      objectReference: {fileID: 0}
+      value:ClaimButton      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 050b7a580cc58f44693d4806a4d1c0bc, type: 3}
 --- !u!224 &22736327131945372 stripped
@@ -4206,8 +4201,7 @@ PrefabInstance:
       objectReference: {fileID: 4346923130503199826}
     - target: {fileID: 7773418719565972147, guid: e55640adc115c8042b46a95cd755e0ec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ItemButton
-      objectReference: {fileID: 0}
+      value:ClaimButton      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e55640adc115c8042b46a95cd755e0ec, type: 3}
 --- !u!114 &22736327073861993 stripped
@@ -4402,8 +4396,7 @@ PrefabInstance:
       objectReference: {fileID: 4346923130503199826}
     - target: {fileID: 8597163855857335114, guid: fe3b3d113aae6ca478fc1f1641f1aa8f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ItemButton
-      objectReference: {fileID: 0}
+      value:ClaimButton      objectReference: {fileID: 0}
     - target: {fileID: 8597163856189370372, guid: fe3b3d113aae6ca478fc1f1641f1aa8f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

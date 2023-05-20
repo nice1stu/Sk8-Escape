@@ -1,7 +1,5 @@
-
 using UnityEngine;
 using UnityEngine.UI;
-
 
 public class DailyLoginRewardsUI : MonoBehaviour
 {
@@ -9,11 +7,9 @@ public class DailyLoginRewardsUI : MonoBehaviour
     public GameObject rewardPopup; //a popup for rewardicons
     public GameObject[] rewardsIcon;  //reward icons
     public DailyRewardsSo[] dailyRewardsSo; //scriptable object for daily rewards
-    public GameObject[] dailyRewardsPanelGo; //daily rewards prefabs
     public DailyRewardsTemplate[] dailyRewardsPanel; //template for text
     public GameObject[] claimedGo; //shadowed gameobject when the rewards claimed
     public Button[] claimBtns; //buttons for claiming
-    
     private int _currentStreak;
     
     void Start()
@@ -24,16 +20,21 @@ public class DailyLoginRewardsUI : MonoBehaviour
     //this function will update the gameobjects in the scene (text, buttons, etc)
     public void LoadPanel()
     {
+        UpdateText();
+        CheckClaimText();
+        EnableButtons();
+    }
+
+    public void UpdateText()
+    {
         for (int i = 0; i < dailyRewardsSo.Length; i++)
         {
             dailyRewardsPanel[i].rewardTitleTxt.text = dailyRewardsSo[i].title;
             dailyRewardsPanel[i].rewardTxt.text =dailyRewardsSo[i].reward.ToString();
         }
-        CheckClaimText();
-        EnableButtons();
     }
-
-    public void ItemButton(int btnNo)
+    
+    public void ClaimButton(int btnNo)
     {
         DailyReward();
         dailyRewardsSo[btnNo].claimed = true;
@@ -60,7 +61,6 @@ public class DailyLoginRewardsUI : MonoBehaviour
             }
         }
     }
-    
 
     public void DailyReward()
     {
@@ -68,9 +68,8 @@ public class DailyLoginRewardsUI : MonoBehaviour
         //TO DO: daily rewards here
     }
 
-    public void ResetStreak()
+    public void ResetStreak() //reset the streak
     {
-        
         for (int i = 0; i < dailyRewardsSo.Length; i++)
         {
             claimBtns[i].interactable = false;
@@ -96,16 +95,16 @@ public class DailyLoginRewardsUI : MonoBehaviour
         dailyRewardsWindow.SetActive(false);
     }
 
-    public void ShowPopupReward()
+    public void ShowPopupReward() //rewards to pop up after claiming
     {
         for (int i = 0; i < rewardsIcon.Length; i++)
         {
-            Debug.Log("Im here");
             rewardsIcon[_currentStreak].SetActive(true);
         }
         rewardPopup.SetActive(true);
     }
-    public void HidePopupReward()
+    
+    public void HidePopupReward() //hide the pop up 
     {  for (int i = 0; i < rewardsIcon.Length; i++)
         {
             rewardsIcon[i].SetActive(false);

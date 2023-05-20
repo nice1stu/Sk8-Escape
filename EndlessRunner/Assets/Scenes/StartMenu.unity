@@ -4915,7 +4915,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 12}
         m_TargetAssemblyTypeName: DailyLoginRewardsUI, Assembly-CSharp
-        m_MethodName: ItemButton
+        m_MethodName: ClaimButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6725,7 +6725,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 12}
         m_TargetAssemblyTypeName: DailyLoginRewardsUI, Assembly-CSharp
-        m_MethodName: ItemButton
+        m_MethodName: ClaimButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7023,7 +7023,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 12}
         m_TargetAssemblyTypeName: DailyLoginRewardsUI, Assembly-CSharp
-        m_MethodName: ItemButton
+        m_MethodName: ClaimButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7592,7 +7592,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 12}
         m_TargetAssemblyTypeName: DailyLoginRewardsUI, Assembly-CSharp
-        m_MethodName: ItemButton
+        m_MethodName: ClaimButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7921,7 +7921,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 12}
         m_TargetAssemblyTypeName: DailyLoginRewardsUI, Assembly-CSharp
-        m_MethodName: ItemButton
+        m_MethodName: ClaimButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10185,7 +10185,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 12}
         m_TargetAssemblyTypeName: DailyLoginRewardsUI, Assembly-CSharp
-        m_MethodName: ItemButton
+        m_MethodName: ClaimButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11773,7 +11773,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 12}
         m_TargetAssemblyTypeName: DailyLoginRewardsUI, Assembly-CSharp
-        m_MethodName: ItemButton
+        m_MethodName: ClaimButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
