@@ -6,21 +6,18 @@ using UnityEngine.UI;
 public class DailyLoginRewardsUI : MonoBehaviour
 {
     public GameObject dailyRewardsWindow; //This is the Popup window
-    public GameObject rewardPopup;
-    public GameObject[] rewardsIcon;
+    public GameObject rewardPopup; //a popup for rewardicons
+    public GameObject[] rewardsIcon;  //reward icons
     public DailyRewardsSo[] dailyRewardsSo; //scriptable object for daily rewards
     public GameObject[] dailyRewardsPanelGo; //daily rewards prefabs
     public DailyRewardsTemplate[] dailyRewardsPanel; //template for text
     public GameObject[] claimedGo; //shadowed gameobject when the rewards claimed
     public Button[] claimBtns; //buttons for claiming
     
-    private int _currentStreak = 0;
-    private const int maxDay = 7;
+    private int _currentStreak;
     
     void Start()
     {
-        for (int i = 0; i < dailyRewardsSo.Length; i++) //looping through number of SO inside the panel
-            dailyRewardsPanelGo[i].SetActive(true);
         LoadPanel();
     }
     
@@ -30,7 +27,7 @@ public class DailyLoginRewardsUI : MonoBehaviour
         for (int i = 0; i < dailyRewardsSo.Length; i++)
         {
             dailyRewardsPanel[i].rewardTitleTxt.text = dailyRewardsSo[i].title;
-            dailyRewardsPanel[i].rewardTxt.text = "" + dailyRewardsSo[i].reward;
+            dailyRewardsPanel[i].rewardTxt.text =dailyRewardsSo[i].reward.ToString();
         }
         CheckClaimText();
         EnableButtons();
@@ -38,15 +35,10 @@ public class DailyLoginRewardsUI : MonoBehaviour
 
     public void ItemButton(int btnNo)
     {
-        if (btnNo == _currentStreak + 1)
-        {
-            Debug.Log("curent streak: inside loop" + _currentStreak);
-        }
         DailyReward();
         dailyRewardsSo[btnNo].claimed = true;
         claimedGo[btnNo].SetActive(true);
         CheckClaimText();
-        Debug.Log("curent streak:" + _currentStreak);
         dailyRewardsPanel[btnNo].claimText.text = "Claimed";
 
         _currentStreak++;
