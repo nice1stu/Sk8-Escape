@@ -98,10 +98,10 @@ public class GameplayResults : MonoBehaviour
 
     private void DoubleCoins()
     {
-        string coinsTranslation     = LeanLocalization.GetTranslationText(coinsPhraseName);
+        //string coinsTranslation     = LeanLocalization.GetTranslationText(coinsPhraseName);
         
         _saveManager.SaveTotalCoins +=  cointest.GetCoinAmount();
-        coinsCollectedText.text = $"{coinsTranslation}: {cointest.GetCoinAmount() * 2}";
+        coinsCollectedText.text = $"{cointest.GetCoinAmount() * 2}";
         
         
         _saveManager.SaveGameData(); //hope this was enough to save after each
