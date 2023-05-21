@@ -8,6 +8,8 @@ public class ObstacleSpawner : MonoBehaviour
 {
     public GameObject[] obstaclePrefabs;
     public GameObject[] powerUpPrefabs;
+
+    private GameObject currObstacleWidth;
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.layer == 10 )
@@ -71,19 +73,20 @@ public class ObstacleSpawner : MonoBehaviour
     }
     public void SpawnObstacle()
     {
-        GameObject obstacle = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)], transform.position,
+        currObstacleWidth = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)], transform.position,
             transform.rotation);
-        Debug.Log(GetObstacleWidth(obstacle) +" is the bounds size");
-        obstacle.transform.position += new Vector3(GetObstacleWidth(obstacle), 0, 0);
-        transform.position += new Vector3(GetObstacleWidth(obstacle)+8, 0, 0);
+        Debug.Log(GetObstacleWidth(currObstacleWidth) +" is the bounds size");
+        currObstacleWidth.transform.position += new Vector3(GetObstacleWidth(currObstacleWidth), 0, 0);
+        transform.position += new Vector3(GetObstacleWidth(currObstacleWidth)+8, 0, 0);
     }
 
     public void SpawnPowerUp()
     {
         if (Random.Range(1, 100) <= 5) // 5% chance
         {
-        transform.position = transform.position + new Vector3(20, 0, 0);
-        Instantiate(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)], transform.position,
+            Debug.Log("im spawning now!");
+            transform.position = transform.position + new Vector3(GetObstacleWidth(currObstacleWidth), 0, 0);
+            Instantiate(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)], transform.position,
             transform.rotation);
         }
     }
