@@ -365,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6209122175100364233, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6209122175100364234, guid: eafac3602b7353f44bc0883de5edf0f8, type: 3}
       propertyPath: m_Pivot.x
@@ -1142,6 +1142,34 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0.25487962
       objectReference: {fileID: 0}
+    - target: {fileID: 8368775324843999831, guid: 2a4b69ebed17544fb97f269ad29f94c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368775324843999831, guid: 2a4b69ebed17544fb97f269ad29f94c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368775324843999831, guid: 2a4b69ebed17544fb97f269ad29f94c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8297600472152195603}
+    - target: {fileID: 8368775324843999831, guid: 2a4b69ebed17544fb97f269ad29f94c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368775324843999831, guid: 2a4b69ebed17544fb97f269ad29f94c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ToggleIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368775324843999831, guid: 2a4b69ebed17544fb97f269ad29f94c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UI.Scripts.PauseMenu.SpriteToggler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368775324843999831, guid: 2a4b69ebed17544fb97f269ad29f94c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8368775324843999832, guid: 2a4b69ebed17544fb97f269ad29f94c0, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1168,6 +1196,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6895238465201527197, guid: 2a4b69ebed17544fb97f269ad29f94c0, type: 3}
   m_PrefabInstance: {fileID: 1669049914}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8297600472152195603 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8297600472672726057, guid: 2a4b69ebed17544fb97f269ad29f94c0, type: 3}
+  m_PrefabInstance: {fileID: 1669049914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53a081e575634548bc0f93a323ffac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1377935031220519067
 PrefabInstance:
   m_ObjectHideFlags: 0
