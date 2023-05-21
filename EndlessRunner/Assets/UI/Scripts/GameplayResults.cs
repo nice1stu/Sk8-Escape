@@ -39,18 +39,18 @@ public class GameplayResults : MonoBehaviour
         
         string scoreTranslation     = LeanLocalization.GetTranslationText(scorePhraseName);
         string highScoreTranslation = LeanLocalization.GetTranslationText(highScorePhraseName);
-        string coinsTranslation     = LeanLocalization.GetTranslationText(coinsPhraseName);
+        //string coinsTranslation     = LeanLocalization.GetTranslationText(coinsPhraseName);
         
         Assert.IsNotNull(scoreTranslation);
         Assert.IsNotNull(highScoreTranslation);
-        Assert.IsNotNull(coinsTranslation);
+        //Assert.IsNotNull(coinsTranslation);
         
         Debug.Log(scoreTranslation);
         
         currentScoreText.text = $"{scoreTranslation}: {currentScore}";
 
         int currentCoin = cointest.GetCoinAmount();
-        coinsCollectedText.text = $"{coinsTranslation}: {currentCoin}";
+        coinsCollectedText.text = $" {currentCoin}";
         
         _saveManager.SaveTotalCoins += cointest.GetCoinAmount();
 
