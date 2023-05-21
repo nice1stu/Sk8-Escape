@@ -36,8 +36,6 @@ public class GameplayResults : MonoBehaviour
     {
          _saveManager.LoadData(); //loading from saveFile (stewarts thing)
         int currentScore = (int)_scoreManager.GetScore(); // sets/shows score
-
-        LeanLocalization.SetCurrentLanguageAll("Swedish");
         
         string scoreTranslation     = LeanLocalization.GetTranslationText(scorePhraseName);
         string highScoreTranslation = LeanLocalization.GetTranslationText(highScorePhraseName);
