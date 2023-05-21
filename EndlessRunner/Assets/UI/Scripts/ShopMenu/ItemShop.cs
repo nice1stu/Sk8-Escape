@@ -80,7 +80,7 @@ public class ItemShop : MonoBehaviour
 
     public void GemGererator()
     {
-        uiManager.SpendGems(-5);
+        uiManager.SpendGems(-5000);
         LoadPanel();
     }
 }

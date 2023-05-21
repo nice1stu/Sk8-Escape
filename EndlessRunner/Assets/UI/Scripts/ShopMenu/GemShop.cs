@@ -9,8 +9,11 @@ public class GemShop : MonoBehaviour
     public UIManager uiManager;
 
     public PopupWindow popupWarning;
-    public PopupWindow popupConfirmation;
-    private int gemShopBtn;
+    public PopupWindow gemWindowConfirmation;
+    private int test;
+
+    //this is just a try money;
+    public int dummyMoney = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +22,7 @@ public class GemShop : MonoBehaviour
         LoadPanel();
     }
 
-    private void LoadPanel()
+    public void LoadPanel()
     {
         for (int i = 0; i < gemPackSo.Length; i++)
         {
@@ -31,18 +34,18 @@ public class GemShop : MonoBehaviour
     
     public void PurchaseItem(int btnNo)
     {
-        popupConfirmation.ShowPopupConfirmation("Purchase Item?");
-        gemShopBtn = btnNo;
+        gemWindowConfirmation.GemPopupConfirmation("Purchase Item?");
+        test = btnNo;
     }
     
     //TO DO; Transaction
     public void CheckPurchase()
     {
-        // if ( Money is not enough)
-        // {
-        //     popupWarning.ShowPopupMessage("Insufficient funds, Please try again!");
-        //     return;
-        // }
-        uiManager.SpendGems(gemPackSo[gemShopBtn].gemContent);
+        if ( dummyMoney < gemPackSo[test].gemCostInDollar)
+        {
+            popupWarning.ShowPopupMessage("Insufficient funds, Please try again!");
+            return;
+        }
+        uiManager.SpendGems(gemPackSo[test].gemContent);
     }
 }
