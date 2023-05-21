@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7147198960765950417}
-  - component: {fileID: 1988661483685570593}
-  - component: {fileID: 5676095777951956202}
   m_Layer: 6
   m_Name: Test Big Section 1
   m_TagString: Untagged
@@ -38,34 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1988661483685570593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8075445593664272018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41ad671f343bcbd42897058c41197fb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5676095777951956202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8075445593664272018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a1ed0aea6bc20b47aecf6661335c62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  railPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1001 &1739772529881905188
 PrefabInstance:
   m_ObjectHideFlags: 0
