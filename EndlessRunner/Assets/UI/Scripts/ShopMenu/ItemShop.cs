@@ -10,13 +10,11 @@ public class ItemShop : MonoBehaviour
     public ShopChestSo[] shopChestSo;
     public GameObject[] shopPanelsGo;
     public ShopTemplate[] shopPanels;
-    public Button[] myPurchaseBtns;
     public GameObject[] disablePanel;
     public UIManager uiManager;
 
     public PopupWindow popupWarning;
     public PopupWindow popupConfirmation;
-    public bool purchaseSuccess = true;
     private int test;
     
     
