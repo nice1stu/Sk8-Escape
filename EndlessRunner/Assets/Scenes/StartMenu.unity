@@ -419,6 +419,10 @@ PrefabInstance:
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 9083473509841449991, guid: 113b0bb12c1476c45a84e3dd35193b5c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4c845caba84fa44749a6755368a59a03, type: 3}
+    - target: {fileID: 9083473509841449991, guid: 113b0bb12c1476c45a84e3dd35193b5c, type: 3}
       propertyPath: m_Color.a
       value: 0.78431374
       objectReference: {fileID: 0}
@@ -1302,6 +1306,10 @@ PrefabInstance:
     - target: {fileID: 4412504484927580954, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_Name
       value: Exit game menu opener
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412504484927580954, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5115900386535537149, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_text
