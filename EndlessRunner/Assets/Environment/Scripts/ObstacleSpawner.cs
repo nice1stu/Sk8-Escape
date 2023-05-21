@@ -9,7 +9,15 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject[] obstaclePrefabs;
     public GameObject[] powerUpPrefabs;
 
-    private GameObject currObstacleWidth;
+    private GameObject _currObstacleSpawned;
+    private float _obstacleWidth;
+
+    private void Start()
+    {
+        // So it wont be null I just spawn the first obstacle
+        _currObstacleSpawned = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)], transform.position, transform.rotation);
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.layer == 10 )
@@ -73,21 +81,21 @@ public class ObstacleSpawner : MonoBehaviour
     }
     public void SpawnObstacle()
     {
-        currObstacleWidth = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)], transform.position,
-            transform.rotation);
-        Debug.Log(GetObstacleWidth(currObstacleWidth) +" is the bounds size");
-        currObstacleWidth.transform.position += new Vector3(GetObstacleWidth(currObstacleWidth), 0, 0);
-        transform.position += new Vector3(GetObstacleWidth(currObstacleWidth)+8, 0, 0);
+        //move the obstacleSpawner + 8 for buffer when colliding with it
+        transform.position += new Vector3(_obstacleWidth + 8, 0, 0);
+        //checks the length once and reuses it until next obstacle spawns
+        _obstacleWidth = GetObstacleWidth(_currObstacleSpawned);
+        // Instantiates and saves the gameObject as currObstacle (pos+obstacleWidth to spawn it where the old obstacle ends)
+        _currObstacleSpawned = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)], transform.position + new Vector3(_obstacleWidth, 0,0), transform.rotation);
     }
 
     public void SpawnPowerUp()
     {
         if (Random.Range(1, 100) <= 5) // 5% chance
         {
-            Debug.Log("im spawning now!");
-            transform.position = transform.position + new Vector3(GetObstacleWidth(currObstacleWidth), 0, 0);
-            Instantiate(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)], transform.position,
-            transform.rotation);
+            //Same here instantiate the powerUp at obstacleSpawner + width
+            Instantiate(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)], transform.position + new Vector3( _obstacleWidth,0,0), transform.rotation);
+            transform.position += new Vector3(8, 0, 0);
         }
     }
     

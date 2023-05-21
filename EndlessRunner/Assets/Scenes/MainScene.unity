@@ -1230,7 +1230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4969486597088626211, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
       propertyPath: obstaclePrefabs.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4969486597088626211, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
       propertyPath: powerUpPrefabs.Array.data[2]
@@ -1239,11 +1239,15 @@ PrefabInstance:
     - target: {fileID: 4969486597088626211, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
       propertyPath: obstaclePrefabs.Array.data[0]
       value: 
+      objectReference: {fileID: 4783994568793467293, guid: 0ba6b5e8108d7bc4a9dda38f8323ceeb, type: 3}
+    - target: {fileID: 4969486597088626211, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
+      propertyPath: obstaclePrefabs.Array.data[1]
+      value: 
       objectReference: {fileID: 8075445593664272018, guid: 51d4c53b3631ce44d8c3209b561dd128, type: 3}
     - target: {fileID: 4969486597088626211, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
       propertyPath: obstaclePrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 2477869576740326386, guid: 6001368ba341c4447ad888b8a0514a5f, type: 3}
+      objectReference: {fileID: 2477869576740326386, guid: b52fd06cfc4e81d40ab53945ae71558f, type: 3}
     - target: {fileID: 4969486597088626211, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
       propertyPath: obstaclePrefabs.Array.data[3]
       value: 
@@ -1278,7 +1282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6585501097351079796, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 10.6
       objectReference: {fileID: 0}
     - target: {fileID: 6585501097351079796, guid: bcd1f0f8031a50b48b8ea2193f46f0d4, type: 3}
       propertyPath: m_LocalPosition.y
