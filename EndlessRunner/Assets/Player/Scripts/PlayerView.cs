@@ -6,6 +6,13 @@ namespace Player
     {
         private SpriteRenderer _spriteRenderer;
 
+        public Animator characterAnimation;
+        public Animator skateboardAnimation;
+
+        public AnimationClip[] characterAnimations;
+        public AnimationClip[] skateboardAnimations;
+        
+        
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -28,6 +35,49 @@ namespace Player
         {
             transform.localScale = scale;
             transform.localPosition = new Vector3(transform.localPosition.x, offset.y);
+        }
+
+        public void PlayCoastAnim()
+        {
+            characterAnimation.Play("PlayerIdle");
+            skateboardAnimation.Play("BoardIdle");
+        }
+        
+        public void PlayOllieAnim() 
+        {
+            characterAnimation.Play("PlayerJump");
+            skateboardAnimation.Play("BoardOllie");
+            
+        }
+        
+        public void PlayKickflipAnim()
+        {
+            characterAnimation.Play("PlayerKickflip");
+            skateboardAnimation.Play("BoardKickflip");
+        }
+        
+        public void PlayGrindAnim()
+        {
+            characterAnimation.Play("PlayerGrind");
+            skateboardAnimation.Play("BoardGrind");
+        }
+        
+        public void PlayCoffinAnim()
+        {
+            characterAnimation.Play("PlayerCoffin");
+            skateboardAnimation.Play("BoardIdle");
+        }
+        
+        public void PlayCoffinExitAnim()
+        {
+            characterAnimation.Play("PlayerCoffinExit");
+            skateboardAnimation.Play("BoardIdle");
+        }
+        
+        public void PlayShuvitAnim()
+        {
+            characterAnimation.Play("PlayerJump");
+            skateboardAnimation.Play("BoardShuvit");
         }
     }
 }

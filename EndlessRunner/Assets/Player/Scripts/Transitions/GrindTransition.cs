@@ -10,7 +10,7 @@ namespace Player
 
         protected override bool CanTransitionInternal(PlayerController playerController)
         {
-            return playerController._canGrind;
+            return playerController.canGrind;
         }
     }
 }

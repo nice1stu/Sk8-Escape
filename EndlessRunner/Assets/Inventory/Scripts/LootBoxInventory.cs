@@ -1,16 +1,39 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Item;
-using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Inventory.Scripts
 {
     public class LootBoxInventory : ILootBoxInventory
     {
-        [SerializeField] private ILootBoxData[] _slots;
+        private readonly IItemFactory _itemFactory;
+
+        public bool IsFull //Shop need this one to check if the loot box inventory is full or not
+        {
+            get
+            {
+                foreach (var lootBoxData in _slots)
+                {
+                    if (lootBoxData == null) return false;
+                }
+
+                return true;
+            }
+        }
+
+        private ILootBoxData[] _slots;
 
         //This is the fixed array that stores the loot boxes
         public ILootBoxData[] Slots => _slots;
         //This is the list that stores the inventory slots
+
+        public LootBoxInventory(IItemFactory itemFactory)
+        {
+            _itemFactory = itemFactory;
+            _slots = new ILootBoxData[4];
+        }
         
         public void AddLootBox(ILootBoxData lootBox)
         {
@@ -32,9 +55,32 @@ namespace Inventory.Scripts
             if (DateTime.UtcNow - lootBox.OpeningStartTime < lootBox.Config.TimeToOpen) return;
             _slots[slotIndex] = null;
             LootBoxRemoved?.Invoke(slotIndex, lootBox);
-            //TODO: Use ItemFactory to create items
-            LootBoxOpened?.Invoke(lootBox, Array.Empty<IItemData>());
+            //Use ItemFactory to create items
+            List<IItemData> items = new List<IItemData>();
+            foreach (var item in lootBox.Config.LootChances)
+            {
+                //Randomize the possibility to get a better item
+                var itemPossibility = Random.Range(0, 100);
+                if (itemPossibility < item.chance)
+                {
+                    //TODO: randomize which rarity and give bonus stats based on rarity.
+                    items.Add(_itemFactory.CreateItem(item.itemConfig));
+                    break;
+                }
+            }
+            if (items.Count == 0)
+            {
+                items.Add(_itemFactory.CreateItem(lootBox.Config.LootChances[0].itemConfig));
+            }
+            LootBoxOpened?.Invoke(lootBox, items.ToArray());
         }
+
+        public void Load(IEnumerable<ILootBoxData> lootBoxes)
+        {
+            _slots = lootBoxes.ToArray();
+        }
+
+        
 
         public event Action<int, ILootBoxData> LootBoxAdded;
         public event Action<int, ILootBoxData> LootBoxRemoved;

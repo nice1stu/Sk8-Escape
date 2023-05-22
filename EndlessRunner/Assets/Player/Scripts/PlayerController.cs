@@ -65,8 +65,11 @@ namespace Player
 
 
             scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
-            trickParticles = gameObject.GetComponentInChildren<ParticleSystem>();
-            trickParticles.Play();
+            //trickParticles = gameObject.GetComponentInChildren<ParticleSystem>();
+            
+            trickParticles.Stop();
+            grindParticles.Stop();
+
         }
 
         private void OnDisable()
@@ -85,7 +88,8 @@ namespace Player
         [HideInInspector] public bool grounded;
         [HideInInspector] public bool walled;
         [HideInInspector] public Transform[] grindPath;
-        [HideInInspector] public bool _canGrind = false;
+        [HideInInspector] public bool canGrind = false;
+        [HideInInspector] public bool isGrinding = false;
 
         private void Awake()
         {
@@ -104,6 +108,8 @@ namespace Player
             tap = playerInput.actions.FindAction("Tap");
             slowmoCoolDownTimer = new Stopwatch();
 
+            oldTimeScale = Time.timeScale;
+
 
             // Transitions
             var coast = new CoastState();
@@ -118,6 +124,7 @@ namespace Player
 
             // Up swipe
             new OllieTransition(coast, ollie, dragActionUp);
+            new OllieTransition(grind, ollie, dragActionUp);
             new KickflipTransition(ollie, kickflip, dragActionUp);
             new InputTransition(coffin, coast, dragActionUp);
 
@@ -198,6 +205,7 @@ namespace Player
             {
                 Time.timeScale = oldTimeScale;
             }
+            Time.timeScale = oldTimeScale;
         }
 
         IEnumerator SlowmoCoolDown()
@@ -223,7 +231,8 @@ namespace Player
             {
                 SwipeLock = true;
                 Debug.Log("Up!");
-                trickParticles.Play();
+                if(trickParticles != null)
+                    trickParticles.Play();
                 
             }
         }
@@ -369,7 +378,7 @@ namespace Player
 
         public void EnterGrinding(Transform[] rail)
         {
-            _canGrind = true;
+            canGrind = true;
             grindPath = rail;
         }
 
@@ -385,6 +394,8 @@ namespace Player
             int count = _col.GetContacts(_collisionBuffer);
             for (int i = 0; i < count; i++)
             {
+                
+                
                 if (((1 << _collisionBuffer[i].collider.gameObject.layer) & model.groundLayers) == 0) continue;
 
                 if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.up) < model.maxGroundAngle)
@@ -394,8 +405,19 @@ namespace Player
 
                 if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.left) < model.maxWallAngle)
                 {
+                    if (deathHandler.invincible == true)
+                    {
+                        //Physics.IgnoreCollision(_collisionBuffer[i].rigidbody.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+                        _collisionBuffer[i].collider.enabled = false;
+                        continue;
+                    }
+                    
                     wallNormal = _collisionBuffer[i].normal;
                     walled = deathHandler.OnDeath();
+                    if (walled == false)
+                    {
+                        _collisionBuffer[i].collider.enabled = false;
+                    }
                 }
             }
         }

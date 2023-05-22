@@ -3,9 +3,10 @@ using Item;
 
 namespace Inventory.Scripts
 {
-    [Serializable] public struct LootChance
+    [Serializable]
+    public struct LootChance
     {
-        public IItemConfig itemConfig;
+        public ItemConfigSO itemConfig;
         public int chance; // weight
     }
 }
