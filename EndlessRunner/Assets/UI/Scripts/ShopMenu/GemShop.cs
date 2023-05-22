@@ -1,5 +1,6 @@
 using UnityEngine;
 using UI.Scripts;
+using UnityEngine.UI;
 
 public class GemShop : MonoBehaviour
 {
@@ -11,9 +12,7 @@ public class GemShop : MonoBehaviour
     public PopupWindow popupWarning;
     public PopupWindow gemWindowConfirmation;
     private int test;
-
-    //this is just a try money;
-    public int dummyMoney = 10;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -34,18 +33,20 @@ public class GemShop : MonoBehaviour
     
     public void PurchaseItem(int btnNo)
     {
-        gemWindowConfirmation.GemPopupConfirmation("Purchase Item?");
+        // gemWindowConfirmation.GemPopupConfirmation("Purchase Item?");
         test = btnNo;
+        //TO DO; Transaction
+        Debug.Log("You bought a "+ gemPackSo[btnNo].gemContent +" gems.");
     }
     
     //TO DO; Transaction
     public void CheckPurchase()
     {
-        if ( dummyMoney < gemPackSo[test].gemCostInDollar)
-        {
-            popupWarning.ShowPopupMessage("Insufficient funds, Please try again!");
-            return;
-        }
+        // if ()
+        // {
+        //     popupWarning.ShowPopupMessage("Insufficient funds, Please try again!");
+        //     return;
+        // }
         uiManager.SpendGems(gemPackSo[test].gemContent);
     }
 }
