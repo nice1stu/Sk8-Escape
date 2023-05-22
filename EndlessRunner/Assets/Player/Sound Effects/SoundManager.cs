@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
-public class PlayerSFX : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     
    public AudioSource audioSource;
+   public AudioSource jumpAudioSource;
    private bool isGrounded;
 
    
@@ -32,10 +34,11 @@ public class PlayerSFX : MonoBehaviour
        {
            Debug.Log("is not grounded");
            isGrounded = false;
-           
+
            if (!isGrounded && audioSource.isPlaying)
            {
                audioSource.Stop();
+               jumpAudioSource.Play();
                Debug.Log("not playing sound");
            }
        }
