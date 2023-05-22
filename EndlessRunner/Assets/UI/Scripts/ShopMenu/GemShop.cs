@@ -1,6 +1,5 @@
 using UnityEngine;
 using UI.Scripts;
-using UnityEngine.UI;
 
 public class GemShop : MonoBehaviour
 {
@@ -8,10 +7,6 @@ public class GemShop : MonoBehaviour
     public GameObject[] gemPanelsGo;
     public GemPackTemplate[] gemPanels;
     public UIManager uiManager;
-
-    public PopupWindow popupWarning;
-    public PopupWindow gemWindowConfirmation;
-    private int test;
     
     // Start is called before the first frame update
     void Start()
@@ -20,8 +15,9 @@ public class GemShop : MonoBehaviour
             gemPanelsGo[i].SetActive(true);
         LoadPanel();
     }
-
-    public void LoadPanel()
+    
+    //Update the variable text in unity
+    private void LoadPanel()
     {
         for (int i = 0; i < gemPackSo.Length; i++)
         {
@@ -33,20 +29,8 @@ public class GemShop : MonoBehaviour
     
     public void PurchaseItem(int btnNo)
     {
-        // gemWindowConfirmation.GemPopupConfirmation("Purchase Item?");
-        test = btnNo;
-        //TO DO; Transaction
+        //TO DO; Transaction with google in real money
         Debug.Log("You bought a "+ gemPackSo[btnNo].gemContent +" gems.");
-    }
-    
-    //TO DO; Transaction
-    public void CheckPurchase()
-    {
-        // if ()
-        // {
-        //     popupWarning.ShowPopupMessage("Insufficient funds, Please try again!");
-        //     return;
-        // }
-        uiManager.SpendGems(gemPackSo[test].gemContent);
+        uiManager.SpendGems(-gemPackSo[btnNo].gemContent);
     }
 }

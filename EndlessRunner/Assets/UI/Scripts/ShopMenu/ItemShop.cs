@@ -2,7 +2,6 @@
 using System;
 using Inventory.Scripts;
 using UnityEngine;
-using UnityEngine.UI;
 using UI.Scripts;
 
 public class ItemShop : MonoBehaviour
@@ -15,8 +14,7 @@ public class ItemShop : MonoBehaviour
 
     public PopupWindow popupWarning;
     public PopupWindow popupConfirmation;
-    private int test;
-    
+    private int _test;
     
     // Start is called before the first frame update
     void Start()
@@ -24,12 +22,6 @@ public class ItemShop : MonoBehaviour
         for (int i = 0; i < shopChestSo.Length; i++) //looping through number of SO inside the shop
             shopPanelsGo[i].SetActive(true);
         LoadPanel();
-    }
-    //when you purchase the item this item will be called
-    public void PurchaseItem(int btnNo)
-    {
-        popupConfirmation.ShowPopupConfirmation("Purchase Item?");
-        test = btnNo;
     }
     
     //this method is to load every details in unity.
@@ -43,12 +35,26 @@ public class ItemShop : MonoBehaviour
             DisablePanel();
         }
     }
+    
+    //when you purchase the item this item will be called
+    public void PurchaseItem(int btnNo)
+    {
+        popupConfirmation.ShowPopupConfirmation("Purchase Item?");
+        _test = btnNo;
+    }
+    
 
     public void CheckPurchase()
     {
-        if (uiManager.GetCoins() < shopChestSo[test].coinCost || uiManager.GetGems() < shopChestSo[test].gemCost)
+        if (uiManager.GetCoins() < shopChestSo[_test].coinCost)
         {
             popupWarning.ShowPopupMessage("Not enough coins");
+            return;
+        }
+        
+        if (uiManager.GetGems() < shopChestSo[_test].gemCost)
+        {
+            popupWarning.ShowPopupMessage("Not enough gems");
             return;
         }
 
@@ -57,9 +63,9 @@ public class ItemShop : MonoBehaviour
             popupWarning.ShowPopupMessage("LootBoxSlot is full");
             return;
         }
-        uiManager.SpendCoins(shopChestSo[test].coinCost);
-        uiManager.SpendGems(shopChestSo[test].gemCost);
-        Dependencies.Instance.LootBoxes.AddLootBox(new LootBoxData(shopChestSo[test].lootBox, DateTime.UtcNow));
+        uiManager.SpendCoins(shopChestSo[_test].coinCost);
+        uiManager.SpendGems(shopChestSo[_test].gemCost);
+        Dependencies.Instance.LootBoxes.AddLootBox(new LootBoxData(shopChestSo[_test].lootBox, DateTime.UtcNow));
     }
 
     public void DisablePanel()
@@ -76,11 +82,5 @@ public class ItemShop : MonoBehaviour
                 disablePanel[i].SetActive(false);
             }
         }
-    }
-
-    public void GemGererator()
-    {
-        uiManager.SpendGems(-5000);
-        LoadPanel();
     }
 }
