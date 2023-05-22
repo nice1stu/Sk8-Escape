@@ -51,7 +51,7 @@ public class PopupWindow : MonoBehaviour
         popupWindowConfirmation.SetActive(false);
         shop.CheckPurchase();
         shop.DisablePanel();
-        ShowPopupMessage("Purchase successful");
+        // ShowPopupMessage("Purchase successful");
     }
     
 }

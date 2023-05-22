@@ -66,6 +66,7 @@ public class ItemShop : MonoBehaviour
         uiManager.SpendCoins(shopChestSo[_test].coinCost);
         uiManager.SpendGems(shopChestSo[_test].gemCost);
         Dependencies.Instance.LootBoxes.AddLootBox(new LootBoxData(shopChestSo[_test].lootBox, DateTime.UtcNow));
+        popupWarning.ShowPopupMessage("Purchase successful");
     }
 
     public void DisablePanel()
