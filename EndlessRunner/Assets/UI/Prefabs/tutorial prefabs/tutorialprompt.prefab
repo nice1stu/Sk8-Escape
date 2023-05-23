@@ -2216,11 +2216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5115900386535537149, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_text
-      value: 'SlowMo:
-
-        Slows time itself...
-
-        ...For a while.'
+      value: "SlowMo: \ndouble tap to slow time!\n...For a while."
       objectReference: {fileID: 0}
     - target: {fileID: 5115900386535537149, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_fontSize
@@ -2256,7 +2252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6689561525818995210, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -20
+      value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
