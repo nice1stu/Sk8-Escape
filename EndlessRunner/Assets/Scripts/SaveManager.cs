@@ -15,6 +15,7 @@ public class SaveManager : MonoBehaviour
     public int SaveTotalCoins { get; set; }
     public int SaveHighScore { get; set; }
 
+    int maxAttempts = 5;
     public static bool DoneLoading;
     
     
@@ -129,9 +130,14 @@ public class SaveManager : MonoBehaviour
 
             DoneLoading = true;
         }
-        else
+        else 
         {
-            StartCoroutine(GetStats());
+            if (maxAttempts > 0)
+            {
+                StartCoroutine(GetStats());
+                maxAttempts--;
+            }
+            else DoneLoading = true;
         }
     }
 }
