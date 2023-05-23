@@ -9,6 +9,7 @@ namespace Player
         private Transform[] _grindPath;
         private float _gravityCache;
         private float elapsed;
+        private PlayerScoreModel HUD;
 
         public override void Enter(PlayerController playerController)
         {
@@ -20,12 +21,15 @@ namespace Player
             playerController.rb.gravityScale = 0;
             playerController.rb.velocity = new Vector2(playerController.rb.velocity.x, 0);
             elapsed = 0f;
+            HUD = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
             if(playerController.grindParticles != null)
                 playerController.grindParticles.Play();
         }
 
         protected override void UpdateInternal(PlayerController playerController)
         {
+            Debug.Log("We are grinding");
+            HUD.AddToScore(75 * Time.deltaTime);
             playerController.canGrind = GrindingRail.IsWithinXBounds(playerController.transform.position, _grindPath);
 
             if (!playerController.canGrind)
@@ -39,6 +43,7 @@ namespace Player
                 playerController.rb.velocity = LerpToRail(playerController);
                 elapsed += Time.fixedDeltaTime;
             }
+
             else
                 playerController.rb.velocity = FollowRailVelocity(playerController.rb);
         }

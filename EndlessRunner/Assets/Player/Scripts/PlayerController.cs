@@ -108,6 +108,8 @@ namespace Player
             tap = playerInput.actions.FindAction("Tap");
             slowmoCoolDownTimer = new Stopwatch();
 
+            oldTimeScale = Time.timeScale;
+
 
             // Transitions
             var coast = new CoastState();
@@ -203,6 +205,7 @@ namespace Player
             {
                 Time.timeScale = oldTimeScale;
             }
+            Time.timeScale = oldTimeScale;
         }
 
         IEnumerator SlowmoCoolDown()
@@ -391,6 +394,8 @@ namespace Player
             int count = _col.GetContacts(_collisionBuffer);
             for (int i = 0; i < count; i++)
             {
+                
+                
                 if (((1 << _collisionBuffer[i].collider.gameObject.layer) & model.groundLayers) == 0) continue;
 
                 if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.up) < model.maxGroundAngle)
@@ -400,8 +405,19 @@ namespace Player
 
                 if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.left) < model.maxWallAngle)
                 {
+                    if (deathHandler.invincible == true)
+                    {
+                        //Physics.IgnoreCollision(_collisionBuffer[i].rigidbody.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+                        _collisionBuffer[i].collider.enabled = false;
+                        continue;
+                    }
+                    
                     wallNormal = _collisionBuffer[i].normal;
                     walled = deathHandler.OnDeath();
+                    if (walled == false)
+                    {
+                        _collisionBuffer[i].collider.enabled = false;
+                    }
                 }
             }
         }
