@@ -57,6 +57,7 @@ public class GameplayResults : MonoBehaviour
         if (currentScore > _saveManager.SaveHighScore) // highScoreFrom stewart 
         {
             _saveManager.SaveHighScore = currentScore; // newHighScore save to stewart
+            Social.ReportScore(currentScore,GPGSIds.leaderboard_leaderboard, _ => {}); //upload score to the leaderboard
         }
         
         highScoreText.text = $"{highScoreTranslation}: {_saveManager.SaveHighScore}"; //should get the saved file from stewart to display
