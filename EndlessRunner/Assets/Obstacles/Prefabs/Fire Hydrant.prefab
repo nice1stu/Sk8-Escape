@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2543834365193826224}
   - component: {fileID: 393827430843920544}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fire Hydrant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 3879581583149948697}
   - component: {fileID: 1493717241011318445}
   - component: {fileID: 1289642889117051535}
+  - component: {fileID: 2625466804056906852}
   m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
@@ -156,3 +157,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.46704456, y: 2.2115653}
   m_EdgeRadius: 0
+--- !u!50 &2625466804056906852
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3155640333299860475}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

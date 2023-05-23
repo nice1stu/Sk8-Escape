@@ -30,8 +30,6 @@ namespace Player
         private InputAction dragActionLeft;
         private InputAction touch;
         private InputAction tap;
-        private InputAction touchDownAction;
-        private InputAction touchUpAction;
         private PlayerInput playerInput;
 
         private bool SwipeLock = false;
@@ -59,7 +57,6 @@ namespace Player
             touch.performed += OnTouchDownPerformed;
             touch.canceled += TouchStopped;
             tap.performed += Tap;
-            touchDownAction.performed += OnTouchDownPerformed;
 
 
             scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
@@ -78,7 +75,6 @@ namespace Player
             dragActionLeft.performed -= SwipeLeftReceived;
             touch.canceled -= TouchStopped;
             tap.performed -= Tap;
-            touchDownAction.performed -= OnTouchDownPerformed;
         }
 
         // Variables
@@ -104,11 +100,14 @@ namespace Player
             slowmoCoolDownTimer = new Stopwatch();
             touch.performed += context => Debug.Log("Touch Down Performed");
 
-            var swipeActionUp = new SwipeInputAction(dragActionUp, touch, touchUpAction);
-            var swipeActionDown = new SwipeInputAction(dragActionDown, touch, touchUpAction);
-            var swipeActionRight = new SwipeInputAction(dragActionRight, touch, touchUpAction);
+            var swipeActionUp = new SwipeInputAction(dragActionUp, touch, touch);
+            var swipeActionDown = new SwipeInputAction(dragActionDown, touch, touch);
+            var swipeActionRight = new SwipeInputAction(dragActionRight, touch, touch);
             
             
+            oldTimeScale = Time.timeScale;
+
+
             // Transitions
             var coast = new CoastState();
             var ollie = new OllieState(0.45f);
@@ -203,6 +202,7 @@ namespace Player
             {
                 Time.timeScale = oldTimeScale;
             }
+            Time.timeScale = oldTimeScale;
         }
 
         IEnumerator SlowmoCoolDown()
@@ -266,7 +266,7 @@ namespace Player
                 Debug.Log("Tap!");
                 tappedOnce = true;
                 StartCoroutine(DoubleTapCooldown());
-                CheckInteract();
+                //CheckInteract();
             }
             else
             {
@@ -334,6 +334,8 @@ namespace Player
 
         private void CheckInteract()
         {
+            if(interactBuffer == null)
+                return; 
             int count = Physics2D.OverlapCircleNonAlloc(transform.position, model.interactRadius, interactBuffer,
                 model.groundLayers);
             for (int i = 0; i < count; i++)
@@ -385,6 +387,8 @@ namespace Player
             int count = _col.GetContacts(_collisionBuffer);
             for (int i = 0; i < count; i++)
             {
+                
+                
                 if (((1 << _collisionBuffer[i].collider.gameObject.layer) & model.groundLayers) == 0) continue;
 
                 if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.up) < model.maxGroundAngle)
@@ -394,8 +398,19 @@ namespace Player
 
                 if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.left) < model.maxWallAngle)
                 {
+                    if (deathHandler.invincible == true)
+                    {
+                        //Physics.IgnoreCollision(_collisionBuffer[i].rigidbody.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+                        _collisionBuffer[i].collider.enabled = false;
+                        continue;
+                    }
+                    
                     wallNormal = _collisionBuffer[i].normal;
                     walled = deathHandler.OnDeath();
+                    if (walled == false)
+                    {
+                        _collisionBuffer[i].collider.enabled = false;
+                    }
                 }
             }
         }

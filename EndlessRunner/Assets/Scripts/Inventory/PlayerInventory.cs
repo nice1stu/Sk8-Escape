@@ -16,8 +16,24 @@ namespace Inventory
             _items.Add(item);
             ItemAdded?.Invoke(item);
         }
-        public void Load(IEnumerable<IItemData> items){
+        public void Load(IEnumerable<IItemData> items, int[] indices){
             _items = items.ToList();
+            LoadEquip(items.ToArray(),indices);
+        }
+        public void Load(int[] indices)
+        {
+            for (var i = 0; i < indices.Length; i++)
+            {
+                foreach (var item in Items)
+                {
+                    if (Array.IndexOf(Items.ToArray(), item) == indices[i])
+                    {
+                        
+                    }
+                }
+            }
+
+            
         }
         public event Action<IItemData> ItemAdded;
     }
