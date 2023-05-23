@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Firebase.Auth;
+using Firebase.Database;
 using Item;
 using Stat;
 using UnityEngine;
@@ -70,6 +72,8 @@ namespace Inventory
             var inventory = new SerializableInventory(data);
             var json = JsonUtility.ToJson(inventory);
             File.WriteAllText(Application.persistentDataPath + "/inventory.save.json", json);
+            //var username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+            //FirebaseDatabase.DefaultInstance.RootReference.Child("lootBoxes").Child(username).SetRawJsonValueAsync(json);
         }
         
         private void SaveEquip(IItemData itemData)
@@ -91,6 +95,8 @@ namespace Inventory
             
             var json = JsonUtility.ToJson(new SeralizableIntArray(indices));
             File.WriteAllText(Application.persistentDataPath + "/equip.save.json", json);
+            // var username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+            //FirebaseDatabase.DefaultInstance.RootReference.Child("lootBoxes").Child(username).SetRawJsonValueAsync(json);
         }
         public int[] LoadEquip()
         {

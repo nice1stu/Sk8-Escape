@@ -1,4 +1,3 @@
-using System;
 using Ads.Scripts;
 using Lean.Localization;
 using Player;
@@ -15,7 +14,6 @@ public class GameplayResults : MonoBehaviour
     public TextMeshProUGUI coinsCollectedText;
 
     public PlayerScoreModel _scoreManager;
-    public SaveManager _saveManager;
     public AdRewardedDisplay ads;
     public RunInventoryManager cointest;
     public Button adButton;
@@ -34,7 +32,7 @@ public class GameplayResults : MonoBehaviour
 
     private void OnEnable()
     {
-         _saveManager.LoadData(); //loading from saveFile (stewarts thing)
+         // _saveManager.LoadData(); //loading from saveFile (stewarts thing)
         int currentScore = (int)_scoreManager.GetScore(); // sets/shows score
         
         string scoreTranslation     = LeanLocalization.GetTranslationText(scorePhraseName);
@@ -52,16 +50,16 @@ public class GameplayResults : MonoBehaviour
         int currentCoin = cointest.GetCoinAmount();
         coinsCollectedText.text = $" {currentCoin}";
         
-        _saveManager.SaveTotalCoins += cointest.GetCoinAmount();
+        SaveManager.SaveTotalCoins += cointest.GetCoinAmount();
 
-        if (currentScore > _saveManager.SaveHighScore) // highScoreFrom stewart 
+        if (currentScore > SaveManager.SaveHighScore) // highScoreFrom stewart 
         {
-            _saveManager.SaveHighScore = currentScore; // newHighScore save to stewart
+            SaveManager.SaveHighScore = currentScore; // newHighScore save to stewart
             Social.ReportScore(currentScore,GPGSIds.leaderboard_leaderboard, _ => {}); //upload score to the leaderboard
         }
         
-        highScoreText.text = $"{highScoreTranslation}: {_saveManager.SaveHighScore}"; //should get the saved file from stewart to display
-        _saveManager.SaveGameData(); //hope this was enough to save after each
+        highScoreText.text = $"{highScoreTranslation}: {SaveManager.SaveHighScore}"; //should get the saved file from stewart to display
+        SaveManager.SaveGameData(); //hope this was enough to save after each
         
         DisableAdButton();
     }
@@ -103,11 +101,11 @@ public class GameplayResults : MonoBehaviour
     {
         //string coinsTranslation     = LeanLocalization.GetTranslationText(coinsPhraseName);
         
-        _saveManager.SaveTotalCoins +=  cointest.GetCoinAmount();
+        SaveManager.SaveTotalCoins +=  cointest.GetCoinAmount();
         coinsCollectedText.text = $"{cointest.GetCoinAmount() * 2}";
         
         
-        _saveManager.SaveGameData(); //hope this was enough to save after each
+        SaveManager.SaveGameData(); //hope this was enough to save after each
     }
 
     public void DisableAdButton()
