@@ -94,10 +94,10 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void SpawnPowerUp()
     {
-        if (Random.Range(1, 100) <= 50) // 5% chance
+        if (Random.Range(1, 100) <= 5) // 5% chance
         {
-            //Same here instantiate the powerUp at obstacleSpawner ( the buffer between obstacles )
-            Instantiate(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)], transform.position + new Vector3(4,0,0), transform.rotation);
+            //Same here instantiate the powerUp at obstacleSpawner ( the buffer 1.5f was between the obstacles)
+            Instantiate(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)], transform.position + new Vector3(1.5f,0,0), transform.rotation);
         }
     }
     
