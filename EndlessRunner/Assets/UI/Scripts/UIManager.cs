@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SocialPlatforms;
 
 namespace UI.Scripts
 {
@@ -49,6 +50,11 @@ public class UIManager : MonoBehaviour
     public int GetGems()
     {
         return saveManager.SaveTotalGems;
+    }
+
+    public void ShowLeaderboard()
+    {
+        Social.ShowLeaderboardUI();
     }
     
 }
