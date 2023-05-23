@@ -62,6 +62,8 @@ public class GameplayResults : MonoBehaviour
         
         highScoreText.text = $"{highScoreTranslation}: {_saveManager.SaveHighScore}"; //should get the saved file from stewart to display
         _saveManager.SaveGameData(); //hope this was enough to save after each
+        
+        DisableAdButton();
     }
 
     private void OnDisable()
@@ -106,5 +108,13 @@ public class GameplayResults : MonoBehaviour
         
         
         _saveManager.SaveGameData(); //hope this was enough to save after each
+    }
+
+    public void DisableAdButton()
+    {
+        if (cointest.GetCoinAmount() == 0)
+        {
+            adButton.interactable = false;
+        }
     }
 }
