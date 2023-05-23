@@ -388,6 +388,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1184403657}
     m_Modifications:
+    - target: {fileID: 1746297722, guid: b30389d801d1a6d41bfddc2966f9c90b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2453601585556133864, guid: b30389d801d1a6d41bfddc2966f9c90b, type: 3}
       propertyPath: m_Name
       value: IntroScreen
@@ -476,5 +480,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1777518664, guid: b30389d801d1a6d41bfddc2966f9c90b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b30389d801d1a6d41bfddc2966f9c90b, type: 3}
