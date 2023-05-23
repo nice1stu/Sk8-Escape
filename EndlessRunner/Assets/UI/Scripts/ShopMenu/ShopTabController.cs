@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ShopTabController : MonoBehaviour
 {
@@ -9,9 +6,6 @@ public class ShopTabController : MonoBehaviour
     public GameObject gemTab;
     public GameObject chestTabEnable;
     public GameObject gemTabEnable;
-    
-    // public Button chestTabButton;
-    // public Button gemTabButton;
 
     private void Start()
     {
