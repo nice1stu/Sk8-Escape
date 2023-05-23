@@ -16,7 +16,7 @@ public class GameplayResults : MonoBehaviour
 
     public PlayerScoreModel _scoreManager;
     public SaveManager _saveManager;
-    public AdInterstitialDisplay ads;
+    public AdRewardedDisplay ads;
     public RunInventoryManager cointest;
     public Button adButton;
     public static bool hasPlayedAd;
