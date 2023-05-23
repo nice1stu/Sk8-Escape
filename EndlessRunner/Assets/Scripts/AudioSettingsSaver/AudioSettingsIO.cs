@@ -28,6 +28,7 @@ namespace AudioSettingsSaver
             get => _volume;
             set
             {
+                value = Mathf.Clamp01(value);
                 _volume = value;
                 PlayerPrefs.SetFloat(_channelName+"_Volume", value);
                 UpdateMixerVolume();
