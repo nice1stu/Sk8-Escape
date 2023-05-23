@@ -50,23 +50,22 @@ public class SaveManager : MonoBehaviour
     public void LoadData()
     {
         var path = Application.persistentDataPath + "/stats.save.json";
-       
-        if (File.Exists(path))
-        {
-            var json = File.ReadAllText(path);
-            var localData = JsonUtility.FromJson<GameData>(json);
-            localTimeStamp = localData.timeStamp;
+        
+        if (!File.Exists(path)) return;
+        
+        var json = File.ReadAllText(path);
+        var localData = JsonUtility.FromJson<GameData>(json);
+        localTimeStamp = localData.timeStamp;
 
-            //get the most up to date data stats
-            if (localTimeStamp > onlineTimeStamp)
-            {
-                LoadSaveFile(localData);
-            }
-            else
-            {
-                LoadSaveFile(onlineData);
-                UpdateUIAndSave();
-            }
+        //get the most up to date data stats
+        if (localTimeStamp > onlineTimeStamp)
+        {
+            LoadSaveFile(localData);
+        }
+        else
+        {
+            LoadSaveFile(onlineData);
+            UpdateUIAndSave();
         }
     }
 
@@ -98,7 +97,10 @@ public class SaveManager : MonoBehaviour
             playerHighScore = SaveHighScore,
             timeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
         };
-
+        
+#if UNITY_EDITOR
+        data.username = "player";
+#endif
         var json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/stats.save.json", json);
         if(data.username != String.Empty) FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(data.username).SetRawJsonValueAsync(json);
@@ -109,7 +111,11 @@ public class SaveManager : MonoBehaviour
     public IEnumerator GetStats()
     {
         yield return new WaitForSeconds(1);
-        var userData = FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(PlayGamesPlatform.Instance.localUser.userName).GetValueAsync();
+        string username = PlayGamesPlatform.Instance.localUser.userName;
+#if UNITY_EDITOR
+        username = "player";
+#endif        
+        var userData = FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(username).GetValueAsync();
         yield return new WaitUntil(predicate: () => userData.IsCompleted);
         
         DataSnapshot snapshot = userData.Result;
@@ -117,6 +123,7 @@ public class SaveManager : MonoBehaviour
         {
             onlineData = JsonUtility.FromJson<GameData>(snapshot.GetRawJsonValue());
             onlineTimeStamp = onlineData.timeStamp;
+            
             //if the local data doesnt exist load online data
             if (localTimeStamp == 0)
             {
