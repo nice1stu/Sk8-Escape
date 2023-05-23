@@ -14,6 +14,8 @@ namespace Player
             playerController.view.PlayOllieAnim();
             playerController.AddToCurrentVelocity(Vector2.up * playerController.model.ollieJumpForce);
 
+            if(playerController.trickParticles != null)
+                playerController.trickParticles.Play();
         }
     }
 }

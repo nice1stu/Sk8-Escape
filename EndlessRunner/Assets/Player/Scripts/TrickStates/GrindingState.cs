@@ -14,6 +14,7 @@ namespace Player
         public override void Enter(PlayerController playerController)
         {
             base.Enter(playerController);
+            Debug.Log("Entered grinding");
             playerController.isGrinding = true;
             _grindPath = playerController.grindPath;
             _gravityCache = playerController.rb.gravityScale;
@@ -52,6 +53,7 @@ namespace Player
         {
             base.Exit(playerController);
             playerController.rb.gravityScale = _gravityCache;
+            playerController.isGrinding = false;
             if (playerController.grindParticles != null)
                 playerController.grindParticles.Stop();
         }
