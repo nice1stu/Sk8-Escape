@@ -22,14 +22,14 @@ namespace Ads.Scripts
             InitializeAds();
         }
 
-        private void Update()
-        {
-            //Run the ad
-            if (Advertisement.isInitialized && !adStarted)
-            {
-                LoadAd();
-            }
-        }
+           /*private void Update()
+           {
+               //Run the ad
+               if (Advertisement.isInitialized && !adStarted)
+               {
+                   LoadAd();
+               }
+           }*/
 
         public void InitializeAds()
         {
@@ -96,7 +96,7 @@ namespace Ads.Scripts
 
         public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
