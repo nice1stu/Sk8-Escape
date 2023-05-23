@@ -57,24 +57,15 @@ namespace Inventory.Scripts
             LootBoxRemoved?.Invoke(slotIndex, lootBox);
             //Use ItemFactory to create items
             List<IItemData> items = new List<IItemData>();
-            foreach (var item in lootBox.Config.LootChances)
-            {
-                //Randomize the possibility to get a better item
-                var itemPossibility = Random.Range(0, 100);
-                if (itemPossibility < item.chance)
-                {
-                    //TODO: randomize which rarity and give bonus stats based on rarity.
-                    SwitchRarity(item);
-                    items.Add(_itemFactory.CreateItem(item.itemConfig));
-                    break;
-                }
-            }
-            if (items.Count == 0)
-            {
-                var item = lootBox.Config.LootChances[0];
-                SwitchRarity(item);
-                items.Add(_itemFactory.CreateItem(item.itemConfig));
-            }
+            // calculate total weight
+            // random roll (0...total weight exclusive)
+            // current total weight = 0
+            // for loop over all weights
+            // current total weight += current weight
+            // if random number from before less than current total weight
+            //   return item
+            var item = ProbabilityCheck(lootBox);
+            items.Add(item);
             LootBoxOpened?.Invoke(lootBox, items.ToArray());
         }
 
@@ -83,32 +74,26 @@ namespace Inventory.Scripts
             _slots = lootBoxes.ToArray();
         }
 
-        private void SwitchRarity(LootChance item)
+        public IItemData ProbabilityCheck (ILootBoxData lootbox)
         {
-            var rarityItem = Random.Range(0, 3);
-            switch (rarityItem)
+            var weights = lootbox.Config.LootChances;
+            int totalWeight = 0;
+            foreach (var configLootChance in weights)
             {
-                case 0:
+                totalWeight += configLootChance.chance;
+            }
+            int randomWeight = UnityEngine.Random.Range(0, totalWeight);
+            for (int i = 0;i < weights.Length; ++i)
+            {
+                randomWeight -= weights[i].chance;
+                if (randomWeight < 0)
                 {
-                    item.itemConfig.BonusStats = 1;
-                    break;
-                }
-                case 1:
-                {
-                    item.itemConfig.BonusStats = 3;
-                    break;
-                }
-                case 2:
-                {
-                    item.itemConfig.BonusStats = 5;
-                    break;
-                }
-                case 3:
-                {
-                    item.itemConfig.BonusStats = 7;
-                    break;
+                    IItemData item = _itemFactory.CreateItem(weights[i].itemConfig);
+                    return item;
                 }
             }
+
+            return null;
         }
 
         
