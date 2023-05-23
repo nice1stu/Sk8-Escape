@@ -34,7 +34,7 @@ public class SoundManager : MonoBehaviour
                Debug.Log("playing sound");
            }
        }
-       if (collision.gameObject.layer == targetLayer)
+       if (targetLayer == (targetLayer | (1 << collision.gameObject.layer)))
        {
            Debug.Log("crashed");
           audioSource.Stop();
