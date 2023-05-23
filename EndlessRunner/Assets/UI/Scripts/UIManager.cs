@@ -15,8 +15,7 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
-        coinView.text = saveManager.SaveTotalCoins.ToString();
-        gemsView.text = saveManager.SaveTotalGems.ToString();
+        UpdateUI();
     }
 
     public int GetCoins()
@@ -55,6 +54,12 @@ public class UIManager : MonoBehaviour
     public void ShowLeaderboard()
     {
         Social.ShowLeaderboardUI();
+    }
+
+    public void UpdateUI()
+    {
+        coinView.text = saveManager.SaveTotalCoins.ToString();
+        gemsView.text = saveManager.SaveTotalGems.ToString();
     }
     
 }
