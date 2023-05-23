@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using Firebase.Auth;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
@@ -9,19 +11,22 @@ namespace Backend.Scripts
     {
         void Start()
         {
+#if UNITY_ANDROID
+            
             PlayGamesPlatform.DebugLogEnabled = true;
-            Debug.Log("activate");
             PlayGamesPlatform.Activate();
-            Debug.Log("start");
             PlayGamesPlatform.Instance.Authenticate(ProcessAutomaticAuth);
+#else 
+            FirebaseAuth auth = FirebaseAuth.DefaultInstance;
+            auth.SignInAnonymouslyAsync().ContinueWith(ContinueWithLogin);
+#endif
         }
+#if UNITY_ANDROID
 
         private static void ProcessAutomaticAuth(SignInStatus status)
         {
-            Debug.Log("authenticate");
             if (status != SignInStatus.Success)
             {
-                Debug.Log("not signed in");
                 PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessManualAuth);
             }
             else
@@ -32,38 +37,28 @@ namespace Backend.Scripts
 
         private static void ProcessManualAuth(SignInStatus status)
         {
-            Debug.Log("authenticate second");
-            if (status != SignInStatus.Success)
-            {
-                Debug.Log("not signed in second");
-                return;
-            }
+            if (status != SignInStatus.Success) return;
 
-            Debug.Log("sign in success");
             PlayGamesPlatform.Instance.RequestServerSideAccess(true, code =>
             {
-                Debug.Log("requested server access");
                 FirebaseAuth auth = FirebaseAuth.DefaultInstance;
                 Credential credential = PlayGamesAuthProvider.GetCredential(code);
-                auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
-                {
-                    Debug.Log("what happens next");
-                    if (task.IsCanceled)
-                    {
-                        Debug.Log("cancelled");
-                    }
-                    else if (task.IsFaulted)
-                    {
-                        // error  task.Exception
-                        Debug.Log("error" + task.Exception);
-                    }
-                    else
-                    {
-                        FirebaseUser newUser = task.Result;
-                        Debug.Log("done");
-                    }
-                });
+                auth.SignInWithCredentialAsync(credential).ContinueWith(ContinueWithLogin);
             });
         }
+#endif
+        private static void ContinueWithLogin(Task<FirebaseUser> task)
+        {
+                if (task.IsCanceled) Debug.Log("cancelled");
+                else if (task.IsFaulted)
+                {
+                    Debug.Log("error" + task.Exception);
+                }
+                else
+                {
+                    FirebaseUser newUser = task.Result;
+                } 
+        }
+        
     }
 }
