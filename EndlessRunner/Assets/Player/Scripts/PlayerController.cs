@@ -56,13 +56,10 @@ namespace Player
             dragActionDown.performed += SwipeDownReceived;
             dragActionRight.performed += SwipeRightReceived;
             dragActionLeft.performed += SwipeLeftReceived;
+            touch.performed += OnTouchDownPerformed;
             touch.canceled += TouchStopped;
             tap.performed += Tap;
             touchDownAction.performed += OnTouchDownPerformed;
-            touchUpAction.performed += OnTouchUpPerformed;
-            
-            
-            
 
 
             scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
@@ -82,7 +79,6 @@ namespace Player
             touch.canceled -= TouchStopped;
             tap.performed -= Tap;
             touchDownAction.performed -= OnTouchDownPerformed;
-            touchUpAction.performed -= OnTouchUpPerformed;
         }
 
         // Variables
@@ -103,11 +99,10 @@ namespace Player
             dragActionDown = playerInput.actions.FindAction("SwipeDown");
             dragActionLeft = playerInput.actions.FindAction("SwipeLeft");
             dragActionRight = playerInput.actions.FindAction("SwipeRight");
-            touchDownAction = playerInput.actions.FindAction("TouchDown");
-            touchUpAction = playerInput.actions.FindAction("TouchUp");
             touch = playerInput.actions.FindAction("Touch");
             tap = playerInput.actions.FindAction("Tap");
             slowmoCoolDownTimer = new Stopwatch();
+            touch.performed += context => Debug.Log("Touch Down Performed");
 
             var swipeActionUp = new SwipeInputAction(dragActionUp, touch, touchUpAction);
             var swipeActionDown = new SwipeInputAction(dragActionDown, touch, touchUpAction);
@@ -138,11 +133,11 @@ namespace Player
             new CoffinTransition(coast, coffin, swipeActionDown);
 
             // Transitions to grind
-            new GrindTransition(coast, grind, touchDownAction);
-            new GrindTransition(ollie, grind, touchDownAction);
-            new GrindTransition(kickflip, grind, touchDownAction);
-            new GrindTransition(shuvit, grind, touchDownAction);
-            new GrindTransition(falling, grind, touchDownAction);
+            new GrindTransition(coast, grind, touch);
+            new GrindTransition(ollie, grind, touch);
+            new GrindTransition(kickflip, grind, touch);
+            new GrindTransition(shuvit, grind, touch);
+            new GrindTransition(falling, grind, touch);
 
             // Transitions to falling
             new FallingTransition(coast, falling);
@@ -151,7 +146,7 @@ namespace Player
             new FallingTransition(shuvit, falling);
             new FallingTransition(coffin, falling);
             new FallingTransition(grind, falling);
-            new InputTransition(grind, falling, touchUpAction); // add holding here
+            new InputTransition(grind, falling, touch, true); // add holding here
 
             // Crash Transitions
             new CrashTransition(coast, crashed);
@@ -295,12 +290,9 @@ namespace Player
         private void OnTouchDownPerformed(InputAction.CallbackContext context)
         {
             Debug.Log("TouchDown");
+            CheckInteract();
         }
-
-        private void OnTouchUpPerformed(InputAction.CallbackContext context)
-        {
-            Debug.Log("TouchUp");
-        }
+        
 
         #endregion
 

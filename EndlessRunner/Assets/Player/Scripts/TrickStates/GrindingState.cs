@@ -13,6 +13,7 @@ namespace Player
         public override void Enter(PlayerController playerController)
         {
             base.Enter(playerController);
+            Debug.Log("Entered grinding");
             playerController.isGrinding = true;
             _grindPath = playerController.grindPath;
             _gravityCache = playerController.rb.gravityScale;
