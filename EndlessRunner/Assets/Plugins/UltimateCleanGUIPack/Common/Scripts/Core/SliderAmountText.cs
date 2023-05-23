@@ -23,6 +23,7 @@ namespace UltimateClean
 
         public string Suffix;
         public bool WholeNumber = true;
+        public bool Percent = true;
 
         private TextMeshProUGUI text;
 
@@ -49,10 +50,15 @@ namespace UltimateClean
 
         private void SetAmountText(float value)
         {
+            if (Percent)
+            {
+                text.text = $"{Math.Round(value*100)}{Suffix}";
+                return;
+            }
             if (WholeNumber)
                 text.text = $"{(int)value}{Suffix}";
             else
-                text.text = $"{Math.Round(value, 2)}{Suffix}";
+                text.text = $"{Math.Round(value)}{Suffix}";
         }
     }
 }

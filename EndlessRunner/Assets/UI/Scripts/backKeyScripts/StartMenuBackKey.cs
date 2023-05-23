@@ -24,4 +24,11 @@ public class StartMenuBackKey : MonoBehaviour
         }
 
     }
+
+    void Start()
+    {
+        // TODO: remove temporary hack that fixes audio settings
+        Dependencies.Instance.Audio.Music.Muted = Dependencies.Instance.Audio.Music.Muted;
+        Dependencies.Instance.Audio.Sfx.Muted = Dependencies.Instance.Audio.Sfx.Muted;
+    }
 }
