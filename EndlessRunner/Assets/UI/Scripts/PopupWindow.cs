@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using TMPro;
 
@@ -37,21 +36,22 @@ public class PopupWindow : MonoBehaviour
         popupWindowConfirmation.SetActive(true);
         // Set the message text
         confiramtionText.text = message;
+        shop.LoadPanel();
     }
     
     // Method to hide the popup window
     public void HidePopupConfirmation()
     {
         // Disable the popup window game object
-        popupWindowConfirmation.SetActive(false);
-        shop.LoadPanel();
+        popupWindowConfirmation.SetActive(false);   
     }
 
     public void confirmationSuccess()
     { // Disable the popup window game object
         popupWindowConfirmation.SetActive(false);
-        ShowPopupMessage("Purchase successful");
         shop.CheckPurchase();
+        shop.DisablePanel();
+        // ShowPopupMessage("Purchase successful");
     }
     
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "shopMenu", menuName = "Scriptable Objects/ New Gem Pack", order = 3)]
 public class ShopGemSo : ScriptableObject

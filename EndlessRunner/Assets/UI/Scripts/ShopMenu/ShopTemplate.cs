@@ -1,8 +1,5 @@
-
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-
 public class ShopTemplate : MonoBehaviour
 {
     public TMP_Text titleTxt;
