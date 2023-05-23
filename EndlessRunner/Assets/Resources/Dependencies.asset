@@ -21,7 +21,6 @@ MonoBehaviour:
         grindMiniGameBallSize: 0
         grindLeniency: 0
         scoreMultiplier: 0
-      itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
     items:
     - bonusStats:
         coffinTimeAdded: 0
@@ -30,7 +29,6 @@ MonoBehaviour:
         grindMiniGameBallSize: 0
         grindLeniency: 0
         scoreMultiplier: 0
-      itemConfig: {fileID: 11400000, guid: 09f3ff1d1a9c5487d91068175f9033b1, type: 2}
     - bonusStats:
         coffinTimeAdded: 0
         stability: 0
@@ -38,7 +36,6 @@ MonoBehaviour:
         grindMiniGameBallSize: 0
         grindLeniency: 0
         scoreMultiplier: 0
-      itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
     - bonusStats:
         coffinTimeAdded: 0
         stability: 0
@@ -46,7 +43,6 @@ MonoBehaviour:
         grindMiniGameBallSize: 0
         grindLeniency: 0
         scoreMultiplier: 0
-      itemConfig: {fileID: 11400000, guid: 09f3ff1d1a9c5487d91068175f9033b1, type: 2}
     - bonusStats:
         coffinTimeAdded: 0
         stability: 0
@@ -54,7 +50,6 @@ MonoBehaviour:
         grindMiniGameBallSize: 0
         grindLeniency: 0
         scoreMultiplier: 0
-      itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
     - bonusStats:
         coffinTimeAdded: 0
         stability: 0
@@ -62,7 +57,6 @@ MonoBehaviour:
         grindMiniGameBallSize: 0
         grindLeniency: 0
         scoreMultiplier: 0
-      itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
     - bonusStats:
         coffinTimeAdded: 0
         stability: 0
@@ -70,28 +64,9 @@ MonoBehaviour:
         grindMiniGameBallSize: 0
         grindLeniency: 0
         scoreMultiplier: 0
-      itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
     equippedItemIndex: 3
   dummyItem: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
   itemDataBase: {fileID: 11400000, guid: 4294f6ae730b5d24eb27075ad78a2e12, type: 2}
   lootBoxDataBase: {fileID: 11400000, guid: 0425ffe47999c5f47bcbedbfbdc9ad13, type: 2}
-  _dummyLootBoxInventory:
-    openEventLootBox:
-      config: {fileID: 11400000, guid: 8d9f69dff66074edfacc187d1eb83b6d, type: 2}
-    openEventItems:
-    - bonusStats:
-        coffinTimeAdded: 0
-        stability: 0
-        vision: 0
-        grindMiniGameBallSize: 0
-        grindLeniency: 0
-        scoreMultiplier: 0
-      itemConfig: {fileID: 11400000, guid: bd665375e50663744945d3cca18c3387, type: 2}
-    - bonusStats:
-        coffinTimeAdded: 0
-        stability: 0
-        vision: 0
-        grindMiniGameBallSize: 0
-        grindLeniency: 0
-        scoreMultiplier: 0
-      itemConfig: {fileID: 11400000, guid: 09f3ff1d1a9c5487d91068175f9033b1, type: 2}
+  MusicGroup: {fileID: 3009413916902391419, guid: eb3c33a94b720a24793197101de02ae0, type: 2}
+  SFXGroup: {fileID: 5499106686247727651, guid: eb3c33a94b720a24793197101de02ae0, type: 2}
