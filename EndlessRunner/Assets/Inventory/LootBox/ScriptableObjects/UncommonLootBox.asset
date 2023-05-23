@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e63fdbc5dead043a2c73a3efe83bc8, type: 3}
   m_Name: UncommonLootBox
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: f6dd0f711c0b747c68fb58f97613e91f, type: 3}
-  boxOpen: {fileID: 21300000, guid: 7688ce6c8dba94f85be4fd99990cec7c, type: 3}
+  icon: {fileID: 21300000, guid: 5674fbf6acb3541069b44a334bb0c5fc, type: 3}
+  boxOpen: {fileID: 21300000, guid: df65b7c410c374c46be864dc5e646636, type: 3}
   lootBoxName: Uncommon Loot Box
   id: lootbox.uncommon
   _minutesToOpen: 1
-  lootChances: []
+  lootChances:
+  - itemConfig: {fileID: 11400000, guid: f1bec8577a1644e4e8fc217aff694619, type: 2}
+    chance: 70
+  - itemConfig: {fileID: 11400000, guid: b44437e3ceea84644a60019552102ec7, type: 2}
+    chance: 25
+  - itemConfig: {fileID: 11400000, guid: d3dd408f74144bf48b32a469cac4c95d, type: 2}
+    chance: 5
   _openSfx: {fileID: 8300000, guid: 3f3ea1156e476e64fbf8abcfd128bf5e, type: 3}
