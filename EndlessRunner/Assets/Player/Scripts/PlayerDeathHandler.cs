@@ -15,8 +15,16 @@ public class PlayerDeathHandler : MonoBehaviour
     public float survivalRate;
     public bool invincible;
     public float defaultDukeTime = 1f;
-
+    public GameObject gamePlayResults;
+    public GameObject pauseButton;
     public int invicibilityTokens = 0;
+
+    private HUDInvincibility hudLogic;
+
+    private void Start()
+    {
+        hudLogic = GameObject.FindWithTag("HUD").GetComponentInChildren<HUDInvincibility>();
+    }
 
     public bool OnDeath()
     {
@@ -25,6 +33,10 @@ public class PlayerDeathHandler : MonoBehaviour
         {
             surviveFloat = -1;
             invicibilityTokens--;
+            if (invicibilityTokens == 0)
+            {
+                hudLogic.SetEnabled(false);
+            }
         }
 
         if (surviveFloat < survivalRate)
@@ -56,7 +68,8 @@ public class PlayerDeathHandler : MonoBehaviour
 
     void AfterDeath()
     {
-        SceneManager.LoadScene("GameplayResults");
+        gamePlayResults.SetActive(true);
+        pauseButton.SetActive(false);
     }
 
 
