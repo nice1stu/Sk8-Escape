@@ -67,24 +67,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "TouchDown",
-                    "type": "Button",
-                    "id": "d1706127-8dee-4469-9c33-fa79748ca250",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "TouchUp",
-                    "type": "Button",
-                    "id": "da6c7788-3700-42af-a656-e30be4a6ffef",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -228,50 +210,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwipeLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b87eb7ff-70a8-4a56-8a14-496797fa10f8",
-                    "path": "<Touchscreen>/primaryTouch/tap",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TouchDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1c0bf21e-8e15-4138-8aad-2efcd4daa473",
-                    "path": "<Keyboard>/space",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TouchDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a59ccbf8-5ea3-47b7-bd86-31e00a0bf73e",
-                    "path": "<Touchscreen>/primaryTouch/tap",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TouchUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4b56f3fa-77b8-4806-8891-ac199ece036d",
-                    "path": "<Keyboard>/space",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TouchUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

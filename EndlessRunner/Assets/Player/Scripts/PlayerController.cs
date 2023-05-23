@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using System.Diagnostics;
+using Player.Input;
 using Debug = UnityEngine.Debug; //Needed to stop the default C# diagnostics from taking over debug commands
 
 namespace Player
@@ -29,8 +30,6 @@ namespace Player
         private InputAction dragActionLeft;
         private InputAction touch;
         private InputAction tap;
-        private InputAction touchDownAction;
-        private InputAction touchUpAction;
         private PlayerInput playerInput;
 
         private bool SwipeLock = false;
@@ -55,19 +54,17 @@ namespace Player
             dragActionDown.performed += SwipeDownReceived;
             dragActionRight.performed += SwipeRightReceived;
             dragActionLeft.performed += SwipeLeftReceived;
+            touch.performed += OnTouchDownPerformed;
             touch.canceled += TouchStopped;
             tap.performed += Tap;
-            touchDownAction.performed += OnTouchDownPerformed;
-            touchUpAction.performed += OnTouchUpPerformed;
-            
-            
-            
 
 
             scoreModel = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
-            trickParticles = gameObject.GetComponentInChildren<ParticleSystem>();
-            if (trickParticles != null)
-                trickParticles.Play();
+            //trickParticles = gameObject.GetComponentInChildren<ParticleSystem>();
+            
+            trickParticles.Stop();
+            grindParticles.Stop();
+
         }
 
         private void OnDisable()
@@ -78,8 +75,6 @@ namespace Player
             dragActionLeft.performed -= SwipeLeftReceived;
             touch.canceled -= TouchStopped;
             tap.performed -= Tap;
-            touchDownAction.performed -= OnTouchDownPerformed;
-            touchUpAction.performed -= OnTouchUpPerformed;
         }
 
         // Variables
@@ -100,11 +95,17 @@ namespace Player
             dragActionDown = playerInput.actions.FindAction("SwipeDown");
             dragActionLeft = playerInput.actions.FindAction("SwipeLeft");
             dragActionRight = playerInput.actions.FindAction("SwipeRight");
-            touchDownAction = playerInput.actions.FindAction("TouchDown");
-            touchUpAction = playerInput.actions.FindAction("TouchUp");
             touch = playerInput.actions.FindAction("Touch");
             tap = playerInput.actions.FindAction("Tap");
             slowmoCoolDownTimer = new Stopwatch();
+            touch.performed += context => Debug.Log("Touch Down Performed");
+
+            var swipeActionUp = new SwipeInputAction(dragActionUp, touch, touch);
+            var swipeActionDown = new SwipeInputAction(dragActionDown, touch, touch);
+            var swipeActionRight = new SwipeInputAction(dragActionRight, touch, touch);
+            
+            
+            oldTimeScale = Time.timeScale;
 
 
             // Transitions
@@ -119,22 +120,23 @@ namespace Player
             CurrentState = coast;
 
             // Up swipe
-            new OllieTransition(coast, ollie, dragActionUp);
-            new KickflipTransition(ollie, kickflip, dragActionUp);
+            new OllieTransition(coast, ollie, swipeActionUp);
+            new OllieTransition(grind, ollie, swipeActionUp);
+            new KickflipTransition(ollie, kickflip, swipeActionUp);
             new InputTransition(coffin, coast, dragActionUp);
 
             // Right swipe
-            new ShuvitTransition(coast, shuvit, dragActionRight);
+            new ShuvitTransition(coast, shuvit, swipeActionRight);
 
             // Down swipe
-            new CoffinTransition(coast, coffin, dragActionDown);
+            new CoffinTransition(coast, coffin, swipeActionDown);
 
             // Transitions to grind
-            new GrindTransition(coast, grind, touchDownAction);
-            new GrindTransition(ollie, grind, touchDownAction);
-            new GrindTransition(kickflip, grind, touchDownAction);
-            new GrindTransition(shuvit, grind, touchDownAction);
-            new GrindTransition(falling, grind, touchDownAction);
+            new GrindTransition(coast, grind, touch);
+            new GrindTransition(ollie, grind, touch);
+            new GrindTransition(kickflip, grind, touch);
+            new GrindTransition(shuvit, grind, touch);
+            new GrindTransition(falling, grind, touch);
 
             // Transitions to falling
             new FallingTransition(coast, falling);
@@ -143,7 +145,7 @@ namespace Player
             new FallingTransition(shuvit, falling);
             new FallingTransition(coffin, falling);
             new FallingTransition(grind, falling);
-            new InputTransition(grind, falling, touchUpAction); // add holding here
+            new InputTransition(grind, falling, touch, true); // add holding here
 
             // Crash Transitions
             new CrashTransition(coast, crashed);
@@ -200,6 +202,7 @@ namespace Player
             {
                 Time.timeScale = oldTimeScale;
             }
+            Time.timeScale = oldTimeScale;
         }
 
         IEnumerator SlowmoCoolDown()
@@ -225,9 +228,6 @@ namespace Player
             {
                 SwipeLock = true;
                 Debug.Log("Up!");
-                if(trickParticles != null)
-                    trickParticles.Play();
-                
             }
         }
 
@@ -266,7 +266,7 @@ namespace Player
                 Debug.Log("Tap!");
                 tappedOnce = true;
                 StartCoroutine(DoubleTapCooldown());
-                CheckInteract();
+                //CheckInteract();
             }
             else
             {
@@ -290,12 +290,9 @@ namespace Player
         private void OnTouchDownPerformed(InputAction.CallbackContext context)
         {
             Debug.Log("TouchDown");
+            CheckInteract();
         }
-
-        private void OnTouchUpPerformed(InputAction.CallbackContext context)
-        {
-            Debug.Log("TouchUp");
-        }
+        
 
         #endregion
 
@@ -337,6 +334,8 @@ namespace Player
 
         private void CheckInteract()
         {
+            if(interactBuffer == null)
+                return; 
             int count = Physics2D.OverlapCircleNonAlloc(transform.position, model.interactRadius, interactBuffer,
                 model.groundLayers);
             for (int i = 0; i < count; i++)
@@ -388,6 +387,8 @@ namespace Player
             int count = _col.GetContacts(_collisionBuffer);
             for (int i = 0; i < count; i++)
             {
+                
+                
                 if (((1 << _collisionBuffer[i].collider.gameObject.layer) & model.groundLayers) == 0) continue;
 
                 if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.up) < model.maxGroundAngle)
@@ -397,8 +398,19 @@ namespace Player
 
                 if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.left) < model.maxWallAngle)
                 {
+                    if (deathHandler.invincible == true)
+                    {
+                        //Physics.IgnoreCollision(_collisionBuffer[i].rigidbody.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+                        _collisionBuffer[i].collider.enabled = false;
+                        continue;
+                    }
+                    
                     wallNormal = _collisionBuffer[i].normal;
                     walled = deathHandler.OnDeath();
+                    if (walled == false)
+                    {
+                        _collisionBuffer[i].collider.enabled = false;
+                    }
                 }
             }
         }

@@ -39,9 +39,8 @@ namespace Inventory.Scripts
                     return;
                 }
                 // updates time left for the text
-                countDownLabel.text = (_lootBox.Config.TimeToOpen - timeFromStart).ToString();
+                countDownLabel.text = (_lootBox.Config.TimeToOpen - timeFromStart).ToString(@"hh\:mm\:ss");
             }
         }
-        
     }
 }

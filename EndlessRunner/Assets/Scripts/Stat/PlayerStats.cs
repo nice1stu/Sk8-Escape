@@ -16,8 +16,7 @@ namespace Stat
             var stats = new Stats();
             foreach (var item in ActiveInventory.EquippedItems)
             {
-                stats = stats.Add(item.BonusStats);
-                stats = stats.Add(item.ItemConfig.BaseStats);
+                stats = item.ItemConfig.BaseStats.Add(item.BonusStats);
             }
 
             return stats;

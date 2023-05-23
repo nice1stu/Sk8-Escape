@@ -13,7 +13,7 @@ namespace Item
         {
             Inventory = inventory;
         }
-        public void CreateItem(ItemConfigSO itemConfig)
+        public IItemData CreateItem(IItemConfig itemConfig)
         {
             var itemBonusStats = new Stats();
             for(int i = 0; i < itemConfig.BonusStats; i++){
@@ -40,8 +40,10 @@ namespace Item
                         itemBonusStats.GrindMiniGameBallSize++;
                         break;
                 }
-            } 
-            Inventory.AddItem(new ItemData(itemBonusStats,itemConfig));
+            }
+            var item = new ItemData(itemBonusStats, itemConfig);
+            Inventory.AddItem(item);
+            return item;
         }
     }
 }

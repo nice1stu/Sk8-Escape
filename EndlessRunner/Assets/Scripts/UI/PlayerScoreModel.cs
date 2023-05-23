@@ -10,7 +10,7 @@ public class PlayerScoreModel : MonoBehaviour
 
     private static int coins;
 
-    private int invincibilityPoints = 0;
+    //private int invincibilityPoints = 0;
     
     private int powerUps;
     // Start is called before the first frame update
@@ -70,6 +70,11 @@ public class PlayerScoreModel : MonoBehaviour
         if (powerUps > 0)
         {
             powerUps--;
+            if (powerUps == 0)
+            {
+                HUDSlowmo hudLogic = GameObject.FindWithTag("HUD").GetComponentInChildren<HUDSlowmo>();
+                hudLogic.SetEnabled(false);
+            }
             return true;
         }
         else

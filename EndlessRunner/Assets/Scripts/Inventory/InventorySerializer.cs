@@ -12,13 +12,17 @@ namespace Inventory
     public class InventorySerializer : IDisposable
     {
         private readonly IInventoryData _inventory;
+        private readonly IActiveInventory _activeInventory;
         private readonly ItemDataBaseSO _itemDataBase;
 
-        public InventorySerializer(IInventoryData inventory, ItemDataBaseSO itemDataBase)
+        public InventorySerializer(IInventoryData inventory, ItemDataBaseSO itemDataBase, IActiveInventory activeInventory)
         {
             _inventory = inventory;
             _itemDataBase = itemDataBase;
             _inventory.ItemAdded += Save;
+            _activeInventory = activeInventory;
+            _activeInventory.ItemEquipped += SaveEquip;
+            _activeInventory.ItemUnequipped += SaveEquip;
         }
 
         public void Dispose()
@@ -51,12 +55,51 @@ namespace Inventory
             };
         }
 
+        class SeralizableIntArray
+        {
+            public int[] array;
+
+            public SeralizableIntArray(int[] array)
+            {
+                this.array = array;
+            }
+        }
         private void Save(IItemData itemData)
         {
             var data = _inventory.Items.Select(Convert).ToList();
             var inventory = new SerializableInventory(data);
             var json = JsonUtility.ToJson(inventory);
             File.WriteAllText(Application.persistentDataPath + "/inventory.save.json", json);
+        }
+        
+        private void SaveEquip(IItemData itemData)
+        {
+            var indices = new int[_activeInventory.EquippedItems.ToArray().Length];
+            var i = 0;
+            foreach (var inventoryItem in _inventory.Items)
+            {
+                foreach (var activeInventoryEquippedItem in _activeInventory.EquippedItems)
+                {
+                    if (inventoryItem == activeInventoryEquippedItem)
+                    {
+                        var index = Array.IndexOf(_inventory.Items.ToArray(), inventoryItem);
+                        indices[i] = index;
+                        i++;
+                    }
+                }
+            }
+            
+            var json = JsonUtility.ToJson(new SeralizableIntArray(indices));
+            File.WriteAllText(Application.persistentDataPath + "/equip.save.json", json);
+        }
+        public int[] LoadEquip()
+        {
+            var path = Application.persistentDataPath + "/equip.save.json";
+            if (!File.Exists(path)) return Array.Empty<int>();
+
+            var json = File.ReadAllText(path);
+            var data = JsonUtility.FromJson<SeralizableIntArray>(json);
+            return data.array;
         }
 
         public IEnumerable<ItemData> Load()
@@ -79,6 +122,8 @@ namespace Inventory
         {
             // TODO release unmanaged resources here
             _inventory.ItemAdded -= Save;
+            _activeInventory.ItemEquipped -= SaveEquip;
+            _activeInventory.ItemUnequipped -= SaveEquip;
         }
 
         [Serializable]
