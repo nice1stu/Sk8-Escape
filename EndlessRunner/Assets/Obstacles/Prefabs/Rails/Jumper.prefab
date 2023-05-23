@@ -40,9 +40,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8864222492903656988}
     m_Modifications:
+    - target: {fileID: 4581911319026164620, guid: 8d47e44cfba896843b37fabc706da53b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.68999994
+      objectReference: {fileID: 0}
     - target: {fileID: 6643471485426394286, guid: 8d47e44cfba896843b37fabc706da53b, type: 3}
       propertyPath: m_Name
       value: Rail default down
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399775684699649809, guid: 8d47e44cfba896843b37fabc706da53b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 8142450856530805328, guid: 8d47e44cfba896843b37fabc706da53b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.029999971
       objectReference: {fileID: 0}
     - target: {fileID: 8671154086573892116, guid: 8d47e44cfba896843b37fabc706da53b, type: 3}
       propertyPath: m_RootOrder
@@ -50,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8671154086573892116, guid: 8d47e44cfba896843b37fabc706da53b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.29
+      value: 6.92
       objectReference: {fileID: 0}
     - target: {fileID: 8671154086573892116, guid: 8d47e44cfba896843b37fabc706da53b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -102,13 +114,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8864222492903656988}
     m_Modifications:
+    - target: {fileID: 1612238072792672840, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.729997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612238073996967834, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.4100003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2425588720555894479, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6000028
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703767166079261003, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5399971
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758717914195758733, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.45
+      objectReference: {fileID: 0}
     - target: {fileID: 5758717914761048800, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5758717914761048800, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5758717914761048800, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -149,6 +181,18 @@ PrefabInstance:
     - target: {fileID: 5758717914761048803, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
       propertyPath: m_Name
       value: Rail default up default
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758717914787225242, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758717915059553344, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8911142927643324950, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.8999968
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6e82e91c30bdb34dae7a9a8c50f76d2, type: 3}

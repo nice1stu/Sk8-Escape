@@ -83,12 +83,12 @@ public class ObstacleSpawner : MonoBehaviour
     }
     public void SpawnObstacle()
     {
+        // Instantiates and saves the gameObject as currObstacle (position on obstaclespawner + 8 buffer)
+        _currObstacleSpawned = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)], transform.position + new Vector3(16,0,0), transform.rotation);
         //checks the length once and reuses it until next obstacle spawns
         _obstacleWidth = GetObstacleWidth(_currObstacleSpawned);
-        // Instantiates and saves the gameObject as currObstacle (position on obstaclespawner + 8 buffer)
-        _currObstacleSpawned = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)], transform.position + new Vector3(8,0,0), transform.rotation);
         //move the obstacleSpawner for obstacleWidth + 8 for buffer (else we would see it spawn in)
-        transform.position += new Vector3(_obstacleWidth+8 , 0, 0);
+        transform.position += new Vector3(_obstacleWidth+16 , 0, 0);
         
     }
 
@@ -97,7 +97,7 @@ public class ObstacleSpawner : MonoBehaviour
         if (Random.Range(1, 100) <= 5) // 5% chance
         {
             //Same here instantiate the powerUp at obstacleSpawner ( the buffer 1.5f was between the obstacles)
-            Instantiate(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)], transform.position + new Vector3(1.5f,0,0), transform.rotation);
+            Instantiate(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)], transform.position + new Vector3(4f,0,0), transform.rotation);
         }
     }
     
