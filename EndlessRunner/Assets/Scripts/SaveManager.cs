@@ -15,9 +15,6 @@ public class SaveManager : MonoBehaviour
     public int SaveTotalCoins { get; set; }
     public int SaveHighScore { get; set; }
 
-    int maxAttempts = 5;
-    public static bool DoneLoading;
-    
     
     //public Countdown[] currentBoxes = new Countdown[4]; for testing
     private Countdown[] LootBoxes => LoadLootBoxData();
@@ -27,7 +24,7 @@ public class SaveManager : MonoBehaviour
     private GameData onlineData;
     private void Awake()
     {
-        FirebaseDatabase.DefaultInstance.RootReference.KeepSynced(true);
+        FirebaseDatabase.DefaultInstance.SetPersistenceEnabled(false);
         StartCoroutine(GetStats());
         LoadData();
     }
@@ -127,17 +124,6 @@ public class SaveManager : MonoBehaviour
                 UpdateUIAndSave();
             }
             else LoadData();
-
-            DoneLoading = true;
-        }
-        else 
-        {
-            if (maxAttempts > 0)
-            {
-                StartCoroutine(GetStats());
-                maxAttempts--;
-            }
-            else DoneLoading = true;
         }
     }
 }
