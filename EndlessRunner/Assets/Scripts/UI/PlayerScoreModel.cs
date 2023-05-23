@@ -70,6 +70,11 @@ public class PlayerScoreModel : MonoBehaviour
         if (powerUps > 0)
         {
             powerUps--;
+            if (powerUps == 0)
+            {
+                HUDSlowmo hudLogic = GameObject.FindWithTag("HUD").GetComponentInChildren<HUDSlowmo>();
+                hudLogic.SetEnabled(false);
+            }
             return true;
         }
         else

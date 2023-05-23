@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Item;
-using Unity.VisualScripting;
+using Random = UnityEngine.Random;
 
 namespace Inventory.Scripts
 {
@@ -55,11 +55,22 @@ namespace Inventory.Scripts
             if (DateTime.UtcNow - lootBox.OpeningStartTime < lootBox.Config.TimeToOpen) return;
             _slots[slotIndex] = null;
             LootBoxRemoved?.Invoke(slotIndex, lootBox);
-            //TODO: Use ItemFactory to create items
+            //Use ItemFactory to create items
             List<IItemData> items = new List<IItemData>();
             foreach (var item in lootBox.Config.LootChances)
             {
-                items.Add(_itemFactory.CreateItem(item.itemConfig));
+                //Randomize the possibility to get a better item
+                var itemPossibility = Random.Range(0, 100);
+                if (itemPossibility < item.chance)
+                {
+                    //TODO: randomize which rarity and give bonus stats based on rarity.
+                    items.Add(_itemFactory.CreateItem(item.itemConfig));
+                    break;
+                }
+            }
+            if (items.Count == 0)
+            {
+                items.Add(_itemFactory.CreateItem(lootBox.Config.LootChances[0].itemConfig));
             }
             LootBoxOpened?.Invoke(lootBox, items.ToArray());
         }
@@ -68,6 +79,8 @@ namespace Inventory.Scripts
         {
             _slots = lootBoxes.ToArray();
         }
+
+        
 
         public event Action<int, ILootBoxData> LootBoxAdded;
         public event Action<int, ILootBoxData> LootBoxRemoved;

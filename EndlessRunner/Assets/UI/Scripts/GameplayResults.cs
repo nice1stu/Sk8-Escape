@@ -1,9 +1,11 @@
 using System;
 using Ads.Scripts;
+using Lean.Localization;
 using Player;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class GameplayResults : MonoBehaviour
@@ -18,7 +20,12 @@ public class GameplayResults : MonoBehaviour
     public RunInventoryManager cointest;
     public Button adButton;
     public static bool hasPlayedAd;
-    
+
+    [SerializeField] private string scorePhraseName = "Score";
+    [SerializeField] private string highScorePhraseName = "Highscore";
+    [SerializeField] private string coinsPhraseName = "Coins";
+
+
     void Start()
     { 
         //_scoreManager = FindObjectOfType<PlayerScoreModel>();
@@ -29,19 +36,31 @@ public class GameplayResults : MonoBehaviour
     {
          _saveManager.LoadData(); //loading from saveFile (stewarts thing)
         int currentScore = (int)_scoreManager.GetScore(); // sets/shows score
-        currentScoreText.text = $"Score: {currentScore}";
+        
+        string scoreTranslation     = LeanLocalization.GetTranslationText(scorePhraseName);
+        string highScoreTranslation = LeanLocalization.GetTranslationText(highScorePhraseName);
+        //string coinsTranslation     = LeanLocalization.GetTranslationText(coinsPhraseName);
+        
+        Assert.IsNotNull(scoreTranslation);
+        Assert.IsNotNull(highScoreTranslation);
+        //Assert.IsNotNull(coinsTranslation);
+        
+        Debug.Log(scoreTranslation);
+        
+        currentScoreText.text = $"{scoreTranslation}: {currentScore}";
 
         int currentCoin = cointest.GetCoinAmount();
-        coinsCollectedText.text = $"Coins: {currentCoin}";
+        coinsCollectedText.text = $" {currentCoin}";
         
         _saveManager.SaveTotalCoins += cointest.GetCoinAmount();
 
         if (currentScore > _saveManager.SaveHighScore) // highScoreFrom stewart 
         {
             _saveManager.SaveHighScore = currentScore; // newHighScore save to stewart
+            Social.ReportScore(currentScore,GPGSIds.leaderboard_leaderboard, _ => {}); //upload score to the leaderboard
         }
         
-        highScoreText.text = $"High Score: {_saveManager.SaveHighScore}"; //should get the saved file from stewart to display
+        highScoreText.text = $"{highScoreTranslation}: {_saveManager.SaveHighScore}"; //should get the saved file from stewart to display
         _saveManager.SaveGameData(); //hope this was enough to save after each
     }
 
@@ -80,8 +99,11 @@ public class GameplayResults : MonoBehaviour
 
     private void DoubleCoins()
     {
+        //string coinsTranslation     = LeanLocalization.GetTranslationText(coinsPhraseName);
+        
         _saveManager.SaveTotalCoins +=  cointest.GetCoinAmount();
-        coinsCollectedText.text = $"Coins: {cointest.GetCoinAmount() * 2}";
+        coinsCollectedText.text = $"{cointest.GetCoinAmount() * 2}";
+        
         
         _saveManager.SaveGameData(); //hope this was enough to save after each
     }
