@@ -55,15 +55,7 @@ namespace Inventory.Scripts
             if (DateTime.UtcNow - lootBox.OpeningStartTime < lootBox.Config.TimeToOpen) return;
             _slots[slotIndex] = null;
             LootBoxRemoved?.Invoke(slotIndex, lootBox);
-            //Use ItemFactory to create items
             List<IItemData> items = new List<IItemData>();
-            // calculate total weight
-            // random roll (0...total weight exclusive)
-            // current total weight = 0
-            // for loop over all weights
-            // current total weight += current weight
-            // if random number from before less than current total weight
-            //   return item
             var item = ProbabilityCheck(lootBox);
             items.Add(item);
             LootBoxOpened?.Invoke(lootBox, items.ToArray());
@@ -74,15 +66,15 @@ namespace Inventory.Scripts
             _slots = lootBoxes.ToArray();
         }
 
-        public IItemData ProbabilityCheck (ILootBoxData lootbox)
+        private IItemData ProbabilityCheck (ILootBoxData lootBox)
         {
-            var weights = lootbox.Config.LootChances;
+            var weights = lootBox.Config.LootChances;
             int totalWeight = 0;
             foreach (var configLootChance in weights)
             {
                 totalWeight += configLootChance.chance;
             }
-            int randomWeight = UnityEngine.Random.Range(0, totalWeight);
+            int randomWeight = Random.Range(0, totalWeight);
             for (int i = 0;i < weights.Length; ++i)
             {
                 randomWeight -= weights[i].chance;
