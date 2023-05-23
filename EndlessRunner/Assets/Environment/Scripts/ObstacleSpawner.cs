@@ -10,12 +10,14 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject[] powerUpPrefabs;
 
     private GameObject _currObstacleSpawned;
-    private float _obstacleWidth;
+    [SerializeField] float _obstacleWidth;
 
     private void Start()
     {
-        // So it wont be null I just spawn the first obstacle
+        // spawn the first obstacle so it wont be null,  check the width and move obstacle spawner the width
         _currObstacleSpawned = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)], transform.position, transform.rotation);
+        _obstacleWidth = GetObstacleWidth(_currObstacleSpawned);
+        transform.position += new Vector3(_obstacleWidth, 0, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -81,21 +83,21 @@ public class ObstacleSpawner : MonoBehaviour
     }
     public void SpawnObstacle()
     {
-        //move the obstacleSpawner + 8 for buffer when colliding with it
-        transform.position += new Vector3(_obstacleWidth + 8, 0, 0);
         //checks the length once and reuses it until next obstacle spawns
         _obstacleWidth = GetObstacleWidth(_currObstacleSpawned);
-        // Instantiates and saves the gameObject as currObstacle (pos+obstacleWidth to spawn it where the old obstacle ends)
-        _currObstacleSpawned = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)], transform.position + new Vector3(_obstacleWidth, 0,0), transform.rotation);
+        // Instantiates and saves the gameObject as currObstacle (position on obstaclespawner + 8 buffer)
+        _currObstacleSpawned = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)], transform.position + new Vector3(8,0,0), transform.rotation);
+        //move the obstacleSpawner for obstacleWidth + 8 for buffer (else we would see it spawn in)
+        transform.position += new Vector3(_obstacleWidth+8 , 0, 0);
+        
     }
 
     public void SpawnPowerUp()
     {
-        if (Random.Range(1, 100) <= 5) // 5% chance
+        if (Random.Range(1, 100) <= 50) // 5% chance
         {
-            //Same here instantiate the powerUp at obstacleSpawner + width
-            Instantiate(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)], transform.position + new Vector3( _obstacleWidth,0,0), transform.rotation);
-            transform.position += new Vector3(8, 0, 0);
+            //Same here instantiate the powerUp at obstacleSpawner ( the buffer between obstacles )
+            Instantiate(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)], transform.position + new Vector3(4,0,0), transform.rotation);
         }
     }
     
