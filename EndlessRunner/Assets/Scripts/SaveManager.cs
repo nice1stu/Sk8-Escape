@@ -14,6 +14,8 @@ public class SaveManager : MonoBehaviour
     public int SaveTotalGems { get; set; }
     public int SaveTotalCoins { get; set; }
     public int SaveHighScore { get; set; }
+
+    public static bool DoneLoading;
     
     
     //public Countdown[] currentBoxes = new Countdown[4]; for testing
@@ -124,6 +126,8 @@ public class SaveManager : MonoBehaviour
                 UpdateUIAndSave();
             }
             else LoadData();
+
+            DoneLoading = true;
         }
         else
         {

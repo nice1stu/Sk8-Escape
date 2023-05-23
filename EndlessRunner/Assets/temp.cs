@@ -5,7 +5,7 @@ public class temp : MonoBehaviour
 {
     public void LoadStartScene()
     {
-        SceneManager.LoadScene("MainScene");
+        if (SaveManager.DoneLoading) SceneManager.LoadScene("MainScene");
     }
 
     public void LoadShopScene()
