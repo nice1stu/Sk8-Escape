@@ -73,6 +73,7 @@ namespace Player
             dragActionDown.performed -= SwipeDownReceived;
             dragActionRight.performed -= SwipeRightReceived;
             dragActionLeft.performed -= SwipeLeftReceived;
+            touch.performed -= OnTouchDownPerformed;
             touch.canceled -= TouchStopped;
             tap.performed -= Tap;
         }
