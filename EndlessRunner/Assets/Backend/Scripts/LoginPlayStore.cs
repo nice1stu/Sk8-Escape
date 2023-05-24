@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Firebase.Auth;
 using GooglePlayGames;
@@ -15,7 +16,13 @@ namespace Backend.Scripts
             PlayGamesPlatform.DebugLogEnabled = true;
             PlayGamesPlatform.Activate();
             PlayGamesPlatform.Instance.Authenticate(ProcessAutomaticAuth);
-#else 
+            if (PlayGamesPlatform.Instance.localUser.userName == String.Empty)
+            {
+                FirebaseAuth.DefaultInstance
+                    .SignInAnonymouslyAsync()
+                    .ContinueWith(ContinueWithLogin);
+            }
+#else
             FirebaseAuth auth = FirebaseAuth.DefaultInstance;
             auth.SignInAnonymouslyAsync().ContinueWith(ContinueWithLogin);
 #endif

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using Firebase.Auth;
 using Firebase.Database;
 using UnityEngine;
 
@@ -67,9 +68,12 @@ namespace Backend.Scripts
         public IEnumerator GetStats()
         {
             //give time to fetch
-            yield return new WaitForSeconds(2);
-            var username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
-            if(username == String.Empty) username = SystemInfo.deviceUniqueIdentifier;
+            yield return new WaitForSeconds(1);
+            string username;
+#if UNITY_ANDROID
+            username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
+#endif
+            if(username == String.Empty) username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
             var userData = FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(username).GetValueAsync();
             yield return new WaitUntil(predicate: () => userData.IsCompleted);
             DataSnapshot snapshot = userData.Result;
