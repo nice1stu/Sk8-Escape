@@ -280,6 +280,30 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2453601583880846914, guid: b30389d801d1a6d41bfddc2966f9c90b, type: 3}
   m_PrefabInstance: {fileID: 3152985010493027212}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1022232848 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+  m_PrefabInstance: {fileID: 1983329533}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1170071849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2453601585777939395, guid: b30389d801d1a6d41bfddc2966f9c90b, type: 3}
+  m_PrefabInstance: {fileID: 3152985010493027212}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1170071853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170071849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: start
+  FallbackText: TAP TO START
 --- !u!1 &1184403653
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +410,77 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 805006625, guid: b30389d801d1a6d41bfddc2966f9c90b, type: 3}
   m_PrefabInstance: {fileID: 3152985010493027212}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1319787468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1345529704, guid: b30389d801d1a6d41bfddc2966f9c90b, type: 3}
+  m_PrefabInstance: {fileID: 3152985010493027212}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1319787470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319787468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: loading
+  FallbackText: LOADING...
+--- !u!1 &1641595026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1641595027}
+  - component: {fileID: 1641595028}
+  m_Layer: 0
+  m_Name: start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1641595027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641595026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1022232848}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1641595028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641595026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: TAP TO START
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: "TRYCK F\xD6R ATT STARTA"
+    Object: {fileID: 0}
 --- !u!1001 &1697583378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -443,6 +538,119 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b66a461879b84b4439816373e7088358, type: 3}
+--- !u!1 &1848020320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1848020321}
+  - component: {fileID: 1848020322}
+  m_Layer: 0
+  m_Name: loading
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1848020321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848020320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1022232848}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1848020322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848020320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: LOADING...
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: LADDAR...
+    Object: {fileID: 0}
+--- !u!1001 &1983329533
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585858195544455561, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: currentLanguage
+      value: Swedish
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585858195544455562, guid: 16d0c1e7f45999043b72123790444647, type: 3}
+      propertyPath: m_Name
+      value: LeanLocalization
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 16d0c1e7f45999043b72123790444647, type: 3}
 --- !u!224 &706315880224121957 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2453601585556133865, guid: b30389d801d1a6d41bfddc2966f9c90b, type: 3}
@@ -520,6 +728,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1184403657}
     m_Modifications:
+    - target: {fileID: 2453601583880846914, guid: b30389d801d1a6d41bfddc2966f9c90b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2453601585556133864, guid: b30389d801d1a6d41bfddc2966f9c90b, type: 3}
       propertyPath: m_Name
       value: IntroScreen
