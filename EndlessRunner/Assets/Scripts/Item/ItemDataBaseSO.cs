@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Stat;
@@ -10,10 +11,16 @@ namespace Item
     {
         [SerializeField] private ItemConfigSO[] itemConfigs;
         private IEnumerable<ItemConfigSO> ItemConfigs=> itemConfigs;
-
-        public ItemConfigSO GetWithID(string id)
+        public bool TryLoadItemWithID(string id, out ItemConfigSO result)
         {
-            return ItemConfigs.First(it => it.Id == id);
+            try
+            {
+                return result = ItemConfigs.First(it => it.Id == id);
+            }
+            catch (Exception e)
+            {
+                return result = null;
+            }
         }
     }
 }

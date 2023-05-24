@@ -15,7 +15,8 @@ namespace Inventory
         private readonly IActiveInventory _activeInventory;
         private readonly ItemDataBaseSO _itemDataBase;
 
-        public InventorySerializer(IInventoryData inventory, ItemDataBaseSO itemDataBase, IActiveInventory activeInventory)
+        public InventorySerializer(IInventoryData inventory, ItemDataBaseSO itemDataBase,
+            IActiveInventory activeInventory)
         {
             _inventory = inventory;
             _itemDataBase = itemDataBase;
@@ -38,8 +39,9 @@ namespace Inventory
 
         private ItemData Convert(SerializableItemData serializableItemData)
         {
-            return new ItemData(serializableItemData.bonusStats,
-                _itemDataBase.GetWithID(serializableItemData.itemConfigID));
+            if (_itemDataBase.TryLoadItemWithID(serializableItemData.itemConfigID, out var itemConfigSo))
+                return new ItemData(serializableItemData.bonusStats, itemConfigSo);
+            return null;
         }
 
         private Stats Convert(IStats stats)
@@ -64,6 +66,7 @@ namespace Inventory
                 this.array = array;
             }
         }
+
         private void Save(IItemData itemData)
         {
             var data = _inventory.Items.Select(Convert).ToList();
@@ -71,7 +74,7 @@ namespace Inventory
             var json = JsonUtility.ToJson(inventory);
             File.WriteAllText(Application.persistentDataPath + "/inventory.save.json", json);
         }
-        
+
         private void SaveEquip(IItemData itemData)
         {
             var indices = new int[_activeInventory.EquippedItems.ToArray().Length];
@@ -88,10 +91,11 @@ namespace Inventory
                     }
                 }
             }
-            
+
             var json = JsonUtility.ToJson(new SeralizableIntArray(indices));
             File.WriteAllText(Application.persistentDataPath + "/equip.save.json", json);
         }
+
         public int[] LoadEquip()
         {
             var path = Application.persistentDataPath + "/equip.save.json";
@@ -110,7 +114,7 @@ namespace Inventory
 
             var json = File.ReadAllText(path);
             var data = JsonUtility.FromJson<SerializableInventory>(json);
-            return data.serializableItemDatas.Select(Convert).ToArray();
+            return data.serializableItemDatas.Select(Convert).Where(it => it!= null).ToArray();
         }
 
         ~InventorySerializer()
@@ -129,7 +133,7 @@ namespace Inventory
         [Serializable]
         public class SerializableItemData
         {
-            public string itemConfigID; 
+            public string itemConfigID;
             public Stats bonusStats;
 
             public SerializableItemData(string itemConfigID, Stats bonusStats)
