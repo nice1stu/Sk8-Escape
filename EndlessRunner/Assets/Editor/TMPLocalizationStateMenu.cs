@@ -50,12 +50,16 @@ namespace Editor
                 if (GUILayout.Button("Select", GUILayout.MaxWidth(70))) {
                     Selection.activeGameObject = tmpObj.gameObject;
                 }
+                if (GUILayout.Button("Focus", GUILayout.MaxWidth(70))) {
+                    Selection.activeGameObject = tmpObj.gameObject;
+                    SceneView.lastActiveSceneView.FrameSelected();
+                }
 
                 EditorGUI.BeginDisabledGroup(hasTranslationComponent);
             
                 if (GUILayout.Button("Add", GUILayout.MaxWidth(50))) {
                     if (!hasTranslationComponent) {
-                        Undo.AddComponent<TextMeshProUGUI>(tmpObj.gameObject).enabled = true;
+                        Undo.AddComponent<LeanLocalizedTextMeshProUGUI>(tmpObj.gameObject).enabled = true;
                         Selection.activeGameObject = tmpObj.gameObject;
                     }
                     else
