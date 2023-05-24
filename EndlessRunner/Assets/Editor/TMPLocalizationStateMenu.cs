@@ -12,8 +12,15 @@ namespace Editor
     {
         private readonly List<TMP_Text> _tmpObjects = new();
         private Vector2 _scrollPos;
+
         [MenuItem ("Window/TMP Localization State")]
-        public static void ShowWindow() => GetWindow(typeof(TMPLocalizationStateMenu));
+        public static void ShowWindow()
+        {
+            var window = GetWindow<TMPLocalizationStateMenu>();
+            window.titleContent = new GUIContent("TMP Localization State Menu");
+            window.Show();
+        }
+
 
         private void OnGUI () {
             FetchTMPObjects();
