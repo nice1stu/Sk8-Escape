@@ -35,7 +35,7 @@ public class SaveManager : MonoBehaviour
 
     public static void SaveGameData()
     {
-        string _username;
+        string _username = String.Empty;
 #if UNITY_ANDROID
         _username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
 #endif
