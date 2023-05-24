@@ -712,6 +712,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1693313983104180407, guid: fd2824bf86b93f94aab5cd04faa5b762, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693313983104180407, guid: fd2824bf86b93f94aab5cd04faa5b762, type: 3}
       propertyPath: loadingText
       value: 
       objectReference: {fileID: 1285805734}

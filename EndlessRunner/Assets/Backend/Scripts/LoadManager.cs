@@ -16,13 +16,18 @@ namespace Backend.Scripts
 
         public GameObject startButton;
         public GameObject loadingText;
+        
+        private bool OnlineDataMissing => onlineTimeStamp == 0;
+        private bool LocalDataMissing => localTimeStamp == 0;
         private void Awake()
         {
             startButton.SetActive(false);
             loadingText.SetActive(true);
             FirebaseDatabase.DefaultInstance.SetPersistenceEnabled(false);
-        
-            if(Application.internetReachability != NetworkReachability.NotReachable) StartCoroutine(GetStats());
+            if (Application.internetReachability != NetworkReachability.NotReachable)
+            {
+                StartCoroutine(GetStats());
+            }
             else LoadData();
         }
 
@@ -38,12 +43,11 @@ namespace Backend.Scripts
                 localTimeStamp = localData.timeStamp;
             }
 
-            if (localTimeStamp == 0 && onlineTimeStamp == 0)
+            if (LocalDataMissing && OnlineDataMissing)
             {
                 EnablePressToPlay();
                 return;
             }
-            
             //get the most up to date data stats
             SetData(localTimeStamp > onlineTimeStamp ? localData : onlineData);
         }
@@ -69,13 +73,15 @@ namespace Backend.Scripts
         {
             //give time to fetch
             yield return new WaitForSeconds(1);
-            string username;
+            string username = String.Empty;
 #if UNITY_ANDROID
             username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
 #endif
             if(username == String.Empty) username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
             var userData = FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(username).GetValueAsync();
+            
             yield return new WaitUntil(predicate: () => userData.IsCompleted);
+
             DataSnapshot snapshot = userData.Result;
             //if online data exists
             if (snapshot != null && snapshot.Exists)
@@ -83,7 +89,6 @@ namespace Backend.Scripts
                 onlineData = JsonUtility.FromJson<GameData>(snapshot.GetRawJsonValue());
                 onlineTimeStamp = onlineData.timeStamp;
             }
-
             LoadData();
         }
     }

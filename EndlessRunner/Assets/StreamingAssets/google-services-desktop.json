@@ -23,19 +23,15 @@
           }
         },
         {
-          "client_id": "466560751828-gun789feje54c99s4th0edkp6ora7ueq.apps.googleusercontent.com",
+          "client_id": "466560751828-dsckcia2q0sd25ldi8joq5uo347lk3hu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.forsbergsskola.sk8escape",
-            "certificate_hash": "9254c8f9aa7e4ad94e4d799a770043059ba77568"
+            "certificate_hash": "6cea2a0a8ebfdc3c8feee60bc750370fec362dae"
           }
         },
         {
-          "client_id": "466560751828-8qevn36dja1mrh9qbr8cbo0elqit0ukp.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "466560751828-8qevn36dja1mrh9qbr8cbo0elqit0ukp.apps.googleusercontent.com",
+          "client_id": "466560751828-c9hoj17fg3hm07rtjafkqp7v0rr924v9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -49,10 +45,6 @@
           "other_platform_oauth_client": [
             {
               "client_id": "466560751828-8qevn36dja1mrh9qbr8cbo0elqit0ukp.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-			  "client_id": "466560751828-5cqnv1hpa4g0ilt6rmh3bi4ukipvp2fk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -35,7 +35,7 @@ public class SaveManager : MonoBehaviour
 
     public static void SaveGameData()
     {
-        string _username;
+        string _username = String.Empty;
 #if UNITY_ANDROID
         _username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
 #endif
@@ -52,7 +52,12 @@ public class SaveManager : MonoBehaviour
 
         var json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/stats.save.json", json);
-        FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(_username).SetRawJsonValueAsync(json);
+        //no user name means it will overwrite the entire cloud data
+        if (_username == String.Empty) return; 
+        FirebaseDatabase.DefaultInstance.RootReference
+            .Child("users")
+            .Child(_username)
+            .SetRawJsonValueAsync(json);
 
     }
 }
