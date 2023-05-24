@@ -35,19 +35,24 @@ public class SaveManager : MonoBehaviour
 
     public static void SaveGameData()
     {
+        string _username;
+#if UNITY_ANDROID
+        _username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
+#endif
+        if(_username == String.Empty) _username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
         GameData data = new GameData
         {
-            username = FirebaseAuth.DefaultInstance.CurrentUser.UserId,
+            username = _username,
             totalScore = SaveTotalScore,
             totalGems = SaveTotalGems,
             totalCoins = SaveTotalCoins,
             playerHighScore = SaveHighScore,
             timeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
         };
-        
+
         var json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/stats.save.json", json);
-        if(data.username != String.Empty) FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(data.username).SetRawJsonValueAsync(json);
+        FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(_username).SetRawJsonValueAsync(json);
 
     }
 }

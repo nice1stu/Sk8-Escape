@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.IO;
 using Firebase.Auth;
@@ -36,7 +37,13 @@ namespace Backend.Scripts
                 localData = JsonUtility.FromJson<GameData>(json);
                 localTimeStamp = localData.timeStamp;
             }
-    
+
+            if (localTimeStamp == 0 && onlineTimeStamp == 0)
+            {
+                EnablePressToPlay();
+                return;
+            }
+            
             //get the most up to date data stats
             SetData(localTimeStamp > onlineTimeStamp ? localData : onlineData);
         }
@@ -61,8 +68,12 @@ namespace Backend.Scripts
         public IEnumerator GetStats()
         {
             //give time to fetch
-            // yield return new WaitForSeconds(2);
-            var username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+            yield return new WaitForSeconds(1);
+            string username;
+#if UNITY_ANDROID
+            username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
+#endif
+            if(username == String.Empty) username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
             var userData = FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(username).GetValueAsync();
             yield return new WaitUntil(predicate: () => userData.IsCompleted);
             DataSnapshot snapshot = userData.Result;
@@ -72,6 +83,7 @@ namespace Backend.Scripts
                 onlineData = JsonUtility.FromJson<GameData>(snapshot.GetRawJsonValue());
                 onlineTimeStamp = onlineData.timeStamp;
             }
+
             LoadData();
         }
     }

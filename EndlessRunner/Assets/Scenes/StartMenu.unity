@@ -283,6 +283,58 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4442179709157389797, guid: 0e730e1356887ce42881c9406fc01050, type: 3}
   m_PrefabInstance: {fileID: 8589333717013007176}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &121553382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 121553383}
+  - component: {fileID: 121553384}
+  m_Layer: 0
+  m_Name: grind
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &121553383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121553382}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &121553384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121553382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: Tap and hold to grind rails!
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: "Tryck och h\xE5ll f\xF6r att slipa skenor!"
+    Object: {fileID: 0}
 --- !u!1001 &125412675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -570,6 +622,96 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191287009}
   m_CullTransparentMesh: 1
+--- !u!1 &195007054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 836138579, guid: ef44f8c95e908a64cbd366c1b878c04c, type: 3}
+  m_PrefabInstance: {fileID: 1476423778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &195007058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195007054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: inventory
+  FallbackText: Inventory
+--- !u!1 &271124674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078465846801398646, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+  m_PrefabInstance: {fileID: 1591718287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &271124678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271124674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: quit
+  FallbackText: Really Quit?
+--- !u!1 &306648129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 306648130}
+  - component: {fileID: 306648131}
+  m_Layer: 0
+  m_Name: controls_tricks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &306648130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306648129}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &306648131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306648129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: Controls and tricks
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: Kontroller och tricks
+    Object: {fileID: 0}
 --- !u!1 &360196844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1178,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536954128}
   m_CullTransparentMesh: 1
+--- !u!1 &558550285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8088789109389907780, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+  m_PrefabInstance: {fileID: 1077411004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &558550289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558550285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: padding
+  FallbackText: 'Padding:
+
+    protects you - once.'
+--- !u!1 &566556212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078465846801398646, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+  m_PrefabInstance: {fileID: 2050492865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &566556216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566556212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: no
+  FallbackText: Nah!
 --- !u!1 &570809973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1350,110 @@ MonoBehaviour:
   TutorialPrompt: {fileID: 1163053927}
   ExitGameButton: {fileID: 1969432854}
   CloseTutorial: {fileID: 1518427775}
+--- !u!1 &595718865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595718866}
+  - component: {fileID: 595718867}
+  m_Layer: 0
+  m_Name: inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &595718866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595718865}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &595718867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595718865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: Inventory
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: "F\xF6rr\xE5d"
+    Object: {fileID: 0}
+--- !u!1 &620328214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 620328215}
+  - component: {fileID: 620328216}
+  m_Layer: 0
+  m_Name: shop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &620328215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620328214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &620328216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620328214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: Shop
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: "Aff\xE4r"
+    Object: {fileID: 0}
 --- !u!1001 &635282519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1356,6 +1642,58 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: Swedish
     Text: "BEL\xD6NINGAR"
+    Object: {fileID: 0}
+--- !u!1 &726730633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 726730634}
+  - component: {fileID: 726730635}
+  m_Layer: 0
+  m_Name: quit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &726730634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726730633}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &726730635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726730633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: Really quit?
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: Verkligen sluta?
     Object: {fileID: 0}
 --- !u!1 &747416158 stripped
 GameObject:
@@ -1619,6 +1957,58 @@ MonoBehaviour:
   - Language: Swedish
     Text: "Tips: Tryck f\xF6r att starta spelet"
     Object: {fileID: 0}
+--- !u!1 &788350953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 788350954}
+  - component: {fileID: 788350955}
+  m_Layer: 0
+  m_Name: leaderboard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &788350954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788350953}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &788350955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788350953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: Leaderboard
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: Topplista
+    Object: {fileID: 0}
 --- !u!1 &810905999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,7 +2046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.17940743}
   m_AnchorMax: {x: 1, y: 0.8604075}
-  m_AnchoredPosition: {x: 0.00024414062, y: -60.632}
+  m_AnchoredPosition: {x: 0, y: -60.631958}
   m_SizeDelta: {x: 0.00012207, y: -114.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &810906001
@@ -1735,6 +2125,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810905999}
   m_CullTransparentMesh: 1
+--- !u!1 &816200983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078465846801398646, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+  m_PrefabInstance: {fileID: 425176857}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &816200987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816200983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: yes
+  FallbackText: Yes!
 --- !u!1 &826221123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,6 +2195,60 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: Swedish
     Text: "\xC4ndra spr\xE5k"
+    Object: {fileID: 0}
+--- !u!1 &834904812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 834904813}
+  - component: {fileID: 834904814}
+  m_Layer: 0
+  m_Name: padding
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &834904813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834904812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &834904814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834904812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: 'Padding:
+
+      protects you - once.'
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: "Stoppning:\nskyddar dig - en g\xE5ng."
     Object: {fileID: 0}
 --- !u!1 &861898730
 GameObject:
@@ -1949,6 +2412,131 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1008209241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1008209242}
+  - component: {fileID: 1008209243}
+  m_Layer: 0
+  m_Name: yes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1008209242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008209241}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1008209243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008209241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: Yes
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: Ja
+    Object: {fileID: 0}
+--- !u!1 &1037684027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1037684028}
+  - component: {fileID: 1037684029}
+  m_Layer: 0
+  m_Name: no
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1037684028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037684027}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1037684029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037684027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: No
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: Nej
+    Object: {fileID: 0}
+--- !u!1 &1074426729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 697174529222866114, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+  m_PrefabInstance: {fileID: 1077411004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1074426733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074426729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: shuvit
+  FallbackText: 'Swipe right:
+
+    Do a low Shuvit Jump!'
 --- !u!1001 &1077411004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2048,8 +2636,104 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6020109205610988328, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+      propertyPath: m_text
+      value: "Svep upp f\xF6r en Ollie, igen\nf\xF6r att kickflipa f\xF6r extra luft!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020109205610988328, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+      propertyPath: m_fontSize
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020109205610988328, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020109206712318476, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+      propertyPath: m_text
+      value: "Tryck och h\xE5ll f\xF6r att slipa skenor!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020109206712318476, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+      propertyPath: m_fontSize
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020109206712318476, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 38
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+--- !u!1 &1115692946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1115692947}
+  - component: {fileID: 1115692948}
+  m_Layer: 0
+  m_Name: slowmo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1115692947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115692946}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1115692948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115692946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: "SlowMo: \ndouble tap to slow time!\n...For a while."
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: "Ners\xE4nkt hastighet:\ndubbeltryck f\xF6r att sakta ner tiden!\r\n...Ett
+      tag."
+    Object: {fileID: 0}
+--- !u!1 &1135217923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1170964909, guid: ef44f8c95e908a64cbd366c1b878c04c, type: 3}
+  m_PrefabInstance: {fileID: 1476423778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1135217927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135217923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: shop
+  FallbackText: Shop
 --- !u!1 &1163053927 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1546121322883704621, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
@@ -2060,6 +2744,18 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1546121322883704620, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
   m_PrefabInstance: {fileID: 1077411004}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1163053929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163053927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1101e0340addb6d4d8e0d04c67d8a52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1223016989 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7003931413390941278, guid: d04a3cc42fe7a6944bb2b2fd27174ca7, type: 3}
@@ -2151,7 +2847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4442179709157389797, guid: 0e730e1356887ce42881c9406fc01050, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00024414062
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4442179709157389797, guid: 0e730e1356887ce42881c9406fc01050, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2195,6 +2891,121 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e730e1356887ce42881c9406fc01050, type: 3}
+--- !u!1 &1268112128 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 697174528790263943, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+  m_PrefabInstance: {fileID: 1077411004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1268112132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268112128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: grind
+  FallbackText: 'Tap and hold to grind rails!
+
+'
+--- !u!1 &1279721893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 697174528172988493, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+  m_PrefabInstance: {fileID: 1077411004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1279721897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279721893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: coffin
+  FallbackText: 'Swipe down to do a coffin.
+
+    nap right under obstacles!'
+--- !u!1 &1290908658 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6132485318848033902, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+  m_PrefabInstance: {fileID: 1077411004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1290908662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290908658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: slowmo
+  FallbackText: "SlowMo: \ndouble tap to slow time!\n...For a while."
+--- !u!1 &1296896840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1296896841}
+  - component: {fileID: 1296896842}
+  m_Layer: 0
+  m_Name: shuvit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1296896841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296896840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1296896842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296896840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: 'Swipe right:
+
+      Do a low Shuvit Jump!'
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: "Svep \xE5t h\xF6ger:\nG\xF6r ett l\xE5gt Shuvit-hopp!"
+    Object: {fileID: 0}
 --- !u!224 &1422516848 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4695598639565085620, guid: 9344b0fe5f9fe394aa66badc20521872, type: 3}
@@ -2246,6 +3057,18 @@ PrefabInstance:
     - target: {fileID: 437272841, guid: ef44f8c95e908a64cbd366c1b878c04c, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 836138580, guid: ef44f8c95e908a64cbd366c1b878c04c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 836138581, guid: ef44f8c95e908a64cbd366c1b878c04c, type: 3}
+      propertyPath: m_text
+      value: "F\xF6rr\xE5d"
+      objectReference: {fileID: 0}
+    - target: {fileID: 836138581, guid: ef44f8c95e908a64cbd366c1b878c04c, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 395475370037538203, guid: ef44f8c95e908a64cbd366c1b878c04c, type: 3}
       propertyPath: m_Pivot.x
@@ -2581,6 +3404,108 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1621191243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 697174527672287651, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+  m_PrefabInstance: {fileID: 1077411004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1621191247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621191243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: ollie_kickflip
+  FallbackText: 'Swipe up for an Ollie,
+
+    again to kickflip for extra air!
+
+'
+--- !u!1 &1625017973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5668440510246345365, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+  m_PrefabInstance: {fileID: 1077411004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1625017977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625017973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: doublescore
+  FallbackText: 'x2:
+
+    Doubles your score...
+
+    ...and your coins!'
+--- !u!1 &1640898925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1640898926}
+  - component: {fileID: 1640898927}
+  m_Layer: 0
+  m_Name: doublescore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1640898926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640898925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1640898927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640898925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: 'x2:
+
+      Doubles your score...
+
+      ...and your coins!'
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: "x2:\r\nDubblar din po\xE4ng...\r\n...och dina mynt!"
+    Object: {fileID: 0}
 --- !u!1 &1730292142
 GameObject:
   m_ObjectHideFlags: 0
@@ -2615,7 +3540,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0.00024414062, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1730292144
@@ -2630,6 +3555,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c79c32fa6b6c2f4fb8f5f705a991228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1736053519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 697174528426189358, guid: 236b713cf3176d844bf8dd5f50930063, type: 3}
+  m_PrefabInstance: {fileID: 1077411004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1736053523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736053519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: controls_tricks
+  FallbackText: Controls and tricks
 --- !u!1001 &1847587902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2746,6 +3690,60 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: Swedish
     Text: "FORTS\xC4TT"
+    Object: {fileID: 0}
+--- !u!1 &1867297399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1867297400}
+  - component: {fileID: 1867297401}
+  m_Layer: 0
+  m_Name: coffin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1867297400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867297399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1867297401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867297399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: 'Swipe down to do a coffin.
+
+      nap right under obstacles!'
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: "Svep ner f\xF6r att g\xF6ra en kista.\nta dig en lur under hinder!"
     Object: {fileID: 0}
 --- !u!1 &1884797957
 GameObject:
@@ -2891,19 +3889,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2645666662003172705, guid: cdccac21d893efa46b28065ed1ff4380, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 2171.2046
+      value: 1964.6066
       objectReference: {fileID: 0}
     - target: {fileID: 2645666662003172705, guid: cdccac21d893efa46b28065ed1ff4380, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 654.81085
+      value: 748.8875
       objectReference: {fileID: 0}
     - target: {fileID: 2645666662108411450, guid: cdccac21d893efa46b28065ed1ff4380, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.010498
+      value: -1.0102539
       objectReference: {fileID: 0}
     - target: {fileID: 2645666662108411450, guid: cdccac21d893efa46b28065ed1ff4380, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 306.42004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645666662255512006, guid: cdccac21d893efa46b28065ed1ff4380, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -38.717896
       objectReference: {fileID: 0}
     - target: {fileID: 2645666662756344576, guid: cdccac21d893efa46b28065ed1ff4380, type: 3}
       propertyPath: m_Pivot.x
@@ -3036,6 +4038,62 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2645666662756344576, guid: cdccac21d893efa46b28065ed1ff4380, type: 3}
   m_PrefabInstance: {fileID: 1935756152}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1938251032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938251033}
+  - component: {fileID: 1938251034}
+  m_Layer: 0
+  m_Name: ollie_kickflip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1938251033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938251032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878417782}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1938251034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938251032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: 'Swipe up for an Ollie,
+
+      again to kickflip for extra air!
+
+'
+    Object: {fileID: 0}
+  - Language: Swedish
+    Text: "Svep upp f\xF6r en Ollie, igen\nf\xF6r att kickflipa f\xF6r extra luft!"
+    Object: {fileID: 0}
 --- !u!1 &1969432852 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4412504484927580954, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
@@ -3310,6 +4368,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+--- !u!1 &2111792344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9083473509835855404, guid: 113b0bb12c1476c45a84e3dd35193b5c, type: 3}
+  m_PrefabInstance: {fileID: 125412675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2111792348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111792344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: settings
+  FallbackText: Settings
 --- !u!1001 &344165093781034902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3642,7 +4719,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leaderboard
+  m_text: Topplista
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0540207e177934627a3bfac6e3313d1e, type: 2}
   m_sharedMaterial: {fileID: 6520046113461452524, guid: 0540207e177934627a3bfac6e3313d1e, type: 2}
@@ -3669,7 +4746,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.6
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3730,6 +4807,7 @@ GameObject:
   - component: {fileID: 4688912951048221700}
   - component: {fileID: 4688912951048221702}
   - component: {fileID: 4688912951048221701}
+  - component: {fileID: 4688912951048221708}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3737,6 +4815,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4688912951048221708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4688912951048221707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: leaderboard
+  FallbackText: Leaderboard
 --- !u!1001 &4695598640316316100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3845,6 +4937,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LootBoxOpenPopup
       objectReference: {fileID: 0}
+    - target: {fileID: 2530627754368240151, guid: 6828046a50f653542af91e2880101ba0, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546697818657096775, guid: 6828046a50f653542af91e2880101ba0, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4693906920240734490, guid: 6828046a50f653542af91e2880101ba0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3929,9 +5029,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4832634461862496018, guid: 6828046a50f653542af91e2880101ba0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098319435940409684, guid: 6828046a50f653542af91e2880101ba0, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8463542664324063915, guid: 6828046a50f653542af91e2880101ba0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -31.999756
+      value: -32
       objectReference: {fileID: 0}
     - target: {fileID: 8463542664324063915, guid: 6828046a50f653542af91e2880101ba0, type: 3}
       propertyPath: m_AnchoredPosition.y
