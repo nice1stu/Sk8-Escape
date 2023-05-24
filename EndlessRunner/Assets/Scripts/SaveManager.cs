@@ -35,7 +35,10 @@ public class SaveManager : MonoBehaviour
 
     public static void SaveGameData()
     {
-        var _username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
+        string _username;
+#if UNITY_ANDROID
+        _username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
+#endif
         if(_username == String.Empty) _username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
         GameData data = new GameData
         {

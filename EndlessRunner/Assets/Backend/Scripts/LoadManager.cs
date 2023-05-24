@@ -69,7 +69,10 @@ namespace Backend.Scripts
         {
             //give time to fetch
             yield return new WaitForSeconds(1);
-            var username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
+            string username;
+#if UNITY_ANDROID
+            username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
+#endif
             if(username == String.Empty) username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
             var userData = FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(username).GetValueAsync();
             yield return new WaitUntil(predicate: () => userData.IsCompleted);
