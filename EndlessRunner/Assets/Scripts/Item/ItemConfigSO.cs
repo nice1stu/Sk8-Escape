@@ -18,7 +18,12 @@ namespace Item
         // do a public method with the exact type (not IStats):
         public Stats BaseStats => baseStats;
         public ItemType ItemType => itemType;
-        public int BonusStats => bonusStats;
+        public int BonusStats
+        {
+            get => bonusStats;
+            set => bonusStats = value;
+        }
+
         public string ItemName => itemName;
         public Sprite ItemSprite => itemSprite;
         public Sprite ItemIcon => itemIcon;

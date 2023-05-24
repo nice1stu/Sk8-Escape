@@ -10,6 +10,8 @@ namespace Player
         }
         public override void Enter(PlayerController playerController)
         {
+            //Would be much better to store the PlayerScoreModel somewhere but idk how to do that, so we have to find it each time
+            GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>().AddToScore(5);
             base.Enter(playerController);
             playerController.view.PlayKickflipAnim();
             playerController.AddToCurrentVelocity(Vector2.up * playerController.model.kickflipJumpForce);

@@ -1159,6 +1159,24 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 1216210269}
+    - target: {fileID: 221664364726511884, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
+      propertyPath: m_text
+      value: 'Shop
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 221664364726511884, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 05fc9321807e7453f84d831508c16030, type: 2}
+    - target: {fileID: 221664364726511884, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221664364726511884, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6633936885432657698, guid: 05fc9321807e7453f84d831508c16030, type: 2}
     - target: {fileID: 221664365777975143, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

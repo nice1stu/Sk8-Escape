@@ -305,11 +305,11 @@ GameObject:
   - component: {fileID: 6209122175100364235}
   - component: {fileID: 6209122175100364237}
   - component: {fileID: 2797083086886405066}
-  - component: {fileID: 7255695583564001975}
   - component: {fileID: 1680754613}
   - component: {fileID: 1680754619}
   - component: {fileID: 1549262700154483689}
   - component: {fileID: 4720230035941534664}
+  - component: {fileID: 265413374245170229}
   m_Layer: 5
   m_Name: Gameplay Results
   m_TagString: Untagged
@@ -395,7 +395,7 @@ MonoBehaviour:
   coinsCollectedText: {fileID: 6209122176057642909}
   _scoreManager: {fileID: 1549262700154483689}
   _saveManager: {fileID: 2797083086886405066}
-  ads: {fileID: 7255695583564001975}
+  ads: {fileID: 265413374245170229}
   cointest: {fileID: 4720230035941534664}
   adButton: {fileID: 6209122174949245172}
   scorePhraseName: Score
@@ -413,23 +413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf296d7c0cdcc541bb5cb79750a9448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7255695583564001975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6209122175100364233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac58ce89ddffb0d41a1c499466e3fe6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myGameIdAndroid: 5266579
-  adUnitIdAndroid: Interstitial_Android
-  myAdUnitId: 
-  adStarted: 0
-  testMode: 1
 --- !u!114 &1680754613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,6 +463,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daadda28d07081f48b316dd3fbc74a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &265413374245170229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209122175100364233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc02787ad514b5b4785d1ad78d1338a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myGameIdAndroid: 5266579
+  adUnitIdAndroid: Rewarded_Android
+  myAdUnitId: 
+  adStarted: 0
+  testMode: 1
 --- !u!1 &6209122175146556940
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +547,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "F\xF6rem\xE5l Samlade"
+  m_text: Items Collected
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 05fc9321807e7453f84d831508c16030, type: 2}
   m_sharedMaterial: {fileID: 6633936885432657698, guid: 05fc9321807e7453f84d831508c16030, type: 2}
@@ -987,7 +987,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start Meny
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1485,7 +1485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RESULTAT
+  m_text: RESULTS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 05fc9321807e7453f84d831508c16030, type: 2}
   m_sharedMaterial: {fileID: 6633936885432657698, guid: 05fc9321807e7453f84d831508c16030, type: 2}
@@ -1635,7 +1635,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x2 mynt
+  m_text: x2 coins
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0540207e177934627a3bfac6e3313d1e, type: 2}
   m_sharedMaterial: {fileID: 6520046113461452524, guid: 0540207e177934627a3bfac6e3313d1e, type: 2}
@@ -1785,7 +1785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Spela Igen
+  m_text: Play Again
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0540207e177934627a3bfac6e3313d1e, type: 2}
   m_sharedMaterial: {fileID: 6520046113461452524, guid: 0540207e177934627a3bfac6e3313d1e, type: 2}
@@ -2217,7 +2217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Se Reklam
+  m_text: Watch ads
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0540207e177934627a3bfac6e3313d1e, type: 2}
   m_sharedMaterial: {fileID: 6520046113461452524, guid: 0540207e177934627a3bfac6e3313d1e, type: 2}

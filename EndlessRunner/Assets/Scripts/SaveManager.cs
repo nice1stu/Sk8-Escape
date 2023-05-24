@@ -1,74 +1,66 @@
 using System;
 using System.IO;
-using Inventory.Scripts;
+using Firebase.Auth;
 using UnityEngine;
+using Firebase.Database;
 
 public class SaveManager : MonoBehaviour
 {
-    public int SaveTotalScore { get; set; }
-    public int SaveTotalGems { get; set; }
-    public int SaveTotalCoins { get; set; }
-    public int SaveHighScore { get; set; }
+    public static int SaveTotalScore { get; set; }
+    public static int SaveTotalGems { get; set; }
+    public static int SaveTotalCoins { get; set; }
+    public static int SaveHighScore { get; set; }
 
     //public Countdown[] currentBoxes = new Countdown[4]; for testing
-    private Countdown[] LootBoxes => LoadLootBoxData();
+    // private Countdown[] LootBoxes => LoadLootBoxData();
 
-    private void Awake()
+    // private void SaveLootBoxData(Countdown[] lootBoxes)
+    // {
+    //     var data = lootBoxes;
+    //     var json = JsonUtility.ToJson(data);
+    //     File.WriteAllText(Application.persistentDataPath + "/lootBoxes.save.json", json);
+    //     var username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+    //     FirebaseDatabase.DefaultInstance.RootReference.Child("lootBoxes").Child(username).SetRawJsonValueAsync(json);
+    // }
+    //
+    // private Countdown[] LoadLootBoxData()
+    // {
+    //     var path = Application.persistentDataPath + "/lootBoxes.save.json";
+    //     if (!File.Exists(path)) return null;
+    //
+    //     var json = File.ReadAllText(path);
+    //     var data = JsonUtility.FromJson<Countdown[]>(json);
+    //     return data;
+    // }
+
+    public static void SaveGameData()
     {
-        LoadData();
-    }
-
-    private void SaveLootBoxData(Countdown[] lootBoxes)
-    {
-        var data = lootBoxes;
-        var json = JsonUtility.ToJson(data);
-        File.WriteAllText(Application.persistentDataPath + "/lootBoxes.save.json", json);
-    }
-
-    private Countdown[] LoadLootBoxData()
-    {
-        var path = Application.persistentDataPath + "/lootBoxes.save.json";
-        if (!File.Exists(path)) return null;
-
-        var json = File.ReadAllText(path);
-        var data = JsonUtility.FromJson<Countdown[]>(json);
-        return data;
-    }
-
-    public void LoadData()
-    {
-        var path = Application.persistentDataPath + "/stats.save.json";
-        if (!File.Exists(path)) return;
-
-        var json = File.ReadAllText(path);
-        var data = JsonUtility.FromJson<GameData>(json);
-
-        SaveTotalScore = data.totalScore;
-        SaveTotalGems = data.totalGems;
-        SaveTotalCoins = data.totalCoins;
-        SaveHighScore = data.playerHighScore;
-    }
-
-    public void SaveGameData()
-    {
-        var data = new GameData
+        var _username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
+        if(_username == String.Empty) _username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+        GameData data = new GameData
         {
+            username = _username,
             totalScore = SaveTotalScore,
             totalGems = SaveTotalGems,
             totalCoins = SaveTotalCoins,
-            playerHighScore = SaveHighScore
+            playerHighScore = SaveHighScore,
+            timeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
         };
 
         var json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/stats.save.json", json);
+        FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(_username).SetRawJsonValueAsync(json);
+
     }
 }
 
 [Serializable]
 public class GameData
 {
+    public string username;
     public int totalScore;
     public int totalGems;
     public int totalCoins;
     public int playerHighScore;
+    public long timeStamp;
 }

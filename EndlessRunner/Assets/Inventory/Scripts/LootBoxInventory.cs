@@ -55,29 +55,37 @@ namespace Inventory.Scripts
             if (DateTime.UtcNow - lootBox.OpeningStartTime < lootBox.Config.TimeToOpen) return;
             _slots[slotIndex] = null;
             LootBoxRemoved?.Invoke(slotIndex, lootBox);
-            //Use ItemFactory to create items
             List<IItemData> items = new List<IItemData>();
-            foreach (var item in lootBox.Config.LootChances)
-            {
-                //Randomize the possibility to get a better item
-                var itemPossibility = Random.Range(0, 100);
-                if (itemPossibility < item.chance)
-                {
-                    //TODO: randomize which rarity and give bonus stats based on rarity.
-                    items.Add(_itemFactory.CreateItem(item.itemConfig));
-                    break;
-                }
-            }
-            if (items.Count == 0)
-            {
-                items.Add(_itemFactory.CreateItem(lootBox.Config.LootChances[0].itemConfig));
-            }
+            var item = ProbabilityCheck(lootBox);
+            items.Add(item);
             LootBoxOpened?.Invoke(lootBox, items.ToArray());
         }
 
         public void Load(IEnumerable<ILootBoxData> lootBoxes)
         {
             _slots = lootBoxes.ToArray();
+        }
+
+        private IItemData ProbabilityCheck (ILootBoxData lootBox)
+        {
+            var weights = lootBox.Config.LootChances;
+            int totalWeight = 0;
+            foreach (var configLootChance in weights)
+            {
+                totalWeight += configLootChance.chance;
+            }
+            int randomWeight = Random.Range(0, totalWeight);
+            for (int i = 0;i < weights.Length; ++i)
+            {
+                randomWeight -= weights[i].chance;
+                if (randomWeight < 0)
+                {
+                    IItemData item = _itemFactory.CreateItem(weights[i].itemConfig);
+                    return item;
+                }
+            }
+
+            return null;
         }
 
         

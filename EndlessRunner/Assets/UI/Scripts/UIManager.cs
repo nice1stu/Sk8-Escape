@@ -1,40 +1,36 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.SocialPlatforms;
 
 namespace UI.Scripts
 {
 public class UIManager : MonoBehaviour
 {
-    public SaveManager saveManager;
     public TextMeshProUGUI coinView;
     public TextMeshProUGUI gemsView;
     public static void LoadSettingsAdditively() => SceneManager.LoadScene("SettingsMenu", LoadSceneMode.Additive);
     
     void Start()
     {
-        coinView.text = saveManager.SaveTotalCoins.ToString();
-        gemsView.text = saveManager.SaveTotalGems.ToString();
+        UpdateUI();
     }
 
     public int GetCoins()
     {
-        return saveManager.SaveTotalCoins;
+        return SaveManager.SaveTotalCoins;
     }
     public void SpendCoins(int cost)
     {
-        saveManager.SaveTotalCoins -= cost;
-        saveManager.SaveGameData();
-        coinView.text = saveManager.SaveTotalCoins.ToString();
+        SaveManager.SaveTotalCoins -= cost;
+        SaveManager.SaveGameData();
+        coinView.text = SaveManager.SaveTotalCoins.ToString();
     }
 
     public void SpendGems(int cost)
     {
-        saveManager.SaveTotalGems -= cost;
-        saveManager.SaveGameData();
-        gemsView.text = saveManager.SaveTotalGems.ToString();
+        SaveManager.SaveTotalGems -= cost;
+        SaveManager.SaveGameData();
+        gemsView.text = SaveManager.SaveTotalGems.ToString();
     }
 
     public void OpenSettingsMenu()
@@ -49,12 +45,18 @@ public class UIManager : MonoBehaviour
     
     public int GetGems()
     {
-        return saveManager.SaveTotalGems;
+        return SaveManager.SaveTotalGems;
     }
 
     public void ShowLeaderboard()
     {
         Social.ShowLeaderboardUI();
+    }
+
+    public void UpdateUI()
+    {
+        coinView.text = SaveManager.SaveTotalCoins.ToString();
+        gemsView.text = SaveManager.SaveTotalGems.ToString();
     }
     
 }
