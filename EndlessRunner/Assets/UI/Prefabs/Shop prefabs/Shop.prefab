@@ -420,19 +420,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221664364726511882}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00000047683716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 221664365555312015}
+  m_Father: {fileID: 5684250030132287429}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.4043007, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0014975369, y: 2.5}
   m_SizeDelta: {x: 234.767, y: 50}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &221664364726511887
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -463,8 +463,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Shop Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 05fc9321807e7453f84d831508c16030, type: 2}
+  m_sharedMaterial: {fileID: 6633936885432657698, guid: 05fc9321807e7453f84d831508c16030, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -494,7 +494,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 3
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -803,7 +803,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 221664364726511885}
+  - {fileID: 5684250030132287429}
   - {fileID: 221664365777975140}
   m_Father: {fileID: 221664364298803655}
   m_RootOrder: 0
@@ -1985,7 +1985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3104857450402782672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2009,7 +2009,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.7000122, y: -45.577744}
-  m_SizeDelta: {x: 1050.5829, y: 339.5032}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3104857450402782676
 CanvasRenderer:
@@ -2740,8 +2740,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 3289650
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3028,7 +3028,7 @@ GameObject:
   - component: {fileID: 3104857451329811823}
   - component: {fileID: 3104857451329811822}
   m_Layer: 5
-  m_Name: Disable Panel
+  m_Name: Uncommon Disable Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3302,6 +3302,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 221664364298803656}
+        m_TargetAssemblyTypeName: ItemShop, Assembly-CSharp
+        m_MethodName: DisablePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3104857451737128257
 GameObject:
   m_ObjectHideFlags: 0
@@ -3314,7 +3326,7 @@ GameObject:
   - component: {fileID: 3104857451737128260}
   - component: {fileID: 3104857451737128259}
   m_Layer: 5
-  m_Name: DisablePanel
+  m_Name: Common DisablePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3680,7 +3692,7 @@ GameObject:
   - component: {fileID: 4635063494725517330}
   - component: {fileID: 4635063494725517329}
   m_Layer: 5
-  m_Name: Disable Panel
+  m_Name: Rare Disable Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4159,6 +4171,83 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1132e37f2fc3c4f71ae84110fcb2b8ac, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5571929030013797804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5684250030132287429}
+  - component: {fileID: 7112092823578674914}
+  - component: {fileID: 946089625530459678}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5684250030132287429
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571929030013797804}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00000035762787}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 221664364726511885}
+  m_Father: {fileID: 221664365555312015}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.40581, y: -2.1638}
+  m_SizeDelta: {x: 234.77, y: 75.6559}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!222 &7112092823578674914
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571929030013797804}
+  m_CullTransparentMesh: 1
+--- !u!114 &946089625530459678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571929030013797804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.83137256}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 1d54ab33461ad468a86a5cfa99949002, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5355,6 +5444,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3104857450402782672}
     m_Modifications:
+    - target: {fileID: 5523640191890604152, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
+      propertyPath: m_text
+      value: Tiny
+      objectReference: {fileID: 0}
     - target: {fileID: 6973433299363625966, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5373,7 +5466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6973433299363625966, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6973433299363625966, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
       propertyPath: m_AnchorMin.x
@@ -5381,7 +5474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6973433299363625966, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6973433299363625966, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5421,11 +5514,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6973433299363625966, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 99.05829
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6973433299363625966, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -169.7516
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6973433299363625966, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5453,6 +5546,25 @@ PrefabInstance:
       objectReference: {fileID: 221664364298803656}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
+--- !u!1 &826144145143509380 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2152333017076522790, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
+  m_PrefabInstance: {fileID: 1632997696077622946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1024778700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826144145143509380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: tiny
+  FallbackText: Tiniy of Gems
 --- !u!114 &8131755495309640822 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7381503464066509524, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
@@ -5474,6 +5586,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6973433299363625967, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
   m_PrefabInstance: {fileID: 1632997696077622946}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8534055639264462427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6973433300656056569, guid: 46d00aea0f085d542a75d638dc81252a, type: 3}
+  m_PrefabInstance: {fileID: 1632997696077622946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1978436015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534055639264462427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 240_gems
+  FallbackText: 240 Gems
 --- !u!1001 &2210496165064200894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5481,6 +5612,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3104857450402782672}
     m_Modifications:
+    - target: {fileID: 6160208823980802139, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
+      propertyPath: m_text
+      value: 3200 Gems
+      objectReference: {fileID: 0}
     - target: {fileID: 6160208824086459214, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5507,7 +5642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6160208825070867274, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6160208825070867274, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
       propertyPath: m_AnchorMin.x
@@ -5515,7 +5650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6160208825070867274, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6160208825070867274, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5555,11 +5690,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6160208825070867274, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 738.408
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6160208825070867274, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -169.7516
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6160208825070867274, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5577,8 +5712,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gem Template  4
       objectReference: {fileID: 0}
+    - target: {fileID: 8726850828244379868, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
+      propertyPath: m_text
+      value: Large
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
+--- !u!1 &3947462381286892860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2910863111668987778, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
+  m_PrefabInstance: {fileID: 2210496165064200894}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1065066260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3947462381286892860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: large
+  FallbackText: Tiniy of Gems
 --- !u!224 &5462927667794838004 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6160208825070867274, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
@@ -5589,6 +5747,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6160208825070867275, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
   m_PrefabInstance: {fileID: 2210496165064200894}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5462927669120832227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6160208823980802141, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
+  m_PrefabInstance: {fileID: 2210496165064200894}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &486200199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462927669120832227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 3200_gems
+  FallbackText: 240 Gems
 --- !u!114 &5577414758310449358 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6038121627305001584, guid: 49d7c95240fc7e94b828de9b64465d91, type: 3}
@@ -5747,7 +5924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 746878741717452804, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 746878741717452804, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
       propertyPath: m_AnchorMin.x
@@ -5755,7 +5932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 746878741717452804, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 746878741717452804, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5795,11 +5972,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 746878741717452804, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 951.5246
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 746878741717452804, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -169.7516
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 746878741717452804, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5817,6 +5994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gem Template  5
       objectReference: {fileID: 0}
+    - target: {fileID: 746878742706854677, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
+      propertyPath: m_text
+      value: 6500 Gems
+      objectReference: {fileID: 0}
     - target: {fileID: 746878742871746560, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5825,8 +6006,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 221664364298803656}
+    - target: {fileID: 2755085440982397842, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
+      propertyPath: m_text
+      value: Extreme
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
+--- !u!1 &3947462381138988960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8594400361590959308, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
+  m_PrefabInstance: {fileID: 4723508030340064108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &830622267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3947462381138988960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: extreme
+  FallbackText: Tiniy of Gems
 --- !u!224 &5462927667924036456 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 746878741717452804, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
@@ -5837,6 +6041,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 746878741717452805, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
   m_PrefabInstance: {fileID: 4723508030340064108}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5462927668981463167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 746878742706854675, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
+  m_PrefabInstance: {fileID: 4723508030340064108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &373869629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462927668981463167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 6500_gems
+  FallbackText: 240 Gems
 --- !u!114 &5577414758187858514 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 931031996750174526, guid: 81e5ffe170b141d49a2a253ddc9f339d, type: 3}
@@ -5855,6 +6078,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3104857450402782672}
     m_Modifications:
+    - target: {fileID: 6751422402921760184, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
+      propertyPath: m_text
+      value: 650 Gems
+      objectReference: {fileID: 0}
     - target: {fileID: 6751422403021649581, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5885,7 +6112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6751422404046427817, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6751422404046427817, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
       propertyPath: m_AnchorMin.x
@@ -5893,7 +6120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6751422404046427817, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6751422404046427817, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5933,11 +6160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6751422404046427817, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 312.17487
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6751422404046427817, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -169.7516
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6751422404046427817, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5951,8 +6178,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8201243183951785279, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
+      propertyPath: m_text
+      value: Small
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
+--- !u!1 &1406662988498516923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6751422402921760190, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
+  m_PrefabInstance: {fileID: 5635312027856584197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1952456293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406662988498516923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 650_gems
+  FallbackText: 240 Gems
 --- !u!224 &1406662989690284204 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6751422404046427817, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
@@ -5974,6 +6224,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e93687dd17c844191821216604df6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7970662513596402788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2353655537587925601, guid: cde6f8657da999f47afd201891dcbbe5, type: 3}
+  m_PrefabInstance: {fileID: 5635312027856584197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &340479574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970662513596402788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: small
+  FallbackText: Tiniy of Gems
 --- !u!1001 &7400282041521105161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5981,6 +6250,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3104857450402782672}
     m_Modifications:
+    - target: {fileID: 72716567490405463, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
+      propertyPath: m_text
+      value: Medium
+      objectReference: {fileID: 0}
     - target: {fileID: 3270495737335128000, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
       propertyPath: m_Name
       value: Gem Template  3
@@ -6003,7 +6276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3270495737335128001, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3270495737335128001, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
       propertyPath: m_AnchorMin.x
@@ -6011,7 +6284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3270495737335128001, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3270495737335128001, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
       propertyPath: m_SizeDelta.x
@@ -6051,11 +6324,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3270495737335128001, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 525.29144
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3270495737335128001, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -169.7516
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3270495737335128001, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6077,8 +6350,50 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 221664364298803656}
+    - target: {fileID: 3270495738425183440, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
+      propertyPath: m_text
+      value: 1500 Gems
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
+--- !u!1 &3947462382440763904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5799265580150700809, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
+  m_PrefabInstance: {fileID: 7400282041521105161}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &959564414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3947462382440763904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: medium
+  FallbackText: Tiniy of Gems
+--- !u!1 &5462927667966928351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3270495738425183446, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}
+  m_PrefabInstance: {fileID: 7400282041521105161}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &378507933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462927667966928351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 1500_gems
+  FallbackText: 240 Gems
 --- !u!224 &5462927668957378248 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3270495737335128001, guid: 8eee8f86b0f906d4c8514e96c23e93d5, type: 3}

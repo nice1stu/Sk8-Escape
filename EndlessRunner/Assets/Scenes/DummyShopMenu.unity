@@ -289,25 +289,6 @@ MonoBehaviour:
   - Language: Swedish
     Text: Liten
     Object: {fileID: 0}
---- !u!1 &340479570 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7970662513596402788, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-  m_PrefabInstance: {fileID: 3104857450864636064}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &340479574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340479570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: small
-  FallbackText: Tiniy of Gems
 --- !u!1 &350192661
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,25 +341,6 @@ MonoBehaviour:
   - Language: Swedish
     Text: "650 \xC4delstenar"
     Object: {fileID: 0}
---- !u!1 &373869625 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5462927668981463167, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-  m_PrefabInstance: {fileID: 3104857450864636064}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &373869629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 373869625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: 6500_gems
-  FallbackText: 240 Gems
 --- !u!1 &376659333
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,25 +393,6 @@ MonoBehaviour:
   - Language: Swedish
     Text: Medium
     Object: {fileID: 0}
---- !u!1 &378507929 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5462927667966928351, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-  m_PrefabInstance: {fileID: 3104857450864636064}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &378507933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378507929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: 1500_gems
-  FallbackText: 240 Gems
 --- !u!1 &385868620
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,25 +445,6 @@ MonoBehaviour:
   - Language: Swedish
     Text: "6500 \xC4delstenar"
     Object: {fileID: 0}
---- !u!1 &486200195 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5462927669120832227, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-  m_PrefabInstance: {fileID: 3104857450864636064}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &486200199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486200195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: 3200_gems
-  FallbackText: 240 Gems
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,25 +758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bcd1449e904ac741bd00f8f3dbfd900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &830622263 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3947462381138988960, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-  m_PrefabInstance: {fileID: 3104857450864636064}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &830622267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830622263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: extreme
-  FallbackText: Tiniy of Gems
 --- !u!1 &890819418
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,25 +810,6 @@ MonoBehaviour:
   - Language: Swedish
     Text: Vanlig Kista
     Object: {fileID: 0}
---- !u!1 &959564410 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3947462382440763904, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-  m_PrefabInstance: {fileID: 3104857450864636064}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &959564414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959564410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: medium
-  FallbackText: Tiniy of Gems
 --- !u!1 &1002908971
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,44 +862,6 @@ MonoBehaviour:
   - Language: Swedish
     Text: "3200 \xC4delstenar"
     Object: {fileID: 0}
---- !u!1 &1024778696 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 826144145143509380, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-  m_PrefabInstance: {fileID: 3104857450864636064}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1024778700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1024778696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: tiny
-  FallbackText: Tiniy of Gems
---- !u!1 &1065066256 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3947462381286892860, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-  m_PrefabInstance: {fileID: 3104857450864636064}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1065066260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065066256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: large
-  FallbackText: Tiniy of Gems
 --- !u!114 &1216210269 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 344165094437419025, guid: 623b336c0d386314f96463a3a613c5ae, type: 3}
@@ -1402,44 +1250,6 @@ MonoBehaviour:
   - Language: Swedish
     Text: Ovanlig Chest
     Object: {fileID: 0}
---- !u!1 &1952456289 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1406662988498516923, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-  m_PrefabInstance: {fileID: 3104857450864636064}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1952456293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1952456289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: 650_gems
-  FallbackText: 240 Gems
---- !u!1 &1978436011 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8534055639264462427, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-  m_PrefabInstance: {fileID: 3104857450864636064}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1978436015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978436011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: 240_gems
-  FallbackText: 240 Gems
 --- !u!1 &1991214469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,17 +1529,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 221664364298803655, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
   m_PrefabInstance: {fileID: 3104857450864636064}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2883757273482946920 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 221664364298803656, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-  m_PrefabInstance: {fileID: 3104857450864636064}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb76c105223ce2741ad42b1e42fa02e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3104857450864636064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1737,34 +1536,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1339615944}
     m_Modifications:
-    - target: {fileID: 122954047093541862, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 122954047093541862, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 122954047093541862, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 219848254599749477, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 219848254599749477, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 219848254599749477, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 219848254599749477, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 221664364204008855, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1869,24 +1640,6 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 1216210269}
-    - target: {fileID: 221664364726511884, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_text
-      value: 'Shop
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 221664364726511884, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 05fc9321807e7453f84d831508c16030, type: 2}
-    - target: {fileID: 221664364726511884, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_fontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 221664364726511884, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 6633936885432657698, guid: 05fc9321807e7453f84d831508c16030, type: 2}
     - target: {fileID: 221664365777975143, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1971,10 +1724,6 @@ PrefabInstance:
       propertyPath: popupWindowConfirmation
       value: 
       objectReference: {fileID: 3933376396078469597}
-    - target: {fileID: 3104857450402782671, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3104857450402782672, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1983,54 +1732,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3104857450863423836, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_fontColor.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104857450863423836, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 3289650
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104857451329811820, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_Name
-      value: Uncommon Disable Panel
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104857451648087648, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104857451648087648, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104857451648087648, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2883757273482946920}
-    - target: {fileID: 3104857451648087648, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104857451648087648, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: DisablePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104857451648087648, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: ItemShop, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104857451648087648, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104857451737128257, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_Name
-      value: Common DisablePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 4635063494725517328, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_Name
-      value: Rare Disable Panel
-      objectReference: {fileID: 0}
     - target: {fileID: 5462927667794838004, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2092,34 +1793,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8534055638207960396, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8653440080989015420, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8653440080989015420, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8653440080989015420, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8840263945817627135, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8840263945817627135, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8840263945817627135, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8840263945817627135, guid: 1a33b609c2738a44aa35112aec985d86, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
