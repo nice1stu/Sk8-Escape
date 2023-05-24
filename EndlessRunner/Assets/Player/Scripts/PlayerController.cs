@@ -398,7 +398,7 @@ namespace Player
                     grounded = true;
                 }
 
-                if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.left) < model.maxWallAngle)
+                if (Vector2.Angle(_collisionBuffer[i].normal, Vector2.left) < model.maxWallAngle || playerInput.transform.position.y > -2)
                 {
                     if (deathHandler.invincible == true)
                     {
