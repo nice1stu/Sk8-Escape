@@ -112,10 +112,23 @@ namespace Editor
                 EditorGUILayout.EndHorizontal();
                 
                 EditorGUILayout.BeginHorizontal();
+                EditorGUI.BeginChangeCheck();
                 _addPhraseName = EditorGUILayout.TextField("", _addPhraseName);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    // if empty or equal to this string minus last character so it can update if they're the same
+                    if (_addPhraseEnglishText.Length > 0 && _addPhraseEnglishText == _addPhraseName[..^1])
+                    {
+                        _addPhraseEnglishText = _addPhraseName;
+                    }
+                }
                 _addPhraseEnglishText = EditorGUILayout.TextField("", _addPhraseEnglishText);
                 _addPhraseSwedishText = EditorGUILayout.TextField("", _addPhraseSwedishText);
                 EditorGUILayout.EndHorizontal();
+                    
+                bool disableAddPhraseButton = _addPhraseName.Length < 2 || _addPhraseEnglishText.Length < 2 ||
+                                            _addPhraseSwedishText.Length == 0;
+                    EditorGUI.BeginDisabledGroup(disableAddPhraseButton);
                 if (GUILayout.Button("Add Phrase"))
                 {
                     GameObject newPhraseGameObject = new GameObject();
@@ -135,8 +148,11 @@ namespace Editor
                     
                     SetPrivateField(newPhrase, "entries", newEntryList);
 
+
+                    newPhraseGameObject.name = _addPhraseName;
                     newPhraseGameObject.transform.SetParent(scenePrefab.transform);
                 }
+                EditorGUI.EndDisabledGroup();
                 // ----------- <\Add Phrase>
                 
                 EditorGUILayout.LabelField("LeanLocalization Children");
