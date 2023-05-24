@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1626855852268549789}
   - component: {fileID: 1195136500}
   - component: {fileID: 1195136499}
+  - component: {fileID: 1892807241}
   m_Layer: 8
   m_Name: Skateboard gfx
   m_TagString: Untagged
@@ -4937,6 +4938,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1892807241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916092106247586840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6caf44f64b658649b4a340e4e026f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors: {r: 0, g: 0, b: 0, a: 0}
+  colorIndex: 3
 --- !u!1 &5126716563895704595
 GameObject:
   m_ObjectHideFlags: 0

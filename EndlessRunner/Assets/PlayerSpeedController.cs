@@ -16,6 +16,6 @@ public class PlayerSpeedController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        stats.movementSpeed += speedUpFactor * Time.deltaTime;
+        if (stats.isAlive) stats.movementSpeed += speedUpFactor * Time.deltaTime;
     }
 }
