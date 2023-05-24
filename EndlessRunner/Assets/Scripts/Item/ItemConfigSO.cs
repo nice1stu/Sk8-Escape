@@ -13,15 +13,23 @@ namespace Item
         [SerializeField] private Sprite itemSprite;
         [SerializeField] private Sprite itemIcon;
         [SerializeField] private string id;
+        [SerializeField] private Color color;
 
         // do a public method with the exact type (not IStats):
         public Stats BaseStats => baseStats;
         public ItemType ItemType => itemType;
-        public int BonusStats => bonusStats;
+        public int BonusStats
+        {
+            get => bonusStats;
+            set => bonusStats = value;
+        }
+
         public string ItemName => itemName;
         public Sprite ItemSprite => itemSprite;
         public Sprite ItemIcon => itemIcon;
         public string Id => id;
+
+        public Color Color => color;
 
         // then, do an explicit interface implementation using the interface type:
         IStats IItemConfig.BaseStats => baseStats;

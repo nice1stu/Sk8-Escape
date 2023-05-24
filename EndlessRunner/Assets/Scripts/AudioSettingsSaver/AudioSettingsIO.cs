@@ -1,5 +1,6 @@
 using System.IO;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace AudioSettingsSaver
 {
@@ -8,22 +9,54 @@ namespace AudioSettingsSaver
         public IAudioChannelSettings Music { get; set; }
         public IAudioChannelSettings Sfx { get; set; }
 
-        public AudioSettings()
+        public AudioSettings(AudioMixerGroup musicGroup, AudioMixerGroup sfxGroup)
         {
-            Music = new AudioChannelSettings(1f, false); // Default music settings
-            Sfx = new AudioChannelSettings(1f, false); // Default SFX settings
+            Music = new AudioChannelSettings("Music", musicGroup); // Default music settings
+            Sfx = new AudioChannelSettings("SFX", sfxGroup); // Default SFX settings
         }
     }
 
     public class AudioChannelSettings : IAudioChannelSettings
     {
-        public float Volume { get; set; }
-        public bool Muted { get; set; }
+        private readonly string _channelName;
+        private readonly AudioMixerGroup _audioMixerGroup;
+        private float _volume;
+        private bool _muted;
 
-        public AudioChannelSettings(float volume, bool muted)
+        public float Volume
         {
-            Volume = volume;
-            Muted = muted;
+            get => _volume;
+            set
+            {
+                value = Mathf.Clamp01(value);
+                _volume = value;
+                PlayerPrefs.SetFloat(_channelName+"_Volume", value);
+                UpdateMixerVolume();
+            }
+        }
+        
+        void UpdateMixerVolume() => _audioMixerGroup.audioMixer.SetFloat(_channelName+"Volume", ActualVolumeDb);
+
+        private float ActualVolume => _muted ? 0f : _volume;
+        private float ActualVolumeDb => ActualVolume == 0f ? -80f : Mathf.Log10(ActualVolume) * 20;
+
+        public bool Muted
+        {
+            get => _muted;
+            set
+            {
+                _muted = value;
+                PlayerPrefs.SetInt(_channelName+"_Muted", value ? 1 : 0);
+                UpdateMixerVolume();
+            }
+        }
+
+        public AudioChannelSettings(string channelName, AudioMixerGroup audioMixerGroup)
+        {
+            _channelName = channelName;
+            _audioMixerGroup = audioMixerGroup;
+            Volume = PlayerPrefs.GetFloat(channelName+"_Volume", 1f);
+            Muted = PlayerPrefs.GetInt(channelName+"_Muted", 0) == 1;
         }
     }
 
@@ -32,7 +65,7 @@ namespace AudioSettingsSaver
         private const string SettingsFileName = "audio_settings.json";
 
         // The current audio settings
-        private AudioSettings _currentSettings;
+        public AudioSettings currentSettings;
 
         public AudioSettingsIO()
         {
@@ -47,12 +80,12 @@ namespace AudioSettingsSaver
             {
                 // Read the JSON file and deserialize it into an instance of AudioSettings
                 string json = File.ReadAllText(filePath);
-                _currentSettings = JsonUtility.FromJson<AudioSettings>(json);
+                currentSettings = JsonUtility.FromJson<AudioSettings>(json);
             }
             else
             {
                 // Create a new instance of AudioSettings with default values
-                _currentSettings = new AudioSettings();
+                currentSettings = new AudioSettings(null, null);
                 SaveSettings(); // Save the default settings to a JSON file
             }
         }
@@ -60,7 +93,7 @@ namespace AudioSettingsSaver
         public void SaveSettings()
         {
             // Serialize the current settings to JSON
-            string json = JsonUtility.ToJson(_currentSettings, true);
+            string json = JsonUtility.ToJson(currentSettings, true);
 
             // Write the JSON to a file in the persistent data path
             string filePath = Path.Combine(Application.persistentDataPath, SettingsFileName);

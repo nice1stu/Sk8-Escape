@@ -751,9 +751,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 207329601570609181}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
-  m_WholeNumbers: 1
-  m_Value: 100
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -940,7 +940,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 207329602467787705}
   Suffix: '%'
-  WholeNumber: 1
+  WholeNumber: 0
+  Percent: 1
 --- !u!1 &207329602816456615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,6 +1136,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 207329601420875389}
     m_Modifications:
+    - target: {fileID: 5716191415619256766, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716191415619256767, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716191415619256767, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716191415619256767, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716191415619256767, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716191415619256767, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -500
+      objectReference: {fileID: 0}
     - target: {fileID: 1259813762256378265, guid: 526cedf92c4ba496db11f9e71099643a, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -1222,30 +1247,6 @@ PrefabInstance:
     - target: {fileID: 1259813762256378266, guid: 526cedf92c4ba496db11f9e71099643a, type: 3}
       propertyPath: m_Name
       value: Settings - Label Off-Center Right
-      objectReference: {fileID: 0}
-    - target: {fileID: 5716191415619256766, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 5716191415619256767, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5716191415619256767, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5716191415619256767, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5716191415619256767, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5716191415619256767, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc34e4654e470b34e8e668d975ac395e, type: 3}

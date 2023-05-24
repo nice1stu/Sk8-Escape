@@ -1,9 +1,10 @@
-using System;
 using Ads.Scripts;
+using Lean.Localization;
 using Player;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class GameplayResults : MonoBehaviour
@@ -13,12 +14,16 @@ public class GameplayResults : MonoBehaviour
     public TextMeshProUGUI coinsCollectedText;
 
     public PlayerScoreModel _scoreManager;
-    public SaveManager _saveManager;
-    public AdInterstitialDisplay ads;
+    public AdRewardedDisplay ads;
     public RunInventoryManager cointest;
     public Button adButton;
     public static bool hasPlayedAd;
-    
+
+    [SerializeField] private string scorePhraseName = "Score";
+    [SerializeField] private string highScorePhraseName = "Highscore";
+    [SerializeField] private string coinsPhraseName = "Coins";
+
+
     void Start()
     { 
         //_scoreManager = FindObjectOfType<PlayerScoreModel>();
@@ -27,22 +32,36 @@ public class GameplayResults : MonoBehaviour
 
     private void OnEnable()
     {
-         _saveManager.LoadData(); //loading from saveFile (stewarts thing)
+         // _saveManager.LoadData(); //loading from saveFile (stewarts thing)
         int currentScore = (int)_scoreManager.GetScore(); // sets/shows score
-        currentScoreText.text = $"Score: {currentScore}";
+        
+        string scoreTranslation     = LeanLocalization.GetTranslationText(scorePhraseName);
+        string highScoreTranslation = LeanLocalization.GetTranslationText(highScorePhraseName);
+        //string coinsTranslation     = LeanLocalization.GetTranslationText(coinsPhraseName);
+        
+        Assert.IsNotNull(scoreTranslation);
+        Assert.IsNotNull(highScoreTranslation);
+        //Assert.IsNotNull(coinsTranslation);
+        
+        Debug.Log(scoreTranslation);
+        
+        currentScoreText.text = $"{scoreTranslation}: {currentScore}";
 
         int currentCoin = cointest.GetCoinAmount();
-        coinsCollectedText.text = $"Coins: {currentCoin}";
+        coinsCollectedText.text = $" {currentCoin}";
         
-        _saveManager.SaveTotalCoins += cointest.GetCoinAmount();
+        SaveManager.SaveTotalCoins += cointest.GetCoinAmount();
 
-        if (currentScore > _saveManager.SaveHighScore) // highScoreFrom stewart 
+        if (currentScore > SaveManager.SaveHighScore) // highScoreFrom stewart 
         {
-            _saveManager.SaveHighScore = currentScore; // newHighScore save to stewart
+            SaveManager.SaveHighScore = currentScore; // newHighScore save to stewart
+            Social.ReportScore(currentScore,GPGSIds.leaderboard_leaderboard, _ => {}); //upload score to the leaderboard
         }
         
-        highScoreText.text = $"High Score: {_saveManager.SaveHighScore}"; //should get the saved file from stewart to display
-        _saveManager.SaveGameData(); //hope this was enough to save after each
+        highScoreText.text = $"{highScoreTranslation}: {SaveManager.SaveHighScore}"; //should get the saved file from stewart to display
+        SaveManager.SaveGameData(); //hope this was enough to save after each
+        
+        DisableAdButton();
     }
 
     private void OnDisable()
@@ -80,9 +99,20 @@ public class GameplayResults : MonoBehaviour
 
     private void DoubleCoins()
     {
-        _saveManager.SaveTotalCoins +=  cointest.GetCoinAmount();
-        coinsCollectedText.text = $"Coins: {cointest.GetCoinAmount() * 2}";
+        //string coinsTranslation     = LeanLocalization.GetTranslationText(coinsPhraseName);
         
-        _saveManager.SaveGameData(); //hope this was enough to save after each
+        SaveManager.SaveTotalCoins +=  cointest.GetCoinAmount();
+        coinsCollectedText.text = $"{cointest.GetCoinAmount() * 2}";
+        
+        
+        SaveManager.SaveGameData(); //hope this was enough to save after each
+    }
+
+    public void DisableAdButton()
+    {
+        if (cointest.GetCoinAmount() == 0)
+        {
+            adButton.interactable = false;
+        }
     }
 }

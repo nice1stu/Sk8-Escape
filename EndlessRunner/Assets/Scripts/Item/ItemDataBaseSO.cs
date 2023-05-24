@@ -9,7 +9,7 @@ namespace Item
     [CreateAssetMenu(fileName = "ItemDataBase", menuName = "ItemDataBase", order = 0)]
     public class ItemDataBaseSO : ScriptableObject
     {
-        [SerializeField] private ItemConfigSO[] itemConfigs;
+        [SerializeField] public ItemConfigSO[] itemConfigs;
         private IEnumerable<ItemConfigSO> ItemConfigs=> itemConfigs;
         public bool TryLoadItemWithID(string id, out ItemConfigSO result)
         {

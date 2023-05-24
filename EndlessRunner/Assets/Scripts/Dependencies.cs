@@ -1,10 +1,14 @@
+
 using System.Linq;
+using AudioSettingsSaver;
 using Inventory;
 using Item;
 using Stat;
 using Inventory.Scripts;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Serialization;
+using AudioSettings = UnityEngine.AudioSettings;
 
 [CreateAssetMenu]
 public class Dependencies : ScriptableObject
@@ -32,10 +36,15 @@ public class Dependencies : ScriptableObject
         }
     }
     private LootBoxInventory _lootBoxInventory;
+    private AudioSettingsSaver.AudioSettings _audioSettings;
 
     public ILootBoxInventory LootBoxes => _lootBoxInventory;
     public IInventoryData Inventory => playerInventory;
     public IActiveInventory Equipped => playerInventory;
+
+    public IAudioSettings Audio => _audioSettings;
+    public AudioMixerGroup MusicGroup;
+    public AudioMixerGroup SFXGroup;
 
     private void OnEnable()
     {
@@ -47,6 +56,8 @@ public class Dependencies : ScriptableObject
         var playerStats = new PlayerStats(Equipped);
         Load();
         playerStats.GetCurrentStats();
+
+        _audioSettings = new AudioSettingsSaver.AudioSettings(MusicGroup, SFXGroup);
     }
 
     public void CreateItemButton()

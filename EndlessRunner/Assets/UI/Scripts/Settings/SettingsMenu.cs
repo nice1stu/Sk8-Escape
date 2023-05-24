@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UI.Scripts.Settings;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
@@ -29,7 +30,11 @@ public class SettingsMenu : MonoBehaviour
     // [SerializeField] private SaveSettings persistentSettingsManager;
     public static bool StartHidden = false;
     private static bool _isActive = !StartHidden;
-    
+    [SerializeField] private Slider effectsVolumeSlider;
+    [SerializeField] private Toggle effectsMuteToggle;
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Toggle musicMuteToggle;
+
     public static void ReturnToStartupScene() => SceneManager.LoadScene("StartMenu");
     
 
@@ -81,21 +86,16 @@ public class SettingsMenu : MonoBehaviour
     private static void SetToggle(bool isChecked, Toggle toggle) => toggle.isOn = isChecked;
     private static void SetText(string text, TMP_Text textMesh) => textMesh.SetText(text);
 
-    private void SetUIFromState(SaveSettings state)
+    private void SetUIFromState(AudioSettingsSaver.AudioSettings state)
     {
-        // SetSlider(state.SaveSfxVolume,   effectsVolumeSlider);
-        // SetToggle(state.SaveSfxMute,     effectsMuteToggle);
-        // SetSlider(state.SaveMusicVolume, musicVolumeSlider);
-        // SetToggle(state.SaveMusicMute,   musicMuteToggle);
+        SetSlider(state.Sfx.Volume,   effectsVolumeSlider);
+        SetToggle(state.Sfx.Muted,     effectsMuteToggle);
+        SetSlider(state.Music.Volume, musicVolumeSlider);
+        SetToggle(state.Music.Muted,   musicMuteToggle);
     }
     
     // Sets the UI to reflect backend values 
     private void SetUIStateFromSavedData()
     {
-        // Blocked: Awaiting interface
-        // Assert.IsNotNull(persistentSettingsManager);
-
-        // persistentSettingsManager.LoadSettingsData();
-        // SetUIFromState(persistentSettingsManager);
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +9,7 @@ public class temp : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
-
+    
     public void LoadShopScene()
     {
         SceneManager.LoadScene("DummyShopMenu");
