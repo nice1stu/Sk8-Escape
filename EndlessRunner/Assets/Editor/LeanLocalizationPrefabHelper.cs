@@ -177,7 +177,7 @@ namespace Editor
                 {
                     EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.ObjectField(leanPhrase, typeof(GameObject), true);
-                    if (GUILayout.Button("Delete"))
+                    if (GUILayout.Button("Delete", GUILayout.MaxWidth(60)))
                     {
                        Undo.DestroyObjectImmediate(leanPhrase.gameObject);
                     }
