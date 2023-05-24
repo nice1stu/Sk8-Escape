@@ -76,6 +76,7 @@ namespace Player
             touch.performed -= OnTouchDownPerformed;
             touch.canceled -= TouchStopped;
             tap.performed -= Tap;
+            CancelSlowmo();
         }
 
         // Variables
