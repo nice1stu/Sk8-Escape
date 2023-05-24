@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Lean.Localization;
 using TMPro;
 using UnityEditor;
@@ -22,6 +23,16 @@ namespace Editor
         }
 
 
+        public static Dictionary<string, LeanPhrase> GetPhraseNamePairs()
+        {
+            return (
+                from Transform child in LeanLocalization.GetOrCreateInstance().transform 
+                select child.GetComponent<LeanPhrase>() 
+                into childLeanPhrase 
+                where childLeanPhrase select childLeanPhrase
+                ).ToDictionary(childLeanPhrase => childLeanPhrase.gameObject.name, childLeanPhrase => childLeanPhrase);
+        }
+        
         private void OnGUI () {
             FetchTMPObjects();
 
@@ -33,7 +44,8 @@ namespace Editor
                 EditorGUILayout.BeginHorizontal();
 
             
-                bool hasTranslationComponent = tmpObj.GetComponent<LeanLocalizedTextMeshProUGUI>();
+                var translationComponent = tmpObj.GetComponent<LeanLocalizedTextMeshProUGUI>();
+                bool hasTranslationComponent = translationComponent;
             
                 EditorGUI.BeginDisabledGroup(true);
                 EditorGUILayout.Toggle(hasTranslationComponent, GUILayout.Width(15)); // toggle readonly anyways
@@ -47,17 +59,21 @@ namespace Editor
                 EditorGUILayout.LabelField(goName);
             
                 // ------------------------------- Buttons
-                if (GUILayout.Button("Select", GUILayout.MaxWidth(70))) {
+                // Select
+                if (GUILayout.Button("Select", GUILayout.MaxWidth(60))) {
                     Selection.activeGameObject = tmpObj.gameObject;
                 }
-                if (GUILayout.Button("Focus", GUILayout.MaxWidth(70))) {
+                
+                // Focus
+                if (GUILayout.Button("Focus", GUILayout.MaxWidth(60))) {
                     Selection.activeGameObject = tmpObj.gameObject;
                     SceneView.lastActiveSceneView.FrameSelected();
                 }
 
                 EditorGUI.BeginDisabledGroup(hasTranslationComponent);
             
-                if (GUILayout.Button("Add", GUILayout.MaxWidth(50))) {
+                // Add
+                if (GUILayout.Button("Add", GUILayout.MaxWidth(40))) {
                     if (!hasTranslationComponent) {
                         Undo.AddComponent<LeanLocalizedTextMeshProUGUI>(tmpObj.gameObject).enabled = true;
                         Selection.activeGameObject = tmpObj.gameObject;
@@ -67,8 +83,30 @@ namespace Editor
                         GUI.enabled = false;
                     }
                 }
-
                 EditorGUI.EndDisabledGroup();
+                
+                EditorGUI.BeginDisabledGroup(!hasTranslationComponent);
+
+                Dictionary<string, LeanPhrase> phraseNamePairs = GetPhraseNamePairs();
+                
+                string[] phraseNames = phraseNamePairs.Keys.ToArray();
+                
+                if (EditorGUILayout.DropdownButton(new GUIContent("Set"), FocusType.Passive, GUILayout.MaxWidth(40)))
+                {
+                    GenericMenu menu = new GenericMenu();
+                    foreach (var phraseName in phraseNames)
+                    {
+                        bool isCurrentTranslation = translationComponent.TranslationName == phraseName;
+                        menu.AddItem(new GUIContent(phraseName), isCurrentTranslation, () =>
+                        {
+                            translationComponent.TranslationName = phraseName;
+                        });
+                        menu.ShowAsContext();
+                    }
+                }
+                                        
+                EditorGUI.EndDisabledGroup();
+                
                 // </Buttons> -------------------------------
             
                 EditorGUILayout.EndHorizontal();
