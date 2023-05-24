@@ -16,15 +16,19 @@ namespace Backend.Scripts
             PlayGamesPlatform.DebugLogEnabled = true;
             PlayGamesPlatform.Activate();
             PlayGamesPlatform.Instance.Authenticate(ProcessAutomaticAuth);
-            if (PlayGamesPlatform.Instance.localUser.userName == String.Empty)
+            if (!PlayGamesPlatform.Instance.IsAuthenticated() 
+                && FirebaseAuth.DefaultInstance.CurrentUser.UserId == String.Empty)
             {
                 FirebaseAuth.DefaultInstance
                     .SignInAnonymouslyAsync()
                     .ContinueWith(ContinueWithLogin);
             }
 #else
-            FirebaseAuth auth = FirebaseAuth.DefaultInstance;
-            auth.SignInAnonymouslyAsync().ContinueWith(ContinueWithLogin);
+                
+if (FirebaseAuth.DefaultInstance.CurrentUser.UserId == String.Empty){
+FirebaseAuth auth = FirebaseAuth.DefaultInstance;
+auth.SignInAnonymouslyAsync().ContinueWith(ContinueWithLogin);} 
+            
 #endif
         }
 #if UNITY_ANDROID
