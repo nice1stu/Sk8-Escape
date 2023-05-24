@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Item
 {
+    [Serializable]
     public class ItemFactory : IItemFactory
     {
         public IInventoryData Inventory { get; }
@@ -13,7 +14,7 @@ namespace Item
         {
             Inventory = inventory;
         }
-        public IItemData CreateItem(IItemConfig itemConfig)
+        public ItemData CreateItem(IItemConfig itemConfig)
         {
             var itemBonusStats = new Stats();
             for(int i = 0; i < itemConfig.BonusStats; i++){

@@ -13,7 +13,7 @@ using AudioSettings = UnityEngine.AudioSettings;
 [CreateAssetMenu]
 public class Dependencies : ScriptableObject
 {
-    private ItemFactory _itemFactory;
+    [SerializeField] private ItemFactory _itemFactory;
     
     private static Dependencies _instance;
     [SerializeField] private DummyInventory dummyInventory;
@@ -25,6 +25,7 @@ public class Dependencies : ScriptableObject
     private LootBoxSerializer lootBoxSerializer;
     [SerializeField] private ItemDataBaseSO itemDataBase;
     [SerializeField] private LootBoxDataBaseSo lootBoxDataBase;
+    [SerializeField] private ItemConfigSO defaultSkateBoard;
 
     public static Dependencies Instance
     {
@@ -41,6 +42,8 @@ public class Dependencies : ScriptableObject
     public ILootBoxInventory LootBoxes => _lootBoxInventory;
     public IInventoryData Inventory => playerInventory;
     public IActiveInventory Equipped => playerInventory;
+    public ItemConfigSO DefaultSkateBoard => defaultSkateBoard;
+    public IItemFactory ItemFactory => _itemFactory;
 
     public IAudioSettings Audio => _audioSettings;
     public AudioMixerGroup MusicGroup;
@@ -73,4 +76,10 @@ public class Dependencies : ScriptableObject
         var equipedIndices = inventorySerializer.LoadEquip();
         playerInventory.Load(items,equipedIndices);
     }
+
+    public void Clear()
+    {
+        inventorySerializer.Clear();
+    }
+    
 }

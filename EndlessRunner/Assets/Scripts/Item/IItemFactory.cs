@@ -7,6 +7,6 @@ namespace Item
     {
         IInventoryData Inventory { get; }
 
-        IItemData CreateItem(IItemConfig itemConfig);
+        ItemData CreateItem(IItemConfig itemConfig);
     }
 }

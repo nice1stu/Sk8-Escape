@@ -9,7 +9,7 @@ namespace Inventory
     [Serializable]
     public class PlayerInventory : EquippedItemsInventory,IInventoryData
     {
-        private IList<IItemData> _items;
+        private IList<IItemData> _items = new List<IItemData>();
         public IEnumerable<IItemData> Items => _items;
         public void AddItem(IItemData item)
         {
@@ -19,21 +19,6 @@ namespace Inventory
         public void Load(IEnumerable<IItemData> items, int[] indices){
             _items = items.ToList();
             LoadEquip(items.ToArray(),indices);
-        }
-        public void Load(int[] indices)
-        {
-            for (var i = 0; i < indices.Length; i++)
-            {
-                foreach (var item in Items)
-                {
-                    if (Array.IndexOf(Items.ToArray(), item) == indices[i])
-                    {
-                        
-                    }
-                }
-            }
-
-            
         }
         public event Action<IItemData> ItemAdded;
     }

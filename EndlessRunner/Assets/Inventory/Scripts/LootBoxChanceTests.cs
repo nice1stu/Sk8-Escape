@@ -11,7 +11,7 @@ public class LootBoxChanceTests : MonoBehaviour
     class DummyItemFactory : IItemFactory
     {
         public IInventoryData Inventory { get; }
-        public IItemData CreateItem(IItemConfig itemConfig)
+        public ItemData CreateItem(IItemConfig itemConfig)
         {
             return new ItemData(default, itemConfig);
         }

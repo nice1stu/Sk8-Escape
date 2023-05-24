@@ -78,6 +78,16 @@ namespace Inventory
             //var username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
             //FirebaseDatabase.DefaultInstance.RootReference.Child("lootBoxes").Child(username).SetRawJsonValueAsync(json);
         }
+        
+        public void Clear()
+        {
+            var inventory = new SerializableInventory(new List<SerializableItemData>());
+            var json = JsonUtility.ToJson(inventory);
+            File.WriteAllText(Application.persistentDataPath + "/inventory.save.json", json);
+            
+            var json2 = JsonUtility.ToJson(new SeralizableIntArray(Array.Empty<int>()));
+            File.WriteAllText(Application.persistentDataPath + "/equip.save.json", json2);
+        }
 
         private void SaveEquip(IItemData itemData)
         {
@@ -112,6 +122,8 @@ namespace Inventory
             return data.array;
         }
 
+        
+
         public IEnumerable<ItemData> Load()
         {
             //do I make fields of dummyInventory public or do I call this function from dummyInventory?
@@ -120,7 +132,25 @@ namespace Inventory
 
             var json = File.ReadAllText(path);
             var data = JsonUtility.FromJson<SerializableInventory>(json);
-            return data.serializableItemDatas.Select(Convert).Where(it => it!= null).ToArray();
+            var items = data.serializableItemDatas.Select(Convert).Where(it => it!= null).ToArray();
+
+            var hasSkateboard = false;
+            foreach (var itemData in items)
+            {
+                if (itemData.ItemConfig.ItemType == ItemType.SkateBoard)
+                {
+                    hasSkateboard = true;
+                }
+            }
+            var itemsList = items.ToList();
+
+            if (!hasSkateboard)
+            {
+                var item = Dependencies.Instance.ItemFactory.CreateItem(Dependencies.Instance.DefaultSkateBoard);
+                itemsList.Add(item);
+            }
+            
+            return itemsList;
         }
 
         ~InventorySerializer()

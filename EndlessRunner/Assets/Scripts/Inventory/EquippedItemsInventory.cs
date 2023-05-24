@@ -29,12 +29,21 @@ namespace Inventory
         protected void LoadEquip(IItemData[] items, int[] indices)
         {
             var itemList = new List<IItemData>();
-            for (var i = 0; i < indices.Length; i++)
+            bool hasSkateboard = false;
+            foreach (var t in indices)
             {
-               
-                itemList.Add(items[indices[i]]);
+                itemList.Add(items[t]);
+                if (items[t].ItemConfig.ItemType == ItemType.SkateBoard)
+                {
+                    hasSkateboard = true;
+                } 
             }
 
+            if (!hasSkateboard)
+            {
+                itemList.Add(items[0]);
+            }
+            
             _equippedItems = itemList;
         }
         
