@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Firebase.Auth;
 using UnityEngine;
 using Firebase.Database;
 
@@ -35,7 +36,7 @@ public class SaveManager : MonoBehaviour
     public static void SaveGameData()
     {
         var _username = GooglePlayGames.PlayGamesPlatform.Instance.localUser.userName;
-        if(_username == String.Empty) _username = SystemInfo.deviceUniqueIdentifier;
+        if(_username == String.Empty) _username = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
         GameData data = new GameData
         {
             username = _username,
