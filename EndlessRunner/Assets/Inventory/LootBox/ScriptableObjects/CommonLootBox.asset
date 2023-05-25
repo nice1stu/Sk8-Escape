@@ -21,9 +21,15 @@ MonoBehaviour:
   - itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
     chance: 65
   - itemConfig: {fileID: 11400000, guid: f1bec8577a1644e4e8fc217aff694619, type: 2}
+    chance: 65
+  - itemConfig: {fileID: 11400000, guid: ece08dea84c2f3b49a7cc3fe946d342a, type: 2}
     chance: 25
-  - itemConfig: {fileID: 11400000, guid: b44437e3ceea84644a60019552102ec7, type: 2}
-    chance: 9
-  - itemConfig: {fileID: 11400000, guid: a09ced5cbe261a5448ce7c52221dbe1f, type: 2}
-    chance: 1
+  - itemConfig: {fileID: 11400000, guid: 5491f16da00e81a46a25810a159735ba, type: 2}
+    chance: 25
+  - itemConfig: {fileID: 11400000, guid: b804f153fb0f095488d20d62610eedb9, type: 2}
+    chance: 10
+  - itemConfig: {fileID: 11400000, guid: 5a0659908c9099e428903ded32be64f2, type: 2}
+    chance: 10
+  - itemConfig: {fileID: 11400000, guid: b186db57a177a9b48a6ea9aa3c6693c3, type: 2}
+    chance: 10
   _openSfx: {fileID: 8300000, guid: 3f3ea1156e476e64fbf8abcfd128bf5e, type: 3}
