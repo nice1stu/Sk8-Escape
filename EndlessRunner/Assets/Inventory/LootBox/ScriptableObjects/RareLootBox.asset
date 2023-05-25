@@ -18,12 +18,16 @@ MonoBehaviour:
   id: lootbox.rare
   _minutesToOpen: 1
   lootChances:
-  - itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
-    chance: 100
-  - itemConfig: {fileID: 11400000, guid: f1bec8577a1644e4e8fc217aff694619, type: 2}
-    chance: 100
-  - itemConfig: {fileID: 11400000, guid: b44437e3ceea84644a60019552102ec7, type: 2}
-    chance: 100
-  - itemConfig: {fileID: 11400000, guid: d3dd408f74144bf48b32a469cac4c95d, type: 2}
-    chance: 100
+  - itemConfig: {fileID: 11400000, guid: b804f153fb0f095488d20d62610eedb9, type: 2}
+    chance: 80
+  - itemConfig: {fileID: 11400000, guid: 5a0659908c9099e428903ded32be64f2, type: 2}
+    chance: 80
+  - itemConfig: {fileID: 11400000, guid: b186db57a177a9b48a6ea9aa3c6693c3, type: 2}
+    chance: 80
+  - itemConfig: {fileID: 11400000, guid: a09ced5cbe261a5448ce7c52221dbe1f, type: 2}
+    chance: 20
+  - itemConfig: {fileID: 11400000, guid: 74d3aed3ef92f60468d3f5680faa7b9e, type: 2}
+    chance: 20
+  - itemConfig: {fileID: 11400000, guid: 209ca0f40c57c444ea7ba7cf0e1c7919, type: 2}
+    chance: 20
   _openSfx: {fileID: 8300000, guid: e686eab4acb05db4a8b90f4e6c69ac21, type: 3}

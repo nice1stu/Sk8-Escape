@@ -24,5 +24,5 @@ MonoBehaviour:
   itemName: Legendary Board
   itemSprite: {fileID: 21300000, guid: e7ec272c8286444cbada26ced869c7f1, type: 3}
   itemIcon: {fileID: 21300000, guid: e7ec272c8286444cbada26ced869c7f1, type: 3}
-  id: 3
+  id: 98
   color: {r: 0.9811321, g: 0.48639426, b: 0, a: 0}
