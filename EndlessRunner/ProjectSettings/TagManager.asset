@@ -9,6 +9,7 @@ TagManager:
   - HUDslowmo
   - HUDX2
   - HUDInvincible
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Player
   - LootBoxIcon
   - Camera
-  - 
+  - Ground
   - 
   - 
   - 
