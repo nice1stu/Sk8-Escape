@@ -68,5 +68,6 @@ MonoBehaviour:
   dummyItem: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
   itemDataBase: {fileID: 11400000, guid: 4294f6ae730b5d24eb27075ad78a2e12, type: 2}
   lootBoxDataBase: {fileID: 11400000, guid: 0425ffe47999c5f47bcbedbfbdc9ad13, type: 2}
+  defaultSkateBoard: {fileID: 11400000, guid: 7d29e8ab80896d44c9d478366a460a47, type: 2}
   MusicGroup: {fileID: 3009413916902391419, guid: eb3c33a94b720a24793197101de02ae0, type: 2}
   SFXGroup: {fileID: 5499106686247727651, guid: eb3c33a94b720a24793197101de02ae0, type: 2}

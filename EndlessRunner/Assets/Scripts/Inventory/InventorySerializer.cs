@@ -128,11 +128,14 @@ namespace Inventory
         {
             //do I make fields of dummyInventory public or do I call this function from dummyInventory?
             var path = Application.persistentDataPath + "/inventory.save.json";
-            if (!File.Exists(path)) return Array.Empty<ItemData>();
-
-            var json = File.ReadAllText(path);
-            var data = JsonUtility.FromJson<SerializableInventory>(json);
-            var items = data.serializableItemDatas.Select(Convert).Where(it => it!= null).ToArray();
+            ItemData[] items;
+            if (!File.Exists(path)) items = Array.Empty<ItemData>();
+            else
+            {
+                var json = File.ReadAllText(path);
+                var data = JsonUtility.FromJson<SerializableInventory>(json);
+                items = data.serializableItemDatas.Select(Convert).Where(it => it!= null).ToArray();
+            }
 
             var hasSkateboard = false;
             foreach (var itemData in items)

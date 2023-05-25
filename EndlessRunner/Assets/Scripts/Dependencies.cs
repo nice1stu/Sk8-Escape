@@ -42,7 +42,7 @@ public class Dependencies : ScriptableObject
     public ILootBoxInventory LootBoxes => _lootBoxInventory;
     public IInventoryData Inventory => playerInventory;
     public IActiveInventory Equipped => playerInventory;
-    public ItemConfigSO DefaultSkateBoard => defaultSkateBoard;
+    public IItemConfig DefaultSkateBoard => defaultSkateBoard;
     public IItemFactory ItemFactory => _itemFactory;
 
     public IAudioSettings Audio => _audioSettings;
