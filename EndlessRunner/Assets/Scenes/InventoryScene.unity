@@ -308,7 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPopUp: {fileID: 1520181838}
   PopUpBackButton: {fileID: 1556404645}
-  InventoryBackButton: {fileID: 624801100}
+  InventoryBackButton: {fileID: 0}
 --- !u!1 &455265676
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,17 +366,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3585858195544455560, guid: 16d0c1e7f45999043b72123790444647, type: 3}
   m_PrefabInstance: {fileID: 1372512212}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &624801100 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4255846707892873688, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
-  m_PrefabInstance: {fileID: 1776583398065186169}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &694162867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,6 +1237,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+    - target: {fileID: 1776583398989378168, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1776583398989378171, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1371,6 +1364,14 @@ PrefabInstance:
     - target: {fileID: 4255846706749608871, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 3.669
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729550358715150735, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 345.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729550358715150735, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fdff4fcfac4dbe44a32c8d9ee3d4b43, type: 3}
@@ -1499,7 +1500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7427043934619802233, guid: db912f3d511bb2c48bd453ee874d4018, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -385.99603
+      value: -282.37836
       objectReference: {fileID: 0}
     - target: {fileID: 7427043935519094679, guid: db912f3d511bb2c48bd453ee874d4018, type: 3}
       propertyPath: FallbackText
