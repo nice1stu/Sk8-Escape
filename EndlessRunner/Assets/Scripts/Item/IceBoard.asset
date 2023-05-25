@@ -22,7 +22,7 @@ MonoBehaviour:
   itemType: 1
   bonusStats: 3
   itemName: IceBoard
-  itemSprite: {fileID: 21300000, guid: e39c693152e9445889e78ac5146a362b, type: 3}
-  itemIcon: {fileID: 21300000, guid: e39c693152e9445889e78ac5146a362b, type: 3}
+  itemSprite: {fileID: 21300000, guid: 1347fd262a4cb934899709ab4deb7a4e, type: 3}
+  itemIcon: {fileID: 21300000, guid: 1347fd262a4cb934899709ab4deb7a4e, type: 3}
   id: 2
   color: {r: 0, g: 1, b: 0.9903989, a: 1}
