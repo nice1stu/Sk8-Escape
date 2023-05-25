@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("StartMenu");
     }
 
-
+    public AudioSource music;
     public bool startActive = false;
     private bool _isPaused;
     
@@ -36,6 +36,11 @@ public class PauseMenu : MonoBehaviour
         
         SetGameplayPaused();
         SetTogglePauseMenuState();
+        
+        if(_isPaused)
+            music.Pause();
+        else
+            music.UnPause();
     }
     
     private void SetTogglePauseMenuState()
