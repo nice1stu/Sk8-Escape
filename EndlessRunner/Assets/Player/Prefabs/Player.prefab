@@ -4950,8 +4950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6caf44f64b658649b4a340e4e026f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors: {r: 0, g: 0, b: 0, a: 0}
-  colorIndex: 3
 --- !u!1 &5126716563895704595
 GameObject:
   m_ObjectHideFlags: 0
@@ -5024,6 +5022,7 @@ GameObject:
   - component: {fileID: 1599283817310161499}
   - component: {fileID: 1599283817310161516}
   - component: {fileID: 1599283817310161501}
+  - component: {fileID: 1595293306921366606}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -5243,6 +5242,25 @@ MonoBehaviour:
   coffinTime: 0.95
   grindLeniency: 0.461
   scoreMultiplier: 1.44
+--- !u!114 &1595293306921366606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6550543353071559523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21daec6c4b6517b44a0a292c5bcbbc01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  jumpAudioSource: {fileID: 0}
+  grindingAudioSource: {fileID: 0}
+  crashAudioSource: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &8923090069800149062
 GameObject:
   m_ObjectHideFlags: 0
