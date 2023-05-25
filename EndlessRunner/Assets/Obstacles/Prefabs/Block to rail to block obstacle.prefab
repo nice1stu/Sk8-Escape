@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 7924042192539278228}
   - component: {fileID: 7924042192539278226}
   - component: {fileID: 7924042192539278227}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: concrete block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
