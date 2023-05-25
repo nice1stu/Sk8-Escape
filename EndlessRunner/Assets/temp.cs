@@ -7,6 +7,7 @@ public class temp : MonoBehaviour
 {
     public void LoadStartScene()
     {
+        Destroy(MenuMusic.instance.gameObject);
         SceneManager.LoadScene("MainScene");
     }
     
