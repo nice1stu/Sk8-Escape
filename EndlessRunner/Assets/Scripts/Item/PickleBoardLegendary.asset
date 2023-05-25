@@ -15,7 +15,7 @@ MonoBehaviour:
   baseStats:
     coffinTimeAdded: 0
     stability: 0
-    vision: 0
+    vision: 5
     grindMiniGameBallSize: 0
     grindLeniency: 0
     scoreMultiplier: 0
