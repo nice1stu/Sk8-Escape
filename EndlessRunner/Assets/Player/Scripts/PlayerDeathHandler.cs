@@ -19,7 +19,7 @@ public class PlayerDeathHandler : MonoBehaviour
     public GameObject pauseButton;
     public int invicibilityTokens = 0;
     public SpriteRenderer player;
-    
+    public GameObject audioSource;
 
     private bool ranRecently = false;
 
@@ -72,6 +72,7 @@ public class PlayerDeathHandler : MonoBehaviour
                 StartCoroutine(cameraShake.Shake(.13f, 0.6f));
             StartCoroutine(DelayCoroutine(1.0f));
             GetComponent<PlayerController>().CancelSlowmo();
+            audioSource.GetComponent<AudioSource>().enabled = false;
             return true;
         }
     }

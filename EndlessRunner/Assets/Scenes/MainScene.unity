@@ -731,6 +731,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkateSFX
       objectReference: {fileID: 0}
+    - target: {fileID: 7042050141172465868, guid: 696ae5219f1304f4890ea4d26847bfb5, type: 3}
+      propertyPath: m_Volume
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7042050141172465869, guid: 696ae5219f1304f4890ea4d26847bfb5, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1681,6 +1685,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 18.521414, y: 11.140817}
   m_EdgeRadius: 0
+--- !u!1 &1561416467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7042050141172465866, guid: 696ae5219f1304f4890ea4d26847bfb5, type: 3}
+  m_PrefabInstance: {fileID: 604813706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1636692154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2215,6 +2224,10 @@ PrefabInstance:
       propertyPath: grindingAudioSource
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1599283817310161492, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1561416467}
     - target: {fileID: 1599283817310161492, guid: ad9d48fd16bd7d944a8f0a7b32645c05, type: 3}
       propertyPath: cameraShake
       value: 
