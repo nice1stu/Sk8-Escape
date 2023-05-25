@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats:
     coffinTimeAdded: 0
-    stability: 5
-    vision: 0
+    stability: 1
+    vision: 3
     grindMiniGameBallSize: 0
     grindLeniency: 0
-    scoreMultiplier: 0
+    scoreMultiplier: 1
   itemType: 1
   bonusStats: 8
   itemName: FlameBoard

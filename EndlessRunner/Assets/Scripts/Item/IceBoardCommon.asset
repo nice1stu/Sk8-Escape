@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: IceBoardCommon
   m_EditorClassIdentifier: 
   baseStats:
-    coffinTimeAdded: 0
-    stability: 3
-    vision: 0
+    coffinTimeAdded: 3
+    stability: 0
+    vision: 1
     grindMiniGameBallSize: 0
-    grindLeniency: 0
+    grindLeniency: 1
     scoreMultiplier: 0
   itemType: 1
   bonusStats: 2

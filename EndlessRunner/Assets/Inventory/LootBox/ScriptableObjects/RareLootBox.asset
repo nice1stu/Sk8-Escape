@@ -30,4 +30,8 @@ MonoBehaviour:
     chance: 20
   - itemConfig: {fileID: 11400000, guid: 209ca0f40c57c444ea7ba7cf0e1c7919, type: 2}
     chance: 20
+  - itemConfig: {fileID: 11400000, guid: 219bfd7293ee83d409ca9ea989b6185d, type: 2}
+    chance: 80
+  - itemConfig: {fileID: 11400000, guid: 69a3d86548091b9428ff3473abbd742f, type: 2}
+    chance: 20
   _openSfx: {fileID: 8300000, guid: e686eab4acb05db4a8b90f4e6c69ac21, type: 3}
