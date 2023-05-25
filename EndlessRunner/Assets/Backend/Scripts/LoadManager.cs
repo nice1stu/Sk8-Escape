@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using Firebase.Auth;
 using Firebase.Database;
+using TMPro;
 using UnityEngine;
 
 namespace Backend.Scripts
@@ -16,19 +17,24 @@ namespace Backend.Scripts
 
         public GameObject startButton;
         public GameObject loadingText;
+        public TextMeshProUGUI signinFailed;
         
         private bool OnlineDataMissing => onlineTimeStamp == 0;
         private bool LocalDataMissing => localTimeStamp == 0;
         private void Awake()
         {
-            startButton.SetActive(false);
-            loadingText.SetActive(true);
+            EnablePressToPlay(false);
+            Invoke("HandleFailedSignin", 5);
             FirebaseDatabase.DefaultInstance.SetPersistenceEnabled(false);
             if (Application.internetReachability != NetworkReachability.NotReachable)
             {
                 StartCoroutine(GetStats());
             }
-            else LoadData();
+            else
+            {
+                CancelInvoke("HandleFailedSignin");
+                HandleFailedSignin();
+            }
         }
 
         private void LoadData()
@@ -45,7 +51,7 @@ namespace Backend.Scripts
 
             if (LocalDataMissing && OnlineDataMissing)
             {
-                EnablePressToPlay();
+                EnablePressToPlay(true);
                 return;
             }
             //get the most up to date data stats
@@ -58,14 +64,14 @@ namespace Backend.Scripts
             SaveManager.SaveTotalGems = data.totalGems;
             SaveManager.SaveTotalCoins = data.totalCoins;
             SaveManager.SaveHighScore = data.playerHighScore;
-            EnablePressToPlay();
+            EnablePressToPlay(true);
         }
 
         //upon finish loading
-        private void EnablePressToPlay()
+        private void EnablePressToPlay(bool b)
         {
-            loadingText.SetActive(false);
-            startButton.SetActive(true);
+            loadingText.SetActive(!b);
+            startButton.SetActive(b);
         }
 
         //get online stats
@@ -89,7 +95,15 @@ namespace Backend.Scripts
                 onlineData = JsonUtility.FromJson<GameData>(snapshot.GetRawJsonValue());
                 onlineTimeStamp = onlineData.timeStamp;
             }
+            CancelInvoke("HandleFailedSignin");
             LoadData();
+        }
+
+        void HandleFailedSignin()
+        {
+            signinFailed.text += "Failed to fetch online data.";
+            LoadData();
+            EnablePressToPlay(true);
         }
     }
 }
