@@ -12,7 +12,7 @@ public class SkateBoardColor : MonoBehaviour
             if (inventoryItem.ItemConfig.ItemType == ItemType.SkateBoard)
             {
                 _color = inventoryItem.ItemConfig.Color;
-                return;
+                break;
             }
             _color = Color.white;
         }
