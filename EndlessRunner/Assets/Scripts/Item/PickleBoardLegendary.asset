@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db1103256d2a5654086b7b26b6935d7d, type: 3}
-  m_Name: RareBoardTest
+  m_Name: PickleBoardLegendary
   m_EditorClassIdentifier: 
   baseStats:
     coffinTimeAdded: 0
@@ -20,9 +20,9 @@ MonoBehaviour:
     grindLeniency: 0
     scoreMultiplier: 0
   itemType: 1
-  bonusStats: 5
-  itemName: RareBoard
-  itemSprite: {fileID: 21300000, guid: 949069bf844eb4f7b87ded360987cb81, type: 3}
-  itemIcon: {fileID: 21300000, guid: 949069bf844eb4f7b87ded360987cb81, type: 3}
-  id: 99
-  color: {r: 0.9528302, g: 0.049439307, b: 0.9148724, a: 0}
+  bonusStats: 12
+  itemName: PickleBoard
+  itemSprite: {fileID: 21300000, guid: 49d687ee595b71342962fbff02fab153, type: 3}
+  itemIcon: {fileID: 21300000, guid: 49d687ee595b71342962fbff02fab153, type: 3}
+  id: 11
+  color: {r: 0.19514017, g: 0.8773585, b: 0.11173906, a: 0}
