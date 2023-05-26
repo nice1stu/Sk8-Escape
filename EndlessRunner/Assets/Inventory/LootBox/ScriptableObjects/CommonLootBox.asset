@@ -22,20 +22,20 @@ MonoBehaviour:
     chance: 65
   - itemConfig: {fileID: 11400000, guid: f1bec8577a1644e4e8fc217aff694619, type: 2}
     chance: 65
+  - itemConfig: {fileID: 11400000, guid: 2f97cbdb8656d434a9ee80fef264ff5d, type: 2}
+    chance: 65
   - itemConfig: {fileID: 11400000, guid: ece08dea84c2f3b49a7cc3fe946d342a, type: 2}
     chance: 25
   - itemConfig: {fileID: 11400000, guid: 5491f16da00e81a46a25810a159735ba, type: 2}
+    chance: 25
+  - itemConfig: {fileID: 11400000, guid: af3408e6b1d6de545bc0d9a3498afe88, type: 2}
     chance: 25
   - itemConfig: {fileID: 11400000, guid: b804f153fb0f095488d20d62610eedb9, type: 2}
     chance: 10
   - itemConfig: {fileID: 11400000, guid: 5a0659908c9099e428903ded32be64f2, type: 2}
     chance: 10
-  - itemConfig: {fileID: 11400000, guid: b186db57a177a9b48a6ea9aa3c6693c3, type: 2}
-    chance: 10
-  - itemConfig: {fileID: 11400000, guid: 2f97cbdb8656d434a9ee80fef264ff5d, type: 2}
-    chance: 65
-  - itemConfig: {fileID: 11400000, guid: af3408e6b1d6de545bc0d9a3498afe88, type: 2}
-    chance: 25
   - itemConfig: {fileID: 11400000, guid: 219bfd7293ee83d409ca9ea989b6185d, type: 2}
+    chance: 10
+  - itemConfig: {fileID: 11400000, guid: b186db57a177a9b48a6ea9aa3c6693c3, type: 2}
     chance: 10
   _openSfx: {fileID: 8300000, guid: 3f3ea1156e476e64fbf8abcfd128bf5e, type: 3}
