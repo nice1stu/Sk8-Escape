@@ -54,7 +54,7 @@ namespace Stat
         {
             //adds bonus stats
             var newStats = new Stats();
-            newStats.GrindMiniGameBallSize += stats.GrindMiniGameBallSize;
+            //newStats.GrindMiniGameBallSize += stats.GrindMiniGameBallSize;
             newStats.Stability += stats.Stability;
             newStats.CoffinTimeAdded += stats.CoffinTimeAdded;
             newStats.Vision += stats.Vision;

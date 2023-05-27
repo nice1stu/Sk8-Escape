@@ -42,7 +42,7 @@ public class PlayerDeathHandler : MonoBehaviour
         StartCoroutine(Cooldown());
         
         
-        Debug.Log("Did we run?");
+        //Debug.Log("Did we run?");
         
         float surviveFloat = Random.Range(0, 100f);
         if (invicibilityTokens > 0)
@@ -57,7 +57,7 @@ public class PlayerDeathHandler : MonoBehaviour
 
         if (surviveFloat < survivalRate)
         {
-            Debug.Log("survived");
+            //Debug.Log("survived");
             Rigidbody2D rb2d = life.gameObject.GetComponent<Rigidbody2D>();
             StartCoroutine(CO_invincibilityFrames(defaultDukeTime));
             StartCoroutine(flashing());
@@ -66,7 +66,7 @@ public class PlayerDeathHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("dead");
+            //Debug.Log("dead");
             life.isAlive = false;
             if (cameraShake != null)
                 StartCoroutine(cameraShake.Shake(.13f, 0.6f));

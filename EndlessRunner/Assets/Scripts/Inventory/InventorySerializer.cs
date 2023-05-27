@@ -53,7 +53,7 @@ namespace Inventory
                 CoffinTimeAdded = stats.CoffinTimeAdded,
                 Stability = stats.Stability,
                 Vision = stats.Vision,
-                GrindMiniGameBallSize = stats.GrindMiniGameBallSize,
+                //GrindMiniGameBallSize = stats.GrindMiniGameBallSize,
                 GrindLeniency = stats.GrindLeniency,
                 ScoreMultiplier = stats.ScoreMultiplier
             };

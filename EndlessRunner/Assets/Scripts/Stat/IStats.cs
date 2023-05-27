@@ -5,7 +5,7 @@ namespace Stat
         int CoffinTimeAdded { get; set; }
         int Stability { get; set; }
         int Vision { get; set; }
-        int GrindMiniGameBallSize { get; set; }
+        //int GrindMiniGameBallSize { get; set; } //was scrapped 
         
         int GrindLeniency { get; set; }
         int ScoreMultiplier { get; set; }
