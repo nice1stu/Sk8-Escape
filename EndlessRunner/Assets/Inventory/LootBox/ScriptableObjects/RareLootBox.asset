@@ -16,7 +16,7 @@ MonoBehaviour:
   boxOpen: {fileID: 21300000, guid: 49a004fbac44b405090dfa48f8e747ee, type: 3}
   lootBoxName: Rare Loot Box
   id: lootbox.rare
-  _minutesToOpen: 1
+  _minutesToOpen: 900
   lootChances:
   - itemConfig: {fileID: 11400000, guid: b804f153fb0f095488d20d62610eedb9, type: 2}
     chance: 80

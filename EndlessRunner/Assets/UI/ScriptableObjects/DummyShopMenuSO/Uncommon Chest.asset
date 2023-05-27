@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootBox: {fileID: 11400000, guid: 7ae71db5a19b7514ebb34e74a7155c57, type: 2}
   title: Uncommon Chest
-  coinCost: 100
+  coinCost: 1000
+  gemCost: 0
