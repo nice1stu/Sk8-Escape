@@ -14,6 +14,8 @@ public class ItemPreview : MonoBehaviour
     public Image backGround;
 
     public Image item;
+
+    public Image itemBorderColor;
     // Start is called before the first frame update
     public Button equipButton;
     public LeanLocalizedBehaviour equipLabel;
@@ -25,6 +27,8 @@ public class ItemPreview : MonoBehaviour
         this.itemData = itemData;
         this.onDetailClicked = onDetailClicked;
         item.sprite = itemData.ItemConfig.ItemIcon;
+        itemBorderColor.color = itemData.ItemConfig.ItemBorderColor;
+        
         var equipped = Dependencies.Instance.Equipped.EquippedItems.Any(item => item == itemData);
         if (equipped)
         {

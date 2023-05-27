@@ -14,6 +14,7 @@ namespace Item
         [SerializeField] private Sprite itemIcon;
         [SerializeField] private string id;
         [SerializeField] private Color color;
+        [SerializeField] private Color itemBorderColor;
 
         // do a public method with the exact type (not IStats):
         public Stats BaseStats => baseStats;
@@ -26,6 +27,8 @@ namespace Item
 
         public string ItemName => itemName;
         public Sprite ItemSprite => itemSprite;
+
+        public Color ItemBorderColor => itemBorderColor;
         public Sprite ItemIcon => itemIcon;
         public string Id => id;
 
