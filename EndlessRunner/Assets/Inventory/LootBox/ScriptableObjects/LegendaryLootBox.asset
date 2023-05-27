@@ -16,7 +16,7 @@ MonoBehaviour:
   boxOpen: {fileID: 0}
   lootBoxName: Legendary Loot Box
   id: lootbox.legendary
-  _minutesToOpen: 0
+  _minutesToOpen: 900
   lootChances:
   - itemConfig: {fileID: 0}
     chance: 100

@@ -16,7 +16,7 @@ MonoBehaviour:
   boxOpen: {fileID: 21300000, guid: 3621ce2d30e934b948cad0f135eb1d58, type: 3}
   lootBoxName: Common Loot Box
   id: lootbox.common
-  _minutesToOpen: 1
+  _minutesToOpen: 300
   lootChances:
   - itemConfig: {fileID: 11400000, guid: bbaa025d815762747aedf95480be941b, type: 2}
     chance: 65
