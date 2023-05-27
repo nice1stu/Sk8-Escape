@@ -1,13 +1,13 @@
+using Inventory;
 using Item;
 using UnityEngine;
 
 public class SkateBoardColor : MonoBehaviour
 {
-
     private Color _color;
     void Start()
     {
-        foreach (var inventoryItem in Dependencies.Instance.Inventory.Items)
+        foreach (var inventoryItem in Dependencies.Instance.Equipped.EquippedItems)
         {
             if (inventoryItem.ItemConfig.ItemType == ItemType.SkateBoard)
             {

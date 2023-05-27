@@ -25,4 +25,4 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: ae932c6e208fc664fb3536b70bea4e6b, type: 3}
   itemIcon: {fileID: 21300000, guid: ae932c6e208fc664fb3536b70bea4e6b, type: 3}
   id: 12
-  color: {r: 1, g: 0.2088134, b: 0, a: 1}
+  color: {r: 0.64735883, g: 0.4199893, b: 0.735849, a: 1}
