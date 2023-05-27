@@ -1339,6 +1339,27 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1585357989276249057, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
   m_PrefabInstance: {fileID: 1546121321919254452}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &697174529222866114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078465846801398646, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+  m_PrefabInstance: {fileID: 1546121321919254452}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1074426733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697174529222866114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: shuvit
+  FallbackText: 'Swipe right:
+
+    Do a low Shuvit Jump!'
 --- !u!1001 &1546121322421978097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1452,17 +1473,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5115900386535537149, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_text
-      value: 'Tap and hold to grind rails!
-
-'
+      value: "Tryck och h\xE5ll f\xF6r att slipa skenor!"
       objectReference: {fileID: 0}
     - target: {fileID: 5115900386535537149, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_fontSize
-      value: 40
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 5115900386535537149, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_fontSizeBase
-      value: 40
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 5115900386535537149, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_enableAutoSizing
@@ -1511,6 +1530,27 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1585357989276249057, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
   m_PrefabInstance: {fileID: 1546121322421978097}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &697174528790263943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078465846801398646, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+  m_PrefabInstance: {fileID: 1546121322421978097}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1268112132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697174528790263943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: grind
+  FallbackText: 'Tap and hold to grind rails!
+
+'
 --- !u!1001 &1546121322702929194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1797,6 +1837,27 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1585357989276249057, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
   m_PrefabInstance: {fileID: 1546121323021034299}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &697174528172988493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078465846801398646, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+  m_PrefabInstance: {fileID: 1546121323021034299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1279721897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697174528172988493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: coffin
+  FallbackText: 'Swipe down to do a coffin.
+
+    nap right under obstacles!'
 --- !u!1001 &1546121323270101336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1942,6 +2003,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+--- !u!1 &697174528426189358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078465846801398646, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+  m_PrefabInstance: {fileID: 1546121323270101336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1736053523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697174528426189358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: controls_tricks
+  FallbackText: Controls and tricks
 --- !u!1001 &1546121323455675093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2055,15 +2135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5115900386535537149, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_text
-      value: 'Swipe up for an Ollie,
-
-        again to kickflip for extra air!
-
-'
+      value: "Svep upp f\xF6r en Ollie, igen\nf\xF6r att kickflipa f\xF6r extra luft!"
       objectReference: {fileID: 0}
     - target: {fileID: 5115900386535537149, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_fontSize
-      value: 40
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 5115900386535537149, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_fontStyle
@@ -2071,7 +2147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5115900386535537149, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_fontSizeBase
-      value: 40
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 5115900386535537149, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
       propertyPath: m_enableAutoSizing
@@ -2116,6 +2192,29 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1585357989276249057, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
   m_PrefabInstance: {fileID: 1546121323455675093}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &697174527672287651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078465846801398646, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+  m_PrefabInstance: {fileID: 1546121323455675093}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1621191247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697174527672287651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: ollie_kickflip
+  FallbackText: 'Swipe up for an Ollie,
+
+    again to kickflip for extra air!
+
+'
 --- !u!1001 &5315029635461599000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2269,6 +2368,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+--- !u!1 &6132485318848033902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078465846801398646, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+  m_PrefabInstance: {fileID: 5315029635461599000}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1290908662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6132485318848033902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: slowmo
+  FallbackText: "SlowMo: \ndouble tap to slow time!\n...For a while."
 --- !u!224 &6900242480076137721 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1585357989276249057, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
@@ -2436,6 +2554,29 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1585357989276249057, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
   m_PrefabInstance: {fileID: 5940926515209970147}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5668440510246345365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078465846801398646, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+  m_PrefabInstance: {fileID: 5940926515209970147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1625017977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5668440510246345365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: doublescore
+  FallbackText: 'x2:
+
+    Doubles your score...
+
+    ...and your coins!'
 --- !u!1001 &7825311641701657650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2591,6 +2732,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+--- !u!1 &8088789109389907780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078465846801398646, guid: 880e4d024060eec47917d61189cef6cf, type: 3}
+  m_PrefabInstance: {fileID: 7825311641701657650}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &558550289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088789109389907780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: padding
+  FallbackText: 'Padding:
+
+    protects you - once.'
 --- !u!224 &8834168883401738195 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1585357989276249057, guid: 880e4d024060eec47917d61189cef6cf, type: 3}

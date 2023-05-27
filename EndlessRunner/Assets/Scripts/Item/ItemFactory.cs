@@ -16,6 +16,8 @@ namespace Item
         }
         public ItemData CreateItem(IItemConfig itemConfig)
         {
+            //Todo: Items cant have more than 10 points in each stat else it could brake something.
+            //Todo: ( technically only vision could break he game if too much stats there the camera moves player out of view
             var itemBonusStats = new Stats();
             for(int i = 0; i < itemConfig.BonusStats; i++){
                 // random number

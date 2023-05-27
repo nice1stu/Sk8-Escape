@@ -16,11 +16,10 @@ MonoBehaviour:
     coffinTimeAdded: 0
     stability: 1
     vision: 0
-    grindMiniGameBallSize: 0
     grindLeniency: 4
     scoreMultiplier: 1
   itemType: 1
-  bonusStats: 8
+  bonusStats: 12
   itemName: FlameBoard
   itemSprite: {fileID: 21300000, guid: ae932c6e208fc664fb3536b70bea4e6b, type: 3}
   itemIcon: {fileID: 21300000, guid: ae932c6e208fc664fb3536b70bea4e6b, type: 3}

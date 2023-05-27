@@ -16,11 +16,10 @@ MonoBehaviour:
     coffinTimeAdded: 0
     stability: 0
     vision: 5
-    grindMiniGameBallSize: 0
     grindLeniency: 0
     scoreMultiplier: 0
   itemType: 1
-  bonusStats: 12
+  bonusStats: 16
   itemName: PickleBoard
   itemSprite: {fileID: 21300000, guid: 49d687ee595b71342962fbff02fab153, type: 3}
   itemIcon: {fileID: 21300000, guid: 49d687ee595b71342962fbff02fab153, type: 3}
