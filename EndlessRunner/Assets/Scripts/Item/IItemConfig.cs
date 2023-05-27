@@ -12,7 +12,7 @@ namespace Item
         string ItemName { get; }
         Sprite ItemSprite { get; }
         Sprite ItemIcon { get; }
-        Sprite ItemBorder { get; }
+        Color ItemBorderColor { get; }
         string Id { get; }
         
         Color Color { get; }

@@ -35,7 +35,7 @@ public class ItemDetailPopup : MonoBehaviour
         styleValueLabel.text = itemData.TotalStats.ScoreMultiplier.ToString();
         visionValueLabel.text = itemData.TotalStats.Vision.ToString();
 
-        skateboardRarityBorder.sprite = itemData.ItemConfig.ItemBorder;
+        skateboardRarityBorder.color = itemData.ItemConfig.ItemBorderColor;
     }
 
     private void OnDestroy()
