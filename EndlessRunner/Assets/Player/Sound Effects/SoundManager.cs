@@ -5,20 +5,24 @@ using Player;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
-{ private PlayerController playerController;
-   public AudioSource audioSource;
-   public AudioSource jumpAudioSource;
-   public AudioSource grindingAudioSource;
-   public AudioSource crashAudioSource;
-   private bool isGrounded;
-   public LayerMask targetLayer;
-   private PlayerModel _death;
-   
-   private void Start()
-   {
+{ 
+    
+    private PlayerController playerController;
+    public AudioSource audioSource;
+    public AudioSource jumpAudioSource;
+    public AudioSource grindingAudioSource;
+    public AudioSource crashAudioSource;
+    private bool isGrounded;
+    public LayerMask targetLayer;
+    private PlayerModel _death;
+    public PauseMenu _isPaused;
+    
+    private void Start()
+    {
        playerController = FindObjectOfType<PlayerController>();
-       _death = FindObjectOfType<PlayerModel>();
-   }
+       _death = FindObjectOfType<PlayerModel>(); 
+       //_isPaused = FindObjectOfType<PauseMenu>();
+    }
 
 
    private void OnCollisionEnter2D(Collision2D collision)
@@ -26,18 +30,15 @@ public class SoundManager : MonoBehaviour
        if (collision.gameObject.CompareTag("Ground"))
        {
            isGrounded = true;
-           Debug.Log("is grounded");
-           
+
            if (isGrounded && !audioSource.isPlaying)
            {
                audioSource.Play();
-               Debug.Log("playing sound");
            }
        }
        if (targetLayer == (targetLayer | (1 << collision.gameObject.layer)))
        {
-           Debug.Log("crashed");
-          audioSource.Stop();
+           audioSource.Stop();
           crashAudioSource.Play();
        }
 
@@ -46,17 +47,14 @@ public class SoundManager : MonoBehaviour
 
    private void Update()
    {
-       if (!isGrounded && playerController.isGrinding && !grindingAudioSource.isPlaying)
+       if (!isGrounded && playerController.isGrinding && !grindingAudioSource.isPlaying && !_isPaused.IsItPaused)
        {
            audioSource.Stop();
            grindingAudioSource.Play();
-           Debug.Log("Play grind sound");
-           
        }
        else if (!playerController.isGrinding && grindingAudioSource.isPlaying)
        {
            grindingAudioSource.Stop();
-           Debug.Log("Stop grind sound");
        }
    }
 
@@ -66,14 +64,12 @@ public class SoundManager : MonoBehaviour
    {
        if (collision.gameObject.CompareTag("Ground"))
        {
-           Debug.Log("is not grounded");
            isGrounded = false;
 
            if (!isGrounded && audioSource.isPlaying)
            {
                audioSource.Stop();
                jumpAudioSource.Play();
-               Debug.Log("not playing sound");
            }
        }
       

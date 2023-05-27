@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -16,11 +12,15 @@ public class PauseMenu : MonoBehaviour
     }
 
     public AudioSource music;
+    public AudioSource skateSfx;
+    public AudioSource grindSfx;
     public bool startActive = false;
     private bool _isPaused;
     
     private static float previousTimescale;
     private static bool IsPaused;
+
+    public bool IsItPaused => _isPaused;
 
     private void Start()
     {
@@ -36,11 +36,6 @@ public class PauseMenu : MonoBehaviour
         
         SetGameplayPaused();
         SetTogglePauseMenuState();
-        
-        if(_isPaused)
-            music.Pause();
-        else
-            music.UnPause();
     }
     
     private void SetTogglePauseMenuState()
@@ -54,9 +49,15 @@ public class PauseMenu : MonoBehaviour
         {
             previousTimescale = Time.timeScale;
             Time.timeScale = 0;
+            music.Pause();
+            skateSfx.Pause();
+            grindSfx.Stop();
         }
         else
+        { 
             Time.timeScale = previousTimescale;
-            // Time.timeScale = 1f;
+            music.UnPause();
+            skateSfx.UnPause();
+        }
     }
 }
