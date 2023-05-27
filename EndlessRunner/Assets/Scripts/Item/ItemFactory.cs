@@ -19,7 +19,7 @@ namespace Item
             var itemBonusStats = new Stats();
             for(int i = 0; i < itemConfig.BonusStats; i++){
                 // random number
-                var random = Random.Range(1, 7);
+                var random = Random.Range(1, 6);
                 switch (random)
                 {
                     case 1:
@@ -37,9 +37,9 @@ namespace Item
                     case 5:
                         itemBonusStats.GrindLeniency++;
                         break;
-                    case 6:
-                        itemBonusStats.GrindMiniGameBallSize++;
-                        break;
+                   // case 6:
+                   //     itemBonusStats.GrindMiniGameBallSize++;
+                   //     break;
                 }
             }
             var item = new ItemData(itemBonusStats, itemConfig);

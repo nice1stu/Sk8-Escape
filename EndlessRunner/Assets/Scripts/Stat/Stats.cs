@@ -10,7 +10,7 @@ namespace Stat
         [SerializeField] private int coffinTimeAdded;
         [SerializeField] private int stability;
         [SerializeField] private int vision;
-        [SerializeField] private int grindMiniGameBallSize;
+        //[SerializeField] private int grindMiniGameBallSize;
         [SerializeField] private int grindLeniency;
         [SerializeField] private int scoreMultiplier;
 
@@ -32,11 +32,11 @@ namespace Stat
             set => vision = value;
         }
 
-        public int GrindMiniGameBallSize
+       /* public int GrindMiniGameBallSize
         {
             readonly get => grindMiniGameBallSize;
             set => grindMiniGameBallSize = value;
-        }
+        }*/
 
         public int GrindLeniency
         {
@@ -61,7 +61,7 @@ namespace Stat
             newStats.GrindLeniency += stats.GrindLeniency;
             newStats.ScoreMultiplier += stats.ScoreMultiplier;
 
-            newStats.GrindMiniGameBallSize += GrindMiniGameBallSize;
+            //newStats.GrindMiniGameBallSize += GrindMiniGameBallSize;
             newStats.Stability += Stability;
             newStats.CoffinTimeAdded += CoffinTimeAdded;
             newStats.Vision += Vision;
