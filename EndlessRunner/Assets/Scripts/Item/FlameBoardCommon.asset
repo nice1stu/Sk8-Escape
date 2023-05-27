@@ -26,3 +26,4 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: deb93685f70e669478ee3b475d6c494d, type: 3}
   id: 1
   color: {r: 1, g: 0.2088134, b: 0, a: 1}
+  itemBorder: {fileID: 21300000, guid: 0e8347fddc91b404db49680450a45c27, type: 3}

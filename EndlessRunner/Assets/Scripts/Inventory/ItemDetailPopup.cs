@@ -13,7 +13,8 @@ public class ItemDetailPopup : MonoBehaviour
     public TextMeshProUGUI skateboardLabel;
 
     public Image skateboardIcon;
-
+    public Image skateboardRarityBorder;
+    
     public TextMeshProUGUI stabilityValueLabel;
     [FormerlySerializedAs("speedValueLabel")] public TextMeshProUGUI gripValueLabel;
     public TextMeshProUGUI styleValueLabel;
@@ -33,6 +34,8 @@ public class ItemDetailPopup : MonoBehaviour
         balanceValueLabel.text = itemData.TotalStats.GrindLeniency.ToString();
         styleValueLabel.text = itemData.TotalStats.ScoreMultiplier.ToString();
         visionValueLabel.text = itemData.TotalStats.Vision.ToString();
+
+        skateboardRarityBorder.sprite = itemData.ItemConfig.ItemBorder;
     }
 
     private void OnDestroy()
