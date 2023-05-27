@@ -13,7 +13,7 @@ public class temp : MonoBehaviour
     
     public void LoadShopScene()
     {
-        SceneManager.LoadScene("DummyShopMenu");
+        SceneManager.LoadScene("ShopMenu");
     }
     
     public void LoadMainMenu()
