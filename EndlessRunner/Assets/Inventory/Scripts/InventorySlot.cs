@@ -10,7 +10,7 @@ namespace Inventory.Scripts
         [SerializeField] private int index;
         //Countdown for the inventory slot
         [SerializeField] private Countdown _countdown;
-       
+
 
         private void Start()
         {
@@ -56,6 +56,7 @@ namespace Inventory.Scripts
             }
             slotIcon.sprite = lootBox.Config.Icon;//Sets the slot icon sprite to the loot box image
             slotIcon.enabled = true;
+            
             _countdown.StartCountdown(lootBox);//Start countdown
         }
 
@@ -75,6 +76,19 @@ namespace Inventory.Scripts
             slotIcon.sprite = null;//Removes the image
             slotIcon.enabled = false;
             Dependencies.Instance.LootBoxes.OpenLootBox(lootBox);//Calls the function to remove from the loot box inventory
+        }
+
+        public void OpenLootBoxFromBtnClick(int btnNo)
+        {
+            if(Dependencies.Instance.LootBoxes.Slots[btnNo] != null)
+            {
+                // If slot is not null it checks if timer has finished. Little hacky but it works, would be great to have timer on the lootbox itself
+                var t = Dependencies.Instance.LootBoxes.Slots[btnNo];
+                var timeFromStart = DateTime.UtcNow - t.OpeningStartTime;
+                // if the time the loot box takes to open has passed we open it
+                if (timeFromStart >= t.Config.TimeToOpen) 
+                    Dependencies.Instance.LootBoxes.OpenLootBox(Dependencies.Instance.LootBoxes.Slots[btnNo]);
+            }
         }
     }
 }
