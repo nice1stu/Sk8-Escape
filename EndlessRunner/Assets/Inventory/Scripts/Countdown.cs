@@ -25,6 +25,7 @@ namespace Inventory.Scripts
         {
             _lootBox = null;
             countDownLabel.text = String.Empty;
+            checkMark.gameObject.SetActive(true);
         }
         
         private void Update()

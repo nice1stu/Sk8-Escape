@@ -10,7 +10,7 @@ namespace Inventory.Scripts
         [SerializeField] private int index;
         //Countdown for the inventory slot
         [SerializeField] private Countdown _countdown;
-
+        public GameObject checklistsParent;
 
         private void Start()
         {
@@ -80,14 +80,17 @@ namespace Inventory.Scripts
 
         public void OpenLootBoxFromBtnClick(int btnNo)
         {
-            if(Dependencies.Instance.LootBoxes.Slots[btnNo] != null)
+            if (Dependencies.Instance.LootBoxes.Slots[btnNo] == null) return;
+            // If slot is not null it checks if timer has finished. Little hacky but it works, would be great to have timer on the lootbox itself
+            var t = Dependencies.Instance.LootBoxes.Slots[btnNo];
+            var timeFromStart = DateTime.UtcNow - t.OpeningStartTime;
+            // if the time the loot box takes to open has passed we open it
+            if (timeFromStart >= t.Config.TimeToOpen) 
             {
-                // If slot is not null it checks if timer has finished. Little hacky but it works, would be great to have timer on the lootbox itself
-                var t = Dependencies.Instance.LootBoxes.Slots[btnNo];
-                var timeFromStart = DateTime.UtcNow - t.OpeningStartTime;
-                // if the time the loot box takes to open has passed we open it
-                if (timeFromStart >= t.Config.TimeToOpen) 
-                    Dependencies.Instance.LootBoxes.OpenLootBox(Dependencies.Instance.LootBoxes.Slots[btnNo]);
+                //Opens the lootBox on clicked btnNo Slot
+                Dependencies.Instance.LootBoxes.OpenLootBox(Dependencies.Instance.LootBoxes.Slots[btnNo]);
+                // extremely ugly hack to remove the checkmark when clicked(since there are no reference to the slots pls fix someone
+                checklistsParent.transform.GetChild(btnNo+1).GetChild(0).GetChild(1).gameObject.SetActive(false);
             }
         }
     }
