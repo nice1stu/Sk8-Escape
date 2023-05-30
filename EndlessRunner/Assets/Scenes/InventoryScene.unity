@@ -1403,13 +1403,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemDetailPopUp
       objectReference: {fileID: 0}
-    - target: {fileID: 7427043933627296541, guid: db912f3d511bb2c48bd453ee874d4018, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7427043934619802233, guid: db912f3d511bb2c48bd453ee874d4018, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 20.90625
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db912f3d511bb2c48bd453ee874d4018, type: 3}

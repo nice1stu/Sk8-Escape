@@ -172,7 +172,7 @@ namespace Player
 
         private void DoubleTap()
         {
-            Debug.Log("Double tap!");
+            //Debug.Log("Double tap!");
             if (scoreModel != null)
             {
                 if (scoreModel.TryToUsePowerUp())
@@ -211,7 +211,7 @@ namespace Player
         {
             while (true)
             {
-                Debug.Log("Elapsed time: " + slowmoCoolDownTimer.Elapsed.Seconds);
+                //Debug.Log("Elapsed time: " + slowmoCoolDownTimer.Elapsed.Seconds);
                 if (slowmoCoolDownTimer.Elapsed.Seconds > 3f)
                 {
                     Time.timeScale = oldTimeScale;
@@ -229,7 +229,7 @@ namespace Player
             if (!SwipeLock)
             {
                 SwipeLock = true;
-                Debug.Log("Up!");
+                //Debug.Log("Up!");
             }
         }
 
@@ -238,7 +238,7 @@ namespace Player
             if (!SwipeLock)
             {
                 SwipeLock = true;
-                Debug.Log("Right!");
+                //Debug.Log("Right!");
             }
         }
 
@@ -247,7 +247,7 @@ namespace Player
             if (!SwipeLock)
             {
                 SwipeLock = true;
-                Debug.Log("Left!");
+                //Debug.Log("Left!");
             }
         }
 
@@ -256,16 +256,16 @@ namespace Player
             if (!SwipeLock)
             {
                 SwipeLock = true;
-                Debug.Log("Down!"); //TODO: Trigger crouch here!
+                //Debug.Log("Down!"); //TODO: Trigger crouch here!
             }
         }
 
         private void Tap(InputAction.CallbackContext context)
         {
-            Debug.Log("Running tap event");
+            //Debug.Log("Running tap event");
             if (!tappedOnce)
             {
-                Debug.Log("Tap!");
+                //Debug.Log("Tap!");
                 tappedOnce = true;
                 StartCoroutine(DoubleTapCooldown());
                 //CheckInteract();
@@ -291,7 +291,7 @@ namespace Player
 
         private void OnTouchDownPerformed(InputAction.CallbackContext context)
         {
-            Debug.Log("TouchDown");
+            //Debug.Log("TouchDown");
             CheckInteract();
         }
         
