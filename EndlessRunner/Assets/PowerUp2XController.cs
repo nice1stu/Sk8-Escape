@@ -21,18 +21,16 @@ public class PowerUp2XController : MonoBehaviour, IPickupable
         hudScore = GameObject.FindWithTag("HUD").GetComponentInChildren<PlayerScoreModel>();
         HUDElement = GameObject.FindWithTag("HUD").GetComponentInChildren<HUDX2>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
+    
     private void OnDisable()
     {
         if (timer != null)
         {
             StopCoroutine(timer);
         }
+        // Need this!. Because if we die before timer runs out and exit fast it's always on x2. 
+        hudScore.multiplier = 1;
+        multiplier = 1;
     }
 
     public void OnPickup()
@@ -46,11 +44,20 @@ public class PowerUp2XController : MonoBehaviour, IPickupable
 
     private IEnumerator PowerUpCooldown()
     {
-        multiplier *= 2;
-        hudScore.multiplier *= 2;
+        //if we want multiple x2 use this
+        //multiplier *= 2;
+        //hudScore.multiplier *= 2;
+        
+        //But we just want the x2 and if we get it again resets the timer and keeps x2 going instead of increasing it to x4
+        multiplier = 2;
+        hudScore.multiplier = 2;
         yield return new WaitForSeconds(duration);
-        hudScore.multiplier /= 2;
-        multiplier /= 2;
+        //hudScore.multiplier /= 2;
+        //multiplier /= 2;
+        
+        //same as above
+        hudScore.multiplier = 1;
+        multiplier = 1;
         if (multiplier == 1)
         {
             HUDElement.SetEnabled(false);
