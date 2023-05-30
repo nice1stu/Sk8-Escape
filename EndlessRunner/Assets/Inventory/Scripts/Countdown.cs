@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Inventory.Scripts
 {
@@ -11,6 +12,7 @@ namespace Inventory.Scripts
         private ILootBoxData _lootBox;
 
         public TextMeshProUGUI countDownLabel;
+        public Image checkMark;
 
         // This function is called when the loot box is added to the loot box inventory
         // it sets start time to the current time in UTC timezone, so it is time zone independent
@@ -23,6 +25,7 @@ namespace Inventory.Scripts
         {
             _lootBox = null;
             countDownLabel.text = String.Empty;
+            checkMark.gameObject.SetActive(true);
         }
         
         private void Update()
@@ -35,7 +38,9 @@ namespace Inventory.Scripts
                 // if the time the loot box takes to open has passed
                 if (timeFromStart >= _lootBox.Config.TimeToOpen)
                 {
-                    Dependencies.Instance.LootBoxes.OpenLootBox(_lootBox);
+                    //Dependencies.Instance.LootBoxes.OpenLootBox(_lootBox);
+                    //Todo: add Glow on box when its ready to be opened
+                    StopCountDown();
                     return;
                 }
                 // updates time left for the text

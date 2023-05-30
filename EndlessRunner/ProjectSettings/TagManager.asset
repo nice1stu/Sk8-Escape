@@ -10,6 +10,7 @@ TagManager:
   - HUDX2
   - HUDInvincible
   - Ground
+  - CheckMarkIcon
   layers:
   - Default
   - TransparentFX

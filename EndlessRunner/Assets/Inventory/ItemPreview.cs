@@ -27,7 +27,8 @@ public class ItemPreview : MonoBehaviour
         this.itemData = itemData;
         this.onDetailClicked = onDetailClicked;
         item.sprite = itemData.ItemConfig.ItemIcon;
-        itemBorderColor.color = itemData.ItemConfig.ItemBorderColor;
+        if(itemBorderColor != null)
+            itemBorderColor.color = itemData.ItemConfig.ItemBorderColor;
         
         var equipped = Dependencies.Instance.Equipped.EquippedItems.Any(item => item == itemData);
         if (equipped)
