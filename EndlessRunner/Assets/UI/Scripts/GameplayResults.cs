@@ -83,6 +83,7 @@ public class GameplayResults : MonoBehaviour
     {
         _scoreManager.SetScore(0);
         cointest.SetCoinAmount(0);
+        Destroy(MenuMusic.instance.gameObject);
         SceneManager.LoadScene("StartMenu");
     }
 

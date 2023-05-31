@@ -11,7 +11,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("StartMenu");
     }
 
-    public AudioSource music;
+    private AudioSource music;
     public AudioSource skateSfx;
     public AudioSource grindSfx;
     public bool startActive = false;
@@ -24,6 +24,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
+        music = MenuMusic.instance.GetComponent<AudioSource>();
         _isPaused = startActive;
         gameObject.SetActive(_isPaused);
 
